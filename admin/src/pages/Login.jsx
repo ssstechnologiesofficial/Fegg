@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
+import fagglogo from '../../public/eg-logo.png'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -23,41 +24,33 @@ const Login = () => {
     setShowPassword(!showPassword)
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setError('')
-    try {
-      const response = await fetch('http://localhost:5000/api/loginAdmin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
 
-      const result = await response.json()
+    // Hardcoded login functionality
+    const hardcodedEmail = 'admin@gmail.com'
+    const hardcodedPassword = 'admin123'
 
-      if (response.ok) {
-        localStorage.setItem('token', result.token)
-        navigate('/dashboard/dashboardcards')
-      } else {
-        setError(result.message || 'Invalid credentials')
-      }
-    } catch (error) {
-      setError('Something went wrong. Please try again later.')
+    if (data.email === hardcodedEmail && data.password === hardcodedPassword) {
+      // Simulate setting a token in localStorage
+      localStorage.setItem('token', 'hardcoded-token')
+      navigate('/dashboard')
+    } else {
+      setError('Invalid email or password')
     }
   }
 
   return (
     <section
       id="login"
-      className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black text-white"
+      className="flex items-center justify-center min-h-screen text-white"
     >
       <div className="container max-w-md mx-auto p-4">
-        <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700">
-          <h1 className="text-3xl font-bold text-center mb-6 border-b border-gray-700 pb-2">
-            Login
-          </h1>
+        <div className="bg-gradient-to-br from-red-500 via-red-800 to-red-500 p-8 rounded-lg shadow-lg border border-gray-700">
+          <div className="bg-white rounded-full flex items-center justify-center w-32 h-32 mx-auto">
+            <img src={fagglogo} className="w-20 object-fill mx-auto mb-4" />
+          </div>
           {error && (
             <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
           )}
@@ -70,7 +63,7 @@ const Login = () => {
                 placeholder="Enter your email"
                 value={data.email}
                 onChange={handleOnChange}
-                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-white"
                 required
               />
             </div>
@@ -85,7 +78,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={data.password}
                 onChange={handleOnChange}
-                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-white"
                 required
               />
               <button
@@ -101,7 +94,7 @@ const Login = () => {
               </button>
               <Link
                 to="/forgotpassword"
-                className="block mt-2 text-blue-500 hover:underline text-right"
+                className="block mt-2 text-white hover:underline text-right"
               >
                 Forgot Password?
               </Link>
@@ -109,7 +102,7 @@ const Login = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-teal-400 to-blue-500 text-white font-bold rounded-lg hover:from-teal-500 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              className="w-full py-3 bg-[#d2d2d2] text-[#fe0000] font-bold rounded-lg hover:bg-[#c9c7c7] focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-100 focus:scale-105 transition-all"
             >
               Login
             </button>
