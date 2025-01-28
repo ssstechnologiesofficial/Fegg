@@ -1,0 +1,29 @@
+.contactForm {
+    background-image: linear-gradient(to bottom right, #e6ffe6, #ccffcc);
+    border: 2px solid #66bb66;
+  }
+  
+  .contactForm h2 {
+    color: #005500;
+  }
+  
+  .contactForm input:focus,
+  .contactForm textarea:focus {
+    border-color: #009900;
+  }
+  
+  .contactForm button {
+    background-color: #66bb66;
+  }
+  
+  .contactForm button:hover {
+    background-color: #559955;
+  }
+  .form {
+    border: 2px solid #34D399; /* Tailwind's green-400 */
+  }
+  
+  .map {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }
+    
