@@ -22,30 +22,32 @@
 //       {/* Sidebar */}
 //       <aside
 //         className={`${
-//           isCollapsed ? 'w-16' : 'w-52'
-//         } bg-gray-800 text-white fixed h-full transition-all duration-300`}
+//           isCollapsed ? 'w-16' : 'w-60'
+//         } bg-gradient-to-br from-[#bb2d3b] via-black to-[#fe0000] text-white fixed h-full shadow-lg transition-all duration-300`}
 //       >
 //         <div className="p-4 flex items-center justify-between">
 //           {!isCollapsed && (
-//             <div className="flex flex-col items-center">
-//               <div className="flex items-center rounded-full border-r-2 border-white py-5 px-5">
-//                 <FaUserShield size={38} className="" />
+//             <div className="flex flex-col items-center ">
+//               <div className="flex items-center justify-center rounded-full bg-gradient-to-r from-[#fe0000] p-5 shadow-md">
+//                 <FaUserShield size={36} className="text-white" />
 //               </div>
-//               <h1 className="text-2xl font-bold">Admin</h1>
+//               <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r  z-20 w-[200px] right-3  relative from-[#fe0000]">
+//                 Admin Panel
+//               </h1>
 //             </div>
 //           )}
 //           <button
 //             onClick={toggleSidebar}
-//             className="text-white focus:outline-none"
+//             className="text-white focus:outline-none hover:text-teal-400 transition duration-200"
 //           >
 //             <FaBars size={20} />
 //           </button>
 //         </div>
 
-//         <nav className="mt-4">
+//         <nav className="mt-8">
 //           <Link
 //             to="dashboardCards"
-//             className="flex items-center px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+//             className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
 //           >
 //             <TbLayoutDashboardFilled className="mr-2" size={20} />
 //             {!isCollapsed && <span>Dashboard</span>}
@@ -53,7 +55,7 @@
 
 //           <Link
 //             to="courses"
-//             className="flex items-center px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+//             className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
 //           >
 //             <FaChalkboardTeacher className="mr-2" size={20} />
 //             {!isCollapsed && <span>Courses</span>}
@@ -61,7 +63,7 @@
 
 //           <Link
 //             to="event"
-//             className="flex items-center px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+//             className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
 //           >
 //             <FaCalendarAlt className="mr-2" size={20} />
 //             {!isCollapsed && <span>Events</span>}
@@ -69,7 +71,7 @@
 
 //           <Link
 //             to="member-table"
-//             className="flex items-center px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+//             className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
 //           >
 //             <FaClipboardList className="mr-2" size={20} />
 //             {!isCollapsed && <span>Member Table</span>}
@@ -77,7 +79,7 @@
 
 //           <Link
 //             to="/"
-//             className="flex items-center px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+//             className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
 //           >
 //             <FaSignOutAlt className="mr-2" size={20} />
 //             {!isCollapsed && <span>Logout</span>}
@@ -87,11 +89,11 @@
 
 //       {/* Main Content */}
 //       <div
-//         className={`flex-grow ml-${
-//           isCollapsed ? '16' : '64'
-//         } transition-all duration-300`}
+//         className={`flex-grow ${
+//           isCollapsed ? 'ml-16' : 'ml-60'
+//         } h-[100vh]  transition-all duration-300`}
 //       >
-//         <main className="p-6">
+//         <main className="p-3">
 //           <Outlet />
 //         </main>
 //       </div>
@@ -126,20 +128,31 @@ const Sidebar = () => {
       <aside
         className={`${
           isCollapsed ? 'w-16' : 'w-60'
-        } bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 text-white fixed h-full shadow-lg transition-all duration-300`}
+        } fixed h-full bg-gray-200 text-gray-800 shadow-inner transition-all duration-300 flex flex-col border-r-2 border-black`}
+        style={{
+          boxShadow: 'inset 8px 8px 15px #b8b8b8, inset -8px -8px 15px #ffffff',
+        }}
       >
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center rounded-full bg-gradient-to-r from-teal-400 to-blue-500 p-5 shadow-md">
-                <FaUserShield size={36} className="text-white" />
+            <div className="flex flex-col items-center ">
+              <div
+                className="flex items-center justify-center rounded-full shadow-md p-5"
+                style={{
+                  boxShadow: '8px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+                  background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+                }}
+              >
+                <FaUserShield size={36} className="text-gray-800" />
               </div>
-              <h1 className="text-xl font-semibold mt-2">Admin Panel</h1>
+              <h1 className="text-xl font-semibold mt-2 text-center">
+                Admin Panel
+              </h1>
             </div>
           )}
           <button
             onClick={toggleSidebar}
-            className="text-white focus:outline-none hover:text-teal-400 transition duration-200"
+            className="text-gray-800 focus:outline-none hover:text-teal-500 transition duration-200"
           >
             <FaBars size={20} />
           </button>
@@ -148,7 +161,12 @@ const Sidebar = () => {
         <nav className="mt-8">
           <Link
             to="dashboardCards"
-            className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
+            className="flex items-center px-2 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
           >
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
@@ -156,7 +174,12 @@ const Sidebar = () => {
 
           <Link
             to="courses"
-            className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Courses</span>}
@@ -164,7 +187,12 @@ const Sidebar = () => {
 
           <Link
             to="event"
-            className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
           >
             <FaCalendarAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Events</span>}
@@ -172,7 +200,12 @@ const Sidebar = () => {
 
           <Link
             to="member-table"
-            className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
           >
             <FaClipboardList className="mr-2" size={20} />
             {!isCollapsed && <span>Member Table</span>}
@@ -180,7 +213,12 @@ const Sidebar = () => {
 
           <Link
             to="/"
-            className="flex items-center px-4 py-3 hover:bg-teal-500 hover:text-white rounded-lg transition-colors duration-300"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
           >
             <FaSignOutAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Logout</span>}
@@ -192,7 +230,7 @@ const Sidebar = () => {
       <div
         className={`flex-grow ${
           isCollapsed ? 'ml-16' : 'ml-60'
-        } h-[100vh]  transition-all duration-300`}
+        } h-[100vh] transition-all duration-300`}
       >
         <main className="p-3">
           <Outlet />
