@@ -6,6 +6,10 @@ const NavLinks = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isProgrammesOpen, setIsProgrammesOpen] = useState(false);
   const [isAdmissionOpen, setIsAdmissionOpen] = useState(false);
+  const [isEventsOpen, setIsEventsOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isContactusOpen, setIsContactusOpen] = useState(false);
+  const [isStudentCornerOpen, setIsStudentCornerOpen] = useState(false);
 
   const dropdownMenu = (menuItems) => (
     <ul className="absolute left-0 z-10 top-full bg-white shadow-md w-40">
@@ -76,7 +80,7 @@ const NavLinks = () => {
             { link: "/vocational-course", label: "Vocational Course" },
           ])}
       </li>
-      <li
+      {/* <li
         className="relative group"
         onMouseEnter={() => setIsAdmissionOpen(true)}
         onMouseLeave={() => setIsAdmissionOpen(false)}
@@ -94,8 +98,12 @@ const NavLinks = () => {
             { link: "/12th-class", label: "12th Class" },
             { link: "/vocational-course", label: "Vocational Course" },
           ])}
-      </li>
-      <li>
+      </li> */}
+      <li
+        className="relative group"
+        onMouseEnter={() => setIsStudentCornerOpen(true)}
+        onMouseLeave={() => setIsStudentCornerOpen(false)}
+      >
         <NavLink
           to="/student-corner"
           className="nav-link py-2"
@@ -103,8 +111,22 @@ const NavLinks = () => {
         >
           Student Corner
         </NavLink>
+        {isStudentCornerOpen &&
+          dropdownMenu([
+            { link: "/10th-class", label: "Achievements" },
+            { link: "/12th-class", label: "Placements" },
+            { link: "/vocational-course", label: "Skill developmemn program" },
+            { link: "/vocational-course", label: "Job & Opportunities" },
+            { link: "/vocational-course", label: "Training Program" },
+            { link: "/vocational-course", label: "Entreprenuership Support" },
+            { link: "/vocational-course", label: "Testimony" },
+          ])}
       </li>
-      <li>
+      <li
+        className="relative group"
+        onMouseEnter={() => setIsEventsOpen(true)}
+        onMouseLeave={() => setIsEventsOpen(false)}
+      >
         <NavLink
           to="/events"
           className="nav-link py-2"
@@ -112,8 +134,18 @@ const NavLinks = () => {
         >
           Events
         </NavLink>
+        {isEventsOpen &&
+          dropdownMenu([
+            { link: "/10th-class", label: "Workshop & Webinar" },
+            { link: "/12th-class", label: "Media" },
+            { link: "/vocational-course", label: "Photo Gallery" },
+          ])}
       </li>
-      <li>
+      <li
+        className="relative group"
+        onMouseEnter={() => setIsNotificationsOpen(true)}
+        onMouseLeave={() => setIsNotificationsOpen(false)}
+      >
         <NavLink
           to="/notifications"
           className="nav-link py-2"
@@ -121,8 +153,19 @@ const NavLinks = () => {
         >
           Notifications
         </NavLink>
+        {isNotificationsOpen &&
+          dropdownMenu([
+            { link: "/10th-class", label: "Publication" },
+            { link: "/12th-class", label: "Press Release" },
+            { link: "/vocational-course", label: "Circular" },
+            { link: "/vocational-course", label: "Results" },
+            { link: "/vocational-course", label: "Fake Website" },
+          ])}
       </li>
-      <li>
+      <li
+       className="relative group"
+       onMouseEnter={() => setIsContactusOpen(true)}
+       onMouseLeave={() => setIsContactusOpen(false)}>
         <NavLink
           to="/contactus"
           className="nav-link py-2"
@@ -130,6 +173,12 @@ const NavLinks = () => {
         >
           Contact Us
         </NavLink>
+        {isContactusOpen &&
+          dropdownMenu([
+            { link: "/10th-class", label: "Headquarter" },
+            { link: "/12th-class", label: "Regional center list" },
+            { link: "/vocational-course", label: "Nodal center list" },
+          ])}
       </li>
       <li className="relative group">
         <button className="flex items-center nav-link py-2">Login</button>
