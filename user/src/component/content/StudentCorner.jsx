@@ -13,7 +13,7 @@ const StudentCorner = () => {
           </h1>
         </header>
 
-        {/* Divya Sharma Section */}
+        {/* Divya Sharma Section iiii*/}
         <section className="bg-white p-6 m-6">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="md:w-2/3 text-right">
