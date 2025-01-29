@@ -1,6 +1,125 @@
+// import React, { useState, useEffect } from 'react'
+// import axios from 'axios'
+// // import { useDispatch, useSelector } from 'react-redux'
+
+// import {
+//   FaUser,
+//   FaCalendarAlt,
+//   FaChalkboardTeacher,
+//   FaCogs,
+// } from 'react-icons/fa'
+
+// const Dashboard = () => {
+//   const [counts, setCounts] = useState({
+//     courseCount: 0,
+//     eventCount: 0,
+//     enrolledUsers: 0,
+//     subAdmins: 0,
+//   })
+
+//   // const dispatch = useDispatch()
+
+//   const fetchCounts = async () => {
+//     try {
+//       const [courses, events] = await Promise.all([
+//         axios.get('http://localhost:5000/api/getTotalCourses'),
+//         axios.get('http://localhost:5000/api/events/count'),
+//       ])
+
+//       setCounts((prev) => ({
+//         ...prev,
+//         courseCount: courses.data.total,
+//         eventCount: events.data.total,
+//       }))
+//     } catch (error) {
+//       console.error('Error fetching counts:', error)
+//     }
+//   }
+
+//   const fetchAdditionalStats = async () => {
+//     try {
+//       // Fetching user count through Redux
+//       const userCount = useSelector((state) => state.user.count)
+
+//       setCounts((prev) => ({
+//         ...prev,
+//         enrolledUsers: userCount,
+//         subAdmins: 5, // Example static value
+//       }))
+//     } catch (error) {
+//       console.error('Error fetching additional stats:', error)
+//     }
+//   }
+
+//   // useEffect(() => {
+//   //   fetchCounts()
+//   //   fetchAdditionalStats()
+//   //   dispatch(fetchUserDetails()) // Fetch user details
+//   //   // dispatch(fetchUserCount()) // Fetch user count
+//   // }, [dispatch])
+
+//   const stats = [
+//     {
+//       title: 'Enrolled Students',
+//       count: counts.enrolledUsers,
+//       color: 'bg-blue-500',
+//       icon: <FaUser size={30} />,
+//     },
+//     {
+//       title: 'Events',
+//       count: counts.eventCount,
+//       color: 'bg-green-500',
+//       icon: <FaCalendarAlt size={30} />,
+//     },
+//     {
+//       title: 'Courses',
+//       count: counts.subAdmins,
+//       color: 'bg-yellow-500',
+//       icon: <FaCogs size={30} />,
+//     },
+//     {
+//       title: 'Offered Courses',
+//       count: counts.courseCount,
+//       color: 'bg-purple-500',
+//       icon: <FaChalkboardTeacher size={30} />,
+//     },
+//   ]
+
+//   return (
+//     <div className="min-h-screen flex flex-col bg-gradient-to-br from-red-500 via-red-800 to-red-500">
+//       <main className="flex-1 p-6">
+//         <h1 className="text-4xl font-bold text-white mb-6">Dashboard</h1>
+
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+//           {stats.map((stat, index) => (
+//             <div
+//               key={index}
+//               className={`shadow-lg rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl ${stat.color}`}
+//             >
+//               <div className="p-6 flex items-center space-x-4">
+//                 <div>{stat.icon}</div>
+//                 <div>
+//                   <h2 className="text-xl font-semibold text-white">
+//                     {stat.title}
+//                   </h2>
+//                   <p className="text-4xl font-bold text-white mt-2">
+//                     {stat.count}
+//                   </p>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       </main>
+//     </div>
+//   )
+// }
+
+// export default Dashboard
+
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 
 import {
   FaUser,
@@ -17,7 +136,7 @@ const Dashboard = () => {
     subAdmins: 0,
   })
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const fetchCounts = async () => {
     try {
@@ -39,8 +158,7 @@ const Dashboard = () => {
   const fetchAdditionalStats = async () => {
     try {
       // Fetching user count through Redux
-      const userCount = useSelector((state) => state.user.count)
-
+      const userCount = 100 // Replace with real value from state or API
       setCounts((prev) => ({
         ...prev,
         enrolledUsers: userCount,
@@ -54,55 +172,73 @@ const Dashboard = () => {
   useEffect(() => {
     fetchCounts()
     fetchAdditionalStats()
-    dispatch(fetchUserDetails()) // Fetch user details
-    dispatch(fetchUserCount()) // Fetch user count
-  }, [dispatch])
+    // dispatch(fetchUserDetails()) // Fetch user details
+    // dispatch(fetchUserCount()) // Fetch user count
+  }, [])
 
   const stats = [
     {
-      title: 'Enrolled Users',
+      title: 'Enrolled Students',
       count: counts.enrolledUsers,
-      color: 'bg-blue-500',
+      color: 'from-blue-300 to-blue-500',
       icon: <FaUser size={30} />,
     },
     {
       title: 'Events',
       count: counts.eventCount,
-      color: 'bg-green-500',
+      color: 'from-green-300 to-green-500',
       icon: <FaCalendarAlt size={30} />,
     },
     {
-      title: 'Sub-admins',
+      title: 'Courses',
       count: counts.subAdmins,
-      color: 'bg-yellow-500',
+      color: 'from-yellow-300 to-yellow-500',
       icon: <FaCogs size={30} />,
     },
     {
       title: 'Offered Courses',
       count: counts.courseCount,
-      color: 'bg-purple-500',
+      color: 'from-purple-300 to-purple-500',
       icon: <FaChalkboardTeacher size={30} />,
     },
   ]
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800">
+    <div
+      className="min-h-screen flex flex-col bg-gradient-to-br from-gray-200 to-gray-300"
+      style={{
+        boxShadow: 'inset 8px 8px 15px #bebebe, inset -8px -8px 15px #ffffff',
+      }}
+    >
       <main className="flex-1 p-6">
-        <h1 className="text-4xl font-bold text-white mb-6">Dashboard</h1>
+        <h1 className="text-4xl font-bold text-gray-700 mb-6">Dashboard</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`shadow-lg rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl ${stat.color}`}
+              className="rounded-lg p-6 transition-all transform hover:scale-105"
+              style={{
+                background: `linear-gradient(145deg, ${stat.color})`,
+                borderRadius: '16px',
+                boxShadow: '8px 8px 15px #bebebe, -8px -8px 15px #ffffff',
+              }}
             >
-              <div className="p-6 flex items-center space-x-4">
-                <div>{stat.icon}</div>
+              <div className="flex items-center space-x-4">
+                <div
+                  className="rounded-full p-4"
+                  style={{
+                    background: 'linear-gradient(145deg, #e0e0e0, #ffffff)',
+                    boxShadow: '8px 8px 15px #bebebe, -8px -8px 15px #ffffff',
+                  }}
+                >
+                  {stat.icon}
+                </div>
                 <div>
-                  <h2 className="text-xl font-semibold text-white">
+                  <h2 className="text-xl font-semibold text-gray-700">
                     {stat.title}
                   </h2>
-                  <p className="text-4xl font-bold text-white mt-2">
+                  <p className="text-4xl font-bold text-gray-700 mt-2">
                     {stat.count}
                   </p>
                 </div>

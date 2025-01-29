@@ -182,7 +182,7 @@ const Sidebar = () => {
             }}
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
-            {!isCollapsed && <span>Courses</span>}
+            {!isCollapsed && <span>Enrolled Students</span>}
           </Link>
 
           <Link
@@ -208,7 +208,7 @@ const Sidebar = () => {
             }}
           >
             <FaClipboardList className="mr-2" size={20} />
-            {!isCollapsed && <span>Member Table</span>}
+            {!isCollapsed && <span>subject Table</span>}
           </Link>
 
           <Link

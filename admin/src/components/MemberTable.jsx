@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+// import { useSelector, useDispatch } from 'react-redux'
 // import { fetchUserDetails } from '../../../client/src/store/userSlice'
 import { FiEdit, FiTrash, FiDownload } from 'react-icons/fi'
 import * as XLSX from 'xlsx'
 
 const MemberTable = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const { details, loading, error } = useSelector((state) => state.user)
 
   const [editUserId, setEditUserId] = useState(null)
   const [updatedUser, setUpdatedUser] = useState({})
 
-  useEffect(() => {
-    dispatch(fetchUserDetails())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchUserDetails())
+  // }, [dispatch])
 
   // Export to Excel
   const handleExportToExcel = () => {
