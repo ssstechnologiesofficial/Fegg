@@ -63,6 +63,30 @@ const Sidebar = () => {
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>E-Content Upload</span>}
           </Link>
+          <Link
+            to="hero-img"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
+          >
+            <FaChalkboardTeacher className="mr-2" size={20} />
+            {!isCollapsed && <span>Hero Image</span>}
+          </Link>
+          <Link
+            to="announcement"
+            className="flex items-center px-4 py-3 my-2 rounded-lg"
+            style={{
+              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
+              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
+              transition: 'all 0.3s',
+            }}
+          >
+            <FaChalkboardTeacher className="mr-2" size={20} />
+            {!isCollapsed && <span>Announcement</span>}
+          </Link>
 
           <Link
             to="event"

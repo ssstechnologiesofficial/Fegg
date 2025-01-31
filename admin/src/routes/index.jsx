@@ -8,6 +8,8 @@ import EventForm from '../components/EventForm'
 import MemberTable from '../components/MemberTable'
 import ForgotPassword from '../pages/ForgotPassword'
 import EBooks from '../components/EBooks'
+import HeroImage from '../components/HeroImage'
+import AnnouncementUpload from '../components/Announcement'
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
           {
             path: 'member-table',
             element: <MemberTable />,
+          },
+          {
+            path: 'hero-img',
+            element: <HeroImage />,
+          },
+          {
+            path: 'announcement',
+            element: <AnnouncementUpload />,
           },
         ],
       },

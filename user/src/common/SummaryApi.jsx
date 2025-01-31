@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8083";
+const backendDomain = "http://localhost:8006";
 
 const SummaryApi = {
   contact: {
@@ -8,6 +8,14 @@ const SummaryApi = {
   postUserRecordDetails:{
     url:`${backendDomain}/api/post-userRecord`,
     method: "post",
+  },
+  getCarouselImage:{
+    url:`${backendDomain}/api/carousel-img`,
+    method: "get",
+  },
+  getAnnouncements:{
+    url:`${backendDomain}/api/announcements`,
+    method: "get",
   },
 }
 
