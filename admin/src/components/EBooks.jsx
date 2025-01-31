@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import '../App.css'
 
 const EBooks = () => {
@@ -9,13 +10,24 @@ const EBooks = () => {
     className: '10',
     subject: '',
     language: 'English',
-    file: null,
+    file: '',
   })
-
   const subjects = {
     10: ['Mathematics', 'Science', 'Social Studies', 'English', 'Hindi'],
     12: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'Hindi'],
   }
+
+  // Fetch the list of uploaded eBooks
+  useEffect(() => {
+    axios
+      .get('http://localhost:8006/api/ebooks')
+      .then((response) => {
+        setUploads(response.data)
+      })
+      .catch((error) => {
+        console.error('Error fetching eBooks:', error)
+      })
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -27,21 +39,55 @@ const EBooks = () => {
   }
 
   const handleFileChange = (e) => {
+    console.log(e.target.files[0]) // Check if the file is being selected
     setFormData({ ...formData, file: e.target.files[0] })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (formData.file) {
-      setUploads([...uploads, { ...formData, id: uploads.length + 1 }])
-      setFormData({
-        sessionYear: '2023-2024',
-        sessionMonth: 'April-October',
-        className: '10',
-        subject: subjects['10'][0],
-        language: 'English',
-        file: null,
-      })
+      const data = new FormData()
+      data.append('sessionYear', formData.sessionYear)
+      data.append('sessionMonth', formData.sessionMonth)
+      data.append('className', formData.className)
+      data.append('subject', formData.subject)
+      data.append('language', formData.language)
+      data.append('file', formData.file)
+
+      try {
+        const response = await axios.post(
+          'http://localhost:8006/api/eupload',
+          data,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        )
+        console.log(data)
+
+        console.log(response)
+        setUploads([...uploads, response.data])
+        setFormData({
+          sessionYear: '2023-2024',
+          sessionMonth: 'April-October',
+          className: '10',
+          subject: subjects['10'][0],
+          language: 'English',
+          file: '',
+        })
+      } catch (error) {
+        console.error('Error uploading file:', error)
+      }
+    }
+  }
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8006/api/ebooks/${id}`)
+      setUploads(uploads.filter((upload) => upload._id !== id))
+    } catch (error) {
+      console.error('Error deleting ebook:', error)
     }
   }
 
@@ -123,6 +169,7 @@ const EBooks = () => {
           <div className="flex-1">
             <label>Upload File:</label>
             <input
+              name="file"
               type="file"
               onChange={handleFileChange}
               required
@@ -147,24 +194,33 @@ const EBooks = () => {
             <th className=" p-1">Class</th>
             <th className=" p-1">Language</th>
             <th className=" p-1">Uploaded File</th>
+            <th className=" p-1">Actions</th>
           </tr>
         </thead>
         <tbody>
           {uploads.map((upload, index) => (
-            <tr key={index} className="text-center">
-              <td className="border p-2">{upload.id}</td>
+            <tr key={upload._id} className="text-center">
+              <td className="border p-2">{index + 1}</td>
               <td className="border p-2">{upload.subject}</td>
               <td className="border p-2">{upload.className}</td>
               <td className="border p-2">{upload.language}</td>
               <td className="border p-2">
                 <a
-                  href={URL.createObjectURL(upload.file)}
+                  href={`/uploads/${upload.file}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600"
                 >
                   View File
                 </a>
+              </td>
+              <td className="border p-2">
+                <button
+                  onClick={() => handleDelete(upload._id)}
+                  className="bg-red-600 text-white p-1 rounded"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

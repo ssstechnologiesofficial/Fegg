@@ -15,6 +15,14 @@ const {
 
 const router = express.Router()
 
+const {
+  createEbook,
+  getAllEbooks,
+  getEbooksByClass,
+  updateEbook,
+  deleteEbook,
+} = require('../controller/ebookController')
+
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -47,7 +55,6 @@ const upload = multer({
   },
 })
 
-
 // POST route for submitting job applications
 router.post('/applications', upload.single('resumeFile'), submitJobApplication)
 router.get('/getjobapplications', getJobApplications)
@@ -66,9 +73,18 @@ const {
   getAllPortfoliosDetails,
   updateAllPortfoliosDetails,
 } = require('../controller/portfolioController')
-const { uploadCarouselImage, getAllCarouselImages, deleteCarouselImage } = require('../controller/carouselController')
-const { createAnnouncement, getAllAnnouncements, getAnnouncementById, updateAnnouncement, deleteAnnouncement } = require('../controller/announcementController')
-
+const {
+  uploadCarouselImage,
+  getAllCarouselImages,
+  deleteCarouselImage,
+} = require('../controller/carouselController')
+const {
+  createAnnouncement,
+  getAllAnnouncements,
+  getAnnouncementById,
+  updateAnnouncement,
+  deleteAnnouncement,
+} = require('../controller/announcementController')
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -89,17 +105,24 @@ router.post('/addJob', addJob)
 router.put('/updateJob/:id', updateJob)
 router.delete('/deleteJob/:id', deleteJob)
 
+// caroussel
+router.post('/carousel-img', upload.single('image'), uploadCarouselImage)
+router.get('/carousel-img', getAllCarouselImages)
+router.delete('/carousel-img/:id', deleteCarouselImage)
 
-// caroussel 
-router.post("/carousel-img", upload.single("image"), uploadCarouselImage); 
-router.get("/carousel-img", getAllCarouselImages); 
-router.delete("/carousel-img/:id", deleteCarouselImage); 
+// announcement
 
-// announcement 
+router.post('/announcements', createAnnouncement)
+router.get('/announcements', getAllAnnouncements)
+router.get('/announcements/:id', getAnnouncementById)
+router.put('/announcements/:id', updateAnnouncement)
+router.delete('/announcements/:id', deleteAnnouncement)
 
-router.post("/announcements", createAnnouncement);
-router.get("/announcements", getAllAnnouncements);
-router.get("/announcements/:id", getAnnouncementById);
-router.put("/announcements/:id", updateAnnouncement);
-router.delete("/announcements/:id", deleteAnnouncement);
+// E-material
+router.post('/eupload', upload.single('file'), createEbook)
+router.get('/ebooks', getAllEbooks)
+// router.get('/ebooks/:className', getEbooksByClass)
+router.put('/ebooks/:id', updateEbook)
+router.delete('/ebooks/:id', deleteEbook)
+
 module.exports = router

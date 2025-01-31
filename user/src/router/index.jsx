@@ -9,7 +9,6 @@ import Home from '../component/content/Home'
 import About from '../component/content/About'
 import Gallery from '../component/content/Gallery'
 import ContactUs from '../component/content/ContactUs'
-import Donate from '../component/content/Donate'
 import Register from '../component/content/Register'
 import Certificates from '../component/content/Certificates'
 import Privacy from '../component/content/Privacy'
@@ -53,10 +52,7 @@ export const router = createBrowserRouter([
         path: '/register',
         element: <Register />,
       },
-      {
-        path: 'donate',
-        element: <Donate />,
-      },
+
       {
         path: 'certificate',
         element: <Certificates />,
