@@ -144,7 +144,7 @@ const NavLinks = () => {
             { link: "/vocational-course", label: "Aisect EG Login" },
           ])}
       </li>
-      <li
+      {/* <li
         className="relative group"
         onMouseEnter={() => setIsNotificationsOpen(true)}
         onMouseLeave={() => setIsNotificationsOpen(false)}
@@ -185,7 +185,7 @@ const NavLinks = () => {
       </li>
       <li className="relative group">
         <button className="flex items-center nav-link py-2">Login</button>
-        {/* Dropdown for Login can be implemented similarly */}
+        
       </li>
       <li>
         <NavLink
@@ -194,7 +194,7 @@ const NavLinks = () => {
         >
           Signup
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   );
 };

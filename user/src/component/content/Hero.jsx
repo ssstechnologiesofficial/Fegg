@@ -5,7 +5,7 @@ import { Autoplay } from "swiper/modules";
 import axios from "axios";
 import "swiper/css";
 import SummaryApi from "../../common/SummaryApi";
-
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const Hero = () => {
   const popupRef = useRef(null);
   const [carouselImages, setCarouselImages] = useState([]);
@@ -57,7 +57,7 @@ const Hero = () => {
           {carouselImages.map((image, index) => (
             <SwiperSlide key={index}>
               <img
-                src={`http://localhost:8006/${image.image}`} // Ensure correct image path
+                src={`${baseUrl}/${image.image}`} // Ensure correct image path
                 alt={`Slide ${index + 1}`}
                 className="w-full h-[560px] object-cover" // Fixed height and responsive width
               />
