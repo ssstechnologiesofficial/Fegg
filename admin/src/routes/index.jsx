@@ -7,6 +7,7 @@ import Sidebar from '../components/Sidebar'
 import EventForm from '../components/EventForm'
 import MemberTable from '../components/MemberTable'
 import ForgotPassword from '../pages/ForgotPassword'
+import EBooks from '../components/EBooks'
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +31,8 @@ export const router = createBrowserRouter([
             element: <Dashboard />,
           },
           {
-            path: 'courses',
-            element: <CourseForm />,
+            path: 'EBooks',
+            element: <EBooks />,
           },
           {
             path: 'event',
