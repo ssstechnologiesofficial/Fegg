@@ -5,13 +5,15 @@ import '../App.css'
 const EBooks = () => {
   const [uploads, setUploads] = useState([])
   const [formData, setFormData] = useState({
-    sessionYear: '2023-2024',
-    sessionMonth: 'April-October',
-    className: '10',
-    subject: '',
+    sessionYear: '',
+    sessionMonth: '',
+    className: '10', // Set a valid default value
+    Volume: 'Volume 1',
+    subject: 'English', // Ensure it matches the selected class
     language: 'English',
     file: '',
   })
+
   const subjects = {
     10: ['Mathematics', 'Science', 'Social Studies', 'English', 'Hindi'],
     12: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'Hindi'],
@@ -32,7 +34,11 @@ const EBooks = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     if (name === 'className') {
-      setFormData({ ...formData, [name]: value, subject: subjects[value][0] })
+      setFormData({
+        ...formData,
+        [name]: value,
+        subject: subjects[value]?.[0] || '', // Prevent undefined access
+      })
     } else {
       setFormData({ ...formData, [name]: value })
     }
@@ -52,6 +58,8 @@ const EBooks = () => {
       data.append('className', formData.className)
       data.append('subject', formData.subject)
       data.append('language', formData.language)
+      data.append('Volume', formData.Volume)
+
       data.append('file', formData.file)
 
       try {
@@ -69,11 +77,12 @@ const EBooks = () => {
         console.log(response)
         setUploads([...uploads, response.data])
         setFormData({
-          sessionYear: '2023-2024',
-          sessionMonth: 'April-October',
-          className: '10',
+          sessionYear: '',
+          sessionMonth: '',
+          className: '',
           subject: subjects['10'][0],
-          language: 'English',
+          Volume: '',
+          language: '',
           file: '',
         })
       } catch (error) {
@@ -95,7 +104,7 @@ const EBooks = () => {
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">E-Book Upload</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-white p-5 rounded-lg">
           <label>Session:</label>
           <div className="flex gap-3 flex-wrap">
             <select
@@ -121,7 +130,7 @@ const EBooks = () => {
             </select>
           </div>
         </div>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap bg-white p-5 rounded-lg">
           <div className="flex-1">
             <label>Class:</label>
             <select
@@ -144,15 +153,15 @@ const EBooks = () => {
               required
               className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
             >
-              {subjects[formData.className].map((subj) => (
+              {subjects[formData.className]?.map((subj) => (
                 <option key={subj} value={subj}>
                   {subj}
                 </option>
-              ))}
+              )) || null}
             </select>
           </div>
         </div>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex gap-3 flex-wrap bg-white p-5 rounded-lg">
           <div className="flex-1">
             <label>Language:</label>
             <select
@@ -176,6 +185,20 @@ const EBooks = () => {
               className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
             />
           </div>
+          <label>Volume:</label>
+          <select
+            name="Volume"
+            value={formData.Volume}
+            onChange={handleChange}
+            required
+            className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+          >
+            <option value="Volume 1">Volume 1</option>
+            <option value="Volume 2">Volume 2</option>
+            <option value="Volume 3">Volume 3</option>
+            <option value="Volume 4">Volume 4</option>
+            <option value="Volume 5">Volume 5</option>
+          </select>
         </div>
         <button
           type="submit"

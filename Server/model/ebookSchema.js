@@ -26,6 +26,10 @@ const ebookSchema = new mongoose.Schema(
       type: String, // Store the file URL after uploading
       required: true,
     },
+    Volume: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 )

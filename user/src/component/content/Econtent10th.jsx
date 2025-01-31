@@ -13,12 +13,13 @@ const Econtent10th = () => {
       .get(`http://localhost:8006/api/ebooks?className=10`)
       .then((response) => {
         setData(response.data)
-        console.log(response)
+        console.log(response.data) // Debugging API response
       })
       .catch((error) => {
         console.error('Error fetching eBooks:', error)
       })
   }, [])
+
   const handleAccordionToggle = (index) => {
     setActiveIndex(activeIndex === index ? null : index)
   }
@@ -28,36 +29,31 @@ const Econtent10th = () => {
       <h2 className="text-2xl font-bold mb-4">Econtent for 10th Class</h2>
       <div className="space-y-4">
         {data.map((item, index) => (
-          <div key={item.id} className="border rounded shadow">
+          <div key={item._id} className="border rounded shadow">
+            {/* Accordion Header */}
             <div
               className="bg-gray-200 p-3 cursor-pointer"
               onClick={() => handleAccordionToggle(index)}
             >
-              <h3 className="text-xl font-semibold">{item.subject}</h3>
+              <h3 className="text-xl font-semibold">
+                {item.subject} ({item.language})
+              </h3>
             </div>
+
+            {/* Accordion Content */}
             {activeIndex === index && (
               <div className="p-4">
-                {item.pdfFiles.map((file, fileIndex) => (
-                  <div
-                    key={fileIndex}
-                    className="flex justify-between items-center py-2"
+                <div className="flex justify-between items-center py-2">
+                  <span className="font-medium">{item.Volume}</span>
+                  <a
+                    href={`http://localhost:8006/${item.file}`} // Adjust path based on API
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline flex items-center"
                   >
-                    <span>{file.volume}</span>
-                    <a
-                      href={file.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      <img
-                        src="/path/to/pdf-logo.png"
-                        alt={`${file.volume} icon`}
-                        className="w-6 h-6 inline mr-2"
-                      />
-                      {file.name}
-                    </a>
-                  </div>
-                ))}
+                    📄 View PDF
+                  </a>
+                </div>
               </div>
             )}
           </div>
