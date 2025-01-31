@@ -34,7 +34,7 @@ const Sidebar = () => {
                 {/* <FaUserShield size={36} className="text-white" /> */}
                 <img src={fagglogo} className="w-20 object-fill mx-auto py-2" />
               </div>
-              <h1 className="text-xl text-center p-1 rounded-lg font-semibold mt-2 bg-gradient-to-r  from-[#fe0000] z-20 w-[200px] right-4 text-white  relative ">
+              <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r  from-[#fe0000] z-20 w-[200px] right-4 text-white  relative ">
                 Admin Panel
               </h1>
             </div>
