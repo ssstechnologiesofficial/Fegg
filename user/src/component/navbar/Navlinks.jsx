@@ -45,20 +45,20 @@ const NavLinks = () => {
         onMouseLeave={() => setIsAboutOpen(false)}
       >
         <NavLink
-          to="/about"
+          to="/"
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          About Us
+          Who we are
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
-            { link: "/history", label: "History" },
+            { link: "/about", label: "About us" },
             { link: "/vision", label: "Vision & Mission" },
-            { link: "/ordinance", label: "Ordinance/Act" },
-            { link: "/objectives", label: "Objectives" },
-            { link: "/committee", label: "Committee" },
-            { link: "/rti", label: "RTI" },
+            { link: "/ordinance", label: "Senior Management Team" },
+            { link: "/objectives", label: "MP Management Team" },
+            // { link: "/committee", label: "Committee" },
+            // { link: "/rti", label: "RTI" },
           ])}
       </li>
       <li
@@ -75,9 +75,9 @@ const NavLinks = () => {
         </NavLink>
         {isProgrammesOpen &&
           dropdownMenu([
-            { link: "/10th-class", label: "10th Class" },
-            { link: "/12th-class", label: "12th Class" },
-            { link: "/vocational-course", label: "Vocational Course" },
+            { link: "/10th-class", label: "Pragati" },
+            // { link: "/12th-class", label: "12th Class" },
+            // { link: "/vocational-course", label: "Vocational Course" },
           ])}
       </li>
       {/* <li
@@ -113,13 +113,14 @@ const NavLinks = () => {
         </NavLink>
         {isStudentCornerOpen &&
           dropdownMenu([
-            { link: "/10th-class", label: "Achievements" },
-            { link: "/12th-class", label: "Placements" },
-            { link: "/vocational-course", label: "Skill developmemn program" },
-            { link: "/vocational-course", label: "Job & Opportunities" },
-            { link: "/vocational-course", label: "Training Program" },
-            { link: "/vocational-course", label: "Entreprenuership Support" },
-            { link: "/vocational-course", label: "Testimony" },
+            // djfj
+            { link: "/10th-class", label: "Online Books" },
+            { link: "/12th-class", label: "Syllabus" },
+            { link: "/vocational-course", label: "Recorded Videos" },
+            { link: "/vocational-course", label: "Blue Print" },
+            { link: "/vocational-course", label: "Previous Year Question Paper" },
+            { link: "/vocational-course", label: "Practice Set" },
+            { link: "/vocational-course", label: "Model Answer Sheet" },
           ])}
       </li>
       <li
@@ -132,13 +133,15 @@ const NavLinks = () => {
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          Events
+          MPSOS
         </NavLink>
         {isEventsOpen &&
           dropdownMenu([
-            { link: "/10th-class", label: "Workshop & Webinar" },
-            { link: "/12th-class", label: "Media" },
-            { link: "/vocational-course", label: "Photo Gallery" },
+            { link: "/10th-class", label: "About MPSOS" },
+            { link: "/12th-class", label: "Prospectus" },
+            { link: "/vocational-course", label: "Registration procedure" },
+            { link: "/vocational-course", label: "About Aisect" },
+            { link: "/vocational-course", label: "Aisect EG Login" },
           ])}
       </li>
       <li

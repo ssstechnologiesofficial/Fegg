@@ -23,11 +23,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-  limits: { fileSize: 1024 * 1024 * 10 },
+  limits: { fileSize: 1024 * 1024 * 10 }, // 10MB limit
   fileFilter: (req, file, cb) => {
     const allowedTypes = [
       'image/jpeg',
       'image/png',
+      'image/webp', // Added WebP support
       'video/mp4',
       'application/pdf',
       'application/msword',
@@ -38,13 +39,14 @@ const upload = multer({
     } else {
       cb(
         new Error(
-          'Only .jpeg, .png, .mp4, .pdf, .doc, and .docx files are allowed!'
+          'Only .jpeg, .png, .webp, .mp4, .pdf, .doc, and .docx files are allowed!'
         ),
         false
       )
     }
   },
 })
+
 
 // POST route for submitting job applications
 router.post('/applications', upload.single('resumeFile'), submitJobApplication)
@@ -64,6 +66,9 @@ const {
   getAllPortfoliosDetails,
   updateAllPortfoliosDetails,
 } = require('../controller/portfolioController')
+const { uploadCarouselImage, getAllCarouselImages, deleteCarouselImage } = require('../controller/carouselController')
+const { createAnnouncement, getAllAnnouncements, getAnnouncementById, updateAnnouncement, deleteAnnouncement } = require('../controller/announcementController')
+
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -84,4 +89,17 @@ router.post('/addJob', addJob)
 router.put('/updateJob/:id', updateJob)
 router.delete('/deleteJob/:id', deleteJob)
 
+
+// caroussel 
+router.post("/carousel-img", upload.single("image"), uploadCarouselImage); 
+router.get("/carousel-img", getAllCarouselImages); 
+router.delete("/carousel-img/:id", deleteCarouselImage); 
+
+// announcement 
+
+router.post("/announcements", createAnnouncement);
+router.get("/announcements", getAllAnnouncements);
+router.get("/announcements/:id", getAnnouncementById);
+router.put("/announcements/:id", updateAnnouncement);
+router.delete("/announcements/:id", deleteAnnouncement);
 module.exports = router
