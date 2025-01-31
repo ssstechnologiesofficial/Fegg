@@ -20,12 +20,12 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100 ">
       {/* Sidebar */}
       <aside
         className={`${
           isCollapsed ? 'w-16' : 'w-60'
-        } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300`}
+        } bg-white text-black fixed border-[#fe0000] border-r-2 p-4 h-full shadow-lg transition-all duration-300`}
       >
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
@@ -41,7 +41,7 @@ const Sidebar = () => {
           )}
           <button
             onClick={toggleSidebar}
-            className="text-white focus:outline-none hover:text-teal-400 transition duration-200"
+            className="text-green-600 focus:outline-none hover:text-teal-400 transition duration-200"
           >
             <FaBars size={20} />
           </button>

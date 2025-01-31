@@ -2,3 +2,6 @@ option:hover {
   background-color: red !important;
   color: white;
 }
+.bg-primary{
+  background-color: #fe0000;
+}

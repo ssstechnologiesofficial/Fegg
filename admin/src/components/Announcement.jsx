@@ -132,7 +132,7 @@ const AnnouncementUpload = () => {
           </div>
           <button
             type="submit"
-            className="bg-red-500 text-white px-4 py-2 rounded-3xl w-full hover:bg-red-600"
+            className="bg-primary text-white px-4 py-2 rounded-3xl w-full hover:bg-red-600"
             disabled={loading}
           >
             {loading ? "Processing..." : editingId ? "Update Announcement" : "Upload Announcement"}
@@ -142,14 +142,14 @@ const AnnouncementUpload = () => {
 
       <div className="w-1/2">
         <h2 className="text-xl font-bold mb-4">All Announcements</h2>
-        <table className="w-full border-collapse border border-gray-300">
+        <table className="w-full border-collapse ">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="border p-2">S.No.</th>
-              <th className="border p-2">Date</th>
-              <th className="border p-2">Title</th>
-              <th className="border p-2">Description</th>
-              <th className="border p-2">Actions</th>
+            <tr className="bg-[#fe0000] text-white">
+              <th className=" p-2">S.No.</th>
+              <th className=" p-2">Date</th>
+              <th className=" p-2">Title</th>
+              <th className=" p-2">Description</th>
+              <th className=" p-2">Actions</th>
             </tr>
           </thead>
           <tbody>

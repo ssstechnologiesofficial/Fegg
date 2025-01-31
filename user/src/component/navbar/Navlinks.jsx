@@ -114,7 +114,7 @@ const NavLinks = () => {
         {isStudentCornerOpen &&
           dropdownMenu([
             // djfj
-            { link: "/10th-class", label: "Online Books" },
+            { link: "/e-content", label: "Online Books" },
             { link: "/12th-class", label: "Syllabus" },
             { link: "/vocational-course", label: "Recorded Videos" },
             { link: "/vocational-course", label: "Blue Print" },

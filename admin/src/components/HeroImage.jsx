@@ -80,7 +80,7 @@ const HeroImage = () => {
       <button
         onClick={handleUpload}
         disabled={loading}
-        className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:opacity-50"
+        className="w-full bg-primary hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:opacity-50"
       >
         {loading ? "Uploading..." : "Upload"}
       </button>
@@ -91,11 +91,11 @@ const HeroImage = () => {
         <h3 className="text-xl font-semibold text-gray-700 mb-3">Uploaded Images</h3>
         <table className="w-full border border-gray-300">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="border p-2">Image</th>
-              <th className="border p-2">Title</th>
-              <th className="border p-2">Description</th>
-              <th className="border p-2">Actions</th>
+            <tr className="bg-primary text-white">
+              <th className=" p-2">Image</th>
+              <th className=" p-2">Title</th>
+              <th className=" p-2">Description</th>
+              <th className=" p-2">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -109,7 +109,7 @@ const HeroImage = () => {
                   <td className="border p-2">{img.description}</td>
                   <td className="border p-2">
                     <button
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                      className="bg-primary text-white px-3 py-1 rounded hover:bg-red-600"
                       onClick={() => handleDelete(img._id)}
                     >
                       Delete
