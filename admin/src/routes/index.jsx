@@ -10,7 +10,7 @@ import ForgotPassword from '../pages/ForgotPassword'
 import EBooks from '../components/EBooks'
 import HeroImage from '../components/HeroImage'
 import AnnouncementUpload from '../components/Announcement'
-
+import OlineVideoUpload from '../components/OlineVideoUpload'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -51,6 +51,10 @@ export const router = createBrowserRouter([
           {
             path: 'announcement',
             element: <AnnouncementUpload />,
+          },
+          {
+            path: 'OlineVideoUpload',
+            element: <OlineVideoUpload />,
           },
         ],
       },

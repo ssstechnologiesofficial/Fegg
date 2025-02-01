@@ -29,21 +29,21 @@ const Econtent10th = () => {
       <h2 className="text-2xl font-bold mb-4">Econtent for 10th Class</h2>
       <div className="space-y-4">
         {data.map((item, index) => (
-          <div key={item._id} className="border rounded shadow">
+          <div key={item._id} className=" border-l-4 border-[#fe0000]  shadow">
             {/* Accordion Header */}
             <div
-              className="bg-gray-200 p-3 cursor-pointer"
+              className="bg-gray-200 p-1 ps-2 cursor-pointer"
               onClick={() => handleAccordionToggle(index)}
             >
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-lg font-semibold">
                 {item.subject} ({item.language})
               </h3>
             </div>
 
             {/* Accordion Content */}
             {activeIndex === index && (
-              <div className="p-4">
-                <div className="flex justify-between items-center py-2">
+              <div className="p-2">
+                <div className="flex justify-between items-center ">
                   <span className="font-medium">{item.Volume}</span>
                   <a
                     href={`http://localhost:8006/${item.file}`} // Adjust path based on API

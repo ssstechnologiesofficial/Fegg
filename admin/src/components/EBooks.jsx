@@ -23,11 +23,16 @@ const EBooks = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-      ...(name === 'className' && { subject: subjects[value]?.[0] || '' }),
-    }))
+    if (name === 'className') {
+      // If a class is selected, set subject based on that, otherwise use the default subject
+      setFormData({
+        ...formData,
+        [name]: value,
+        subject: subjects[value] ? subjects[value][0] : '',
+      })
+    } else {
+      setFormData({ ...formData, [name]: value })
+    }
   }
 
   const handleFileChange = (e) =>
@@ -142,7 +147,7 @@ const EBooks = () => {
               </select>
             </div>
             <div className="flex-1">
-              <label className="font-semibold">Subject:</label>
+              <label>Subject:</label>
               <select
                 name="subject"
                 value={formData.subject}
@@ -150,11 +155,15 @@ const EBooks = () => {
                 required
                 className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
               >
-                {subjects[formData.className]?.map((subj) => (
-                  <option key={subj} value={subj}>
-                    {subj}
-                  </option>
-                ))}
+                {subjects[formData.className] ? (
+                  subjects[formData.className].map((subj) => (
+                    <option key={subj} value={subj}>
+                      {subj}
+                    </option>
+                  ))
+                ) : (
+                  <option>No subjects available</option> // Display this when no subjects are available
+                )}
               </select>
             </div>
           </div>

@@ -24,9 +24,19 @@ const InfoSection = () => {
 
   const infoItems = [
     { label: 'Result', color: 'bg-red-500', icon: <FaGraduationCap /> },
-    { label: 'E-Content', color: 'bg-teal-500', icon: <FaClipboard /> },
+    {
+      label: 'E-Content',
+      color: 'bg-teal-500',
+      icon: <FaClipboard />,
+      link: 'e-content',
+    },
     { label: 'Practice Set', color: 'bg-orange-500', icon: <FaPencilAlt /> },
-    { label: 'Online Vedio', color: 'bg-purple-500', icon: <FaLaptop /> },
+    {
+      label: 'Online Vedio',
+      color: 'bg-purple-500',
+      icon: <FaLaptop />,
+      link: 'onlinevideo',
+    },
   ]
 
   useEffect(() => {
@@ -79,7 +89,7 @@ const InfoSection = () => {
               >
                 {/* Circle containing the icon */}
                 <Link
-                  to="e-content"
+                  to={item.link}
                   className={`flex items-center justify-center w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 ${item.color} text-white rounded-full shadow-lg`}
                 >
                   <div className="text-2xl md:text-3xl lg:text-4xl">
