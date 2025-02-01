@@ -55,13 +55,20 @@ const Sidebar = () => {
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
           </Link>
-
           <Link
             to="EBooks"
             className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>E-Content Upload</span>}
+          </Link>
+
+          <Link
+            to="OlineVideoUpload"
+            className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+          >
+            <FaChalkboardTeacher className="mr-2" size={20} />
+            {!isCollapsed && <span>Oline Video Upload</span>}
           </Link>
           <Link
             to="hero-img"
@@ -77,7 +84,6 @@ const Sidebar = () => {
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
-
           <Link
             to="event"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -85,7 +91,6 @@ const Sidebar = () => {
             <FaCalendarAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Events</span>}
           </Link>
-
           <Link
             to="member-table"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -93,7 +98,6 @@ const Sidebar = () => {
             <FaClipboardList className="mr-2" size={20} />
             {!isCollapsed && <span>Register Student</span>}
           </Link>
-
           <Link
             to="/"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
