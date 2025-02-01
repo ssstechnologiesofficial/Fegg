@@ -28,7 +28,6 @@ const ebookSchema = new mongoose.Schema(
     },
     Volume: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
