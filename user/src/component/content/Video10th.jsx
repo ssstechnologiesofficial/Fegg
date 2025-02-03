@@ -1,16 +1,24 @@
+// import React from 'react'
+
+// const Video10th = () => {
+//   return <div>Video10th</div>
+// }
+
+// export default Video10th
+
 // Econtent10th.js
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 // Fetch data for 10th class
 
-const Econtent10th = () => {
+const Video10th = () => {
   const [data, setData] = useState([])
   const [activeIndex, setActiveIndex] = useState(null)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8006/api/ebooks?className=10`)
+      .get(`http://localhost:8006/api/getuploadvideo?className=10`)
       .then((response) => {
         setData(response.data)
         console.log(response.data) // Debugging API response
@@ -51,7 +59,7 @@ const Econtent10th = () => {
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline flex items-center"
                   >
-                    📄Download Pdf
+                    📄 View PDF
                   </a>
                 </div>
               </div>
@@ -63,4 +71,4 @@ const Econtent10th = () => {
   )
 }
 
-export default Econtent10th
+export default Video10th

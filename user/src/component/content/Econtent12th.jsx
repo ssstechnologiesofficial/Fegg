@@ -46,10 +46,11 @@ const Econtent12th = () => {
                   <a
                     href={`http://localhost:8006/${item.file}`} // Adjust path based on API
                     target="_blank"
+                    download
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline flex items-center"
                   >
-                    📄 View PDF
+                    📄Download Pdf
                   </a>
                 </div>
               </div>

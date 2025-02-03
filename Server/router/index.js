@@ -23,6 +23,10 @@ const {
   deleteEbook,
 } = require('../controller/ebookController')
 
+// Route video
+
+const videoController = require('../controller/VideoController')
+
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -118,11 +122,20 @@ router.get('/announcements/:id', getAnnouncementById)
 router.put('/announcements/:id', updateAnnouncement)
 router.delete('/announcements/:id', deleteAnnouncement)
 
-// E-material
+// -------------E-material
 router.post('/eupload', upload.single('file'), createEbook)
 router.get('/ebooks', getAllEbooks)
-// router.get('/ebooks/:className', getEbooksByClass)
 router.put('/ebooks/:id', updateEbook)
 router.delete('/ebooks/:id', deleteEbook)
+
+//----------all Route uploaded videos
+
+router.get('/getuploadvideo', videoController.getVideos)
+
+router.post('/uploadvideo', videoController.uploadVideo)
+
+router.put('Ovideoupdate/:id', videoController.updateVideo)
+
+router.delete('Ovideodelete/:id', videoController.deleteVideo)
 
 module.exports = router

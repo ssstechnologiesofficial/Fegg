@@ -19,6 +19,8 @@ import EcontentOption from '../component/content/EcontentOption'
 import Econtent10th from '../component/content/Econtent10th'
 import Econtent12th from '../component/content/Econtent12th'
 import OlineVideoOption from '../component/content/OlineVideoOption'
+import Video10th from '../component/content/Video10th'
+import Video12th from '../component/content/Video12th'
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +83,14 @@ export const router = createBrowserRouter([
       {
         path: 'onlinevideo',
         element: <OlineVideoOption />,
+      },
+      {
+        path: 'class10video',
+        element: <Video10th />,
+      },
+      {
+        path: 'class12video',
+        element: <Video12th />,
       },
     ],
   },
