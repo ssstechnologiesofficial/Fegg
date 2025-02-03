@@ -20,8 +20,13 @@ const studentSchema = new mongoose.Schema(
     gender: { type: String, enum: ["Male", "Female"], required: true },
     religion: { type: String },
     category: { type: String, enum: ["General", "SC", "ST", "OBC"], required: true },
-    contactNo: { type: String, required: true },
-    sssmid: { type: Number, required: true },
+    contactNo: { type: String, required: true, unique: true },
+    sssmid: { type: Number, required: true,validate: {
+      validator: function(v) {
+        return /^\d{9}$/.test(v.toString()); 
+      },
+      message: props => `${props.value} is not a valid 9-digit number!`
+    } },
     learnerId: { type: String, unique: true, required: true },
     lastClassStudied: { type: String, required: true },
     status: { type: String, enum: ["Pass", "Fail"], required: true },

@@ -97,7 +97,7 @@ const AnnouncementUpload = () => {
         </h2>
         {message && <p className="text-green-600 mb-4">{message}</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-4 border p-2 rounded-lg">
+        <form onSubmit={handleSubmit} className="space-y-4  p-2 border border-[#fe0000] rounded-xl border-r-4 border-b-4">
           <div>
             <label className="block font-medium">Date</label>
             <input
