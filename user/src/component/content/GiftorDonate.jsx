@@ -96,7 +96,7 @@ const ImportantLinks = () => {
               className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-500"
             >
               <span className="font-medium text-gray-800">{link}</span>
-              <span className="text-red-500 text-lg font-bold">→</span>
+              <span className="text-primary text-lg font-bold">→</span>
             </div>
           ))}
         </div>
@@ -105,7 +105,7 @@ const ImportantLinks = () => {
           {loading ? (
             <p>Loading announcements...</p>
           ) : error ? (
-            <p className="text-red-500">{error}</p>
+            <p className="text-primary">{error}</p>
           ) : announcements.length === 0 ? (
             <p>No announcements available.</p>
           ) : (
@@ -114,7 +114,7 @@ const ImportantLinks = () => {
                 key={index}
                 className="announcement-card relative bg-white p-4 shadow-md flex flex-col justify-between h-32"
               >
-                <div className="absolute top-0 left-0 bg-red-500 text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
+                <div className="absolute top-0 left-0 bg-primary text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
                   {(() => {
                     const dateObj = new Date(announcement.date);
                     const day = dateObj.getDate();

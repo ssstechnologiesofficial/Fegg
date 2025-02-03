@@ -29,7 +29,7 @@ const NavLinks = () => {
   );
 
   return (
-    <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-8 space-y-4 md:space-y-0 md:space-x-6">
+    <ul className="flex flex-col md:flex-row md:items-center md:justify-end px-4 md:pe-16 space-y-4 md:space-y-0 md:space-x-6">
       <li>
         <NavLink
           to="/"
@@ -187,14 +187,15 @@ const NavLinks = () => {
         <button className="flex items-center nav-link py-2">Login</button>
         
       </li>
-      <li>
+      */}
+       <li>
         <NavLink
           to="/register"
-          className="px-6 py-2 text-primary border border-gray-600 rounded-3xl"
+          className=" py-2 "
         >
-          Signup
+          SIGNUP
         </NavLink>
-      </li> */}
+      </li>
     </ul>
   );
 };

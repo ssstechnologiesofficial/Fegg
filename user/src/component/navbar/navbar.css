@@ -3,11 +3,11 @@
   }
   
   .text-primary {
-    color: #d23232; /* Match the red color */
+    color: #fe0000; /* Match the red color */
   }
   
   .bg-primary {
-    background-color: #d23232;
+    background-color: #fe0000;
   }
   
   .bg-primary-dark {
