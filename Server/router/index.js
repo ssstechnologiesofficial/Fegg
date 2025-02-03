@@ -27,6 +27,13 @@ const {
 
 const videoController = require('../controller/VideoController')
 
+//route 10th and 12th Model
+
+const {
+  storeUserDownload,
+  getAllDownloads,
+} = require('../controller/Model10and12user')
+
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
@@ -143,6 +150,10 @@ router.post('/uploadvideo', videoController.uploadVideo)
 router.put('Ovideoupdate/:id', videoController.updateVideo)
 
 router.delete('Ovideodelete/:id', videoController.deleteVideo)
+
+//---------------- User modal 10th and 12th
+router.post('/storeUserDownload', storeUserDownload)
+router.get('/getAllDownloads', getAllDownloads)
 
 // student register
 router.post('/register', registerStudent)

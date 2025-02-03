@@ -5,14 +5,14 @@ import Dashboard from '../components/Dashboard'
 import CourseForm from '../components/CourseForm'
 import Sidebar from '../components/Sidebar'
 import EventForm from '../components/EventForm'
-import MemberTable from '../components/MemberTable'
 import ForgotPassword from '../pages/ForgotPassword'
 import EBooks from '../components/EBooks'
 import HeroImage from '../components/HeroImage'
 import AnnouncementUpload from '../components/Announcement'
 import StudentList from '../components/StudentList'
-
 import OlineVideoUpload from '../components/OlineVideoUpload'
+import EContentModel from '../components/EContentModel'
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -42,10 +42,7 @@ export const router = createBrowserRouter([
             path: 'event',
             element: <EventForm />,
           },
-          {
-            path: 'member-table',
-            element: <MemberTable />,
-          },
+
           {
             path: 'hero-img',
             element: <HeroImage />,
@@ -57,11 +54,14 @@ export const router = createBrowserRouter([
           {
             path: 'students',
             element: <StudentList />,
-           
           },
           {
             path: 'OlineVideoUpload',
             element: <OlineVideoUpload />,
+          },
+          {
+            path: 'EContentModel',
+            element: <EContentModel />,
           },
         ],
       },

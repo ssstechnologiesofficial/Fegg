@@ -99,11 +99,11 @@ const Sidebar = () => {
             {!isCollapsed && <span>Events</span>}
           </Link>
           <Link
-            to="member-table"
+            to="EContentModel"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaClipboardList className="mr-2" size={20} />
-            {!isCollapsed && <span>Register Student</span>}
+            {!isCollapsed && <span>E-Content Downloads data</span>}
           </Link>
           <Link
             to="/"

@@ -5,10 +5,17 @@ import '../App.css'
 
 const OlineVideoUpload = () => {
   const [uploads, setUploads] = useState([])
+  const [filteredUploads, setFilteredUploads] = useState([])
+
   const [editId, setEditId] = useState(null)
   const [editData, setEditData] = useState({})
   const [formData, setFormData] = useState({})
-
+  const [filters, setFilters] = useState({
+    sessionYear: '',
+    sessionMonth: '',
+    className: '',
+    subject: '',
+  })
   const subjects = {
     10: ['Mathematics', 'Science', 'Social Studies', 'English', 'Hindi'],
     12: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'Hindi'],
@@ -88,6 +95,24 @@ const OlineVideoUpload = () => {
     } catch (error) {
       console.error('Error deleting ebook:', error)
     }
+  }
+
+  useEffect(() => {
+    const filteredData = uploads.filter((upload) => {
+      return (
+        (!filters.sessionYear || upload.sessionYear === filters.sessionYear) &&
+        (!filters.sessionMonth ||
+          upload.sessionMonth === filters.sessionMonth) &&
+        (!filters.className || upload.className === filters.className) &&
+        (!filters.subject || upload.subject === filters.subject)
+      )
+    })
+    setFilteredUploads(filteredData)
+  }, [filters, uploads])
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target
+    setFilters({ ...filters, [name]: value })
   }
 
   return (
@@ -205,6 +230,60 @@ const OlineVideoUpload = () => {
       </form>
 
       <h3 className="text-lg font-bold mt-6">Uploaded Files</h3>
+      <div className="flex gap-3 mb-4">
+        <select
+          name="sessionYear"
+          value={filters.sessionYear}
+          onChange={handleFilterChange}
+          className="border p-2 rounded"
+        >
+          <option value="">All Years</option>
+          <option value="2023-2024">2023-2024</option>
+          <option value="2024-2025">2024-2025</option>
+          <option value="2025-2026">2025-2026</option>
+        </select>
+        <select
+          name="sessionMonth"
+          value={filters.sessionMonth}
+          onChange={handleFilterChange}
+          className="border p-2 rounded"
+        >
+          <option value="">All Months</option>
+          <option value="April-October">April-October</option>
+          <option value="November-March">November-March</option>
+        </select>
+        <select
+          name="className"
+          value={filters.className}
+          onChange={handleFilterChange}
+          className="border p-2 rounded"
+        >
+          <option value="">All Classes</option>
+          <option value="10">10</option>
+          <option value="12">12</option>
+        </select>
+        <select
+          name="subject"
+          value={filters.subject}
+          onChange={handleFilterChange}
+          className="border p-2 rounded"
+        >
+          <option value="">All Subjects</option>
+          {filters.className && subjects[filters.className]
+            ? subjects[filters.className].map((subj) => (
+                <option key={subj} value={subj}>
+                  {subj}
+                </option>
+              ))
+            : Object.values(subjects)
+                .flat()
+                .map((subj) => (
+                  <option key={subj} value={subj}>
+                    {subj}
+                  </option>
+                ))}
+        </select>
+      </div>
       <table className="w-full border mt-4">
         <thead>
           <tr className="bg-[#fe0000] text-white">
