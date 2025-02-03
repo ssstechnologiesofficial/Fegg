@@ -16,7 +16,7 @@ server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 // app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 const DBconnection = mongoose.connect(
-  'mongodb+srv://ssstechnologies91:SSSweb@sssdatabase.kc77k.mongodb.net/?retryWrites=true&w=majority&appName=SSSdatabase'
+  'mongodb+srv://techeg007:Fegg007@cluster0.p0ygw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 )
 
 DBconnection.then(() => {
