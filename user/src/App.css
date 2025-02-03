@@ -9,13 +9,13 @@ body{
 
 
 .text-primary{
-    color: #04471c; 
+    color: #fe0000; 
 }
 .bg-primary{
-    background-color: #04471c;
+    background-color: #fe0000;
 }
 .border-primary{
-    border: 2px solid #04471c;
+    border: 2px solid #fe0000;
 }
 
 .text-secondary{

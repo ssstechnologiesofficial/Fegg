@@ -57,6 +57,13 @@ const Sidebar = () => {
           </Link>
 
           <Link
+            to="students"
+            className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+          >
+            <FaChalkboardTeacher className="mr-2" size={20} />
+            {!isCollapsed && <span>Students</span>}
+          </Link>
+          <Link
             to="EBooks"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >

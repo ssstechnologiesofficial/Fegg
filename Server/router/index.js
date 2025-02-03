@@ -85,6 +85,7 @@ const {
   updateAnnouncement,
   deleteAnnouncement,
 } = require('../controller/announcementController')
+const { registerStudent, getAllStudents, updateStudent, deleteStudent } = require('../controller/studentController')
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -125,4 +126,10 @@ router.get('/ebooks', getAllEbooks)
 router.put('/ebooks/:id', updateEbook)
 router.delete('/ebooks/:id', deleteEbook)
 
+
+// student register 
+router.post('/register', registerStudent)
+router.get('/register', getAllStudents)
+router.put('/register/:id', updateStudent)
+router.delete('/register/:id', deleteStudent)
 module.exports = router

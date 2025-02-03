@@ -116,7 +116,7 @@ const AboutSection = () => {
         >
           <a
             href="#"
-            className="bg-red-600 text-white w-14 h-14 flex items-center justify-center rounded-xs hover:bg-red-700"
+            className="bg-primary text-white w-14 h-14 flex items-center justify-center rounded-xs hover:bg-red-700"
           >
             <FaYoutube className="text-2xl" />
           </a>
