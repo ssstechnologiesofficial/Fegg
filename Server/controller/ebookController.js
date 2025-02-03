@@ -4,13 +4,15 @@ const Ebook = require('../model/ebookSchema')
 const createEbook = async (req, res) => {
   console.log(req.body)
   try {
-    const { sessionYear, sessionMonth, className, subject, language } = req.body
+    const { sessionYear, sessionMonth, className, subject, language, Volume } =
+      req.body
     const file = req.file.path
     const ebook = new Ebook({
       sessionYear,
       sessionMonth,
       className,
       subject,
+      Volume,
       language,
       file: file,
     })
@@ -48,11 +50,18 @@ const getEbooksByClass = async (req, res) => {
 const updateEbook = async (req, res) => {
   try {
     const { id } = req.params
-    const { sessionYear, sessionMonth, className, subject, language, file } =
-      req.body
+    const {
+      sessionYear,
+      sessionMonth,
+      className,
+      subject,
+      language,
+      file,
+      Volume,
+    } = req.body
     const ebook = await Ebook.findByIdAndUpdate(
       id,
-      { sessionYear, sessionMonth, className, subject, language, file },
+      { sessionYear, sessionMonth, className, subject, language, Volume, file },
       { new: true }
     )
     if (!ebook) {

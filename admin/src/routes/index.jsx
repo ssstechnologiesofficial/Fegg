@@ -12,6 +12,7 @@ import HeroImage from '../components/HeroImage'
 import AnnouncementUpload from '../components/Announcement'
 import StudentList from '../components/StudentList'
 
+import OlineVideoUpload from '../components/OlineVideoUpload'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -56,6 +57,11 @@ export const router = createBrowserRouter([
           {
             path: 'students',
             element: <StudentList />,
+           
+          },
+          {
+            path: 'OlineVideoUpload',
+            element: <OlineVideoUpload />,
           },
         ],
       },

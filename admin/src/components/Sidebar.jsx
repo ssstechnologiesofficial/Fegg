@@ -25,23 +25,23 @@ const Sidebar = () => {
       <aside
         className={`${
           isCollapsed ? 'w-16' : 'w-60'
-        } bg-white text-black fixed border-[#fe0000] border-r-2 p-4 h-full shadow-lg transition-all duration-300`}
+        } bg-white text-black fixed border-[#fe0000] border-r-2  h-full shadow-lg transition-all duration-300`}
       >
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex flex-col items-center ">
               <div className="flex items-center justify-center rounded-full  p-5 shadow-md">
                 {/* <FaUserShield size={36} className="text-white" /> */}
-                <img src={fagglogo} className="w-20 object-fill mx-auto py-1" />
+                <img src={fagglogo} className="w-20 object-fill mx-auto py-2" />
               </div>
-              <h1 className="text-xl text-center p-1 rounded-lg font-semibold mt-2 bg-gradient-to-r  from-[#fe0000] z-20 w-[200px] right-4 text-white  relative ">
+              <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r  from-[#fe0000] z-20 w-[200px] right-4 text-white  relative ">
                 Admin Panel
               </h1>
             </div>
           )}
           <button
             onClick={toggleSidebar}
-            className="text-green-600 focus:outline-none hover:text-teal-400 transition duration-200"
+            className="text-[#fe0000] focus:outline-none hover:text-teal-400 transition duration-200"
           >
             <FaBars size={20} />
           </button>
@@ -55,7 +55,6 @@ const Sidebar = () => {
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
           </Link>
-
           <Link
             to="students"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -65,36 +64,33 @@ const Sidebar = () => {
           </Link>
           <Link
             to="EBooks"
-            className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+            className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>E-Content Upload</span>}
           </Link>
+
+          <Link
+            to="OlineVideoUpload"
+            className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+          >
+            <FaChalkboardTeacher className="mr-2" size={20} />
+            {!isCollapsed && <span>Oline Video Upload</span>}
+          </Link>
           <Link
             to="hero-img"
-            className="flex items-center px-4 py-3 my-2 rounded-lg"
-            style={{
-              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
-              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
-              transition: 'all 0.3s',
-            }}
+            className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Hero Image</span>}
           </Link>
           <Link
             to="announcement"
-            className="flex items-center px-4 py-3 my-2 rounded-lg"
-            style={{
-              background: 'linear-gradient(145deg, #e6e6e6, #ffffff)',
-              boxShadow: '0px 8px 15px #b8b8b8, -8px -8px 15px #ffffff',
-              transition: 'all 0.3s',
-            }}
+            className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
-
           <Link
             to="event"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -102,7 +98,6 @@ const Sidebar = () => {
             <FaCalendarAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Events</span>}
           </Link>
-
           <Link
             to="member-table"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -110,7 +105,6 @@ const Sidebar = () => {
             <FaClipboardList className="mr-2" size={20} />
             {!isCollapsed && <span>Register Student</span>}
           </Link>
-
           <Link
             to="/"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
