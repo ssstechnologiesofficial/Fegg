@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { FaTrash, FaEdit, FaSave } from 'react-icons/fa' // Added save icon
 import '../App.css'
+import SummaryApi from '../common/SummaryAPI'
 
 const OlineVideoUpload = () => {
   const [uploads, setUploads] = useState([])
@@ -23,7 +24,7 @@ const OlineVideoUpload = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8006/api/getuploadvideo')
+      .get(SummaryApi.getuploadvideo.url)
       .then((response) => setUploads(response.data))
       .catch((error) => console.error('Error fetching eBooks:', error))
   }, [])
@@ -50,7 +51,7 @@ const OlineVideoUpload = () => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:8006/api/Ovideoupdate/${id}`,
+        SummaryApi.Ovideoupdate.url.replace(':id',id),
         editData
       )
       setUploads(
@@ -68,7 +69,7 @@ const OlineVideoUpload = () => {
     if (formData.youtubeLink) {
       try {
         const response = await axios.post(
-          'http://localhost:8006/api/uploadvideo',
+          SummaryApi.Uploadvideo.url,
           { youtubeLink: formData.youtubeLink, ...formData },
           { headers: { 'Content-Type': 'application/json' } }
         )
@@ -90,7 +91,7 @@ const OlineVideoUpload = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8006/api/Ovideodelete/${id}`)
+      await axios.delete(SummaryApi.Ovideodelete.url.replace(':id',id))
       setUploads(uploads.filter((upload) => upload._id !== id))
     } catch (error) {
       console.error('Error deleting ebook:', error)

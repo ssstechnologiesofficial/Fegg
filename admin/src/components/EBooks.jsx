@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { FaTrash, FaEdit, FaSave } from 'react-icons/fa' // Added save icon
 import '../App.css'
+import SummaryApi from '../common/SummaryAPI'
 
 const EBooks = () => {
   const [uploads, setUploads] = useState([])
@@ -23,7 +24,7 @@ const EBooks = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8006/api/ebooks')
+      .get(SummaryApi.Ebooks.url)
       .then((response) => setUploads(response.data))
       .catch((error) => console.error('Error fetching eBooks:', error))
   }, [])
@@ -58,7 +59,7 @@ const EBooks = () => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:8006/api/ebooks/${id}`,
+        SummaryApi.EbooksId.url.replace(":id",id),
         editData
       )
       setUploads(
@@ -96,7 +97,7 @@ const EBooks = () => {
 
       try {
         const response = await axios.post(
-          'http://localhost:8006/api/eupload',
+          SummaryApi.Eupload.url,
           data,
           { headers: { 'Content-Type': 'multipart/form-data' } }
         )
@@ -118,7 +119,7 @@ const EBooks = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8006/api/ebooks/${id}`)
+      await axios.delete(SummaryApi.EbooksId.url.replace(":id",id))
       setUploads(uploads.filter((upload) => upload._id !== id))
     } catch (error) {
       console.error('Error deleting ebook:', error)

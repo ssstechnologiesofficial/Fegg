@@ -107,11 +107,51 @@ const SummaryApi = {
   },
   carouselImg: {
     url: `${backendDomain}/api/carousel-img`,
-    method: 'delete',
+    method: 'get',
   },
   DeleteCarouselImg: {
     url: `${backendDomain}/api/carousel-img/:id`,
     method: 'delete',
+  },
+  Ebooks: {
+    url: `${backendDomain}/api/ebooks`,
+    method: 'get',
+  },
+  EbooksId: {
+    url: `${backendDomain}/api/ebooks/:id`,
+    method: 'get',
+  },
+  Eupload: {
+    url: `${backendDomain}/api/eupload`,
+    method: 'post',
+  },
+  getAllDownloads: {
+    url: `${backendDomain}/api/getAllDownloads`,
+    method: 'get',
+  },
+  getuploadvideo: {
+    url: `${backendDomain}/api/getuploadvideo`,
+    method: 'get',
+  },
+  Ovideoupdate: {
+    url: `${backendDomain}/api/Ovideoupdate/:id`,
+    method: 'put',
+  },
+  Uploadvideo: {
+    url: `${backendDomain}/api/uploadvideo`,
+    method: 'post',
+  },
+  Ovideodelete: {
+    url: `${backendDomain}/api/Ovideodelete/:id`,
+    method: 'delete',
+  },
+  Register: {
+    url: `${backendDomain}/api/register`,
+    method: 'get',
+  },
+  deleteRegister: {
+    url: `${backendDomain}/api/register/:id`,
+    method: 'get',
   },
 };
 
