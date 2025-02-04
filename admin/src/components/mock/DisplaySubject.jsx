@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import SummaryApi from '../../common/SummaryAPI';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SummaryApi from "../../common/SummaryAPI";
 
 const DisplaySubjects = () => {
   const [subjects, setSubjects] = useState([]);
-  const [editSubject, setEditSubject] = useState({ id: '', name: '' });
+  const [editSubject, setEditSubject] = useState({ id: "", name: "", mockClass: "" });
 
   useEffect(() => {
     fetchSubjects();
@@ -15,34 +15,37 @@ const DisplaySubjects = () => {
       const response = await axios.get(SummaryApi.subjects.url);
       setSubjects(response.data.data);
     } catch (error) {
-      console.error('Error fetching subjects:', error);
+      console.error("Error fetching subjects:", error);
     }
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(SummaryApi.deleteSubject.url.replace(':id',id));
-      alert('Subject deleted successfully!');
+      await axios.delete(SummaryApi.deleteSubject.url.replace(":id", id));
+      alert("Subject deleted successfully!");
       fetchSubjects();
     } catch (error) {
-      console.error('Error deleting subject:', error);
-      alert('Failed to delete subject.');
+      console.error("Error deleting subject:", error);
+      alert("Failed to delete subject.");
     }
   };
 
-  const handleEdit = (id, name) => {
-    setEditSubject({ id, name });
+  const handleEdit = (id, name, mockClass) => {
+    setEditSubject({ id, name, mockClass });
   };
 
   const handleUpdate = async () => {
     try {
-      await axios.put(SummaryApi.updateSubject.url.replace(':id', editSubject.id), { name: editSubject.name });
-      alert('Subject updated successfully!');
-      setEditSubject({ id: '', name: '' });
+      await axios.put(SummaryApi.updateSubject.url.replace(":id", editSubject.id), {
+        name: editSubject.name,
+        mockClass: editSubject.mockClass,
+      });
+      alert("Subject updated successfully!");
+      setEditSubject({ id: "", name: "", mockClass: "" });
       fetchSubjects();
     } catch (error) {
-      console.error('Error updating subject:', error);
-      alert('Failed to update subject.');
+      console.error("Error updating subject:", error);
+      alert("Failed to update subject.");
     }
   };
 
@@ -54,17 +57,19 @@ const DisplaySubjects = () => {
           <tr>
             <th className="border border-gray-300 px-4 py-2">S.no.</th>
             <th className="border border-gray-300 px-4 py-2">Name</th>
+            <th className="border border-gray-300 px-4 py-2">Class</th>
             <th className="border border-gray-300 px-4 py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
           {subjects.map((subject, i) => (
             <tr key={subject._id}>
-              <td className="border border-gray-300 px-4 py-2 text-center">{i+1}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{i + 1}</td>
               <td className="border border-gray-300 px-4 py-2 text-center">{subject.name}</td>
+              <td className="border border-gray-300 px-4 py-2 text-center">{subject.mockClass}</td>
               <td className="border border-gray-300 px-4 py-2 text-center">
                 <button
-                  onClick={() => handleEdit(subject._id, subject.name)}
+                  onClick={() => handleEdit(subject._id, subject.name, subject.mockClass)}
                   className="px-4 py-1 mr-2 bg-blue-500 text-white rounded-md"
                 >
                   Edit
@@ -80,18 +85,32 @@ const DisplaySubjects = () => {
           ))}
         </tbody>
       </table>
+
       {editSubject.id && (
         <div className="mt-4 p-4 bg-white rounded-md shadow-md">
           <h3 className="text-lg font-bold">Edit Subject</h3>
+          <label className="block text-lg font-medium mb-2">Subject Name:</label>
           <input
             type="text"
             value={editSubject.name}
             onChange={(e) => setEditSubject({ ...editSubject, name: e.target.value })}
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
           />
+
+          <label className="block text-lg font-medium mt-4 mb-2">Class:</label>
+          <select
+            value={editSubject.mockClass}
+            onChange={(e) => setEditSubject({ ...editSubject, mockClass: e.target.value })}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          >
+            <option value="">Select class</option>
+            <option value="10">10th</option>
+            <option value="12">12th</option>
+          </select>
+
           <button
             onClick={handleUpdate}
-            className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md"
+            className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md"
           >
             Update
           </button>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SummaryApi from "../common/SummaryAPI";
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 const HeroImage = () => {
   const [file, setFile] = useState(null);
@@ -14,7 +15,7 @@ const HeroImage = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get("http://localhost:8006/api/carousel-img");
+      const response = await axios.get(SummaryApi.carouselImg.url);
       setImages(response.data);
     } catch (error) {
       console.error("Error fetching images:", error);
@@ -39,7 +40,7 @@ const HeroImage = () => {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:8006/api/carousel-img", formData, {
+      await axios.post(SummaryApi.carouselImg.url, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Image uploaded successfully!");
@@ -58,7 +59,7 @@ const HeroImage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this image?")) {
       try {
-        await axios.delete(`http://localhost:8006/api/carousel-img/${id}`);
+        await axios.delete(SummaryApi.DeleteCarouselImg.url.replace(":id",id));
         alert("Image deleted successfully!");
         fetchImages();
       } catch (error) {

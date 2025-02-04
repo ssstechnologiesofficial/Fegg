@@ -6,6 +6,7 @@ import SummaryApi from "../../common/SummaryAPI";
 const CreateSubject = () => {
   const [subject, setSubject] = useState({
     name: "",
+    mockClass: "",
   });
 
   const handleChange = (e) => {
@@ -16,12 +17,9 @@ const CreateSubject = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        SummaryApi.subjects.url,
-        subject
-      );
+      const response = await axios.post(SummaryApi.subjects.url, subject);
       alert("Subject created successfully!");
-      setSubject({ name: "", description: "" });
+      setSubject({ name: "", mockClass: "" }); // Reset form fields after submission
     } catch (error) {
       console.error("Error creating subject:", error);
       alert("Failed to create subject. Check console for details.");
@@ -46,7 +44,20 @@ const CreateSubject = () => {
               required
             />
           </div>
-         
+          <div>
+            <label className="block text-lg font-medium mb-2">Class:</label>
+            <select
+              name="mockClass"
+              value={subject.mockClass}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              required
+            >
+              <option value="">Select class</option>
+              <option value="10th">10th</option>
+              <option value="12th">12th</option>
+            </select>
+          </div>
           <button
             type="submit"
             className="mt-4 px-6 py-2 bg-indigo-600 text-white rounded-md"

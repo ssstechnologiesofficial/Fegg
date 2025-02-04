@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import SummaryApi from "../common/SummaryAPI";
 
 const AnnouncementUpload = () => {
   const [announcement, setAnnouncement] = useState({
@@ -21,7 +22,7 @@ const AnnouncementUpload = () => {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await axios.get("http://localhost:8006/api/announcements");
+      const response = await axios.get(SummaryApi.getAnnouncements.url);
       setAnnouncements(response.data);
     } catch (error) {
       console.error("Error fetching announcements:", error);
@@ -39,10 +40,10 @@ const AnnouncementUpload = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:8006/api/announcements/${editingId}`, announcement);
+        await axios.put(SummaryApi.DeleteAnnouncements.url.replace(":id",editingId), announcement);
         setMessage("Announcement updated successfully!");
       } else {
-        await axios.post("http://localhost:8006/api/announcements", announcement);
+        await axios.post(SummaryApi.getAnnouncements.url, announcement);
         setMessage("Announcement uploaded successfully!");
       }
       setAnnouncement({ date: "", title: "", description: "" });
@@ -63,7 +64,7 @@ const AnnouncementUpload = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this announcement?")) {
       try {
-        await axios.delete(`http://localhost:8006/api/announcements/${id}`);
+        await axios.delete(SummaryApi.DeleteAnnouncements.url.replace(":id",id));
         setMessage("Announcement deleted successfully!");
         fetchAnnouncements();
       } catch (error) {

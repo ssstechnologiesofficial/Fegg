@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import SummaryApi from "../../common/SummaryAPI";
 
 const CreateQuestion = () => {
   const [subjects, setSubjects] = useState([]);
-  const [selectedSubject, setSelectedSubject] = useState('');
-  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedClass, setSelectedClass] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState(""); // Added missing state
+
   const [question, setQuestion] = useState({
-    questionText: '',
-    options: [{ optionText: '', isCorrect: false }],
+    questionText: "",
+    options: [{ optionText: "", isCorrect: false }],
   });
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const CreateQuestion = () => {
         const response = await axios.get(SummaryApi.subjects.url);
         setSubjects(response.data.data);
       } catch (error) {
-        console.error('Error fetching subjects:', error);
+        console.error("Error fetching subjects:", error);
       }
     };
     fetchSubjects();
@@ -31,27 +33,42 @@ const CreateQuestion = () => {
   const handleOptionChange = (index, e) => {
     const { name, value, type, checked } = e.target;
     const updatedOptions = question.options.map((option, i) =>
-      i === index ? { ...option, [name]: type === 'checkbox' ? checked : value } : option
+      i === index
+        ? { ...option, [name]: type === "checkbox" ? checked : value }
+        : option
     );
     setQuestion({ ...question, options: updatedOptions });
   };
 
   const addOption = () => {
-    setQuestion({ ...question, options: [...question.options, { optionText: '', isCorrect: false }] });
+    setQuestion({
+      ...question,
+      options: [...question.options, { optionText: "", isCorrect: false }],
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const payload = { ...question, subjectId: selectedSubject, language: selectedLanguage };
+      const payload = {
+        ...question,
+        subjectId: selectedSubject,
+        language: selectedLanguage,
+        classMock: selectedClass, // Fixed class storage
+      };
+
       await axios.post(SummaryApi.postQuestion.url, payload);
-      alert('Question created successfully!');
-      setQuestion({ questionText: '', options: [{ optionText: '', isCorrect: false }] });
-      setSelectedSubject('');
-      setSelectedLanguage('');
+      alert("Question created successfully!");
+      setQuestion({
+        questionText: "",
+        options: [{ optionText: "", isCorrect: false }],
+      });
+      setSelectedSubject("");
+      setSelectedLanguage("");
+      setSelectedClass("");
     } catch (error) {
-      console.error('Error creating question:', error);
-      alert('Failed to create question.');
+      console.error("Error creating question:", error);
+      alert("Failed to create question.");
     }
   };
 
@@ -78,6 +95,24 @@ const CreateQuestion = () => {
             ))}
           </select>
         </div>
+
+        <div>
+          <label className="block mb-2">Class:</label>
+          <select
+            name="selectedClass"
+            value={selectedClass}
+            onChange={(e) => setSelectedClass(e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-md"
+          >
+            <option value="" disabled>
+              Select Class
+            </option>
+            <option value="10th">10th</option>
+            <option value="12th">12th</option>
+          </select>
+        </div>
+
         <div>
           <label className="block mb-2">Language:</label>
           <select
@@ -94,6 +129,7 @@ const CreateQuestion = () => {
             <option value="Hindi">Hindi</option>
           </select>
         </div>
+
         <div>
           <label className="block mb-2">Question Text:</label>
           <input
@@ -105,6 +141,7 @@ const CreateQuestion = () => {
             className="w-full px-4 py-2 border rounded-md"
           />
         </div>
+
         <div>
           <h4>Options</h4>
           {question.options.map((option, index) => (
@@ -128,15 +165,22 @@ const CreateQuestion = () => {
               </label>
             </div>
           ))}
-          <button type="button" onClick={addOption} className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md">
+          <button
+            type="button"
+            onClick={addOption}
+            className="mt-2 px-4 py-2 bg-green-500 text-white rounded-md"
+          >
             Add Option
           </button>
         </div>
-        <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md">
+
+        <button
+          type="submit"
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+        >
           Add Question
         </button>
       </form>
-      
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:5000";
+const backendDomain = "http://localhost:8006";
 
 const SummaryApi = {
   // For Event
@@ -96,6 +96,22 @@ const SummaryApi = {
   getALLResult: {
     url: `${backendDomain}/api/result`,
     method: 'get',
+  },
+  getAnnouncements: {
+    url: `${backendDomain}/api/announcements`,
+    method: 'get',
+  },
+  DeleteAnnouncements: {
+    url: `${backendDomain}/api/announcements/:id`,
+    method: 'delete',
+  },
+  carouselImg: {
+    url: `${backendDomain}/api/carousel-img`,
+    method: 'delete',
+  },
+  DeleteCarouselImg: {
+    url: `${backendDomain}/api/carousel-img/:id`,
+    method: 'delete',
   },
 };
 
