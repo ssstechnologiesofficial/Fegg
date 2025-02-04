@@ -69,25 +69,7 @@ const AboutSection = () => {
 
   return (
     <>
-      <div className="bg-gray-800 text-white py-2 text-center text-sm md:text-base">
-        <div className="flex justify-between">
-          <div className="text-lg md:text-2xl font-bold">
-            Admission Open (2024-2025)
-          </div>
-          <span>|</span>
-          <div className="text-lg md:text-2xl font-bold">
-            Admission Open (2024-2025)
-          </div>
-          <span>|</span>
-          <div className="text-lg md:text-2xl font-bold">
-            Admission Open (2024-2025)
-          </div>
-          <span>|</span>
-          <div className="text-lg md:text-2xl font-bold">
-            Admission Open (2024-2025)
-          </div>
-        </div>
-      </div>
+     
       <div className="bg-primary py-12">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           {/* Left Section - Video */}
@@ -134,7 +116,7 @@ const AboutSection = () => {
         >
           <a
             href="#"
-            className="bg-red-600 text-white w-14 h-14 flex items-center justify-center rounded-xs hover:bg-red-700"
+            className="bg-primary text-white w-14 h-14 flex items-center justify-center rounded-xs hover:bg-red-700"
           >
             <FaYoutube className="text-2xl" />
           </a>
