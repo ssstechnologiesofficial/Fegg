@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SummaryApi from "../../common/SummaryApi";
 
 const Register = () => {
  
@@ -40,7 +41,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8006/api/register", formData); // replace with your API URL
+      const response = await axios.post(SummaryApi.Register.url, formData); // replace with your API URL
       if (response.status === 200) {
         alert("Registration successful");
       }

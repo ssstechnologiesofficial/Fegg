@@ -9,7 +9,8 @@
 // Econtent10th.js
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import SummaryApi from '../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 // Fetch data for 10th class
 
 const Video10th = () => {
@@ -18,7 +19,7 @@ const Video10th = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8006/api/getuploadvideo?className=10`)
+      .get(`${SummaryApi.getuploadvideo.url}?className=10`)
       .then((response) => {
         setData(response.data)
         console.log(response.data) // Debugging API response
@@ -54,7 +55,7 @@ const Video10th = () => {
                 <div className="flex justify-between items-center ">
                   <span className="font-medium">{item.Volume}</span>
                   <a
-                    href={`http://localhost:8006/${item.file}`} // Adjust path based on API
+                    href={`${baseUrl}/${item.file}`} // Adjust path based on API
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline flex items-center"

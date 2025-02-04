@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import SummaryApi from '../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const Video12th = () => {
   const [data, setData] = useState([])
   const [activeIndex, setActiveIndex] = useState(null)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8006/api/getuploadvideo?className=12`)
+      .get(`${SummaryApi.getuploadvideo.url}?className=12`)
       .then((response) => {
         setData(response.data)
         console.log(response.data) // Debugging API response
@@ -44,7 +45,7 @@ const Video12th = () => {
                   <span className="font-medium">{item.Volume}</span>
 
                   <a
-                    href={`http://localhost:8006/${item.file}`} // Adjust path based on API
+                    href={`${baseUrl}/${item.file}`} // Adjust path based on API
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline flex items-center"
