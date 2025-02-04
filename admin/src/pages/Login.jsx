@@ -80,7 +80,7 @@ const Login = () => {
           return (
             <div
               key={letter}
-              className={`absolute w-[15vw] h-[15vw] max-w-18 max-h-18 sm:w-[8vw] sm:h-[8vw] flex  justify-center items-center rounded-full text-white font-bold text-[4vw] sm:text-4xl ${color}`}
+              className={`absolute w-[15vw] h-[15vw] max-w-18 max-h-18 sm:w-[8vw] sm:h-[8vw] flex  justify-center items-center rounded-full text-white font-bold text-[4vw] sm:text-4xl ${color} hover:scale-105 transition-all`}
               style={{
                 top: `calc(50% - 5vw + ${radius} * sin(${
                   (angle * Math.PI) / 180
@@ -97,8 +97,8 @@ const Login = () => {
       </div>
 
       <div className="container max-w-md mx-auto p-4">
-        <div className="bg-white bg-opacity-50 p-8 rounded-lg border-red-500 border-2">
-          <div className="bg-white rounded-full flex items-center justify-center w-32 h-32 mx-auto border-l-4  border-red-500">
+        <div className="bg-black bg-opacity-65 p-8 rounded-lg border-red-500 border-2 ">
+          <div className="bg-white rounded-full flex items-center justify-center w-32 h-32 mx-auto border-l-4  border-b-4 border-red-500">
             <img src={fagglogo} className="w-20 object-fill mx-auto mb-4" />
           </div>
           {error && (
@@ -118,7 +118,7 @@ const Login = () => {
                 placeholder="Enter your email"
                 value={data.email}
                 onChange={handleOnChange}
-                className="w-full px-4 py-3 bg-white text-black rounded-lg border border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-3 bg-white text-black rounded-lg border-2 border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
             </div>
@@ -137,7 +137,7 @@ const Login = () => {
                 placeholder="Enter your password"
                 value={data.password}
                 onChange={handleOnChange}
-                className="w-full px-4 py-3 bg-white text-black rounded-lg border border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-4 py-3 bg-white text-black rounded-lg border-2 border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                 required
               />
               <button
