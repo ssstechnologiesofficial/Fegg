@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const HeroImage = () => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
@@ -103,7 +103,7 @@ const HeroImage = () => {
               images.map((img) => (
                 <tr key={img._id} className="text-center">
                   <td className="border p-2">
-                    <img src={img.imageUrl} alt={img.title} className="w-16 h-16 object-cover mx-auto" />
+                    <img  src={`${baseUrl}/${img.image}`} alt={img.title} className="w-16 h-16 object-cover mx-auto" />
                   </td>
                   <td className="border p-2">{img.title}</td>
                   <td className="border p-2">{img.description}</td>
