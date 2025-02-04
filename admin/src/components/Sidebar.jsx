@@ -12,11 +12,7 @@ import {
 import { FaBars } from 'react-icons/fa6'
 import { FaUserShield } from 'react-icons/fa'
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
-import {
-  FaList,
-  FaQuestionCircle,
-  FaEnvelopeOpenText,
-} from 'react-icons/fa'
+import { FaList, FaQuestionCircle, FaEnvelopeOpenText } from 'react-icons/fa'
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
@@ -96,8 +92,8 @@ const Sidebar = () => {
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
-           {/* Mock  Dropdown */}
-           <div>
+          {/* Mock  Dropdown */}
+          <div>
             <div
               onClick={() => setIsMockDropdownOpen(!isMockDropdownOpen)}
               className="flex justify-between items-center px-4 py-2  rounded-lg cursor-pointer  hover:text-white  transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
@@ -150,11 +146,11 @@ const Sidebar = () => {
             )}
           </div>
           <Link
-            to="event"
+            to="EContentModel"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaCalendarAlt className="mr-2" size={20} />
-            {!isCollapsed && <span>Events</span>}
+            {!isCollapsed && <span>E-content Modal data</span>}
           </Link>
           <Link
             to="EContentModel"
