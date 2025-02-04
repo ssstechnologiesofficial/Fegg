@@ -1,4 +1,4 @@
-const backendDomain = "http://localhost:8006";
+const backendDomain = "https://feggbackend.onrender.com";
 
 const SummaryApi = {
   contact: {
