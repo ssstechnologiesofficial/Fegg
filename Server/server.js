@@ -42,6 +42,13 @@ server.use(bodyParser.json())
 server.use('/api', Router)
 server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
+
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+
+
 // DB connection
 const DBconnection = mongoose.connect(process.env.MONGODB_URI)
 
