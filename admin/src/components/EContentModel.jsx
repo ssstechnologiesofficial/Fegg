@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 const EContentModel = () => {
   const [downloads, setDownloads] = useState([])
@@ -11,7 +12,7 @@ const EContentModel = () => {
     const fetchDownloads = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:8006/api/getAllDownloads'
+          SummaryApi.getAllDownloads.url
         )
         setDownloads(response.data)
         setFilteredDownloads(response.data) // Initialize filtered data

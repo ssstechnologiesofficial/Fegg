@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import SummaryApi from "../common/SummaryAPI";
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const HeroImage = () => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ const HeroImage = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get("http://localhost:8006/api/carousel-img");
+      const response = await axios.get(SummaryApi.carouselImg.url);
       setImages(response.data);
     } catch (error) {
       console.error("Error fetching images:", error);
@@ -39,7 +40,7 @@ const HeroImage = () => {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:8006/api/carousel-img", formData, {
+      await axios.post(SummaryApi.carouselImg.url, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Image uploaded successfully!");
@@ -58,7 +59,7 @@ const HeroImage = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this image?")) {
       try {
-        await axios.delete(`http://localhost:8006/api/carousel-img/${id}`);
+        await axios.delete(SummaryApi.DeleteCarouselImg.url.replace(":id",id));
         alert("Image deleted successfully!");
         fetchImages();
       } catch (error) {
@@ -70,7 +71,7 @@ const HeroImage = () => {
 
   return (
     <div className="flex mx-auto bg-white shadow-md rounded-lg p-6 gap-8 w-full mt-10">
-      <div className="w-1/2">
+      <div className="w-1/2 border border-[#fe0000] rounded-xl border-r-4 border-b-4 p-2">
       <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">Upload Hero Image</h2>
       <input
         type="file"
@@ -103,7 +104,7 @@ const HeroImage = () => {
               images.map((img) => (
                 <tr key={img._id} className="text-center">
                   <td className="border p-2">
-                    <img src={img.imageUrl} alt={img.title} className="w-16 h-16 object-cover mx-auto" />
+                    <img  src={`${baseUrl}/${img.image}`} alt={img.title} className="w-16 h-16 object-cover mx-auto" />
                   </td>
                   <td className="border p-2">{img.title}</td>
                   <td className="border p-2">{img.description}</td>

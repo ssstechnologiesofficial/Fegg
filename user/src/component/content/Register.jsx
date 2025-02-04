@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SummaryApi from "../../common/SummaryApi";
 
 const Register = () => {
  
@@ -40,7 +41,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8006/api/register", formData); // replace with your API URL
+      const response = await axios.post(SummaryApi.Register.url, formData); // replace with your API URL
       if (response.status === 200) {
         alert("Registration successful");
       }
@@ -51,7 +52,7 @@ const Register = () => {
   };
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl">
+    <div className="bg-white p-6 border border-[#fe0000] rounded-xl border-r-4 border-b-4 shadow-lg w-full max-w-4xl">
       <h1 className="text-2xl font-bold text-center mb-6">STUDENT REGISTRATION</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-3 gap-4">
@@ -133,6 +134,7 @@ const Register = () => {
               <input
                 type="number"
                 name="sssmid"
+                placeholder="Enter 9 digit samagra id"
                 className="w-full border rounded p-2"
                 onChange={handleChange}
                 required

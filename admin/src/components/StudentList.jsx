@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 const StudentList = () => {
   const [students, setStudents] = useState([])
@@ -14,7 +15,7 @@ const StudentList = () => {
   // Fetch students from API
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:8006/api/register')
+      const response = await axios.get(SummaryApi.Register.url)
       setStudents(response.data)
     } catch (error) {
       console.error('Error fetching students:', error)
@@ -37,7 +38,7 @@ const StudentList = () => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:8006/api/register/${selectedStudent._id}`,
+        SummaryApi.deleteRegister.url.replace(':id', selectedStudent._id),
         formData
       )
       alert('Student updated successfully!')
@@ -52,7 +53,7 @@ const StudentList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this student?')) {
       try {
-        await axios.delete(`http://localhost:8006/api/register/${id}`)
+        await axios.delete(SummaryApi.deleteRegister.url.replace(':id',id))
         alert('Student deleted successfully!')
         fetchStudents()
       } catch (error) {

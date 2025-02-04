@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import SummaryApi from '../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 const Video12th = () => {
   const [data, setData] = useState([])
   const [activeSubject, setActiveSubject] = useState(null)
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8006/api/getuploadvideo?className=12`)
+      .get(`${SummaryApi.getuploadvideo.url}?className=12`)
       .then((response) => {
         setData(response.data)
         console.log(response.data) // Debugging API response

@@ -17,6 +17,22 @@ const SummaryApi = {
     url:`${backendDomain}/api/announcements`,
     method: "get",
   },
+  getuploadvideo:{
+    url:`${backendDomain}/api/getuploadvideo`,
+    method: "get",
+  },
+  Register:{
+    url:`${backendDomain}/api/register`,
+    method: "post",
+  },
+  Ebooks:{
+    url:`${backendDomain}/api/ebooks`,
+    method: "post",
+  },
+  StoreUserDownload:{
+    url:`${backendDomain}/api/storeUserDownload`,
+    method: "post",
+  },
 }
 
 export default SummaryApi;

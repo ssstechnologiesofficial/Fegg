@@ -11,10 +11,15 @@ import {
 } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
 import { FaUserShield } from 'react-icons/fa'
-
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import {
+  FaList,
+  FaQuestionCircle,
+  FaEnvelopeOpenText,
+} from 'react-icons/fa'
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
-
+  const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed)
   }
@@ -82,7 +87,7 @@ const Sidebar = () => {
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
-            {!isCollapsed && <span>Hero Image</span>}
+            {!isCollapsed && <span>Slider Image</span>}
           </Link>
           <Link
             to="announcement"
@@ -91,6 +96,59 @@ const Sidebar = () => {
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
+           {/* Mock  Dropdown */}
+           <div>
+            <div
+              onClick={() => setIsMockDropdownOpen(!isMockDropdownOpen)}
+              className="flex justify-between items-center px-4 py-2  rounded-lg cursor-pointer  hover:text-white  transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+            >
+              <span className="flex items-center space-x-2">
+                <FaEnvelopeOpenText />
+                <span>Mock Test Management</span>
+              </span>
+              {isMockDropdownOpen ? <FiChevronUp /> : <FiChevronDown />}
+            </div>
+            {isMockDropdownOpen && (
+              <div className="ml-4 mt-2 space-y-2">
+                <Link
+                  to="create-subject"
+                  className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+                >
+                  <FaQuestionCircle />
+                  <span>Add Subject</span>
+                </Link>
+
+                <Link
+                  to="create-questions"
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-red-400 transition-all hover:shadow-md "
+                >
+                  <FaList />
+                  <span>Create Questions</span>
+                </Link>
+                <Link
+                  to="questions-manage"
+                  className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+                >
+                  <FaList />
+                  <span>Questions Management</span>
+                </Link>
+                <Link
+                  to="create-test"
+                  className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+                >
+                  <FaList />
+                  <span>Create Test</span>
+                </Link>
+                <Link
+                  to="MockSidebarResult"
+                  className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
+                >
+                  <FaList />
+                  <span>Mock Result</span>
+                </Link>
+              </div>
+            )}
+          </div>
           <Link
             to="event"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"

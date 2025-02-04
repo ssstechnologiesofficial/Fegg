@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import SummaryApi from '../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const Econtent10th = () => {
   const [data, setData] = useState([])
@@ -11,7 +13,7 @@ const Econtent10th = () => {
   const [userInput, setUserInput] = useState('')
   useEffect(() => {
     axios
-      .get(`http://localhost:8006/api/ebooks?className=10`)
+      .get(`${SummaryApi.Ebooks.url}?className=10`)
       .then((response) => {
         setData(response.data)
       })
@@ -35,7 +37,7 @@ const Econtent10th = () => {
     console.log(userInput, selectedClass, selectedSubject)
     if (userInput.trim()) {
       axios
-        .post('http://localhost:8006/api/storeUserDownload', {
+        .post(SummaryApi.StoreUserDownload.url, {
           userInput,
           subject: selectedSubject,
           className: selectedClass, // Ensure className is sent
@@ -43,7 +45,7 @@ const Econtent10th = () => {
         .then(() => {
           // Automatically trigger file download after successful submission
           const link = document.createElement('a')
-          link.href = `http://localhost:8006/${selectedFile}`
+          link.href = `${baseUrl}/${selectedFile}`
           link.setAttribute('download', selectedFile.split('/').pop()) // Extract filename from URL
           document.body.appendChild(link)
           link.click()

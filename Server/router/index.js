@@ -102,6 +102,10 @@ const {
   updateStudent,
   deleteStudent,
 } = require('../controller/studentController')
+const { createMockTest, getMockTests, mockTestDelete, getStartMockTest, getMockTestById } = require('../controller/mocktest/mocktestController')
+const { submitMockTest, getResult, getALLResult } = require('../controller/mocktest/resultController')
+const { getSubjects, createSubject, updateSubject, deleteSubject } = require('../controller/mocktest/subjectController')
+const { getQuestionsBySubject, updateQuestion, deleteQuestion, createQuestion } = require('../controller/mocktest/questionsController')
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -160,4 +164,24 @@ router.post('/register', registerStudent)
 router.get('/register', getAllStudents)
 router.put('/register/:id', updateStudent)
 router.delete('/register/:id', deleteStudent)
+
+// mock test 
+// mocktest
+router.post('/mock-test', upload.single('MockLogo'), createMockTest)
+router.get('/mock-tests', getMockTests)
+router.post('/mock-test/submit', submitMockTest)
+router.delete('/mock-tests/:id', mockTestDelete)
+
+router.get('/mock-test/:mockTestId', getStartMockTest)
+router.get('/result/:resultId', getResult)
+router.get('/result', getALLResult)
+router.get('/subjects', getSubjects)
+router.post('/subjects', createSubject)
+router.put('/subjects/:id', updateSubject)
+router.delete('/subjects/:id', deleteSubject)
+router.post('/questions', createQuestion)
+router.get('/questions', getQuestionsBySubject)
+router.put('/questions/:questionId', updateQuestion)
+router.delete('/questions/:id', deleteQuestion)
+router.get('/mockTests/:id',getMockTestById);
 module.exports = router
