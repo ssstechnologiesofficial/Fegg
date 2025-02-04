@@ -43,7 +43,7 @@ server.use('/api', Router)
 server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 
