@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const studentSchema = new mongoose.Schema(
   {
@@ -17,22 +17,30 @@ const studentSchema = new mongoose.Schema(
     district: { type: String },
     dob: { type: Date, required: true },
     age: { type: Number, required: true },
-    gender: { type: String, enum: ["Male", "Female"], required: true },
+    gender: { type: String, enum: ['Male', 'Female'], required: true },
     religion: { type: String },
-    category: { type: String, enum: ["General", "SC", "ST", "OBC"], required: true },
+    category: {
+      type: String,
+      enum: ['General', 'SC', 'ST', 'OBC'],
+      required: true,
+    },
     contactNo: { type: String, required: true, unique: true },
-    sssmid: { type: Number, required: true,validate: {
-      validator: function(v) {
-        return /^\d{9}$/.test(v.toString()); 
+    sssmid: {
+      type: Number,
+      required: true,
+      validate: {
+        validator: function (v) {
+          return /^\d{9}$/.test(v.toString())
+        },
+        message: (props) => `${props.value} is not a valid 9-digit number!`,
       },
-      message: props => `${props.value} is not a valid 9-digit number!`
-    } },
+    },
     learnerId: { type: String, unique: true, required: true },
     lastClassStudied: { type: String, required: true },
-    status: { type: String, enum: ["Pass", "Fail"], required: true },
+    status: { type: String, enum: ['Pass', 'Fail'], required: true },
   },
   { timestamps: true }
-);
+)
 
-const studentRegister = mongoose.model("Students", studentSchema);
-module.exports =studentRegister;
+const studentRegister = mongoose.model('Students', studentSchema)
+module.exports = studentRegister
