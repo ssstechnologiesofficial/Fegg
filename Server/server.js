@@ -35,8 +35,12 @@ var bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
 
+
+
 //middleware
-server.use(cors())
+server.use(cors({
+  origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL] // Allow frontend & admin access
+}))
 server.use(express.json())
 server.use(bodyParser.json())
 server.use('/api', Router)
