@@ -67,15 +67,22 @@ const StudentList = () => {
       <h2 className="text-2xl font-bold mb-4">Admin - Student List</h2>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
-          <tr className="bg-primary text-white">
+        <tr className="bg-primary text-white">
             <th className="border p-2">Learner ID</th>
             <th className="border p-2">Name</th>
+            <th className="border p-2">Father's Name</th>
             <th className="border p-2">Gender</th>
+            <th className="border p-2">DOB</th>
             <th className="border p-2">Age</th>
             <th className="border p-2">Category</th>
-            <th className="border p-2">SSSM id</th>
+            <th className="border p-2">Religion</th>
+            <th className="border p-2">SSSM ID</th>
             <th className="border p-2">Permanent Address</th>
             <th className="border p-2">Current Address</th>
+            <th className="border p-2">Contact No.</th>
+            <th className="border p-2">Last Class Studied</th>
+            <th className="border p-2">Apply For</th>
+            <th className="border p-2">Status</th>
             <th className="border p-2">Actions</th>
           </tr>
         </thead>
@@ -84,18 +91,25 @@ const StudentList = () => {
             <tr key={student._id} className="border">
               <td className="border p-2">{student.learnerId}</td>
               <td className="border p-2">
-                {student.firstName} {student.lastName}
+                {student.firstName} {student.middleName} {student.lastName}
+              </td>
+              <td className="border p-2">
+                {student.fatherFirstName} {student.fatherMiddleName} {student.fatherLastName}
               </td>
               <td className="border p-2">{student.gender}</td>
+              <td className="border p-2">{new Date(student.dob).toLocaleDateString()}</td>
               <td className="border p-2">{student.age}</td>
+              <td className="border p-2">{student.category}</td>
+              <td className="border p-2">{student.religion}</td>
               <td className="border p-2">{student.sssmid}</td>
               <td className="border p-2">{student.permanentAddress}</td>
               <td className="border p-2">
-                {student.block}
-                {student.village}
-                {student.district}
+                {student.block} {student.village} {student.tehsil} {student.district}  {student.pincode}
               </td>
-              <td className="border p-2">{student.category}</td>
+              <td className="border p-2">{student.contactNo}</td>
+              <td className="border p-2">{student.lastClassStudied}</td>
+              <td className="border p-2">{student.applyFor}</td>
+              <td className="border p-2">{student.status}</td>
               <td className="border p-2">
                 <button
                   className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
