@@ -8,15 +8,19 @@ const mongoose = require('mongoose')
 const path = require('path')
 
 //middleware
-server.use(cors())
+server.use(
+  cors({
+    origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL], // Allow frontend & admin access
+  })
+)
 server.use(express.json())
 server.use(bodyParser.json())
 server.use('/api', Router)
 server.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
-// app.get('/', (req, res) => {
-//   res.send('Hello, World!');
-// });
+server.get('/', (req, res) => {
+  res.send('Hello, World!')
+})
 
 // DB connection
 const DBconnection = mongoose.connect(process.env.MONGODB_URI)
