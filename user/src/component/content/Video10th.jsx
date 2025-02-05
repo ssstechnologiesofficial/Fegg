@@ -1,21 +1,11 @@
-// import React from 'react'
 
-// const Video10th = () => {
-//   return <div>Video10th</div>
-// }
-
-// export default Video10th
-
-// Econtent10th.js
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../common/SummaryApi'
 const baseUrl = import.meta.env.VITE_BACKEND_URL
-// Fetch data for 10th class
-
 const Video10th = () => {
   const [data, setData] = useState([])
-  const [activeIndex, setActiveIndex] = useState(null)
+  const [activeSubject, setActiveSubject] = useState(null)
 
   useEffect(() => {
     axios
@@ -29,44 +19,71 @@ const Video10th = () => {
       })
   }, [])
 
-  const handleAccordionToggle = (index) => {
-    setActiveIndex(activeIndex === index ? null : index)
+  const handleSubjectClick = (subject) => {
+    setActiveSubject(subject)
   }
 
-  return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Econtent for 10th Class</h2>
-      <div className="space-y-4">
-        {data.map((item, index) => (
-          <div key={item._id} className=" border-l-4 border-[#fe0000]  shadow">
-            {/* Accordion Header */}
-            <div
-              className="bg-gray-200 p-1 ps-2 cursor-pointer"
-              onClick={() => handleAccordionToggle(index)}
-            >
-              <h3 className="text-lg font-semibold">
-                {item.subject} ({item.language})
-              </h3>
-            </div>
+  // Grouping subjects by subject name
+  const groupedSubjects = data.reduce((acc, item) => {
+    if (!acc[item.subject]) {
+      acc[item.subject] = []
+    }
+    acc[item.subject].push(item)
+    return acc
+  }, {})
 
-            {/* Accordion Content */}
-            {activeIndex === index && (
-              <div className="p-2">
-                <div className="flex justify-between items-center ">
-                  <span className="font-medium">{item.Volume}</span>
-                  <a
-                    href={`${baseUrl}/${item.file}`} // Adjust path based on API
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline flex items-center"
-                  >
-                    📄 View PDF
-                  </a>
-                </div>
-              </div>
-            )}
+  return (
+    <div className="flex p-4">
+      {/* Sidebar */}
+      <div className="w-1/4 bg-gray-100 p-4">
+        <h2 className="text-xl font-bold mb-4">Subjects</h2>
+        <ul className="space-y-2">
+          {Object.keys(groupedSubjects).map((subjectName) => (
+            <li
+              key={subjectName}
+              className="cursor-pointer text-blue-600 hover:underline"
+              onClick={() => handleSubjectClick(groupedSubjects[subjectName])}
+            >
+              {subjectName}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Main Content */}
+      <div className="w-3/4 p-4">
+        {activeSubject && (
+          <div>
+            <h3 className="text-2xl font-bold mb-4">
+              {activeSubject[0].subject} ({activeSubject[0].language})
+            </h3>
+            <table className="w-full table-auto border-collapse">
+              <thead>
+                <tr>
+                  <th className="border p-2">Chapter</th>
+                  <th className="border p-2">Video Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {activeSubject.map((item, index) => (
+                  <tr key={index}>
+                    <td className="border p-2">{item.chapterName}</td>
+                    <td className="border p-2">
+                      <a
+                        href={item.youtubeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:underline"
+                      >
+                        Watch Video
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        ))}
+        )}
       </div>
     </div>
   )
