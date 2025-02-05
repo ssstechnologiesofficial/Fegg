@@ -1,97 +1,47 @@
 
 const moment = require("moment");// assuming you have the Student model defined as shown earlier
 const studentRegister = require("../model/studentRegister");
-
-
 // Function to generate the learnerId
-const generateLearnerId = async (classStudied) => {
-  const currentDate = moment(); // Get the current date
-  const year = currentDate.year().toString().slice(-2); // Last 2 digits of the year
-  const month = currentDate.month() + 1; // Get current month (1-indexed)
-  const day = currentDate.date(); // Get current day
+const generateLearnerId = async (lastClassStudied) => {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear().toString().slice(2); // Last two digits of year
+  const month = ("0" + (currentDate.getMonth() + 1)).slice(-2); // Two digits of month
+  const date = ("0" + currentDate.getDate()).slice(-2); // Two digits of date
+  const classDigit = lastClassStudied === "10th" ? "2" : "1"; // Class representation
 
-  // Get the first 2 digits (class number) based on the class studied
-  let classDigit = classStudied === "10" ? "1" : classStudied === "12" ? "2" : "0"; // You can expand this logic if needed
+  // Count students registered on the same date
+  const studentCount = await Student.countDocuments({
+    createdAt: {
+      $gte: new Date(currentDate.setHours(0, 0, 0, 0)),
+      $lt: new Date(currentDate.setHours(23, 59, 59, 999)),
+    },
+  });
 
-  // Generate the learnerId using the required format
-  const datePart = `${year}${month.toString().padStart(2, "0")}${day.toString().padStart(2, "0")}`;
-  const classPart = classDigit;
+  const count = ("00000" + (studentCount + 1)).slice(-5); // Five-digit counter
 
-  const lastStudent = await studentRegister.findOne().sort({ learnerId: -1 }); // Find the last student to get the highest learnerId
-  const serialNumber = lastStudent ? parseInt(lastStudent.learnerId.slice(-5)) + 1 : 1; // Increment the serial number by 1 for the next registration
-
-  return `EG${datePart}${classPart}${serialNumber.toString().padStart(5, "0")}`;
+  return `EG${year}${month}${date}${classDigit}${count}`;
 };
 
 // POST controller to register a new student
 const registerStudent = async (req, res) => {
+  
   try {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      fatherFirstName,
-      fatherMiddleName,
-      fatherLastName,
-      motherFirstName,
-      motherMiddleName,
-      motherLastName,
-      permanentAddress,
-      block,
-      village,
-      district,
-      dob,
-      age,
-      gender,
-      religion,
-      category,
-      contactNo,
-      sssmid,
-      lastClassStudied,
-      status,
-    } = req.body;
+    const { lastClassStudied, ...studentData } = req.body;
 
-    // Generate a unique learner ID
+    if (!lastClassStudied) {
+      return res.status(400).json({ error: "Last class studied is required" });
+    }
+
     const learnerId = await generateLearnerId(lastClassStudied);
 
-    // Create a new student document
-    const newStudent = new studentRegister({
-      firstName,
-      middleName,
-      lastName,
-      fatherFirstName,
-      fatherMiddleName,
-      fatherLastName,
-      motherFirstName,
-      motherMiddleName,
-      motherLastName,
-      permanentAddress,
-      block,
-      village,
-      district,
-      dob,
-      age,
-      gender,
-      religion,
-      category,
-      contactNo,
-      sssmid,
-      learnerId, // Pass the generated learnerId
-      lastClassStudied,
-      status,
-    });
-
-    // Save the student to the database
+    const newStudent = new studentRegister({ ...studentData, lastClassStudied, learnerId });
     await newStudent.save();
 
-    // Send response with the learner ID
-    res.status(201).json({ message: "Registration successful!", learnerId });
+    res.status(201).json({ message: "Student registered successfully", learnerId });
   } catch (error) {
-    console.error("Error during registration:", error);
-    res.status(500).json({ message: "Registration failed. Please try again." });
+    res.status(500).json({ error: error.message });
   }
 };
-
 
 // Get all students
 const getAllStudents = async (req, res) => {
