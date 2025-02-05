@@ -29,7 +29,7 @@ const NavLinks = () => {
   );
 
   return (
-    <ul className="flex flex-col md:flex-row md:items-center md:justify-end px-4 md:pe-16 space-y-4 md:space-y-0 md:space-x-6">
+    <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12  space-y-4 md:space-y-0 md:space-x-6">
       <li>
         <NavLink
           to="/"
@@ -55,8 +55,8 @@ const NavLinks = () => {
           dropdownMenu([
             { link: "/about", label: "About us" },
             { link: "/vision", label: "Vision & Mission" },
-            { link: "/ordinance", label: "Senior Management Team" },
-            { link: "/objectives", label: "MP Management Team" },
+            { link: "/ordinance", label: "EG Senior Management Team" },
+            { link: "/objectives", label: "MPSOS Management Team" },
             // { link: "/committee", label: "Committee" },
             // { link: "/rti", label: "RTI" },
           ])}
@@ -109,7 +109,7 @@ const NavLinks = () => {
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          Student Corner
+          Learners Corner
         </NavLink>
         {isStudentCornerOpen &&
           dropdownMenu([
@@ -193,7 +193,7 @@ const NavLinks = () => {
           to="/register"
           className=" py-2 "
         >
-          SIGNUP
+          REGISTRATION
         </NavLink>
       </li>
     </ul>
