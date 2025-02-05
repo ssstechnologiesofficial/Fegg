@@ -5,14 +5,23 @@ import fagglogo from '../../public/eg-logo.png'
 
 import {
   FaChalkboardTeacher,
-  FaCalendarAlt,
   FaClipboardList,
   FaSignOutAlt,
 } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
 import { FaUserShield } from 'react-icons/fa'
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
-import { FaList, FaQuestionCircle, FaEnvelopeOpenText } from 'react-icons/fa'
+import {
+  FiChevronDown,
+  FiChevronUp,
+  FiEdit,
+  FiUploadCloud,
+  FiAirplay,
+  FiVideo,
+  FiSave,
+  FiVolume1,
+} from 'react-icons/fi'
+
+import { FaList, FaQuestionCircle } from 'react-icons/fa'
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
@@ -67,7 +76,7 @@ const Sidebar = () => {
             to="EBooks"
             className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
-            <FaChalkboardTeacher className="mr-2" size={20} />
+            <FiUploadCloud className="mr-2" size={20} />
             {!isCollapsed && <span>E-Content Upload</span>}
           </Link>
 
@@ -75,21 +84,21 @@ const Sidebar = () => {
             to="OlineVideoUpload"
             className="flex items-center px-4 py-3  hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
-            <FaChalkboardTeacher className="mr-2" size={20} />
+            <FiVideo className="mr-2" size={20} />
             {!isCollapsed && <span>Oline Video Upload</span>}
           </Link>
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
-            <FaChalkboardTeacher className="mr-2" size={20} />
+            <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Slider Image</span>}
           </Link>
           <Link
             to="announcement"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
-            <FaChalkboardTeacher className="mr-2" size={20} />
+            <FiVolume1 className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
           {/* Mock  Dropdown */}
@@ -99,7 +108,7 @@ const Sidebar = () => {
               className="flex justify-between items-center px-4 py-2  rounded-lg cursor-pointer  hover:text-white  transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
             >
               <span className="flex items-center space-x-2">
-                <FaEnvelopeOpenText />
+                <FiEdit />
                 <span>Mock Test Management</span>
               </span>
               {isMockDropdownOpen ? <FiChevronUp /> : <FiChevronDown />}
@@ -149,7 +158,7 @@ const Sidebar = () => {
             to="EContentModel"
             className="flex items-center px-4 py-3   hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r  hover:from-[#fe0000]"
           >
-            <FaCalendarAlt className="mr-2" size={20} />
+            <FiSave className="mr-2" size={20} />
             {!isCollapsed && <span>E-content Modal data</span>}
           </Link>
           <Link
