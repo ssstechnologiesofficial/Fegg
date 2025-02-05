@@ -1,56 +1,57 @@
-const backendDomain = "https://feggbackend.onrender.com";
+const backendDomain = 'https://feggbackend.onrender.com'
+// const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
   addEvent: {
     url: `${backendDomain}/api/events`,
-    method: "post",
+    method: 'post',
   },
   getEvent: {
     url: `${backendDomain}/api/events`,
-    method: "get",
+    method: 'get',
   },
   updateEvent: {
     url: `${backendDomain}/api/events/:id`,
-    method: "put",
+    method: 'put',
   },
   deleteEvent: {
     url: `${backendDomain}/api/events/:id`,
-    method: "delete",
+    method: 'delete',
   },
   evenetCount: {
     url: `${backendDomain}/api/events`,
-    method: "get",
+    method: 'get',
   },
 
   // For Courses
   addCourse: {
     url: `${backendDomain}/api/addCourse`,
-    method: "post",
+    method: 'post',
   },
   getCourses: {
     url: `${backendDomain}/api/getCourses`,
-    method: "get",
+    method: 'get',
   },
   updateCourse: {
     url: `${backendDomain}/api/updateCourse/:id`,
-    method: "put",
+    method: 'put',
   },
   deleteCourse: {
     url: `${backendDomain}/api/deleteCourse/:id`,
-    method: "delete",
+    method: 'delete',
   },
   CourseCount: {
     url: `${backendDomain}/api/events`,
-    method: "get",
+    method: 'get',
   },
 
   // Admin routes
   loginAdmin: {
     url: `${backendDomain}/api/loginAdmin`,
-    method: "post",
+    method: 'post',
   },
-  // mock test 
+  // mock test
   subjects: {
     url: `${backendDomain}/api/subjects`,
     method: 'get',
@@ -153,6 +154,6 @@ const SummaryApi = {
     url: `${backendDomain}/api/register/:id`,
     method: 'get',
   },
-};
+}
 
-export default SummaryApi;
+export default SummaryApi

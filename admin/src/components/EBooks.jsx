@@ -59,7 +59,7 @@ const EBooks = () => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        SummaryApi.EbooksId.url.replace(":id",id),
+        SummaryApi.EbooksId.url.replace(':id', id),
         editData
       )
       setUploads(
@@ -96,11 +96,9 @@ const EBooks = () => {
       Object.keys(formData).forEach((key) => data.append(key, formData[key]))
 
       try {
-        const response = await axios.post(
-          SummaryApi.Eupload.url,
-          data,
-          { headers: { 'Content-Type': 'multipart/form-data' } }
-        )
+        const response = await axios.post(SummaryApi.Eupload.url, data, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        })
         setUploads([...uploads, response.data])
         setFormData({
           sessionYear: '',
@@ -119,7 +117,7 @@ const EBooks = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(SummaryApi.EbooksId.url.replace(":id",id))
+      await axios.delete(SummaryApi.EbooksId.url.replace(':id', id))
       setUploads(uploads.filter((upload) => upload._id !== id))
     } catch (error) {
       console.error('Error deleting ebook:', error)
@@ -130,7 +128,7 @@ const EBooks = () => {
     <div className="p-4 bg-white">
       <h2 className="text-3xl font-bold mb-4">E-Book Upload</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="border border-[#fe0000] rounded-xl border-r-4 border-b-4 p-5">
+        <div className="border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
           <div className="mb-4">
             <label className="font-semibold">Session:</label>
             <div className="flex gap-3">
@@ -139,8 +137,9 @@ const EBooks = () => {
                 value={formData.sessionYear}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
                 <option value="2023-2024">2023-2024</option>
                 <option value="2024-2025">2024-2025</option>
                 <option value="2025-2026">2025-2026</option>
@@ -150,8 +149,9 @@ const EBooks = () => {
                 value={formData.sessionMonth}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
                 <option value="April-October">April-October</option>
                 <option value="November-March">November-March</option>
               </select>
@@ -166,8 +166,9 @@ const EBooks = () => {
                 value={formData.className}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
                 <option value="10">10</option>
                 <option value="12">12</option>
               </select>
@@ -179,8 +180,9 @@ const EBooks = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
                 {subjects[formData.className] ? (
                   subjects[formData.className].map((subj) => (
                     <option key={subj} value={subj}>
@@ -193,31 +195,7 @@ const EBooks = () => {
               </select>
             </div>
           </div>
-
           <div className="flex gap-3 flex-wrap mt-4">
-            <div className="flex-1">
-              <label className="font-semibold">Language:</label>
-              <select
-                name="language"
-                value={formData.language}
-                onChange={handleChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
-              >
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-              </select>
-            </div>
-            <div className="flex-1">
-              <label className="font-semibold">Upload File:</label>
-              <input
-                name="file"
-                type="file"
-                onChange={handleFileChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
-              />
-            </div>
             <div className="flex-1">
               <label className="font-semibold">Volume:</label>
               <select
@@ -225,8 +203,10 @@ const EBooks = () => {
                 value={formData.Volume}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
+
                 {[
                   'Volume 1',
                   'Volume 2',
@@ -240,12 +220,37 @@ const EBooks = () => {
                 ))}
               </select>
             </div>
+            <div className="flex-1">
+              <label className="font-semibold">Language:</label>
+              <select
+                name="language"
+                value={formData.language}
+                onChange={handleChange}
+                required
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
+              >
+                <option value=""></option>
+
+                <option value="English">English</option>
+                <option value="Hindi">Hindi</option>
+              </select>
+            </div>
+            <div className="flex-1">
+              <label className="font-semibold">Upload File:</label>
+              <input
+                name="file"
+                type="file"
+                onChange={handleFileChange}
+                required
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
+              />
+            </div>
           </div>
         </div>
 
         <button
           type="submit"
-          className="bg-[#fe0000] text-white p-2 rounded-lg font-semibold w-full sm:w-auto focus:ring-2 focus:ring-[#fe0000] hover:bg-white hover:text-[#fe0000] border-[#fe0000] border transition-all"
+          className="bg-[#fd645b] text-white p-2 rounded-lg font-semibold w-full sm:w-auto focus:ring-2 focus:ring-[#fd645b] hover:bg-white hover:text-[#fd645b] border-[#fd645b] border transition-all"
         >
           Upload
         </button>
@@ -309,7 +314,7 @@ const EBooks = () => {
 
       <table className="w-full border mt-4">
         <thead>
-          <tr className="bg-[#fe0000] text-white">
+          <tr className="bg-[#fd645b] text-white">
             <th className="p-1">S.No</th>
             <th className="p-1">Subject</th>
             <th className="p-1">Class</th>

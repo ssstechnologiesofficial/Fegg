@@ -16,9 +16,9 @@ const OlineVideoOption = () => {
           {/* Layer Effect */}
           <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          <div className="relative z-10 bg-white border-2 rounded-lg border-[#fe0000] p-2 mx-4 my-8">
+          <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
             <h3 className="text-xl font-bold text-center mb-4">
-              Class <span className="text-[#fe0000]">10</span>
+              Class <span className="text-[#fd645b]">10</span>
             </h3>
             <p className="text-center">Click here for Class 10</p>
           </div>
@@ -35,9 +35,9 @@ const OlineVideoOption = () => {
           {/* Layer Effect */}
           <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          <div className="relative z-10 bg-white border-2 rounded-lg border-[#fe0000] p-2 mx-4 my-8">
+          <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
             <h3 className="text-xl font-bold text-center mb-4">
-              Class <span className="text-[#fe0000]">12</span>
+              Class <span className="text-[#fd645b]">12</span>
             </h3>
             <p className="text-center">Click here for Class 12</p>
           </div>

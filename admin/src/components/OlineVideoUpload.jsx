@@ -51,7 +51,7 @@ const OlineVideoUpload = () => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.put(
-        SummaryApi.Ovideoupdate.url.replace(':id',id),
+        SummaryApi.Ovideoupdate.url.replace(':id', id),
         editData
       )
       setUploads(
@@ -91,23 +91,26 @@ const OlineVideoUpload = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(SummaryApi.Ovideodelete.url.replace(':id',id))
+      await axios.delete(SummaryApi.Ovideodelete.url.replace(':id', id))
       setUploads(uploads.filter((upload) => upload._id !== id))
     } catch (error) {
       console.error('Error deleting ebook:', error)
     }
   }
-
   useEffect(() => {
     const filteredData = uploads.filter((upload) => {
       return (
-        (!filters.sessionYear || upload.sessionYear === filters.sessionYear) &&
+        (!filters.sessionYear ||
+          String(upload.sessionYear) === String(filters.sessionYear)) &&
         (!filters.sessionMonth ||
-          upload.sessionMonth === filters.sessionMonth) &&
-        (!filters.className || upload.className === filters.className) &&
-        (!filters.subject || upload.subject === filters.subject)
+          String(upload.sessionMonth) === String(filters.sessionMonth)) &&
+        (!filters.className ||
+          String(upload.className) === String(filters.className)) &&
+        (!filters.subject || String(upload.subject) === String(filters.subject))
       )
     })
+
+    console.log('Filtered Uploads:', filteredData) // Debugging log
     setFilteredUploads(filteredData)
   }, [filters, uploads])
 
@@ -120,7 +123,7 @@ const OlineVideoUpload = () => {
     <div className="p-4 bg-white">
       <h2 className="text-3xl font-bold mb-4">Video Upload</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="border border-[#fe0000] rounded-xl border-r-4 border-b-4 p-5">
+        <div className="border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
           <div className="mb-4">
             <label className="font-semibold">Session:</label>
             <div className="flex gap-3">
@@ -129,8 +132,10 @@ const OlineVideoUpload = () => {
                 value={formData.sessionYear}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
+
                 <option value="2023-2024">2023-2024</option>
                 <option value="2024-2025">2024-2025</option>
                 <option value="2025-2026">2025-2026</option>
@@ -140,8 +145,10 @@ const OlineVideoUpload = () => {
                 value={formData.sessionMonth}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
+
                 <option value="April-October">April-October</option>
                 <option value="November-March">November-March</option>
               </select>
@@ -156,8 +163,10 @@ const OlineVideoUpload = () => {
                 value={formData.className}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
+
                 <option value="10">10</option>
                 <option value="12">12</option>
               </select>
@@ -169,7 +178,7 @@ const OlineVideoUpload = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
                 {subjects[formData.className]?.map((subj) => (
                   <option key={subj} value={subj}>
@@ -182,14 +191,27 @@ const OlineVideoUpload = () => {
 
           <div className="flex gap-3 flex-wrap mt-4">
             <div className="flex-1">
+              <label className="font-semibold">Chapter Name:</label>
+              <input
+                name="chapterName"
+                type="text"
+                value={formData.chapterName}
+                onChange={handleChange}
+                required
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
+              />
+            </div>
+            <div className="flex-1">
               <label className="font-semibold">Language:</label>
               <select
                 name="language"
                 value={formData.language}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
+                <option value=""></option>
+
                 <option value="English">English</option>
                 <option value="Hindi">Hindi</option>
               </select>
@@ -204,19 +226,7 @@ const OlineVideoUpload = () => {
                 value={formData.youtubeLink}
                 onChange={handleChange}
                 required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
-              />
-            </div>
-
-            <div className="flex-1">
-              <label className="font-semibold">Chapter Name:</label>
-              <input
-                name="chapterName"
-                type="text"
-                value={formData.chapterName}
-                onChange={handleChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               />
             </div>
           </div>
@@ -224,7 +234,7 @@ const OlineVideoUpload = () => {
 
         <button
           type="submit"
-          className="bg-[#fe0000] text-white p-2 rounded-lg font-semibold w-full sm:w-auto focus:ring-2 focus:ring-[#fe0000] hover:bg-white hover:text-[#fe0000] border-[#fe0000] border transition-all"
+          className="bg-[#fd645b] text-white p-2 rounded-lg font-semibold w-full sm:w-auto focus:ring-2 focus:ring-[#fd645b] hover:bg-white hover:text-[#fd645b] border-[#fd645b] border transition-all"
         >
           Upload
         </button>
@@ -270,24 +280,22 @@ const OlineVideoUpload = () => {
           className="border p-2 rounded"
         >
           <option value="">All Subjects</option>
-          {filters.className && subjects[filters.className]
-            ? subjects[filters.className].map((subj) => (
-                <option key={subj} value={subj}>
-                  {subj}
-                </option>
-              ))
-            : Object.values(subjects)
-                .flat()
-                .map((subj) => (
-                  <option key={subj} value={subj}>
-                    {subj}
-                  </option>
-                ))}
+          {[
+            ...new Set(
+              filters.className && subjects[filters.className]
+                ? subjects[filters.className]
+                : Object.values(subjects).flat()
+            ),
+          ].map((subj, index) => (
+            <option key={`${subj}-${index}`} value={subj}>
+              {subj}
+            </option>
+          ))}
         </select>
       </div>
       <table className="w-full border mt-4">
         <thead>
-          <tr className="bg-[#fe0000] text-white">
+          <tr className="bg-[#fd645b] text-white">
             <th className="p-1">S.No</th>
             <th className="p-1">Subject</th>
             <th className="p-1">Class</th>
@@ -298,80 +306,88 @@ const OlineVideoUpload = () => {
           </tr>
         </thead>
         <tbody>
-          {uploads.map((upload, index) => (
-            <tr key={upload._id} className="text-center">
-              <td className="border p-2">{index + 1}</td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <input
-                    type="text"
-                    name="subject"
-                    value={editData.subject}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
-                  />
-                ) : (
-                  upload.subject
-                )}
-              </td>
-              <td className="border p-2">{upload.className}</td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <select
-                    name="language"
-                    value={editData.language}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
+          {filteredUploads.length > 0 ? (
+            filteredUploads.map((upload, index) => (
+              <tr key={upload._id || index} className="text-center">
+                <td className="border p-2">{index + 1}</td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <input
+                      type="text"
+                      name="subject"
+                      value={editData.subject || ''}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    />
+                  ) : (
+                    upload.subject
+                  )}
+                </td>
+                <td className="border p-2">{upload.className}</td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <select
+                      name="language"
+                      value={editData.language || ''}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    >
+                      <option value="English">English</option>
+                      <option value="Hindi">Hindi</option>
+                    </select>
+                  ) : (
+                    upload.language
+                  )}
+                </td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <input
+                      type="text"
+                      name="chapterName"
+                      value={editData.chapterName || ''}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    />
+                  ) : (
+                    upload.chapterName
+                  )}
+                </td>
+                <td className="border p-2">
+                  <a
+                    href={upload.youtubeLink} // Link to YouTube video
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600"
                   >
-                    <option value="English">English</option>
-                    <option value="Hindi">Hindi</option>
-                  </select>
-                ) : (
-                  upload.language
-                )}
-              </td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <input
-                    type="text"
-                    name="chapterName"
-                    value={editData.chapterName}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
+                    View Video
+                  </a>
+                </td>
+                <td className="border p-2 flex justify-center gap-2">
+                  {editId === upload._id ? (
+                    <FaSave
+                      className="text-green-600 cursor-pointer"
+                      onClick={() => handleUpdate(upload._id)}
+                    />
+                  ) : (
+                    <FaEdit
+                      className="text-blue-600 cursor-pointer"
+                      onClick={() => handleEdit(upload)}
+                    />
+                  )}
+                  <FaTrash
+                    className="text-red-600 cursor-pointer"
+                    onClick={() => handleDelete(upload._id)}
                   />
-                ) : (
-                  upload.chapterName
-                )}
-              </td>
-              <td className="border p-2">
-                <a
-                  href={upload.youtubeLink} // Link to YouTube video
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600"
-                >
-                  View Video
-                </a>
-              </td>
-              <td className="border p-2 flex justify-center gap-2">
-                {editId === upload._id ? (
-                  <FaSave
-                    className="text-green-600 cursor-pointer"
-                    onClick={() => handleUpdate(upload._id)}
-                  />
-                ) : (
-                  <FaEdit
-                    className="text-blue-600 cursor-pointer"
-                    onClick={() => handleEdit(upload)}
-                  />
-                )}
-                <FaTrash
-                  className="text-red-600 cursor-pointer"
-                  onClick={() => handleDelete(upload._id)}
-                />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="7" className="text-center p-4 text-gray-500">
+                No uploads found.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
