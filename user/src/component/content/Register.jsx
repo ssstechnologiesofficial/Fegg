@@ -107,25 +107,81 @@ const Register = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (formData.status === 'Fail' && formData.lastClassStudied === '5th') {
-      alert('You are not eligible')
+
+    // Required Field Check
+    for (const key in formData) {
+      if (
+        !formData[key] &&
+        key !== 'middleName' &&
+        key !== 'fatherMiddleName'
+      ) {
+        alert(`${key.replace(/([A-Z])/g, ' $1')} is required.`)
+        return
+      }
+    }
+
+    // Phone Number Validation
+    const phoneRegex = /^[6-9]\d{9}$/
+    if (!phoneRegex.test(formData.contactNo)) {
+      alert('Please enter a valid 10-digit phone number.')
       return
     }
 
-    // Age validation: Student should be 18 or above
+    // SSSM ID Validation (9 Digits)
+    if (!/^\d{9}$/.test(formData.sssmid)) {
+      alert('SSSM ID must be exactly 9 digits.')
+      return
+    }
+
+    // Pincode Validation (6 Digits)
+    if (!/^\d{6}$/.test(formData.pincode)) {
+      alert('Pincode must be exactly 6 digits.')
+      return
+    }
+
+    // Age Validation (Must be 18+)
     if (formData.age < 18) {
-      alert('You must be 18 years or older to register.')
+      alert('You must be at least 18 years old to register.')
+      return
+    }
+
+    // Ensure user is eligible based on status & last class studied
+    if (formData.status === 'Fail' && formData.lastClassStudied === '5th') {
+      alert('You are not eligible to register.')
       return
     }
 
     try {
-      const response = await axios.post(SummaryApi.Register.url, formData) // replace with your API URL
+      const response = await axios.post(SummaryApi.Register.url, formData)
       if (response.status === 200) {
-        alert('Registration successful')
+        alert('Registration successful!')
+      }
+      if (response.status === 201) {
+        // Success: Student registration successful
+        alert(response.data.message) // This will show "Student registered successfully"
+        console.log('Learner ID:', response.data.learnerId) // Optional: Log learner ID if needed
       }
     } catch (error) {
-      console.error('There was an error during registration:', error)
-      alert('Registration failed. Please try again.')
+      // Check if the error is from axios and has a response from the server
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        const errorMessage = error.response.data.message
+
+        if (
+          errorMessage.includes('duplicate key error') ||
+          errorMessage.includes('Contact number')
+        ) {
+          alert(errorMessage) // Display the duplicate contact number message
+        } else {
+          alert('Registration failed. Please try again.')
+        }
+      } else {
+        console.error('There was an error during registration:', error)
+        alert('Registration failed. Please try again.')
+      }
     }
   }
 
@@ -299,8 +355,11 @@ const Register = () => {
               <input
                 type="number"
                 name="pincode"
-                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                placeholder="Enter Pincode"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
+                pattern="\d{6}"
+                title="Enter a valid 6-digit pincode"
                 required
               />
             </label>
@@ -387,8 +446,10 @@ const Register = () => {
                 type="text"
                 name="contactNo"
                 placeholder="Enter Contact No"
-                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
+                pattern="[6-9]{1}[0-9]{9}"
+                title="Enter a valid 10-digit phone number"
                 required
               />
             </label>
@@ -399,9 +460,11 @@ const Register = () => {
               <input
                 type="number"
                 name="sssmid"
-                placeholder="Enter 9 digit samagra id"
-                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                placeholder="Enter 9-digit Samagra ID"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
+                pattern="\d{9}"
+                title="Enter exactly 9 digits"
                 required
               />
             </label>
