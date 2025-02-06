@@ -69,8 +69,7 @@ const AboutSection = () => {
 
   return (
     <>
-     
-      <div className="bg-primary py-12">
+      <div className="bg-[#FD645B] py-12">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           {/* Left Section - Video */}
           <div
@@ -110,9 +109,9 @@ const AboutSection = () => {
         </div>
 
         {/* Social Media Icons */}
-        <div
+        {/* <div
           ref={(el) => (socialIconsRef.current = el ? [...socialIconsRef.current, el] : [])}
-          className="fixed top-1/3 right-1 flex flex-col space-y-1 z-20"
+          className="fixed bottom-1 right-1 flex flex-col space-y-1 z-20"
         >
           <a
             href="#"
@@ -135,7 +134,7 @@ const AboutSection = () => {
           <button className="bg-gray-200 text-black w-14 h-14 flex items-center justify-center rounded-xs hover:bg-gray-300">
             Aa
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );

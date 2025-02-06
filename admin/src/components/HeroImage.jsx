@@ -72,7 +72,7 @@ const HeroImage = () => {
   return (
     <div className="flex mx-auto bg-white shadow-md rounded-lg p-6 gap-8 w-full mt-10">
       <div className="w-1/2 border border-[#fe0000] rounded-xl border-r-4 border-b-4 p-2">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">Upload Hero Image</h2>
+      <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">Upload Slider Image</h2>
       <input
         type="file"
         onChange={handleFileChange}

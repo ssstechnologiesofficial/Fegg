@@ -25,9 +25,7 @@ const HeaderTop = () => (
       <NavLink to="/newsletter" className="text-white hover:text-gray-300">
         Newsletter
       </NavLink>
-      <NavLink to="/testimonials" className="text-white hover:text-gray-300">
-        Testimonial
-      </NavLink>
+    
       <span className="text-white">|</span>
       <NavLink to="/gallery" className="text-white hover:text-gray-300">
         Gallery

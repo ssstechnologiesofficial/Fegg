@@ -93,7 +93,7 @@ const ImportantLinks = () => {
           {links.map((link, index) => (
             <div
               key={index}
-              className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-500"
+              className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-400"
             >
               <span className="font-medium text-gray-800">{link}</span>
               <span className="text-primary text-lg font-bold">→</span>
@@ -114,7 +114,7 @@ const ImportantLinks = () => {
                 key={index}
                 className="announcement-card relative bg-white p-4 shadow-md flex flex-col justify-between h-32"
               >
-                <div className="absolute top-0 left-0 bg-primary text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
+                <div className="absolute top-0 left-0 bg-[#FD645B] text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
                   {(() => {
                     const dateObj = new Date(announcement.date);
                     const day = dateObj.getDate();

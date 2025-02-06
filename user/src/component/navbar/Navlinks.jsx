@@ -49,7 +49,7 @@ const NavLinks = () => {
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          Who we are
+          About Us
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
@@ -144,6 +144,14 @@ const NavLinks = () => {
             { link: "/vocational-course", label: "Aisect EG Login" },
           ])}
       </li>
+      <li>
+      <NavLink
+          to="/contactus"
+          className="nav-link py-2"
+          activeClassName="active-link"
+        >
+          Contact Us
+        </NavLink></li>
       {/* <li
         className="relative group"
         onMouseEnter={() => setIsNotificationsOpen(true)}
@@ -193,7 +201,15 @@ const NavLinks = () => {
           to="/register"
           className=" py-2 "
         >
-          REGISTRATION
+          STUDENT REGISTRATION
+        </NavLink>
+      </li>
+       <li>
+        <NavLink
+          to="/register"
+          className=" py-2 "
+        >
+         DEPARTMENTAL ACCESS
         </NavLink>
       </li>
     </ul>
