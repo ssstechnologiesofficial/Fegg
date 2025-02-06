@@ -130,14 +130,14 @@ const AboutIntro = () => {
         <div className="container px-4 md:px-8 lg:px-16 py-12">
           {/* Breadcrumb */}
           <div className="text-sm text-gray-600 mb-6">
-            <a href="/" className="hover:text-red-500">
+            <a href="/" className="hover:text-red-400">
               Home
             </a>{" "}
             &gt; About us
           </div>
 
           {/* Heading Section */}
-          <h1 className="text-center text-2xl md:text-3xl font-bold text-red-500 mb-8" ref={textSectionRef}>
+          <h1 className="text-center text-2xl md:text-3xl font-bold text-red-400 mb-8" ref={textSectionRef}>
             ABOUT US
           </h1>
 
@@ -151,7 +151,7 @@ const AboutIntro = () => {
               the National Open School (NOS), aiming to address the educational
               needs of those unable to access traditional schooling.
             </p>
-            <button className="mt-4 px-6 py-2 bg-red-500 text-white text-sm rounded-3xl hover:bg-red-600">
+            <button className="mt-4 px-6 py-2 bg-red-400 text-white text-sm rounded-3xl hover:bg-red-600">
               READ MORE
             </button>
           </div>
@@ -174,7 +174,7 @@ const AboutIntro = () => {
                 educational needs of those unable to access traditional
                 schooling.
               </p>
-              <button className="mt-4 px-6 py-2 text-red-500 font-bold text-sm">
+              <button className="mt-4 px-6 py-2 text-red-400 font-bold text-sm">
                 READ MORE
               </button>
             </div>
@@ -200,7 +200,7 @@ const AboutIntro = () => {
                 equitable opportunities, ultimately building a prosperous and
                 inclusive society.
               </p>
-              <button className="mt-4 px-6 py-2 text-red-500 font-bold text-sm self-start">
+              <button className="mt-4 px-6 py-2 text-red-400 font-bold text-sm self-start">
                 READ MORE
               </button>
             </div>
@@ -222,7 +222,7 @@ const AboutIntro = () => {
                 knowledge and skills, fostering lifelong learning and
                 socio-economic development.
               </p>
-              <button className="mt-4 px-6 py-2 text-red-500 font-bold text-sm self-start">
+              <button className="mt-4 px-6 py-2 text-red-400 font-bold text-sm self-start">
                 READ MORE
               </button>
             </div>
@@ -250,7 +250,7 @@ const AboutIntro = () => {
                 traditional schools. The act was later amended in 1990 and 2009
                 to include additional provisions and benefits.
               </p>
-              <button className="mt-4 px-6 py-2 text-red-500 font-bold text-sm">
+              <button className="mt-4 px-6 py-2 text-red-400 font-bold text-sm">
                 READ MORE
               </button>
             </div>
@@ -258,14 +258,14 @@ const AboutIntro = () => {
 
           {/* More Features Section */}
           <div>
-            <h2 className="text-lg font-semibold text-red-500 mb-6">
+            <h2 className="text-lg font-semibold text-red-400 mb-6">
               MORE FEATURES
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Objective */}
               <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-500">
-                  OBJECTIVE <span className="ml-2 text-red-500">→</span>
+                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
+                  OBJECTIVE <span className="ml-2 text-red-400">→</span>
                 </h3>
                 <p className="text-gray-600">
                   Our goal is to improve access and quality of education for
@@ -275,8 +275,8 @@ const AboutIntro = () => {
 
               {/* Committee */}
               <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-500">
-                  COMMITTEE <span className="ml-2 text-red-500">→</span>
+                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
+                  COMMITTEE <span className="ml-2 text-red-400">→</span>
                 </h3>
                 <p className="text-gray-600">
                   xxx, xxx, aaa, bbb, ccc, ddd, eee
@@ -285,8 +285,8 @@ const AboutIntro = () => {
 
               {/* RTI */}
               <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-500">
-                  RTI <span className="ml-2 text-red-500">→</span>
+                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
+                  RTI <span className="ml-2 text-red-400">→</span>
                 </h3>
                 <p className="text-gray-600">
                   The RTE is a human right that guarantees free and compulsory

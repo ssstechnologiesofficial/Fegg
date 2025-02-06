@@ -9,13 +9,13 @@ body{
 
 
 .text-primary{
-    color: #fe0000; 
+    color: #FD645B; 
 }
 .bg-primary{
-    background-color: #fe0000;
+    background-color: #FD645B;
 }
 .border-primary{
-    border: 2px solid #fe0000;
+    border: 2px solid #FD645B;
 }
 
 .text-secondary{
@@ -46,14 +46,13 @@ body{
    line-height: 2.5rem ;
    }
 
-/* .heroImg {
+/* .bg-image {
   width: 100%;
-  height: 70vh;
-  background: url(./assets/hero.webp);
+  height: 55vh;
+  background: url(./assets/moroccan.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
-  transform: rotate(180deg); 
 } */
 .hero {
   position: relative;
