@@ -147,7 +147,7 @@ const Register = () => {
         <div className="flex justify-center items-center flex-col">
           <img
             src={fagglogo}
-            className="w-20 bg-cover bg-no-repeat object-fill"
+            className="w-24 bg-[#ffffff86] bg-cover bg-no-repeat object-fill border-[#fe0000] border-l-2  border-b-2 rounded-full py-2"
           />
           <h1 className="text-2xl font-bold text-center mb-6">
             STUDENT REGISTRATION
@@ -161,7 +161,7 @@ const Register = () => {
                 type="text"
                 name="firstName"
                 placeholder="Enter First Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -172,7 +172,7 @@ const Register = () => {
                 type="text"
                 name="middleName"
                 placeholder="Enter Middle Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
               />
             </label>
@@ -182,7 +182,7 @@ const Register = () => {
                 type="text"
                 name="lastName"
                 placeholder="Enter Last Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -196,7 +196,7 @@ const Register = () => {
                 type="text"
                 name="fatherFirstName"
                 placeholder="Enter Father's First Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -207,7 +207,7 @@ const Register = () => {
                 type="text"
                 name="fatherMiddleName"
                 placeholder="Enter Father's Middle Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
               />
             </label>
@@ -217,7 +217,7 @@ const Register = () => {
                 type="text"
                 name="fatherLastName"
                 placeholder="Enter Father's Last Name"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -230,7 +230,7 @@ const Register = () => {
               type="text"
               name="permanentAddress"
               placeholder="Enter Permanent Address"
-              className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+              className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
               onChange={handleChange}
               required
             />
@@ -241,7 +241,7 @@ const Register = () => {
               District <span className="text-red-500">*</span>
               <select
                 name="district"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border  text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -257,7 +257,7 @@ const Register = () => {
               Tehsil / Sub-District <span className="text-red-500">*</span>
               <select
                 name="tehsil"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -273,7 +273,7 @@ const Register = () => {
               Block <span className="text-red-500">*</span>
               <select
                 name="block"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -290,7 +290,7 @@ const Register = () => {
               <input
                 type="text"
                 name="village"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
               />
             </label>
@@ -299,7 +299,7 @@ const Register = () => {
               <input
                 type="number"
                 name="pincode"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -313,7 +313,7 @@ const Register = () => {
               <input
                 type="date"
                 name="dob"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleDobChange}
                 required
               />
@@ -324,7 +324,7 @@ const Register = () => {
                 type="number"
                 name="age"
                 value={formData.age}
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 readOnly
               />
             </label>
@@ -332,7 +332,7 @@ const Register = () => {
               Gender <span className="text-red-500">*</span>
               <select
                 name="gender"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full text-black border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -349,7 +349,7 @@ const Register = () => {
               Religion <span className="text-red-500">*</span>
               <select
                 name="religion"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -369,7 +369,7 @@ const Register = () => {
               Category <span className="text-red-500">*</span>
               <select
                 name="category"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -387,7 +387,7 @@ const Register = () => {
                 type="text"
                 name="contactNo"
                 placeholder="Enter Contact No"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -400,7 +400,7 @@ const Register = () => {
                 type="number"
                 name="sssmid"
                 placeholder="Enter 9 digit samagra id"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               />
@@ -409,7 +409,7 @@ const Register = () => {
               Last Class Studied <span className="text-red-500">*</span>
               <select
                 name="lastClassStudied"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -427,7 +427,7 @@ const Register = () => {
               Status <span className="text-red-500">*</span>
               <select
                 name="status"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
@@ -440,7 +440,7 @@ const Register = () => {
               Student Applying For <span className="text-red-500">*</span>
               <select
                 name="applyFor"
-                className="w-full border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
               >
