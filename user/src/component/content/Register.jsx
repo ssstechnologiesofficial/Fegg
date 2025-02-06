@@ -143,7 +143,7 @@ const Register = () => {
       className=" min-h-screen flex items-center justify-center p-4 bg-cover bg-no-repeat"
       style={{ backgroundImage: `url(${singin})` }}
     >
-      <div className="bg-[#ffffff85] p-6 border border-[#fe0000] rounded-xl border-r-4 border-b-4 shadow-lg w-full max-w-4xl">
+      <div className=" bg-[#00000085] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10   p-6 border text-white border-[#fe0000] rounded-xl border-r-4 border-b-4 shadow-lg w-full max-w-4xl">
         <div className="flex justify-center items-center flex-col">
           <img
             src={fagglogo}
@@ -155,8 +155,8 @@ const Register = () => {
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-3 gap-4">
-            <label className="block">
-              First Name <span className="text-red-500">*</span>
+            <label className="block font-semibold">
+              First Name <span className="text-red-500 font-semibold">*</span>
               <input
                 type="text"
                 name="firstName"
