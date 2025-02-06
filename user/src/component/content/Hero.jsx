@@ -5,7 +5,9 @@ import { Autoplay } from "swiper/modules";
 import axios from "axios";
 import "swiper/css";
 import SummaryApi from "../../common/SummaryApi";
-const baseUrl = import.meta.env.VITE_BACKEND_URL
+
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
 const Hero = () => {
   const popupRef = useRef(null);
   const [carouselImages, setCarouselImages] = useState([]);
@@ -30,13 +32,31 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    if (popupRef.current) {
-      gsap.fromTo(
-        popupRef.current,
-        { x: 300, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
-    }
+    const showTimer = setTimeout(() => {
+      if (popupRef.current) {
+        gsap.fromTo(
+          popupRef.current,
+          { x: 300, opacity: 0 },
+          { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+      }
+    }, 5000); // Show after 5 seconds
+
+    const hideTimer = setTimeout(() => {
+      if (popupRef.current) {
+        gsap.to(popupRef.current, {
+          x: 300,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.in",
+        });
+      }
+    }, 10000); // Hide after 10 seconds (5s delay + 5s display time)
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   return (
@@ -67,10 +87,10 @@ const Hero = () => {
       )}
 
       {/* Right-Aligned Popup */}
-      {/* <div className="absolute top-0 right-0 h-full z-10 flex items-center justify-end md:pr-20">
+      <div className="absolute top-0 right-0 h-full z-10 flex items-center justify-end md:pr-20">
         <div
           ref={popupRef}
-          className="bg-white p-6 rounded-sm border-t-4 border-red-400 shadow-lg w-96"
+          className="bg-white p-6 rounded-sm border-t-4 border-red-400 shadow-lg w-96 opacity-0"
         >
           <h2 className="text-2xl font-semibold mb-4">Open School</h2>
           <p className="text-sm text-gray-600 mb-4">
@@ -85,7 +105,7 @@ const Hero = () => {
             </button>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
