@@ -1,10 +1,46 @@
-import React from 'react'
-
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 const AISECTInfo = () => {
+  const AISECTInfoRef = useRef(null)
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const footerSections = AISECTInfoRef.current.querySelectorAll(
+      '.AISECTInfo-section'
+    )
+
+    footerSections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 90%',
+            end: 'bottom 70%',
+            toggleActions: 'play none none reverse',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   return (
-    <div className="bg-[#00043c]">
+    <div ref={AISECTInfoRef} className="bg-[#00043c]">
       {' '}
-      <div className="bg-[#00043c] p-6 rounded-xl shadow-lg max-w-2xl mx-auto text-center py-10 sm:py-20">
+      <div className=" p-6 rounded-xl shadow-lg max-w-2xl mx-auto text-center py-10 sm:py-20 AISECTInfo-section">
         <h2 className="sm:text-4xl text-3xl font-semibold text-[#fd645b] mb-8">
           About AISECT
         </h2>

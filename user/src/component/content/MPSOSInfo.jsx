@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import mpsoLogo from '../../../src/assets/mpsoslogo.png'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 const MPSOSInfo = () => {
+  const footerRef = useRef(null)
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const footerSections = footerRef.current.querySelectorAll('.MPSOS-section')
+
+    footerSections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 90%',
+            end: 'bottom 70%',
+            toggleActions: 'play none none reverse',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
   return (
-    <div className="flex justify-center items-center">
-      <div className="p-6 px-20 bg-gray-100 rounded-lg shadow-md shadow-[#fd645b]  sm:mx-40 sm:my-10 flex justify-center flex-col items-center">
+    <div ref={footerRef} className="flex justify-center items-center ">
+      <div className="p-6 sm:px-20 px-10 bg-gray-100 rounded-lg shadow-md shadow-[#fd645b]  sm:mx-40 sm:my-10 flex justify-center flex-col items-center MPSOS-section">
         <img
           src={mpsoLogo}
           alt="MPSOS Logo"
