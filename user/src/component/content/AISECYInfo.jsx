@@ -1,0 +1,27 @@
+import React from 'react'
+
+const AISECTInfo = () => {
+  return (
+    <div className="bg-[#00043c]">
+      {' '}
+      <div className="bg-[#00043c] p-6 rounded-xl shadow-lg max-w-2xl mx-auto text-center py-10 sm:py-20">
+        <h2 className="sm:text-4xl text-3xl font-semibold text-[#fd645b] mb-8">
+          About AISECT
+        </h2>
+        <p className="text-gray-100 sm:text-lg text-base">
+          AISECTonline.com भारत के अग्रणी ऑनलाइन सेवा नेटवर्क में से एक है। यह
+          विभिन्न G2C (सरकार से नागरिक) और B2C (व्यवसाय से) ग्राहक सेवाओं का
+          गुलदस्ता है। अपेक्षाकृत कम समय के दौरान{' '}
+          <span className="text-[#fd645b] font-medium">aisectonline.com </span>
+          ने ग्रामीण, अर्ध-शहरी और शहरी क्षेत्रों में भी गहरी पैठ बना ली है।
+        </p>
+        <p className="text-gray-100 sm:text-lg text-base mt-4">
+          आज AISECTonline 28 राज्यों और 6 केंद्र शासित प्रदेशों में सेवाओं का एक
+          बहुत व्यापक स्पेक्ट्रम प्रदान करता है।
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default AISECTInfo
