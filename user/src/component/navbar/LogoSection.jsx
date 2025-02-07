@@ -13,7 +13,7 @@ const LogoSection = () => (
         <h1 className="text-lg font-bold text-gray-800">
           Foundation to Educate Girls Globally
         </h1>
-        <p className="text-sm text-gray-500">(एबीसी स्टेट ओपन स्कूल)</p>
+        {/* <p className="text-sm text-gray-500">(एबीसी स्टेट ओपन स्कूल)</p> */}
       </div>
     </div>
 
@@ -23,7 +23,7 @@ const LogoSection = () => (
         <h1 className="text-md font-bold text-gray-800">
           मध्य प्रदेश राज्य मुक्त स्कूल शिक्षा बोर्ड
         </h1>
-        <p className="text-md font-bold text-gray-800">भोपाल</p>
+        <p className="text-md font-bold text-gray-800">प्रदेश शासन, स्कूल शिक्षा विभाग</p>
       </div>
       <div className="w-20 h-20 rounded-full">
         <img src={logo1} alt="Second Logo" className="object-contain" />
