@@ -1,111 +1,123 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const studentSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      required: true
+      required: true,
     },
     middleName: {
       type: String,
-      default: ''
+      default: '',
     },
     lastName: {
       type: String,
-      required: true
+      required: true,
     },
     fatherFirstName: {
       type: String,
-      required: true
+      required: true,
     },
     fatherMiddleName: {
       type: String,
-      default: ''
+      default: '',
     },
     fatherLastName: {
       type: String,
-      required: true
+      required: true,
     },
     permanentAddress: {
       type: String,
-      required: true
+      required: true,
     },
     block: {
       type: String,
-      required: true
+      required: true,
     },
     village: {
       type: String,
-      default: ''
+      default: '',
     },
     district: {
       type: String,
-      required: true
+      required: true,
     },
     tehsil: {
       type: String,
-      required: true
+      required: true,
     },
     pincode: {
       type: Number,
-      required: true
+      required: true,
     },
     dob: {
       type: Date,
-      required: true
+      required: true,
     },
     age: {
       type: Number,
-      required: true
+      required: true,
     },
     gender: {
       type: String,
       required: true,
-      enum: ['Male', 'Female', 'Other']
+      enum: ['Male', 'Female', 'Other'],
     },
     religion: {
       type: String,
       required: true,
-      enum: ['Hindu', 'Muslim', 'Buddhist', 'Christian', 'Jewish', 'Parsi', 'Sikh', 'Jain', 'Others']
+      enum: [
+        'Hindu',
+        'Muslim',
+        'Buddhist',
+        'Christian',
+        'Jewish',
+        'Parsi',
+        'Sikh',
+        'Jain',
+        'Others',
+      ],
     },
     category: {
       type: String,
       required: true,
-      enum: ['General', 'SC', 'ST', 'OBC', 'EWS']
+      enum: ['General', 'SC', 'ST', 'OBC', 'EWS'],
     },
     contactNo: {
       type: String,
       required: true,
-      match: /^[0-9]{10}$/  // Assuming contact number is a 10-digit number
+      match: /^[0-9]{10}$/, // Assuming contact number is a 10-digit number
     },
     sssmid: {
       type: Number,
       required: true,
-      length: 9  // Assuming Samagra ID is 9 digits
+      length: 9, // Assuming Samagra ID is 9 digits
     },
     learnerId: {
       type: String,
       required: true,
-      length: 14 
+      length: 14,
     },
     lastClassStudied: {
       type: String,
       required: true,
-      enum: ['5th', '6th', '7th', '8th', '9th', '10th']
+      enum: ['5th', '6th', '7th', '8th', '9th', '10th'],
     },
     applyFor: {
       type: String,
       required: true,
-      enum: ['New Student', 'TOC', 'SYC']
+      enum: ['New Student', 'TOC', 'SYC'],
     },
     status: {
       type: String,
       required: true,
-      enum: ['Pass', 'Fail']
-    }
-  }, {
-    timestamps: true  
-  });
+      enum: ['Pass', 'Fail'],
+    },
+  },
+  {
+    timestamps: true,
+  }
+)
 
-const studentRegister = mongoose.model("Students", studentSchema);
-module.exports =studentRegister;
+const studentRegister = mongoose.model('Students', studentSchema)
+module.exports = studentRegister

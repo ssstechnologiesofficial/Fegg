@@ -101,11 +101,32 @@ const {
   getAllStudents,
   updateStudent,
   deleteStudent,
+  validateStudentRegistration,
 } = require('../controller/studentController')
-const { createMockTest, getMockTests, mockTestDelete, getStartMockTest, getMockTestById } = require('../controller/mocktest/mocktestController')
-const { submitMockTest, getResult, getALLResult } = require('../controller/mocktest/resultController')
-const { getSubjects, createSubject, updateSubject, deleteSubject } = require('../controller/mocktest/subjectController')
-const { getQuestionsBySubject, updateQuestion, deleteQuestion, createQuestion } = require('../controller/mocktest/questionsController')
+const {
+  createMockTest,
+  getMockTests,
+  mockTestDelete,
+  getStartMockTest,
+  getMockTestById,
+} = require('../controller/mocktest/mocktestController')
+const {
+  submitMockTest,
+  getResult,
+  getALLResult,
+} = require('../controller/mocktest/resultController')
+const {
+  getSubjects,
+  createSubject,
+  updateSubject,
+  deleteSubject,
+} = require('../controller/mocktest/subjectController')
+const {
+  getQuestionsBySubject,
+  updateQuestion,
+  deleteQuestion,
+  createQuestion,
+} = require('../controller/mocktest/questionsController')
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -160,12 +181,12 @@ router.post('/storeUserDownload', storeUserDownload)
 router.get('/getAllDownloads', getAllDownloads)
 
 // student register
-router.post('/register', registerStudent)
+router.post('/register', validateStudentRegistration, registerStudent)
 router.get('/register', getAllStudents)
 router.put('/register/:id', updateStudent)
 router.delete('/register/:id', deleteStudent)
 
-// mock test 
+// mock test
 // mocktest
 router.post('/mock-test', upload.single('MockLogo'), createMockTest)
 router.get('/mock-tests', getMockTests)
@@ -183,5 +204,5 @@ router.post('/questions', createQuestion)
 router.get('/questions', getQuestionsBySubject)
 router.put('/questions/:questionId', updateQuestion)
 router.delete('/questions/:id', deleteQuestion)
-router.get('/mockTests/:id',getMockTestById);
+router.get('/mockTests/:id', getMockTestById)
 module.exports = router
