@@ -1,4 +1,39 @@
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 const CourseDetails = () => {
+  const CourseRef = useRef(null)
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const footerSections = CourseRef.current.querySelectorAll('.Course-section')
+
+    footerSections.forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 90%',
+            end: 'bottom 70%',
+            toggleActions: 'play none none reverse',
+            once: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      )
+    })
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
   const courses = [
     {
       code: 201,
@@ -107,11 +142,11 @@ const CourseDetails = () => {
   ]
 
   return (
-    <div className="p-7 bg-[#00043c] text-white">
-      <h2 className="text-2xl sm:text-4xl font-bold mb-4 mt-5 text-center">
+    <div ref={CourseRef} className="p-7 bg-[#00043c] text-white">
+      <h2 className="text-2xl sm:text-4xl font-bold mb-4 mt-5 text-center Course-section">
         हाईस्कूल हेतु विषय
       </h2>
-      <table className="w-full border border-collapse border-gray-400">
+      <table className="w-full border border-collapse border-gray-400 Course-section">
         <thead>
           <tr className=" bg-[#fd645b] text-white">
             <th className="border p-2">कोड</th>
