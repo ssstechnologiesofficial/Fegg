@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../common/SummaryAPI'
-
+import * as XLSX from 'xlsx' 
 const StudentList = () => {
   const [students, setStudents] = useState([])
   const [selectedStudent, setSelectedStudent] = useState(null)
@@ -61,10 +61,25 @@ const StudentList = () => {
       }
     }
   }
+ // Export data to Excel
+ const exportToExcel = () => {
+  const worksheet = XLSX.utils.json_to_sheet(students)
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Students')
 
+  // Download the file
+  XLSX.writeFile(workbook, 'StudentList.xlsx')
+}
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h2 className="text-2xl font-bold mb-4">Admin - Student List</h2>
+       {/* Export Button */}
+       <button
+        className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
+        onClick={exportToExcel}
+      >
+        Export to Excel
+      </button>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
         <tr className="bg-primary text-white">

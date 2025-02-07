@@ -116,7 +116,7 @@ const NavLinks = () => {
             // djfj
             { link: "/e-content", label: "Online Books" },
             { link: "/12th-class", label: "Syllabus" },
-            { link: "/vocational-course", label: "Recorded Videos" },
+            { link: "/onlinevideo", label: "Recorded Videos" },
             { link: "/vocational-course", label: "Blue Print" },
             { link: "/vocational-course", label: "Previous Year Question Paper" },
             { link: "/vocational-course", label: "Practice Set" },
