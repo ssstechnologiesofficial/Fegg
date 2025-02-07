@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { FaHome } from 'react-icons/fa'
 
 const NavLinks = () => {
-  const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isProgrammesOpen, setIsProgrammesOpen] = useState(false);
-  const [isAdmissionOpen, setIsAdmissionOpen] = useState(false);
-  const [isEventsOpen, setIsEventsOpen] = useState(false);
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-  const [isContactusOpen, setIsContactusOpen] = useState(false);
-  const [isStudentCornerOpen, setIsStudentCornerOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
+  const [isProgrammesOpen, setIsProgrammesOpen] = useState(false)
+  const [isAdmissionOpen, setIsAdmissionOpen] = useState(false)
+  const [isEventsOpen, setIsEventsOpen] = useState(false)
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
+  const [isContactusOpen, setIsContactusOpen] = useState(false)
+  const [isStudentCornerOpen, setIsStudentCornerOpen] = useState(false)
 
   const dropdownMenu = (menuItems) => (
     <ul className="absolute left-0 z-10 top-full bg-white shadow-md w-40">
@@ -17,7 +17,7 @@ const NavLinks = () => {
         <li
           key={index}
           className={`border-l-4 ${
-            index % 2 === 0 ? "border-red-500" : "border-red-300"
+            index % 2 === 0 ? 'border-red-500' : 'border-red-300'
           }`}
         >
           <NavLink to={item.link} className="dropdown-item border-t py-2 px-4">
@@ -26,7 +26,7 @@ const NavLinks = () => {
         </li>
       ))}
     </ul>
-  );
+  )
 
   return (
     <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12  space-y-4 md:space-y-0 md:space-x-6">
@@ -44,19 +44,15 @@ const NavLinks = () => {
         onMouseEnter={() => setIsAboutOpen(true)}
         onMouseLeave={() => setIsAboutOpen(false)}
       >
-        <NavLink
-          to="/"
-          className="nav-link py-2"
-          activeClassName="active-link"
-        >
+        <NavLink to="/" className="nav-link py-2" activeClassName="active-link">
           About Us
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
-            { link: "/about", label: "About us" },
-            { link: "/vision", label: "Vision & Mission" },
-            { link: "/ordinance", label: "EG Senior Management Team" },
-            { link: "/objectives", label: "MPSOS Management Team" },
+            { link: '/about', label: 'About us' },
+            { link: '/vision', label: 'Vision & Mission' },
+            { link: '/ordinance', label: 'EG Senior Management Team' },
+            { link: '/objectives', label: 'MPSOS Management Team' },
             // { link: "/committee", label: "Committee" },
             // { link: "/rti", label: "RTI" },
           ])}
@@ -75,7 +71,7 @@ const NavLinks = () => {
         </NavLink>
         {isProgrammesOpen &&
           dropdownMenu([
-            { link: "/10th-class", label: "Pragati" },
+            { link: '/10th-class', label: 'Pragati' },
             // { link: "/12th-class", label: "12th Class" },
             // { link: "/vocational-course", label: "Vocational Course" },
           ])}
@@ -114,13 +110,16 @@ const NavLinks = () => {
         {isStudentCornerOpen &&
           dropdownMenu([
             // djfj
-            { link: "/e-content", label: "Online Books" },
-            { link: "/12th-class", label: "Syllabus" },
-            { link: "/onlinevideo", label: "Recorded Videos" },
-            { link: "/vocational-course", label: "Blue Print" },
-            { link: "/vocational-course", label: "Previous Year Question Paper" },
-            { link: "/vocational-course", label: "Practice Set" },
-            { link: "/vocational-course", label: "Model Answer Sheet" },
+            { link: '/e-content', label: 'Online Books' },
+            { link: '/12th-class', label: 'Syllabus' },
+            { link: '/onlinevideo', label: 'Recorded Videos' },
+            { link: '/vocational-course', label: 'Blue Print' },
+            {
+              link: '/vocational-course',
+              label: 'Previous Year Question Paper',
+            },
+            { link: '/vocational-course', label: 'Practice Set' },
+            { link: '/vocational-course', label: 'Model Answer Sheet' },
           ])}
       </li>
       <li
@@ -137,21 +136,22 @@ const NavLinks = () => {
         </NavLink>
         {isEventsOpen &&
           dropdownMenu([
-            { link: "/10th-class", label: "About MPSOS" },
-            { link: "/12th-class", label: "Prospectus" },
-            { link: "/vocational-course", label: "Registration procedure" },
-            { link: "/vocational-course", label: "About Aisect" },
-            { link: "/vocational-course", label: "Aisect EG Login" },
+            { link: '/MPSOSInfo', label: 'About MPSOS' },
+            { link: '/12th-class', label: 'Prospectus' },
+            { link: '/vocational-course', label: 'Registration procedure' },
+            { link: '/AISECTInfo', label: 'About Aisect' },
+            { link: '/vocational-course', label: 'Aisect EG Login' },
           ])}
       </li>
       <li>
-      <NavLink
+        <NavLink
           to="/contactus"
           className="nav-link py-2"
           activeClassName="active-link"
         >
           Contact Us
-        </NavLink></li>
+        </NavLink>
+      </li>
       {/* <li
         className="relative group"
         onMouseEnter={() => setIsNotificationsOpen(true)}
@@ -196,24 +196,18 @@ const NavLinks = () => {
         
       </li>
       */}
-       <li>
-        <NavLink
-          to="/register"
-          className=" py-2 "
-        >
+      <li>
+        <NavLink to="/register" className=" py-2 ">
           STUDENT REGISTRATION
         </NavLink>
       </li>
-       <li>
-        <NavLink
-          to="/register"
-          className=" py-2 "
-        >
-         DEPARTMENTAL ACCESS
+      <li>
+        <NavLink to="/register" className=" py-2 ">
+          DEPARTMENTAL ACCESS
         </NavLink>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default NavLinks;
+export default NavLinks

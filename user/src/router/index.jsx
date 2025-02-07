@@ -21,6 +21,9 @@ import Econtent12th from '../component/content/Econtent12th'
 import OlineVideoOption from '../component/content/OlineVideoOption'
 import Video10th from '../component/content/Video10th'
 import Video12th from '../component/content/Video12th'
+import MPSOSInfo from '../component/content/MPSOSInfo'
+import PrivacyPolicy from '../component/content/PrivacyPolicy'
+import AISECTInfo from '../component/content/AISECYInfo'
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +65,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'privacy-policy',
-        element: <Privacy />,
+        element: <PrivacyPolicy />,
       },
       {
         path: 'terms-conditions',
         element: <TermsConditions />,
+      },
+      {
+        path: 'MPSOSInfo',
+        element: <MPSOSInfo />,
       },
       {
         path: 'e-content',
@@ -91,6 +98,10 @@ export const router = createBrowserRouter([
       {
         path: 'class12video',
         element: <Video12th />,
+      },
+      {
+        path: 'AISECTInfo',
+        element: <AISECTInfo />,
       },
     ],
   },

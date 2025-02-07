@@ -1,18 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 import logo from '../../assets/logo.png'
-import { FaYoutube, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa'
 
 const Footer = () => {
-  const footerRef = useRef(null);
+  const footerRef = useRef(null)
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  
-    const footerSections = footerRef.current.querySelectorAll('.footer-section');
-  
+    gsap.registerPlugin(ScrollTrigger)
+
+    const footerSections = footerRef.current.querySelectorAll('.footer-section')
+
     footerSections.forEach((section, index) => {
       gsap.fromTo(
         section,
@@ -31,14 +31,13 @@ const Footer = () => {
             invalidateOnRefresh: true,
           },
         }
-      );
-    });
-  
+      )
+    })
+
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-  
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
 
   return (
     <footer
@@ -97,6 +96,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/privacy-policy" className="hover:underline">
+                  privacy policy
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact-us" className="hover:underline">
                   Contact Us
                 </Link>
@@ -106,9 +110,7 @@ const Footer = () => {
 
           {/* Address and Email */}
           <div className="flex flex-col items-center md:items-start footer-section">
-            <h3 className="text-lg font-semibold text-red-400 mb-4">
-              Address
-            </h3>
+            <h3 className="text-lg font-semibold text-red-400 mb-4">Address</h3>
             <p className="text-gray-400 text-sm">
               Head Office Lucknow xxxx, Viram Khand - xx, Gomti Nagar, Near
               Manisha Mandir, Lucknow -XXXXXX, Uttar Pradesh
@@ -122,35 +124,34 @@ const Footer = () => {
             </p>
           </div>
           {/* Social Media Links */}
-        <div className="flex flex-col items-center md:items-start">
-        <h3 className="text-lg font-semibold text-red-400 mb-4">
-             Follow Us
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-semibold text-red-400 mb-4">
+              Follow Us
             </h3>
-        <div className="flex justify-center space-x-4 footer-section">
-        
-          <a
-            href="#"
-            className="bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-red-700 transition"
-          >
-            <FaYoutube className="text-2xl" />
-          </a>
-          <a
-            href="#"
-            className="bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-700 transition"
-          >
-            <FaFacebook className="text-2xl" />
-          </a>
-          <a
-            href="#"
-            className="bg-blue-400 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
-          >
-            <FaTwitter className="text-2xl" />
-          </a>
-          <button className="bg-gray-200 text-black w-12 h-12 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
-            Aa
-          </button>
-        </div>
-        </div>
+            <div className="flex justify-center space-x-4 footer-section">
+              <a
+                href="#"
+                className="bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-red-700 transition"
+              >
+                <FaYoutube className="text-2xl" />
+              </a>
+              <a
+                href="#"
+                className="bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-700 transition"
+              >
+                <FaFacebook className="text-2xl" />
+              </a>
+              <a
+                href="#"
+                className="bg-blue-400 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
+              >
+                <FaTwitter className="text-2xl" />
+              </a>
+              <button className="bg-gray-200 text-black w-12 h-12 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+                Aa
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Section */}
@@ -164,7 +165,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
