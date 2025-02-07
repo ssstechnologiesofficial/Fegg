@@ -138,9 +138,9 @@ const NavLinks = () => {
           dropdownMenu([
             { link: '/MPSOSInfo', label: 'About MPSOS' },
             { link: '/12th-class', label: 'Prospectus' },
-            { link: '/vocational-course', label: 'Registration procedure' },
+            { link: '/CourseDetails', label: 'Registration procedure' },
             { link: '/AISECTInfo', label: 'About Aisect' },
-            { link: '/vocational-course', label: 'Aisect EG Login' },
+            { link: '/FeesDetails', label: 'Aisect EG Login' },
           ])}
       </li>
       <li>

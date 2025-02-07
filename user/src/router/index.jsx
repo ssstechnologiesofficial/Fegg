@@ -24,6 +24,8 @@ import Video12th from '../component/content/Video12th'
 import MPSOSInfo from '../component/content/MPSOSInfo'
 import PrivacyPolicy from '../component/content/PrivacyPolicy'
 import AISECTInfo from '../component/content/AISECYInfo'
+import FeesDetails from '../component/content/FeesDetails'
+import CourseDetails from '../component/content/CourseDetails'
 
 export const router = createBrowserRouter([
   {
@@ -102,6 +104,14 @@ export const router = createBrowserRouter([
       {
         path: 'AISECTInfo',
         element: <AISECTInfo />,
+      },
+      {
+        path: 'FeesDetails',
+        element: <FeesDetails />,
+      },
+      {
+        path: 'CourseDetails',
+        element: <CourseDetails />,
       },
     ],
   },
