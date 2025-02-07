@@ -36,8 +36,8 @@ const Hero = () => {
       if (popupRef.current) {
         gsap.fromTo(
           popupRef.current,
-          { x: 300, opacity: 0 },
-          { x: 0, opacity: 1, duration: 1, ease: "power3.out" }
+          { y: 300, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
         );
       }
     }, 5000); // Show after 5 seconds
@@ -45,7 +45,7 @@ const Hero = () => {
     const hideTimer = setTimeout(() => {
       if (popupRef.current) {
         gsap.to(popupRef.current, {
-          x: 300,
+          y: 300,
           opacity: 0,
           duration: 1,
           ease: "power3.in",
