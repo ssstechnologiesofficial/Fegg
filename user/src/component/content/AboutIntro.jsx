@@ -251,26 +251,7 @@ const AboutIntro = () => {
               alt="History"
               className="w-1/3 rounded-md object-cover"
             />
-            <div className="w-2/3 pl-6">
-              <h3 className="text-xl font-semibold text-gray-800 p-6 mb-4">
-                ORDINANCE/ACT
-              </h3>
-              <p className="text-gray-600">
-                The Open Schooling Act, 1989 is a law that was passed in India
-                to promote distance education and open schooling. This act
-                allowed the establishment of open schools, which offer education
-                and examination facilities to students of all ages, regardless
-                of their age, gender, caste, religion, or place of birth. The
-                act also aimed to provide educational opportunities to
-                disadvantaged groups and children who could not attend
-                traditional schools. The act was later amended in 1990 and 2009
-                to include additional provisions and benefits.
-              </p>
-              <button className="mt-4 px-6 py-2 text-red-400 font-bold text-sm">
-                READ MORE
-              </button>
-            </div>
-          </div>
+      
 
           {/* More Features Section */}
           <div>
@@ -285,27 +266,6 @@ const AboutIntro = () => {
                 </h3>
                 <p className="text-gray-600">
                   Educate Girls aims to impact 10 million learners by 2035.
-                </p>
-              </div>
-
-              {/* Committee */}
-              <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
-                  COMMITTEE <span className="ml-2 text-red-400">→</span>
-                </h3>
-                <p className="text-gray-600">
-                  xxx, xxx, aaa, bbb, ccc, ddd, eee
-                </p>
-              </div>
-
-              {/* RTI */}
-              <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
-                  RTI <span className="ml-2 text-red-400">→</span>
-                </h3>
-                <p className="text-gray-600">
-                  The RTE is a human right that guarantees free and compulsory
-                  education for children.
                 </p>
               </div>
             </div>
