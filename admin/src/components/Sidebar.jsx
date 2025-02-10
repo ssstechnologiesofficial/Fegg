@@ -92,7 +92,13 @@ const Sidebar = () => {
             <FiVideo className="mr-2" size={20} />
             {!isCollapsed && <span>Online Video Upload</span>}
           </Link>
-
+          <Link
+            to="PreviousPaper"
+            className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <FaClipboardList className="mr-2" size={20} />
+            {!isCollapsed && <span>Previous Years Paper</span>}
+          </Link>
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"

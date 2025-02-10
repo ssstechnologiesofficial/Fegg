@@ -23,6 +23,7 @@ import CreateSubjectForm from '../components/practice/CreateSubject'
 import CreateChapterForm from '../components/practice/CreateChapter'
 import QuestionBank from '../components/practice/QuestionBank'
 import CreatePracticeSet from '../components/practice/CreatePracticeSet'
+import PreviousPaper from '../components/PreviousPaper'
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +110,10 @@ export const router = createBrowserRouter([
           {
             path: 'create-questions',
             element: <CreateQuestion />,
+          },
+          {
+            path: 'PreviousPaper',
+            element: <PreviousPaper />,
           },
         ],
       },

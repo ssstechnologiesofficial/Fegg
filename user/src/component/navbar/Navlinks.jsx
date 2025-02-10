@@ -50,8 +50,8 @@ const NavLinks = () => {
         {isAboutOpen &&
           dropdownMenu([
             { link: '/about', label: 'About us' },
-            { link: '/vision', label: 'Vision & Mission' },
-            { link: '/ordinance', label: 'EG Senior Management Team' },
+            { link: '/about', label: 'Vision & Mission' },
+            { link: '/EGteam', label: 'EG Senior Management Team' },
             { link: '/objectives', label: 'MPSOS Management Team' },
             // { link: "/committee", label: "Committee" },
             // { link: "/rti", label: "RTI" },
@@ -71,7 +71,7 @@ const NavLinks = () => {
         </NavLink>
         {isProgrammesOpen &&
           dropdownMenu([
-            { link: '/10th-class', label: 'Pragati' },
+            { link: '/Pragati', label: 'Pragati' },
             // { link: "/12th-class", label: "12th Class" },
             // { link: "/vocational-course", label: "Vocational Course" },
           ])}
@@ -115,7 +115,7 @@ const NavLinks = () => {
             { link: '/onlinevideo', label: 'Recorded Videos' },
             { link: '/vocational-course', label: 'Blue Print' },
             {
-              link: '/vocational-course',
+              link: '/PreviousPaperOption',
               label: 'Previous Year Question Paper',
             },
             { link: '/vocational-course', label: 'Practice Set' },
