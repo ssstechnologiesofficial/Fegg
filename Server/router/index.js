@@ -189,7 +189,7 @@ router.delete('Ovideodelete/:id', videoController.deleteVideo)
 router.post('/storeUserDownload', storeUserDownload)
 router.get('/getAllDownloads', getAllDownloads)
 
-// -------------E-material
+// ------------- Paper
 router.post('/PreviousPaperpost', upload.single('file'), createPreviousPaper)
 router.get('/PreviousPaperget', getAllPreviousPaper)
 router.put('/PreviousPaper/:id', updatePreviousPaper)

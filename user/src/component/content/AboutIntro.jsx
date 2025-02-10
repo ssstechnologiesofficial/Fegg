@@ -193,7 +193,7 @@ const AboutIntro = () => {
           </div>
 
           {/* Vision and Mission Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8" id="vm">
             {/* Vision */}
             <div
               className="flex flex-col border rounded-md"

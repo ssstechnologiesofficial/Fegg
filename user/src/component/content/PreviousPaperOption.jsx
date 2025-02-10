@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import op10 from '../../../public/class10.jpg'
 import op12 from '../../../public/class12.jpg'
 import PY10e from '../../../src/assets/PP10.jpg'
-import PY10h from '../../../src/assets/PP10.jpg'
+import PY10h from '../../../src/assets/pp.jpg'
 
 const PreviousPaperOption = () => {
   return (

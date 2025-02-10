@@ -2,14 +2,11 @@ const mongoose = require('mongoose')
 
 const PreviousPaper = new mongoose.Schema(
   {
-    sessionYear: {
+    year: {
       type: String,
       required: true,
     },
-    sessionMonth: {
-      type: String,
-      required: true,
-    },
+
     className: {
       type: String,
       required: true,

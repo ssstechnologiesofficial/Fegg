@@ -4,11 +4,11 @@ const PreviousPaperModel = require('../model/PreviousYearModel')
 const createPreviousPaper = async (req, res) => {
   console.log(req.body)
   try {
-    const { sessionYear, sessionMonth, className, subject, language } = req.body
+    const { year, className, subject, language } = req.body
     const file = req.file.path
     const ebook = new PreviousPaperModel({
-      sessionYear,
-      sessionMonth,
+      year,
+
       className,
       subject,
       language,
@@ -51,19 +51,18 @@ const getPreviousPaperByClass = async (req, res) => {
 const updatePreviousPaper = async (req, res) => {
   try {
     const { id } = req.params
-    const { sessionYear, sessionMonth, className, subject, language, file } =
-      req.body
-    const ebook = await PreviousPaperModel.findByIdAndUpdate(
+    const { year, className, subject, language, file } = req.body
+    const Ppaper = await PreviousPaperModel.findByIdAndUpdate(
       id,
-      { sessionYear, sessionMonth, className, subject, language, Volume, file },
+      { year, className, subject, language, file },
       { new: true }
     )
-    if (!ebook) {
-      return res.status(404).json({ message: 'Ebook not found' })
+    if (!Ppaper) {
+      return res.status(404).json({ message: 'Paper not found' })
     }
-    res.status(200).json({ message: 'Ebook updated successfully', ebook })
+    res.status(200).json({ message: 'Paper updated successfully', Ppaper })
   } catch (error) {
-    res.status(500).json({ message: 'Error updating ebook', error })
+    res.status(500).json({ message: 'Paper updating ebook', error })
   }
 }
 

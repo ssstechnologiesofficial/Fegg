@@ -9,12 +9,9 @@ const Class10HindiPapers = () => {
   useEffect(() => {
     const fetchPapers = async () => {
       try {
-        const response = await axios.get(
-          `${SummaryApi.PreviousPaperpost.url}`,
-          {
-            params: { className: '10', language: 'English' },
-          }
-        )
+        const response = await axios.get(`${SummaryApi.PreviousPaperget.url}`, {
+          params: { className: '10', language: 'Hindi' },
+        })
         setPapers(response.data)
       } catch (error) {
         console.error('Error fetching papers:', error)

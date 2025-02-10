@@ -50,7 +50,7 @@ const NavLinks = () => {
         {isAboutOpen &&
           dropdownMenu([
             { link: '/about', label: 'About us' },
-            { link: '/vision', label: 'Vision & Mission' },
+            { link: '/about', label: 'Vision & Mission' },
             { link: '/EGteam', label: 'EG Senior Management Team' },
             { link: '/objectives', label: 'MPSOS Management Team' },
             // { link: "/committee", label: "Committee" },

@@ -164,7 +164,7 @@ const SummaryApi = {
   },
   PreviousPaperId: {
     url: `${backendDomain}/api/PreviousPaper/:id`,
-    method: 'get',
+    method: 'put',
   },
 }
 

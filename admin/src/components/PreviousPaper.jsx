@@ -11,8 +11,7 @@ const PreviousPaper = () => {
   const [editData, setEditData] = useState({})
   const [formData, setFormData] = useState({})
   const [filters, setFilters] = useState({
-    sessionYear: '',
-    sessionMonth: '',
+    year: '',
     className: '',
     subject: '',
   })
@@ -25,7 +24,14 @@ const PreviousPaper = () => {
   useEffect(() => {
     axios
       .get(SummaryApi.PreviousPaper.url)
-      .then((response) => setUploads(response.data))
+      .then((response) => {
+        console.log('API Response:', response.data) // Debugging
+        if (Array.isArray(response.data)) {
+          setUploads(response.data)
+        } else {
+          setUploads([]) // Prevents undefined issues
+        }
+      })
       .catch((error) => console.error('Error fetching eBooks:', error))
   }, [])
 
@@ -63,7 +69,9 @@ const PreviousPaper = () => {
         editData
       )
       setUploads(
-        uploads.map((item) => (item._id === id ? response.data.ebook : item))
+        uploads.map((item) =>
+          item._id === id ? response.data.PreviousPaper : item
+        )
       )
       setEditId(null)
     } catch (error) {
@@ -72,15 +80,13 @@ const PreviousPaper = () => {
   }
 
   useEffect(() => {
-    const filteredData = uploads.filter((upload) => {
-      return (
-        (!filters.sessionYear || upload.sessionYear === filters.sessionYear) &&
-        (!filters.sessionMonth ||
-          upload.sessionMonth === filters.sessionMonth) &&
+    if (!Array.isArray(uploads)) return // Prevents undefined errors
+    const filteredData = uploads.filter(
+      (upload) =>
+        (!filters.year || upload.year === filters.year) &&
         (!filters.className || upload.className === filters.className) &&
         (!filters.subject || upload.subject === filters.subject)
-      )
-    })
+    )
     setFilteredUploads(filteredData)
   }, [filters, uploads])
 
@@ -105,8 +111,7 @@ const PreviousPaper = () => {
         )
         setUploads([...uploads, response.data])
         setFormData({
-          sessionYear: '',
-          sessionMonth: '',
+          year: '',
           className: '10',
           subject: subjects['10'][0],
           language: 'English',
@@ -133,32 +138,14 @@ const PreviousPaper = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
           <div className="mb-4">
-            <label className="font-semibold">Session:</label>
-            <div className="flex gap-3">
-              <select
-                name="sessionYear"
-                value={formData.sessionYear}
-                onChange={handleChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
-              >
-                <option value=""></option>
-                <option value="2023-2024">2023-2024</option>
-                <option value="2024-2025">2024-2025</option>
-                <option value="2025-2026">2025-2026</option>
-              </select>
-              <select
-                name="sessionMonth"
-                value={formData.sessionMonth}
-                onChange={handleChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
-              >
-                <option value=""></option>
-                <option value="April-October">April-October</option>
-                <option value="November-March">November-March</option>
-              </select>
-            </div>
+            <label className="font-semibold">Year:</label>
+            <input
+              name="year"
+              type="year"
+              onChange={handleChange}
+              required
+              className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
+            />
           </div>
 
           <div className="flex gap-3 flex-wrap">
@@ -298,86 +285,88 @@ const PreviousPaper = () => {
             <th className="p-1">Subject</th>
             <th className="p-1">Class</th>
             <th className="p-1">Language</th>
-            <th className="p-1">Volume</th>
-            <th className="p-1">Uploaded File</th>
+            <th className="p-1">Year</th>
+            <th className="p-1">Uploaded Paper</th>
             <th className="p-1">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredUploads.map((upload, index) => (
-            <tr key={upload._id} className="text-center">
-              <td className="border p-2">{index + 1}</td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <input
-                    type="text"
-                    name="subject"
-                    value={editData.subject}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
-                  />
-                ) : (
-                  upload.subject
-                )}
-              </td>
-              <td className="border p-2">{upload.className}</td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <select
-                    name="language"
-                    value={editData.language}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
+          {filteredUploads.map((upload, index) =>
+            upload ? (
+              <tr key={upload._id} className="text-center">
+                <td className="border p-2">{index + 1}</td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <input
+                      type="text"
+                      name="subject"
+                      value={editData.subject}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    />
+                  ) : (
+                    upload.subject
+                  )}
+                </td>
+                <td className="border p-2">{upload.className}</td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <select
+                      name="language"
+                      value={editData.language}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    >
+                      <option value="English">English</option>
+                      <option value="Hindi">Hindi</option>
+                    </select>
+                  ) : (
+                    upload.language
+                  )}
+                </td>
+                <td className="border p-2">
+                  {editId === upload._id ? (
+                    <input
+                      type="text"
+                      name="year"
+                      value={editData.year}
+                      onChange={handleEditChange}
+                      className="border p-1 w-full"
+                    />
+                  ) : (
+                    upload.year
+                  )}
+                </td>
+                <td className="border p-2">
+                  <a
+                    href={upload.file} // Link to YouTube video
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600"
                   >
-                    <option value="English">English</option>
-                    <option value="Hindi">Hindi</option>
-                  </select>
-                ) : (
-                  upload.language
-                )}
-              </td>
-              <td className="border p-2">
-                {editId === upload._id ? (
-                  <input
-                    type="text"
-                    name="chapterName"
-                    value={editData.Volume}
-                    onChange={handleEditChange}
-                    className="border p-1 w-full"
+                    View PDF
+                  </a>
+                </td>
+                <td className="border p-2 flex justify-center gap-2">
+                  {editId === upload._id ? (
+                    <FaSave
+                      className="text-green-600 cursor-pointer"
+                      onClick={() => handleUpdate(upload._id)}
+                    />
+                  ) : (
+                    <FaEdit
+                      className="text-blue-600 cursor-pointer"
+                      onClick={() => handleEdit(upload)}
+                    />
+                  )}
+                  <FaTrash
+                    className="text-red-600 cursor-pointer"
+                    onClick={() => handleDelete(upload._id)}
                   />
-                ) : (
-                  upload.Volume
-                )}
-              </td>
-              <td className="border p-2">
-                <a
-                  href={upload.file} // Link to YouTube video
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600"
-                >
-                  View PDF
-                </a>
-              </td>
-              <td className="border p-2 flex justify-center gap-2">
-                {editId === upload._id ? (
-                  <FaSave
-                    className="text-green-600 cursor-pointer"
-                    onClick={() => handleUpdate(upload._id)}
-                  />
-                ) : (
-                  <FaEdit
-                    className="text-blue-600 cursor-pointer"
-                    onClick={() => handleEdit(upload)}
-                  />
-                )}
-                <FaTrash
-                  className="text-red-600 cursor-pointer"
-                  onClick={() => handleDelete(upload._id)}
-                />
-              </td>
-            </tr>
-          ))}
+                </td>
+              </tr>
+            ) : null
+          )}
         </tbody>
       </table>
     </div>
