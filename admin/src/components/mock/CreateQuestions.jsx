@@ -6,8 +6,9 @@ const CreateQuestion = () => {
   const [subjects, setSubjects] = useState([]);
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState(""); // Added missing state
-
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [selectedChapter, setSelectedChapter] = useState("");
+  
   const [question, setQuestion] = useState({
     questionText: "",
     options: [{ optionText: "", isCorrect: false }],
@@ -33,9 +34,7 @@ const CreateQuestion = () => {
   const handleOptionChange = (index, e) => {
     const { name, value, type, checked } = e.target;
     const updatedOptions = question.options.map((option, i) =>
-      i === index
-        ? { ...option, [name]: type === "checkbox" ? checked : value }
-        : option
+      i === index ? { ...option, [name]: type === "checkbox" ? checked : value } : option
     );
     setQuestion({ ...question, options: updatedOptions });
   };
@@ -54,23 +53,23 @@ const CreateQuestion = () => {
         ...question,
         subjectId: selectedSubject,
         language: selectedLanguage,
-        classMock: selectedClass, // Fixed class storage
+        classMock: selectedClass,
+        chapter: selectedChapter,
       };
-
+      
       await axios.post(SummaryApi.postQuestion.url, payload);
       alert("Question created successfully!");
-      setQuestion({
-        questionText: "",
-        options: [{ optionText: "", isCorrect: false }],
-      });
+      setQuestion({ questionText: "", options: [{ optionText: "", isCorrect: false }] });
       setSelectedSubject("");
       setSelectedLanguage("");
       setSelectedClass("");
+      setSelectedChapter("");
     } catch (error) {
       console.error("Error creating question:", error);
       alert("Failed to create question.");
     }
   };
+
 
   return (
     <div className="p-6 max-w-4xl mx-auto bg-gray-100 rounded-lg shadow-md">
@@ -110,6 +109,20 @@ const CreateQuestion = () => {
             </option>
             <option value="10th">10th</option>
             <option value="12th">12th</option>
+          </select>
+        </div>
+        <div>
+          <label>Chapter:</label>
+          <select
+            value={selectedChapter}
+            onChange={(e) => setSelectedChapter(e.target.value)}
+            required
+            className="w-full px-4 py-2 border rounded-md"
+          >
+            <option value="" disabled>Select Chapter</option>
+            {[...Array(15).keys()].map((num) => (
+              <option key={num + 1} value={num + 1}>{num + 1}</option>
+            ))}
           </select>
         </div>
 

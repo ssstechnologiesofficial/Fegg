@@ -30,6 +30,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/ebooks`,
     method: 'post',
   },
+  PreviousPaperpost: {
+    url: `${backendDomain}/api/PreviousPaperpost`,
+    method: 'post',
+  },
+  PreviousPaperget: {
+    url: `${backendDomain}/api/PreviousPaperget`,
+    method: 'get',
+  },
   StoreUserDownload: {
     url: `${backendDomain}/api/storeUserDownload`,
     method: 'post',

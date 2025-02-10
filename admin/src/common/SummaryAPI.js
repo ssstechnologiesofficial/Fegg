@@ -73,7 +73,7 @@ const SummaryApi = {
     method: 'post',
   },
   GetMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=mock`,
+    url: `${backendDomain}/api/practice-set`,
     method: 'get',
   },
 
@@ -153,6 +153,18 @@ const SummaryApi = {
   deleteRegister: {
     url: `${backendDomain}/api/register/:id`,
     method: 'get',
+  },
+  PreviousPaperpost: {
+    url: `${backendDomain}/api/PreviousPaperpost`,
+    method: 'post',
+  },
+  PreviousPaper: {
+    url: `${backendDomain}/api/PreviousPaperget`,
+    method: 'get',
+  },
+  PreviousPaperId: {
+    url: `${backendDomain}/api/PreviousPaper/:id`,
+    method: 'put',
   },
 }
 

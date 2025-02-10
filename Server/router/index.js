@@ -23,6 +23,15 @@ const {
   deleteEbook,
 } = require('../controller/ebookController')
 
+// --------------PreviousPaper
+
+const {
+  createPreviousPaper,
+  getAllPreviousPaper,
+  getPreviousPaperByClass,
+  updatePreviousPaper,
+  deletePreviousPaper,
+} = require('../controller/PreviousYearController')
 // Route video
 
 const videoController = require('../controller/VideoController')
@@ -127,6 +136,11 @@ const {
   deleteQuestion,
   createQuestion,
 } = require('../controller/mocktest/questionsController')
+const { createSubjects, getSubjectss, getSubjectsByClass } = require('../controller/practiceseset/subject')
+const { createChapter, getChaptersByid } = require('../controller/practiceseset/chapter')
+const { createQuestions } = require('../controller/practiceseset/questions')
+const { createPracticeSet, getAllMockSets, deleteMockSet } = require('../controller/practiceseset/practiceMock')
+
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -180,6 +194,12 @@ router.delete('Ovideodelete/:id', videoController.deleteVideo)
 router.post('/storeUserDownload', storeUserDownload)
 router.get('/getAllDownloads', getAllDownloads)
 
+// ------------- Paper
+router.post('/PreviousPaperpost', upload.single('file'), createPreviousPaper)
+router.get('/PreviousPaperget', getAllPreviousPaper)
+router.put('/PreviousPaper/:id', updatePreviousPaper)
+router.delete('/PreviousPaper/:id', deletePreviousPaper)
+
 // student register
 router.post('/register', validateStudentRegistration, registerStudent)
 router.get('/register', getAllStudents)
@@ -192,7 +212,6 @@ router.post('/mock-test', upload.single('MockLogo'), createMockTest)
 router.get('/mock-tests', getMockTests)
 router.post('/mock-test/submit', submitMockTest)
 router.delete('/mock-tests/:id', mockTestDelete)
-
 router.get('/mock-test/:mockTestId', getStartMockTest)
 router.get('/result/:resultId', getResult)
 router.get('/result', getALLResult)
@@ -205,4 +224,17 @@ router.get('/questions', getQuestionsBySubject)
 router.put('/questions/:questionId', updateQuestion)
 router.delete('/questions/:id', deleteQuestion)
 router.get('/mockTests/:id', getMockTestById)
+
+// practice set 
+router.post('/create-subject',createSubjects)
+router.get('/get-subjects',getSubjectss)
+router.get('/get-subjects/:className',getSubjectsByClass)
+router.post('/create-chapter',createChapter)
+router.get('/get-chapters/:subjectId',getChaptersByid)
+router.post('/create-questions',createQuestions)
+router.post('/generate-mock-set',createPracticeSet)
+
+router.get('/practiceset',getAllMockSets)
+router.delete('/practiceset/:id',deleteMockSet)
+
 module.exports = router

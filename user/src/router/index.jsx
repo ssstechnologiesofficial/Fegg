@@ -21,6 +21,19 @@ import Econtent12th from '../component/content/Econtent12th'
 import OlineVideoOption from '../component/content/OlineVideoOption'
 import Video10th from '../component/content/Video10th'
 import Video12th from '../component/content/Video12th'
+import MPSOSInfo from '../component/content/MPSOSInfo'
+import PrivacyPolicy from '../component/content/PrivacyPolicy'
+import AISECTInfo from '../component/content/AISECYInfo'
+import FeesDetails from '../component/content/FeesDetails'
+import CourseDetails from '../component/content/CourseDetails'
+import PreviousPaperOption from '../component/content/PreviousPaperOption'
+import Class10EnglishPapers from '../component/content/PreviousPaperOption/Class10EnglishPapers'
+import Class10HindiPapers from '../component/content/PreviousPaperOption/Class10HindiPapers'
+import Class12EnglishPapers from '../component/content/PreviousPaperOption/Class12EnglishPapers'
+import Class12HindiPapers from '../component/content/PreviousPaperOption/Class12HindiPapers'
+import Pragati from '../component/content/Pragati'
+import EGteam from '../component/content/EGteam'
+import MissionVision from '../component/content/MissionVision'
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +75,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'privacy-policy',
-        element: <Privacy />,
+        element: <PrivacyPolicy />,
       },
       {
         path: 'terms-conditions',
         element: <TermsConditions />,
+      },
+      {
+        path: 'MPSOSInfo',
+        element: <MPSOSInfo />,
       },
       {
         path: 'e-content',
@@ -91,6 +108,50 @@ export const router = createBrowserRouter([
       {
         path: 'class12video',
         element: <Video12th />,
+      },
+      {
+        path: 'AISECTInfo',
+        element: <AISECTInfo />,
+      },
+      {
+        path: 'FeesDetails',
+        element: <FeesDetails />,
+      },
+      {
+        path: 'CourseDetails',
+        element: <CourseDetails />,
+      },
+      {
+        path: 'PreviousPaperOption',
+        element: <PreviousPaperOption />,
+      },
+      {
+        path: 'Class10EnglishPapers',
+        element: <Class10EnglishPapers />,
+      },
+      {
+        path: 'Class10HindiPapers',
+        element: <Class10HindiPapers />,
+      },
+      {
+        path: 'Class12EnglishPapers',
+        element: <Class12EnglishPapers />,
+      },
+      {
+        path: 'Class12HindiPapers',
+        element: <Class12HindiPapers />,
+      },
+      {
+        path: 'Pragati',
+        element: <Pragati />,
+      },
+      {
+        path: 'EGteam',
+        element: <EGteam />,
+      },
+      {
+        path: 'MissionVision',
+        element: <MissionVision />,
       },
     ],
   },

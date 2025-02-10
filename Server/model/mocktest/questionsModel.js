@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const questionSchema = new mongoose.Schema({
   subjectId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject', required: true },
+  chapter: { type: Number, required: true, min: 1, max: 15 },
   questionText: { type: String, required: true },
   language: { type: String,  },
   classMock: { type: String,  },
