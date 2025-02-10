@@ -38,12 +38,12 @@ const images = [
 const EGteam = () => {
   return (
     <div className="w-full max-w-6xl mx-auto px-4">
-      <h3 className="text-2xl sm:text-4xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 ">
-        Seniour Management Team{' '}
+      <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 ">
+        Senior Management Team{' '}
       </h3>
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={40}
+        spaceBetween={50}
         slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 2 },

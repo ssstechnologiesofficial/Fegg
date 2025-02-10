@@ -55,7 +55,7 @@ const Class10HindiPapers = () => {
                       <li key={paper._id} className="mb-2">
                         {paper.year} -
                         <a
-                          href={paper.fileUrl}
+                          href={paper.file}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 underline ml-2"

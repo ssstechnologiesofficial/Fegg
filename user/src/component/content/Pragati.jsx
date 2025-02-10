@@ -4,7 +4,7 @@ import img from '../../assets/pragati.jpg'
 const Pragati = () => {
   return (
     <div className="p-5">
-      <h3 className="text-2xl sm:text-4xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] py-1">
+      <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] py-1">
         About Pragati
       </h3>
       <div className="flex flex-col sm:flex-row justify-evenly items-center mt-8">

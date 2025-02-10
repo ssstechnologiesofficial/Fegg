@@ -12,6 +12,7 @@ const Class12HindiPapers = () => {
         const response = await axios.get(`${SummaryApi.PreviousPaperget.url}`, {
           params: { className: '12', language: 'Hindi' },
         })
+        console.log(response)
         setPapers(response.data)
       } catch (error) {
         console.error('Error fetching papers:', error)
@@ -55,10 +56,12 @@ const Class12HindiPapers = () => {
                       <li key={paper._id} className="mb-2">
                         {paper.year} -
                         <a
-                          href={paper.fileUrl}
+                          href={paper.file}
+                          download
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 underline ml-2"
+                          style={{ pointerEvents: 'auto' }} // Ensure it's clickable
                         >
                           Download PDF
                         </a>

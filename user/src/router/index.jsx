@@ -33,6 +33,7 @@ import Class12EnglishPapers from '../component/content/PreviousPaperOption/Class
 import Class12HindiPapers from '../component/content/PreviousPaperOption/Class12HindiPapers'
 import Pragati from '../component/content/Pragati'
 import EGteam from '../component/content/EGteam'
+import MissionVision from '../component/content/MissionVision'
 
 export const router = createBrowserRouter([
   {
@@ -147,6 +148,10 @@ export const router = createBrowserRouter([
       {
         path: 'EGteam',
         element: <EGteam />,
+      },
+      {
+        path: 'MissionVision',
+        element: <MissionVision />,
       },
     ],
   },
