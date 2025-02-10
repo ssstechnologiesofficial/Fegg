@@ -19,6 +19,8 @@ const CreateMockTest = () => {
   const [subjects, setSubjects] = useState([])
   const [selectedSubject, setSelectedSubject] = useState('')
   const [language, setLanguage] = useState('')
+  const [classMock, setClassMock] = useState('')
+  const [chapter, setChapter] = useState('')
 
   useEffect(() => {
     const fetchSubjects = async () => {
@@ -44,7 +46,7 @@ const CreateMockTest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+  
     const formData = new FormData()
     formData.append('MockLogo', e.target.MockLogo.files[0])
     formData.append('title', mockTest.title)
@@ -55,9 +57,11 @@ const CreateMockTest = () => {
     formData.append('numberOfQuestions', Number(mockTest.numberOfQuestions))
     formData.append('subjectId', selectedSubject)
     formData.append('language', language)
-
+    formData.append('classMock', classMock) // Sending classMock
+    formData.append('chapter', chapter) // Sending chapter
+  
     console.log('Submitting Payload:', formData)
-
+  
     try {
       const response = await axios.post(SummaryApi.Mocktest.url, formData, {
         headers: {
@@ -66,7 +70,7 @@ const CreateMockTest = () => {
       })
       console.log('Mock test created:', response.data)
       alert('Mock test created successfully!')
-
+  
       setMockTest({
         MockLogo: '',
         title: '',
@@ -82,6 +86,7 @@ const CreateMockTest = () => {
       alert('Failed to create mock test.')
     }
   }
+  
 
   return (
     <>
@@ -177,6 +182,34 @@ const CreateMockTest = () => {
               <option value="Hindi">Hindi</option>
             </select>
           </div>
+          <div>
+  <label className="block text-lg font-medium mb-2">Class:</label>
+  <select
+    value={classMock}
+    onChange={(e) => setClassMock(e.target.value)}
+    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+    required
+  >
+    <option value="" disabled>Select Class</option>
+    <option value="10th">10th</option>
+    <option value="12th">12th</option>
+  </select>
+</div>
+<div>
+  <label className="block text-lg font-medium mb-2">Chapter:</label>
+  <select
+    value={chapter}
+    onChange={(e) => setChapter(e.target.value)}
+    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+    required
+  >
+    <option value="" disabled>Select Chapter</option>
+    {[...Array(15).keys()].map((num) => (
+      <option key={num + 1} value={num + 1}>{num + 1}</option>
+    ))}
+  </select>
+</div>
+
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-lg font-medium mb-2">

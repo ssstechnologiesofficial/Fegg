@@ -19,6 +19,10 @@ import Mockresult from '../components/mock/Mockresult'
 import MockSidebarResult from '../components/mock/MockSidebarResult'
 import CreateQuestion from '../components/mock/CreateQuestions'
 import QuestionManagement from '../components/mock/QuestionsManage'
+import CreateSubjectForm from '../components/practice/CreateSubject'
+import CreateChapterForm from '../components/practice/CreateChapter'
+import QuestionBank from '../components/practice/QuestionBank'
+import CreatePracticeSet from '../components/practice/CreatePracticeSet'
 
 export const router = createBrowserRouter([
   {
@@ -72,7 +76,7 @@ export const router = createBrowserRouter([
           },
           {
             path: 'create-test',
-            element: <CreateMockTest />,
+            element: <CreatePracticeSet />,
           },
           {
             path: 'questions-manage',
@@ -80,7 +84,15 @@ export const router = createBrowserRouter([
           },
           {
             path: 'create-subject',
-            element: <CreateSubject />,
+            element: <CreateSubjectForm />,
+          },
+          {
+            path: 'create-chapter',
+            element: <CreateChapterForm />,
+          },
+          {
+            path: 'create-question',
+            element: <QuestionBank />,
           },
           {
             path: 'start/:mockTestId',

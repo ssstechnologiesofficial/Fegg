@@ -36,10 +36,11 @@ const Sidebar = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
-        className={`${
-          isCollapsed ? 'w-16' : 'w-60'
-        } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300`}
-      >
+  className={`${
+    isCollapsed ? 'w-16' : 'w-60'
+  } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto scrollbar-hide`}
+>
+
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex flex-col items-center">
@@ -131,8 +132,22 @@ const Sidebar = () => {
                     <FaQuestionCircle />
                     <span>Add Subject</span>
                   </Link>
-
                   <Link
+                    to="create-chapter"
+                    className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+                  >
+                    <FaQuestionCircle />
+                    <span>Add chapter</span>
+                  </Link>
+                  <Link
+                    to="create-question"
+                    className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+                  >
+                    <FaQuestionCircle />
+                    <span>Add Questions</span>
+                  </Link>
+
+                  {/* <Link
                     to="create-questions"
                     className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-red-400 transition-all hover:shadow-md"
                   >
@@ -146,7 +161,7 @@ const Sidebar = () => {
                   >
                     <FaList />
                     <span>Questions Management</span>
-                  </Link>
+                  </Link> */}
 
                   <Link
                     to="create-test"

@@ -18,6 +18,8 @@ const createMockTest = async (req, res) => {
       subjectId,
       language,
       duration,
+      classMock,
+      chapter,
       totalMarks,
       selectedQuestions = [],
       numberOfQuestions,
@@ -42,6 +44,8 @@ const createMockTest = async (req, res) => {
           $match: {
             subjectId: new mongoose.Types.ObjectId(subjectId),
             language,
+            classMock,
+            chapter,
           },
         },
         { $sample: { size: numQuestions } },
@@ -61,6 +65,8 @@ const createMockTest = async (req, res) => {
         _id: { $in: selectedQuestions },
         subjectId,
         language,
+        chapter,
+        classMock
       })
 
       if (questions.length !== selectedQuestions.length) {
@@ -88,7 +94,9 @@ const createMockTest = async (req, res) => {
       })),
       duration,
       totalMarks,
+      classMock, // Store class here
       language,
+      chapter, // Store chapter here
       numberOfQuestions: questions.length, // Save the actual number of questions
     })
 
@@ -102,6 +110,7 @@ const createMockTest = async (req, res) => {
     res.status(400).json({ success: false, error: error.message })
   }
 }
+
 
 // get mock test
 const getMockTests = async (req, res) => {

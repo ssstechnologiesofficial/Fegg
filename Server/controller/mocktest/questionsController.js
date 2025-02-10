@@ -3,18 +3,22 @@ const Question = require("../../model/mocktest/questionsModel");
 
 const createQuestion = async (req, res) => {
   try {
-    const { subjectId, questionText, options, language , classMock} = req.body;
-console.log(classMock)
+    const { subjectId, chapter, questionText, options, language, classMock } = req.body;
+    
+    if (chapter < 1 || chapter > 15) {
+      return res.status(400).json({ success: false, message: "Invalid chapter number. It should be between 1 and 15." });
+    }
+
     const question = new Question({
       subjectId,
+      chapter,
       questionText,
       options,
-      language, 
-      classMock, 
+      language,
+      classMock,
     });
 
     await question.save();
-
     res.status(201).json({ success: true, data: question });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
