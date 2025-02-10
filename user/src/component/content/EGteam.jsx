@@ -37,13 +37,13 @@ const images = [
 
 const EGteam = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto px-4">
+    <div className="w-full max-w-6xl mx-auto px-2">
       <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 ">
         Senior Management Team{' '}
       </h3>
       <Swiper
         modules={[Navigation, Pagination]}
-        spaceBetween={50}
+        spaceBetween={30}
         slidesPerView={1}
         breakpoints={{
           640: { slidesPerView: 2 },
@@ -57,12 +57,12 @@ const EGteam = () => {
       >
         {images.map((img, index) => (
           <SwiperSlide key={index} className="group">
-            <div className="flex flex-col justify-center items-center sm:p-0 p-16">
+            <div className="flex flex-col justify-center items-center sm:p-0 p-12">
               <div className="text-center ">
                 <img
                   src={img.img}
                   alt={`Slide ${index + 1}`}
-                  className="w-full h-60 object-cover rounded-lg shadow-lg mb-2 
+                  className="w-full h-60 object-fill rounded-lg shadow-lg mb-2 
                             transform transition duration-300 ease-in-out group-hover:scale-105 border-l-2 border-[#fd645b]"
                 />
                 <h3 className="font-semibold text-lg">{img.name}</h3>
