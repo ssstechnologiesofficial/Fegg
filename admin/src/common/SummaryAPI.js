@@ -154,6 +154,18 @@ const SummaryApi = {
     url: `${backendDomain}/api/register/:id`,
     method: 'get',
   },
+  PreviousPaperpost: {
+    url: `${backendDomain}/api/PreviousPaperpost`,
+    method: 'post',
+  },
+  PreviousPaper: {
+    url: `${backendDomain}/api/PreviousPaperget`,
+    method: 'get',
+  },
+  PreviousPaperId: {
+    url: `${backendDomain}/api/PreviousPaper/:id`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

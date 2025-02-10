@@ -23,6 +23,15 @@ const {
   deleteEbook,
 } = require('../controller/ebookController')
 
+// --------------PreviousPaper
+
+const {
+  createPreviousPaper,
+  getAllPreviousPaper,
+  getPreviousPaperByClass,
+  updatePreviousPaper,
+  deletePreviousPaper,
+} = require('../controller/PreviousYearController')
 // Route video
 
 const videoController = require('../controller/VideoController')
@@ -179,6 +188,12 @@ router.delete('Ovideodelete/:id', videoController.deleteVideo)
 //---------------- User modal 10th and 12th
 router.post('/storeUserDownload', storeUserDownload)
 router.get('/getAllDownloads', getAllDownloads)
+
+// -------------E-material
+router.post('/PreviousPaperpost', upload.single('file'), createPreviousPaper)
+router.get('/PreviousPaperget', getAllPreviousPaper)
+router.put('/PreviousPaper/:id', updatePreviousPaper)
+router.delete('/PreviousPaper/:id', deletePreviousPaper)
 
 // student register
 router.post('/register', validateStudentRegistration, registerStudent)

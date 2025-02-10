@@ -19,6 +19,7 @@ import Mockresult from '../components/mock/Mockresult'
 import MockSidebarResult from '../components/mock/MockSidebarResult'
 import CreateQuestion from '../components/mock/CreateQuestions'
 import QuestionManagement from '../components/mock/QuestionsManage'
+import PreviousPaper from '../components/PreviousPaper'
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
           {
             path: 'create-questions',
             element: <CreateQuestion />,
+          },
+          {
+            path: 'PreviousPaper',
+            element: <PreviousPaper />,
           },
         ],
       },

@@ -26,6 +26,13 @@ import PrivacyPolicy from '../component/content/PrivacyPolicy'
 import AISECTInfo from '../component/content/AISECYInfo'
 import FeesDetails from '../component/content/FeesDetails'
 import CourseDetails from '../component/content/CourseDetails'
+import PreviousPaperOption from '../component/content/PreviousPaperOption'
+import Class10EnglishPapers from '../component/content/PreviousPaperOption/Class10EnglishPapers'
+import Class10HindiPapers from '../component/content/PreviousPaperOption/Class10HindiPapers'
+import Class12EnglishPapers from '../component/content/PreviousPaperOption/Class12EnglishPapers'
+import Class12HindiPapers from '../component/content/PreviousPaperOption/Class12HindiPapers'
+import Pragati from '../component/content/Pragati'
+import EGteam from '../component/content/EGteam'
 
 export const router = createBrowserRouter([
   {
@@ -112,6 +119,34 @@ export const router = createBrowserRouter([
       {
         path: 'CourseDetails',
         element: <CourseDetails />,
+      },
+      {
+        path: 'PreviousPaperOption',
+        element: <PreviousPaperOption />,
+      },
+      {
+        path: 'Class10EnglishPapers',
+        element: <Class10EnglishPapers />,
+      },
+      {
+        path: 'Class10HindiPapers',
+        element: <Class10HindiPapers />,
+      },
+      {
+        path: 'Class12EnglishPapers',
+        element: <Class12EnglishPapers />,
+      },
+      {
+        path: 'Class12HindiPapers',
+        element: <Class12HindiPapers />,
+      },
+      {
+        path: 'Pragati',
+        element: <Pragati />,
+      },
+      {
+        path: 'EGteam',
+        element: <EGteam />,
       },
     ],
   },
