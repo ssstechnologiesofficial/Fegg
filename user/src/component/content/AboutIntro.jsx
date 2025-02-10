@@ -251,22 +251,22 @@ const AboutIntro = () => {
               alt="History"
               className="w-1/3 rounded-md object-cover"
             />
-      
 
-          {/* More Features Section */}
-          <div>
-            <h2 className="text-lg font-semibold text-red-400 mb-6">
-              MORE FEATURES
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Objective */}
-              <div>
-                <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
-                  OBJECTIVE <span className="ml-2 text-red-400">→</span>
-                </h3>
-                <p className="text-gray-600">
-                  Educate Girls aims to impact 10 million learners by 2035.
-                </p>
+            {/* More Features Section */}
+            <div>
+              <h2 className="text-lg font-semibold text-red-400 mb-6">
+                MORE FEATURES
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Objective */}
+                <div>
+                  <h3 className="text-md font-semibold text-gray-800 mb-2 flex items-center border-t-2 border-red-400">
+                    OBJECTIVE <span className="ml-2 text-red-400">→</span>
+                  </h3>
+                  <p className="text-gray-600">
+                    Educate Girls aims to impact 10 million learners by 2035.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
