@@ -243,14 +243,14 @@ const AboutIntro = () => {
 
           {/* ORDINANCE/ACT */}
           <div
-            className="flex bg-gray-50 rounded-md shadow-lg my-12"
+            className="flex bg-gray-50 rounded-md shadow-lg p-3 my-12"
             ref={ordinanceSectionRef}
           >
-            <img
+            {/* <img
               src={hero}
               alt="History"
               className="w-1/3 rounded-md object-cover"
-            />
+            /> */}
 
             {/* More Features Section */}
             <div>

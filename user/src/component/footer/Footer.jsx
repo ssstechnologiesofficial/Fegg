@@ -71,30 +71,30 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/programme" className="hover:underline">
-                  Programme
+                <Link to="/Pragati" className="hover:underline">
+                  Pragati
                 </Link>
               </li>
               <li>
-                <Link to="/admission" className="hover:underline">
-                  Admission
+                <Link to="/MPSOSInfo" className="hover:underline">
+                  About MPSOS
                 </Link>
               </li>
               <li>
                 <Link to="/student-corner" className="hover:underline">
-                  Student Corner
+                  Learners Corner
                 </Link>
               </li>
               <li>
-                <Link to="/events" className="hover:underline">
-                  Events
+                <Link to="/register" className="hover:underline">
+                  Student Registration
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/notification" className="hover:underline">
                   Notification
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/privacy-policy" className="hover:underline">
                   privacy policy

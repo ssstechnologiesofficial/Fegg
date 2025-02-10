@@ -73,7 +73,7 @@ const SummaryApi = {
     method: 'post',
   },
   GetMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=mock`,
+    url: `${backendDomain}/api/practice-set`,
     method: 'get',
   },
 
