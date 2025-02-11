@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 import op10 from '../../../assets/exam1.jpg'
@@ -21,7 +20,9 @@ const PracticeSet = () => {
             <h3 className="text-xl font-bold text-center mb-4">
               Class <span className="text-[#fd645b]">10</span>
             </h3>
-            <p className="text-center">Click here for Class 10th Practice Set</p>
+            <p className="text-center">
+              Click here for Class 10th Practice Set
+            </p>
           </div>
         </Link>
       </div>
@@ -40,7 +41,9 @@ const PracticeSet = () => {
             <h3 className="text-xl font-bold text-center mb-4">
               Class <span className="text-[#fd645b]">12</span>
             </h3>
-            <p className="text-center">Click here for Class 12th Practice Set</p>
+            <p className="text-center">
+              Click here for Class 12th Practice Set
+            </p>
           </div>
         </Link>
       </div>
