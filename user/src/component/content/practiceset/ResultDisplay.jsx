@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SummaryApi from "../../../common/SummaryApi";
 
 const ResultDisplay = ({ resultId }) => {
   const [testResult, setTestResult] = useState(null);
@@ -8,7 +9,7 @@ const ResultDisplay = ({ resultId }) => {
   useEffect(() => {
     const fetchTestResult = async () => {
       try {
-        const response = await fetch(`http://localhost:8006/api/test-result/${resultId}`);
+        const response = await fetch(SummaryApi.TestResult.url.replace(":resultId", resultId));
         if (!response.ok) {
           throw new Error("Failed to fetch test result");
         }

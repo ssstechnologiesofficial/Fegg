@@ -19,7 +19,7 @@ const StartTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:8006/api/start-test/${mockSetId}`);
+        const response = await axios.get(SummaryApi.startTest.url.replace(":mockSetId", mockSetId));
         const data = response.data;
 
         if (data.success) {
@@ -91,7 +91,7 @@ const StartTest = () => {
   const handleSubmitTest = async () => {
     try {
       const result = { mockSetId, answers, userName, learnerid };
-      const response = await axios.post("http://localhost:8006/api/submit-test",
+      const response = await axios.post(SummaryApi.submitpost.url,
         result);
       alert(`Test submitted successfully! Score: ${response.data.score}`);
       navigate(`/result/${response.data.result._id}`);

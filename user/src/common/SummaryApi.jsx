@@ -54,6 +54,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/submit-test`,
     method: 'post',
   },
+  TestResult: {
+    url: `${backendDomain}/api/test-result/:resultId`,
+    method: 'get',
+  },
+  startTest: {
+    url: `${backendDomain}/api/start-test/:mockSetId`,
+    method: 'get',
+  },
   Blueprintget: {
     url: `${backendDomain}/api/getuploadBlueprint`,
     method: 'get',

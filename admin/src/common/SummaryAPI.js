@@ -77,8 +77,24 @@ const SummaryApi = {
     method: 'get',
   },
 
-  GetminiMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=miniMock`,
+  createSUbject: {
+    url: `${backendDomain}/api/create-subject`,
+    method: 'post',
+  },
+  createChapter: {
+    url: `${backendDomain}/api/create-chapter`,
+    method: 'post',
+  },
+  GetSubjectByClass: {
+    url: `${backendDomain}/api/get-subjects/:className`,
+    method: 'get',
+  },
+  generatePracticeset: {
+    url: `${backendDomain}/api/generate-mock-set`,
+    method: 'get',
+  },
+  GetChapterBySubjectid: {
+    url: `${backendDomain}/api/get-chapters/:subjectId`,
     method: 'get',
   },
   DeleteMock: {
