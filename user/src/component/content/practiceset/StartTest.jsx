@@ -19,15 +19,8 @@ const StartTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-<<<<<<< HEAD
         const response = await axios.get(SummaryApi.startTest.url.replace(":mockSetId", mockSetId));
         const data = response.data;
-=======
-        const response = await axios.get(
-          `http://localhost:8006/api/start-test/${mockSetId}`
-        )
-        const data = response.data
->>>>>>> fe6eb08429731085994ec094d9570b587f4d49c8
 
         if (data.success) {
           setTestData(data.data)
