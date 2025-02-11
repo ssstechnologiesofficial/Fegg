@@ -175,7 +175,7 @@ const SummaryApi = {
     method: 'get',
   },
   BlueprintUpdate: {
-    url: `${backendDomain}/api/uploadBlueprintupdate/:id`,
+    url: `${backendDomain}/api/uploadBlueprintupdate`,
     method: 'put',
   },
   Blueprintdelete: {

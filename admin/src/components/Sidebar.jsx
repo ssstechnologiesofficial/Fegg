@@ -18,6 +18,7 @@ import {
   FiVideo,
   FiSave,
   FiVolume1,
+  FiFile,
 } from 'react-icons/fi'
 import { FaList, FaQuestionCircle } from 'react-icons/fa'
 
@@ -100,7 +101,7 @@ const Sidebar = () => {
             to="BluePrintupload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FaClipboardList className="mr-2" size={20} />
+            <FiFile className="mr-2" size={20} />
             {!isCollapsed && <span>Upload Blue Print</span>}
           </Link>
           <Link

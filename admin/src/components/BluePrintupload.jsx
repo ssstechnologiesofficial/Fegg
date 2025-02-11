@@ -59,7 +59,7 @@ const BluePrintupload = () => {
     if (!updatedTitle) return alert('Please enter a title')
 
     try {
-      await axios.put(`${SummaryApi.Blueprintupdate.url}/${id}`, {
+      await axios.put(`${SummaryApi.BlueprintUpdate.url}/${id}`, {
         title: updatedTitle,
       })
       setEditingId(null)
