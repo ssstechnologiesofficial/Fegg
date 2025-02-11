@@ -152,11 +152,11 @@ const { createQuestions } = require('../controller/practiceseset/questions')
 const { createPracticeSet, getAllMockSets, deleteMockSet, startPracticeSet } = require('../controller/practiceseset/practiceMock')
 const { submitTest, getTestResults } = require('../controller/practiceseset/practiceResult')
 
-const {
-  createPracticeSet,
-  getAllMockSets,
-  deleteMockSet,
-} = require('../controller/practiceseset/practiceMock')
+// const {
+//   createPracticeSet,
+//   getAllMockSets,
+//   deleteMockSet,
+// } = require('../controller/practiceseset/practiceMock')
 
 // Contact us
 router.post('/contact', submitContactForm)
