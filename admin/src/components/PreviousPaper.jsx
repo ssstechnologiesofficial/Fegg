@@ -222,34 +222,20 @@ const PreviousPaper = () => {
         </button>
       </form>
 
-      <h3 className="text-lg font-bold mt-6">Uploaded Files</h3>
+      <h3 className="text-lg font-bold mt-5 mb-1">Uploaded Files :-</h3>
       <div className="flex gap-3 mb-4">
-        <select
-          name="sessionYear"
-          value={filters.sessionYear}
+        <input
+          name="year"
+          value={filters.year}
+          placeholder="All Year"
           onChange={handleFilterChange}
-          className="border p-2 rounded"
-        >
-          <option value="">All Years</option>
-          <option value="2023-2024">2023-2024</option>
-          <option value="2024-2025">2024-2025</option>
-          <option value="2025-2026">2025-2026</option>
-        </select>
-        <select
-          name="sessionMonth"
-          value={filters.sessionMonth}
-          onChange={handleFilterChange}
-          className="border p-2 rounded"
-        >
-          <option value="">All Months</option>
-          <option value="April-October">April-October</option>
-          <option value="November-March">November-March</option>
-        </select>
+          className="border p-2 rounded  focus:ring-2 focus:ring-[#fd645b]"
+        />
         <select
           name="className"
           value={filters.className}
           onChange={handleFilterChange}
-          className="border p-2 rounded"
+          className="border p-2 rounded  focus:ring-2 focus:ring-[#fd645b]"
         >
           <option value="">All Classes</option>
           <option value="10">10</option>
@@ -259,7 +245,7 @@ const PreviousPaper = () => {
           name="subject"
           value={filters.subject}
           onChange={handleFilterChange}
-          className="border p-2 rounded"
+          className="border p-2 rounded  focus:ring-2 focus:ring-[#fd645b]"
         >
           <option value="">All Subjects</option>
           {filters.className && subjects[filters.className]

@@ -361,7 +361,7 @@ const EBooks = () => {
                 {editId === upload._id ? (
                   <input
                     type="text"
-                    name="chapterName"
+                    name="Volume"
                     value={editData.Volume}
                     onChange={handleEditChange}
                     className="border p-1 w-full"
