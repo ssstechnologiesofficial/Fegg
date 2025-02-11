@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
+
 import { NavLink } from 'react-router-dom'
 import { FaHome } from 'react-icons/fa'
+import SummaryApi from '../../common/SummaryApi' // Ensure API endpoints are correctly set
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const NavLinks = () => {
+  const [blueprintFile, setBlueprintFile] = useState(null)
+
   const [isAboutOpen, setIsAboutOpen] = useState(false)
   const [isProgrammesOpen, setIsProgrammesOpen] = useState(false)
   const [isAdmissionOpen, setIsAdmissionOpen] = useState(false)
@@ -11,23 +18,76 @@ const NavLinks = () => {
   const [isContactusOpen, setIsContactusOpen] = useState(false)
   const [isStudentCornerOpen, setIsStudentCornerOpen] = useState(false)
 
+  // Fetch the latest blueprint file URL
+  useEffect(() => {
+    const fetchBlueprint = async () => {
+      try {
+        const response = await axios.get(SummaryApi.Blueprintget.url)
+        console.log(response)
+
+        if (response.data.length > 0) {
+          // Append BASE_URL if needed
+          const filePath = response.data[0].filePath
+          setBlueprintFile(`${baseUrl}${filePath}`)
+        }
+      } catch (error) {
+        console.error('Error fetching blueprint:', error)
+      }
+    }
+    fetchBlueprint()
+  }, [])
+
+  const downloadPDF = async () => {
+    if (!blueprintFile) {
+      alert('No file available for download.')
+      return
+    }
+
+    try {
+      const response = await axios.get(blueprintFile, {
+        responseType: 'blob', // Get file as binary (Blob)
+      })
+
+      console.log(response)
+
+      // Create a Blob URL and trigger download
+      const fileURL = window.URL.createObjectURL(
+        new Blob([response.data], { type: 'application/pdf' })
+      )
+      const link = document.createElement('a')
+      link.href = fileURL
+      link.setAttribute('download', 'Blueprint.pdf') // Set filename
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (error) {
+      console.error('Error downloading file:', error)
+    }
+  }
+
   const dropdownMenu = (menuItems) => (
     <ul className="absolute left-0 z-10 top-full bg-white shadow-md w-40">
       {menuItems.map((item, index) => (
-        <li
-          key={index}
-          className={`border-l-4 ${
-            index % 2 === 0 ? 'border-red-500' : 'border-red-300'
-          }`}
-        >
-          <NavLink to={item.link} className="dropdown-item border-t py-2 px-4">
-            {item.label}
-          </NavLink>
+        <li key={index} className="border-l-4 border-red-500">
+          {item.isDownload ? (
+            <button
+              onClick={downloadPDF}
+              className="dropdown-item border-t py-2 px-4 w-full text-left"
+            >
+              {item.label}
+            </button>
+          ) : (
+            <NavLink
+              to={item.link}
+              className="dropdown-item border-t py-2 px-4"
+            >
+              {item.label}
+            </NavLink>
+          )}
         </li>
       ))}
     </ul>
   )
-
   return (
     <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12  space-y-4 md:space-y-0 md:space-x-6">
       <li>
@@ -113,7 +173,7 @@ const NavLinks = () => {
             { link: '/e-content', label: 'Online Books' },
             { link: '/12th-class', label: 'Syllabus' },
             { link: '/onlinevideo', label: 'Recorded Videos' },
-            { link: '/vocational-course', label: 'Blue Print' },
+            { label: 'Blue Print', isDownload: true },
             {
               link: '/PreviousPaperOption',
               label: 'Previous Year Question Paper',
