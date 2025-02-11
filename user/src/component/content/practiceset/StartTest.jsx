@@ -1,92 +1,99 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import SummaryApi from "../../../common/SummaryApi";
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import SummaryApi from '../../../common/SummaryApi'
 
 const StartTest = () => {
-  const { mockSetId } = useParams();
-  const navigate = useNavigate();
-  const [testData, setTestData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [timeRemaining, setTimeRemaining] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [learnerid, setLearnerid] = useState("");
-  const [error, setError] = useState("");
+  const { mockSetId } = useParams()
+  const navigate = useNavigate()
+  const [testData, setTestData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [answers, setAnswers] = useState({})
+  const [timeRemaining, setTimeRemaining] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [learnerid, setLearnerid] = useState('')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(SummaryApi.startTest.url.replace(":mockSetId", mockSetId));
         const data = response.data;
+=======
+        const response = await axios.get(
+          `http://localhost:8006/api/start-test/${mockSetId}`
+        )
+        const data = response.data
+>>>>>>> fe6eb08429731085994ec094d9570b587f4d49c8
 
         if (data.success) {
-          setTestData(data.data);
-          setTimeRemaining(data.data.duration * 60);
+          setTestData(data.data)
+          setTimeRemaining(data.data.duration * 60)
         } else {
-          alert("Failed to start the test");
+          alert('Failed to start the test')
         }
       } catch (error) {
-        console.error("Error starting test:", error);
+        console.error('Error starting test:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchTestDetails();
-  }, [mockSetId]);
+    fetchTestDetails()
+  }, [mockSetId])
 
   useEffect(() => {
-    if (timeRemaining === null) return;
+    if (timeRemaining === null) return
     if (timeRemaining === 0) {
-      alert("Time is up! Test will be submitted.");
-      handleSubmitTest();
-      return;
+      alert('Time is up! Test will be submitted.')
+      handleSubmitTest()
+      return
     }
 
     const timer = setInterval(() => {
-      setTimeRemaining((prevTime) => prevTime - 1);
-    }, 1000);
+      setTimeRemaining((prevTime) => prevTime - 1)
+    }, 1000)
 
-    return () => clearInterval(timer);
-  }, [timeRemaining]);
+    return () => clearInterval(timer)
+  }, [timeRemaining])
 
   const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-  };
+    const minutes = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`
+  }
 
   const handleAnswerChange = (questionId, answer) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
       [questionId]: answer,
-    }));
-  };
+    }))
+  }
 
   const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-  };
+    setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+  }
 
   const handlePreviousQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
-  };
+    setCurrentQuestionIndex((prevIndex) => prevIndex - 1)
+  }
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleModalSubmit = async () => {
     if (!userName || !learnerid) {
-      setError("Please enter both name and phone number.");
-      return;
+      setError('Please enter both name and phone number.')
+      return
     }
-    setError("");
-    setIsModalOpen(false);
-    await handleSubmitTest();
-  };
+    setError('')
+    setIsModalOpen(false)
+    await handleSubmitTest()
+  }
 
   const handleSubmitTest = async () => {
     try {
@@ -96,20 +103,20 @@ const StartTest = () => {
       alert(`Test submitted successfully! Score: ${response.data.score}`);
       navigate(`/result/${response.data.result._id}`);
     } catch (error) {
-      console.error("Error submitting test:", error);
-      alert("Error submitting test. Please try again.");
+      console.error('Error submitting test:', error)
+      alert('Error submitting test. Please try again.')
     }
-  };
+  }
 
   if (loading) {
-    return <p>Loading test...</p>;
+    return <p>Loading test...</p>
   }
 
   if (!testData || !testData.questions.length) {
-    return <p>No test data found.</p>;
+    return <p>No test data found.</p>
   }
 
-  const currentQuestion = testData.questions[currentQuestionIndex];
+  const currentQuestion = testData.questions[currentQuestionIndex]
 
   return (
     <div className="container mx-auto p-6 flex gap-6">
@@ -118,18 +125,18 @@ const StartTest = () => {
         <h2 className="text-lg font-bold mb-4">Questions</h2>
         <ul className="space-y-2">
           {testData.questions.map((q, index) => {
-            const isAnswered = Object.keys(answers).length >= index + 1;
+            const isAnswered = Object.keys(answers).length >= index + 1
             return (
               <li
                 key={q._id}
                 className={`cursor-pointer text-white font-semibold text-center py-2 rounded ${
-                  isAnswered ? "bg-green-500" : "bg-blue-500"
+                  isAnswered ? 'bg-green-500' : 'bg-blue-500'
                 }`}
                 onClick={() => setCurrentQuestionIndex(index)}
               >
                 {index + 1}
               </li>
-            );
+            )
           })}
         </ul>
       </div>
@@ -144,7 +151,9 @@ const StartTest = () => {
         </div>
 
         <div className="p-6 border rounded shadow-sm bg-white">
-          <h3 className="text-lg font-semibold">{currentQuestion.questionText}</h3>
+          <h3 className="text-lg font-semibold">
+            {currentQuestion.questionText}
+          </h3>
           <ul className="mt-4">
             {currentQuestion.options.map((option, index) => (
               <li key={index} className="mt-2">
@@ -154,7 +163,9 @@ const StartTest = () => {
                   name={`question-${currentQuestion._id}`}
                   value={option._id}
                   checked={answers[currentQuestion._id] === option._id}
-                  onChange={() => handleAnswerChange(currentQuestion._id, option._id)}
+                  onChange={() =>
+                    handleAnswerChange(currentQuestion._id, option._id)
+                  }
                 />
                 <label htmlFor={`option-${index}`} className="ml-2">
                   {option.optionText}
@@ -195,17 +206,33 @@ const StartTest = () => {
             {error && <p className="text-red-600">{error}</p>}
             <div className="mb-4">
               <label className="block mb-2">Name:</label>
-              <input type="text" className="border p-2 w-full" value={userName} onChange={(e) => setUserName(e.target.value)} />
+              <input
+                type="text"
+                className="border p-2 w-full"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
             </div>
             <div className="mb-4">
               <label className="block mb-2">Learner ID:</label>
-              <input type="text" className="border p-2 w-full" value={learnerid} onChange={(e) => setLearnerid(e.target.value)} />
+              <input
+                type="text"
+                className="border p-2 w-full"
+                value={learnerid}
+                onChange={(e) => setLearnerid(e.target.value)}
+              />
             </div>
             <div className="flex justify-end">
-              <button onClick={() => setIsModalOpen(false)} className="bg-gray-500 text-white py-2 px-4 rounded mr-2">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-500 text-white py-2 px-4 rounded mr-2"
+              >
                 Cancel
               </button>
-              <button onClick={handleModalSubmit} className="bg-green-500 text-white py-2 px-4 rounded">
+              <button
+                onClick={handleModalSubmit}
+                className="bg-green-500 text-white py-2 px-4 rounded"
+              >
                 Submit
               </button>
             </div>
@@ -213,7 +240,7 @@ const StartTest = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default StartTest;
+export default StartTest
