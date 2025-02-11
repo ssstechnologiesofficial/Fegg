@@ -166,6 +166,22 @@ const SummaryApi = {
     url: `${backendDomain}/api/PreviousPaper/:id`,
     method: 'put',
   },
+  Blueprint: {
+    url: `${backendDomain}/api/uploadBlueprint`,
+    method: 'post',
+  },
+  Blueprintget: {
+    url: `${backendDomain}/api/getuploadBlueprint`,
+    method: 'get',
+  },
+  BlueprintUpdate: {
+    url: `${backendDomain}/api/uploadBlueprintupdate`,
+    method: 'put',
+  },
+  Blueprintdelete: {
+    url: `${backendDomain}/api/uploadBlueprintdelete`,
+    method: 'delete',
+  },
 }
 
 export default SummaryApi

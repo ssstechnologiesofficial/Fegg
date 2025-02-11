@@ -32,18 +32,21 @@ const {
   updatePreviousPaper,
   deletePreviousPaper,
 } = require('../controller/PreviousYearController')
-// Route video
+// ==========================Route video
 
 const videoController = require('../controller/VideoController')
 
-//route 10th and 12th Model
+// -=====================-blueprintController
+const blueprintController = require('../controller/blueprintController')
+
+//========================route 10th and 12th Model
 
 const {
   storeUserDownload,
   getAllDownloads,
 } = require('../controller/Model10and12user')
 
-// Configure Multer for file uploads
+// ========================Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname),
@@ -136,12 +139,24 @@ const {
   deleteQuestion,
   createQuestion,
 } = require('../controller/mocktest/questionsController')
-const { createSubjects, getSubjectss, getSubjectsByClass } = require('../controller/practiceseset/subject')
-const { createChapter, getChaptersByid } = require('../controller/practiceseset/chapter')
+const {
+  createSubjects,
+  getSubjectss,
+  getSubjectsByClass,
+} = require('../controller/practiceseset/subject')
+const {
+  createChapter,
+  getChaptersByid,
+} = require('../controller/practiceseset/chapter')
 const { createQuestions } = require('../controller/practiceseset/questions')
 const { createPracticeSet, getAllMockSets, deleteMockSet, startPracticeSet } = require('../controller/practiceseset/practiceMock')
 const { submitTest, getTestResults } = require('../controller/practiceseset/practiceResult')
 
+const {
+  createPracticeSet,
+  getAllMockSets,
+  deleteMockSet,
+} = require('../controller/practiceseset/practiceMock')
 
 // Contact us
 router.post('/contact', submitContactForm)
@@ -226,18 +241,33 @@ router.put('/questions/:questionId', updateQuestion)
 router.delete('/questions/:id', deleteQuestion)
 router.get('/mockTests/:id', getMockTestById)
 
-// practice set 
-router.post('/create-subject',createSubjects)
-router.get('/get-subjects',getSubjectss)
-router.get('/get-subjects/:className',getSubjectsByClass)
-router.post('/create-chapter',createChapter)
-router.get('/get-chapters/:subjectId',getChaptersByid)
-router.post('/create-questions',createQuestions)
-router.post('/generate-mock-set',createPracticeSet)
+// practice set
+router.post('/create-subject', createSubjects)
+router.get('/get-subjects', getSubjectss)
+router.get('/get-subjects/:className', getSubjectsByClass)
+router.post('/create-chapter', createChapter)
+router.get('/get-chapters/:subjectId', getChaptersByid)
+router.post('/create-questions', createQuestions)
+router.post('/generate-mock-set', createPracticeSet)
 
 router.get('/practiceset',getAllMockSets)
 router.delete('/practiceset/:id',deleteMockSet)
 router.get("/start-test/:mockSetId",startPracticeSet)
 router.post("/submit-test", submitTest);
 router.get("/test-result/:resultId", getTestResults);
+router.get('/practiceset', getAllMockSets)
+router.delete('/practiceset/:id', deleteMockSet)
+
+//============================
+// Routes
+router.post(
+  '/uploadBlueprint',
+  upload.single('file'),
+  blueprintController.uploadBlueprint
+) // Create (Upload PDF)
+router.get('/getuploadBlueprint', blueprintController.getAllBlueprints) // Read (Get all PDFs)
+router.get('/getuploadBlueprint/:id', blueprintController.getBlueprintById) // Read (Get a single PDF)
+router.put('/uploadBlueprintupdate/:id', blueprintController.updateBlueprint) // Update (Title only)
+router.delete('/uploadBlueprintdelete/:id', blueprintController.deleteBlueprint)
+
 module.exports = router

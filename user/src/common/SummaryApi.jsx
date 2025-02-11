@@ -54,6 +54,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/mock-test/submit`,
     method: 'post',
   },
+  Blueprintget: {
+    url: `${backendDomain}/api/getuploadBlueprint`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi
