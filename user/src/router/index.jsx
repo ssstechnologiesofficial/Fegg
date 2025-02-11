@@ -1,4 +1,5 @@
 import React from 'react'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -34,6 +35,11 @@ import Class12HindiPapers from '../component/content/PreviousPaperOption/Class12
 import Pragati from '../component/content/Pragati'
 import EGteam from '../component/content/EGteam'
 import MissionVision from '../component/content/MissionVision'
+import PracticeSet from '../component/content/practiceset/PracticeSet'
+import Crad10th from '../component/content/practiceset/Crad10th'
+import Crad12th from '../component/content/practiceset/Card12th'
+import StartTest from '../component/content/practiceset/StartTest'
+import ResultDisplay from '../component/content/practiceset/ResultDisplay'
 
 export const router = createBrowserRouter([
   {
@@ -90,8 +96,28 @@ export const router = createBrowserRouter([
         element: <EcontentOption />,
       },
       {
+        path: 'practice-set',
+        element: <PracticeSet />,
+      },
+      {
+        path: 'practice10',
+        element: <Crad10th />,
+      },
+      {
+        path: 'practice12',
+        element: <Crad12th />,
+      },
+      {
         path: 'class10',
         element: <Econtent10th />,
+      },
+      {
+        path: 'start-test/:mockSetId',
+        element: <StartTest />,
+      },
+      {
+        path: 'result/:id',
+        element: <ResultDisplay />,
       },
       {
         path: 'class12',

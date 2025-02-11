@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SummaryApi from "../../common/SummaryAPI";
 
 const CreateChapterForm = () => {
   const [formData, setFormData] = useState({
@@ -16,8 +17,8 @@ const CreateChapterForm = () => {
     const fetchSubjects = async () => {
       if (formData.className) {
         try {
-          const response = await axios.get(`http://localhost:8006/api/get-subjects/${formData.className}`);
-          setSubjects(response.data.subjects || []); // Ensure it updates state
+          const response = await axios.get(SummaryApi.GetSubjectByClass.url.replace(":className", formData.className));
+          setSubjects(response.data.subjects || []); 
         } catch (error) {
           console.error("Error fetching subjects:", error);
         }
@@ -39,7 +40,7 @@ const CreateChapterForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8006/api/create-chapter", {
+      const response = await axios.post(SummaryApi.createChapter.url, {
         title: formData.title,
         subject: formData.subject,
         className: formData.className, // Ensure className is sent

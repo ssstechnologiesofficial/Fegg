@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const Class10HindiPapers = () => {
   const [papers, setPapers] = useState([])
@@ -55,7 +56,7 @@ const Class10HindiPapers = () => {
                       <li key={paper._id} className="mb-2">
                         {paper.year} -
                         <a
-                          href={paper.file}
+                          href={new URL(paper.file, baseUrl).href}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 underline ml-2"

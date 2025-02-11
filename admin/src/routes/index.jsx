@@ -24,6 +24,7 @@ import CreateChapterForm from '../components/practice/CreateChapter'
 import QuestionBank from '../components/practice/QuestionBank'
 import CreatePracticeSet from '../components/practice/CreatePracticeSet'
 import PreviousPaper from '../components/PreviousPaper'
+import BluePrintupload from '../components/BluePrintupload'
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
           {
             path: 'PreviousPaper',
             element: <PreviousPaper />,
+          },
+          {
+            path: 'BluePrintupload',
+            element: <BluePrintupload />,
           },
         ],
       },

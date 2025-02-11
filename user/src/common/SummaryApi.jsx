@@ -1,5 +1,5 @@
-const backendDomain = 'https://feggbackend.onrender.com'
-// const backendDomain = 'http://localhost:8006'
+// const backendDomain = 'https://feggbackend.onrender.com'
+const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   contact: {
@@ -41,6 +41,30 @@ const SummaryApi = {
   StoreUserDownload: {
     url: `${backendDomain}/api/storeUserDownload`,
     method: 'post',
+  },
+  getPracticeCards: {
+    url: `${backendDomain}/api/practiceset`,
+    method: 'get',
+  },
+  getResult: {
+    url: `${backendDomain}/api/result/:resultId`,
+    method: 'get',
+  },
+  submitpost: {
+    url: `${backendDomain}/api/submit-test`,
+    method: 'post',
+  },
+  TestResult: {
+    url: `${backendDomain}/api/test-result/:resultId`,
+    method: 'get',
+  },
+  startTest: {
+    url: `${backendDomain}/api/start-test/:mockSetId`,
+    method: 'get',
+  },
+  Blueprintget: {
+    url: `${backendDomain}/api/getuploadBlueprint`,
+    method: 'get',
   },
 }
 

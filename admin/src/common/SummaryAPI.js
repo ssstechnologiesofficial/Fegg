@@ -1,5 +1,5 @@
-const backendDomain = 'https://feggbackend.onrender.com'
-// const backendDomain = 'http://localhost:8006'
+// const backendDomain = 'https://feggbackend.onrender.com'
+const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
@@ -77,8 +77,24 @@ const SummaryApi = {
     method: 'get',
   },
 
-  GetminiMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=miniMock`,
+  createSUbject: {
+    url: `${backendDomain}/api/create-subject`,
+    method: 'post',
+  },
+  createChapter: {
+    url: `${backendDomain}/api/create-chapter`,
+    method: 'post',
+  },
+  GetSubjectByClass: {
+    url: `${backendDomain}/api/get-subjects/:className`,
+    method: 'get',
+  },
+  generatePracticeset: {
+    url: `${backendDomain}/api/generate-mock-set`,
+    method: 'get',
+  },
+  GetChapterBySubjectid: {
+    url: `${backendDomain}/api/get-chapters/:subjectId`,
     method: 'get',
   },
   DeleteMock: {
@@ -165,6 +181,22 @@ const SummaryApi = {
   PreviousPaperId: {
     url: `${backendDomain}/api/PreviousPaper/:id`,
     method: 'put',
+  },
+  Blueprint: {
+    url: `${backendDomain}/api/uploadBlueprint`,
+    method: 'post',
+  },
+  Blueprintget: {
+    url: `${backendDomain}/api/getuploadBlueprint`,
+    method: 'get',
+  },
+  BlueprintUpdate: {
+    url: `${backendDomain}/api/uploadBlueprintupdate`,
+    method: 'put',
+  },
+  Blueprintdelete: {
+    url: `${backendDomain}/api/uploadBlueprintdelete`,
+    method: 'delete',
   },
 }
 

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [message, setMessage] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const response = await fetch('http://localhost:5000/api/reset-password', {
@@ -15,21 +15,24 @@ const ForgotPassword = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, newPassword }),
-      });
+      })
 
-      const data = await response.json();
+      const data = await response.json()
       if (response.ok) {
-        setMessage('Your password has been updated successfully.');
+        setMessage('Your password has been updated successfully.')
       } else {
-        setMessage(data.message || 'Something went wrong. Please try again.');
+        setMessage(data.message || 'Something went wrong. Please try again.')
       }
     } catch (error) {
-      setMessage('An error occurred. Please try again later.');
+      setMessage('An error occurred. Please try again later.')
     }
-  };
+  }
 
   return (
-    <section id="forgotpassword" className="min-h-screen flex items-center justify-center bg-gray-100">
+    <section
+      id="forgotpassword"
+      className="min-h-screen flex items-center justify-center bg-gray-100"
+    >
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-center text-gray-700 mb-4">
           Reset Password
@@ -84,7 +87,7 @@ const ForgotPassword = () => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

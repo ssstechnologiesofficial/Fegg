@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import SummaryApi from "../../common/SummaryAPI";
 
 const CreateSubjectForm = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const CreateSubjectForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8006/api/create-subject", formData, {
+      const response = await axios.post(SummaryApi.createSUbject.url, formData, {
         headers: {
           "Content-Type": "application/json",
         },

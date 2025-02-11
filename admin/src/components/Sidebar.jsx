@@ -18,6 +18,7 @@ import {
   FiVideo,
   FiSave,
   FiVolume1,
+  FiFile,
 } from 'react-icons/fi'
 import { FaList, FaQuestionCircle } from 'react-icons/fa'
 
@@ -36,11 +37,10 @@ const Sidebar = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
-  className={`${
-    isCollapsed ? 'w-16' : 'w-60'
-  } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto scrollbar-hide`}
->
-
+        className={`${
+          isCollapsed ? 'w-16' : 'w-60'
+        } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto scrollbar-hide`}
+      >
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex flex-col items-center">
@@ -68,7 +68,6 @@ const Sidebar = () => {
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
           </Link>
-
           <Link
             to="students"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -76,15 +75,13 @@ const Sidebar = () => {
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Students</span>}
           </Link>
-
           <Link
             to="EBooks"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FiUploadCloud className="mr-2" size={20} />
-            {!isCollapsed && <span>E-Content Upload</span>}
+            {!isCollapsed && <span>E-Book Upload</span>}
           </Link>
-
           <Link
             to="OlineVideoUpload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -99,6 +96,14 @@ const Sidebar = () => {
             <FaClipboardList className="mr-2" size={20} />
             {!isCollapsed && <span>Previous Years Paper</span>}
           </Link>
+
+          <Link
+            to="BluePrintupload"
+            className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <FiFile className="mr-2" size={20} />
+            {!isCollapsed && <span>Upload Blue Print</span>}
+          </Link>
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -106,7 +111,6 @@ const Sidebar = () => {
             <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Slider Image</span>}
           </Link>
-
           <Link
             to="announcement"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -114,7 +118,6 @@ const Sidebar = () => {
             <FiVolume1 className="mr-2" size={20} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
-
           {/* Mock Test Dropdown */}
           {!isCollapsed && (
             <div>
@@ -188,15 +191,13 @@ const Sidebar = () => {
               )}
             </div>
           )}
-
           <Link
             to="EContentModel"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FiSave className="mr-2" size={20} />
-            {!isCollapsed && <span>E-content Modal Data</span>}
+            {!isCollapsed && <span>E-Book Modal Data</span>}
           </Link>
-
           <Link
             to="/"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
