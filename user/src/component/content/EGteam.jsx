@@ -37,7 +37,7 @@ const images = [
 
 const EGteam = () => {
   return (
-    <div className="w-full max-w-6xl  px-2">
+    <div className="w-full max-w-auto  px-2">
       <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 ">
         Senior Management Team{' '}
       </h3>

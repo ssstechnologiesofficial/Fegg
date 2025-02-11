@@ -1,5 +1,5 @@
-// const backendDomain = 'https://feggbackend.onrender.com'
-const backendDomain = 'http://localhost:8006'
+const backendDomain = 'https://feggbackend.onrender.com'
+// const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
@@ -73,7 +73,7 @@ const SummaryApi = {
     method: 'post',
   },
   GetMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=mock`,
+    url: `${backendDomain}/api/practice-set`,
     method: 'get',
   },
 

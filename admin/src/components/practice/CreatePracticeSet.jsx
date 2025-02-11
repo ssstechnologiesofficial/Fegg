@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PracticesetCards from "./PracticesetCards";
 
 const CreatePracticeSet = () => {
   const [formData, setFormData] = useState({
@@ -71,6 +72,7 @@ const CreatePracticeSet = () => {
   };
 
   return (
+    <> 
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-semibold mb-4 text-center">Create Practice Set</h2>
       {message && <p className="text-green-600 text-center">{message}</p>}
@@ -107,7 +109,9 @@ const CreatePracticeSet = () => {
 
         <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Generate Mock Set</button>
       </form>
+     
     </div>
+   <PracticesetCards/></>
   );
 };
 

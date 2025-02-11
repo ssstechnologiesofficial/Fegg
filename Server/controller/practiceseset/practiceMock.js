@@ -3,88 +3,6 @@ const mocksetModel = require("../../model/practiceset/mocksetModel");
 const questionModel = require("../../model/practiceset/questionModel");
 const subjectModel = require("../../model/practiceset/subjectModel");
 
-// exports.createPracticeSet = async (req, res) => {
-//     try {
-//       const {
-//         className,
-//         subjectId,
-//         selectedChapters,
-//         numQuestions,
-//         totalMarks,
-//         duration,
-//         selectedQuestions = [],
-//       } = req.body;
-  
-//       // Ensure subjectId is a valid ObjectId
-//       if (!mongoose.Types.ObjectId.isValid(subjectId)) {
-//         return res.status(400).json({ success: false, message: "Invalid subject ID" });
-//       }
-  
-//       // Validate Subject
-//       const subject = await subjectModel.findById(subjectId);
-//       if (!subject) {
-//         return res.status(404).json({ success: false, message: "Subject not found" });
-//       }
-  
-//       // Convert selectedChapters to ObjectId array
-//       const chapterIds = selectedChapters.map(id => new mongoose.Types.ObjectId(id));
-  
-//       let questions = [];
-//       const numQuestionsInt = parseInt(numQuestions);
-  
-//       if (numQuestionsInt > 0) {
-//         // Fetch random questions based on selected chapters
-//         questions = await questionModel.aggregate([
-//           {
-//             $match: {
-//               subject: new mongoose.Types.ObjectId(subjectId), // Ensure matching with ObjectId
-//               className,
-//               chapter: { $in: chapterIds },
-//             },
-//           },
-//           { $sample: { size: numQuestionsInt } },
-//         ]);
-  
-//         // If not enough questions found
-//         if (questions.length < numQuestionsInt) {
-//           return res.status(400).json({
-//             success: false,
-//             message: `Only ${questions.length} questions are available in the selected chapters.`,
-//           });
-//         }
-//       } else {
-//         // Validate manually selected questions
-//         const selectedQuestionIds = selectedQuestions.map(q => new mongoose.Types.ObjectId(q.questionId));
-//         questions = await questionModel.find({ _id: { $in: selectedQuestionIds } });
-  
-//         if (questions.length !== selectedQuestionIds.length) {
-//           return res.status(400).json({
-//             success: false,
-//             message: "Some selected questions were not found in the database.",
-//           });
-//         }
-//       }
-  
-//       // Create Practice Set
-//       const practiceSet = new mocksetModel({
-//         className,
-//         subject: new mongoose.Types.ObjectId(subjectId), // Ensure subject is stored as ObjectId
-//         selectedChapters: chapterIds,
-//         numQuestions: questions.length,
-//         totalMarks,
-//         duration,
-//         questions: questions.map(q => q._id), // Store only ObjectIds in questions array
-//       });
-  
-//       await practiceSet.save();
-  
-//       return res.status(201).json({ success: true, message: "Practice set created successfully", data: practiceSet });
-//     } catch (error) {
-//       console.error("Error creating practice set:", error);
-//       res.status(500).json({ success: false, message: "Internal Server Error" });
-//     }
-//   };
-  
 
 
 exports.createPracticeSet = async (req, res) => {
@@ -174,3 +92,31 @@ exports.createPracticeSet = async (req, res) => {
     }
   };
   
+
+//   get 
+  exports.getAllMockSets = async (req, res) => {
+    try {
+      const mockSets = await mocksetModel.find().populate("subject").populate("questions.questionId");
+      res.status(200).json({ success: true, data: mockSets });
+    } catch (error) {
+      console.error("Error fetching mock sets:", error);
+      res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+  };
+  
+  // DELETE a Mock Set by ID
+  exports.deleteMockSet = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deletedMockSet = await mocksetModel.findByIdAndDelete(id);
+  
+      if (!deletedMockSet) {
+        return res.status(404).json({ success: false, message: "Mock Set not found" });
+      }
+  
+      res.status(200).json({ success: true, message: "Mock Set deleted successfully" });
+    } catch (error) {
+      console.error("Error deleting mock set:", error);
+      res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+  };
