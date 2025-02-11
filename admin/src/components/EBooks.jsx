@@ -3,6 +3,7 @@ import axios from 'axios'
 import { FaTrash, FaEdit, FaSave } from 'react-icons/fa' // Added save icon
 import '../App.css'
 import SummaryApi from '../common/SummaryAPI'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const EBooks = () => {
   const [uploads, setUploads] = useState([])
@@ -372,12 +373,12 @@ const EBooks = () => {
               </td>
               <td className="border p-2">
                 <a
-                  href={upload.file} // Link to YouTube video
+                  href={new URL(upload.file, baseUrl).href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600"
                 >
-                  View Video
+                  View PDF
                 </a>
               </td>
               <td className="border p-2 flex justify-center gap-2">

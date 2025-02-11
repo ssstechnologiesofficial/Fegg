@@ -1,5 +1,5 @@
-const backendDomain = 'https://feggbackend.onrender.com'
-// const backendDomain = 'http://localhost:8006'
+// const backendDomain = 'https://feggbackend.onrender.com'
+const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
@@ -165,6 +165,22 @@ const SummaryApi = {
   PreviousPaperId: {
     url: `${backendDomain}/api/PreviousPaper/:id`,
     method: 'put',
+  },
+  Blueprint: {
+    url: `${backendDomain}/api/uploadBlueprint`,
+    method: 'post',
+  },
+  Blueprintget: {
+    url: `${backendDomain}/api/getuploadBlueprint`,
+    method: 'get',
+  },
+  BlueprintUpdate: {
+    url: `${backendDomain}/api/uploadBlueprintupdate/:id`,
+    method: 'put',
+  },
+  Blueprintdelete: {
+    url: `${backendDomain}/api/uploadBlueprintdelete`,
+    method: 'delete',
   },
 }
 
