@@ -1,29 +1,32 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SummaryApi from "../../../common/SummaryApi";
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import SummaryApi from '../../../common/SummaryApi'
+import fagglogo from '../../../assets/logo.png'
 
 const Crad10th = () => {
-  const [mockTests, setMockTests] = useState([]);
-  const navigate = useNavigate(); // For navigation
+  const [mockTests, setMockTests] = useState([])
+  const navigate = useNavigate() // For navigation
 
   useEffect(() => {
     const fetchMockTests = async () => {
       try {
-        const response = await fetch(SummaryApi.getPracticeCards.url);
-        const data = await response.json();
-        console.log("API Response:", data);
+        const response = await fetch(SummaryApi.getPracticeCards.url)
+        const data = await response.json()
+        console.log('API Response:', data)
 
         if (data.success) {
-          const filteredTests = data.data.filter((test) => test.className === "10");
-          setMockTests(filteredTests);
+          const filteredTests = data.data.filter(
+            (test) => test.className === '10'
+          )
+          setMockTests(filteredTests)
         }
       } catch (error) {
-        console.error("Error fetching mock tests:", error);
+        console.error('Error fetching mock tests:', error)
       }
-    };
+    }
 
-    fetchMockTests();
-  }, []);
+    fetchMockTests()
+  }, [])
 
   const handleStartTest = (mockSetId) => {
     navigate(`/start-test/${mockSetId}`); 
@@ -34,14 +37,24 @@ const Crad10th = () => {
       <h2 className="text-xl font-bold mb-4">Class 10th Practice Mock Tests</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {mockTests.map((test) => (
-          <div key={test._id} className="bg-white shadow-lg p-4 rounded-lg border">
-            <h3 className="text-lg font-semibold">Subject: {test.subject?.name || "Unknown Subject"}</h3>
+          <div
+            key={test._id}
+            className="flex justify-center flex-col items-center bg-white shadow-md shadow-[#fd645b] p-4 rounded-lg border hover:scale-95 hover:shadow-[#fd645b] hover:shadow-lg  transition-all"
+          >
+            <img
+              className="w-24 h-24 p-1 object-fill rounded-full mb-4 border-2 border-[#fd645b]"
+              src={fagglogo}
+              alt="FAGG Logo"
+            />
+            <h3 className="text-lg font-semibold">
+              Subject: {test.subject?.name || 'Unknown Subject'}
+            </h3>
             <p className="text-sm">Total Marks: {test.totalMarks}</p>
             <p className="text-sm">Duration: {test.duration} mins</p>
             <p className="text-sm">Number of Questions: {test.numQuestions}</p>
             <button
               onClick={() => handleStartTest(test._id)}
-              className="mt-2 bg-blue-500 text-white px-4 py-2 rounded"
+              className="mt-2 bg-[#fd645b] text-white px-4 py-2 rounded active:scale-95 transition-all"
             >
               Start Test
             </button>
@@ -49,7 +62,7 @@ const Crad10th = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Crad10th;
+export default Crad10th
