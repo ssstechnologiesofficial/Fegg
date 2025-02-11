@@ -139,7 +139,8 @@ const {
 const { createSubjects, getSubjectss, getSubjectsByClass } = require('../controller/practiceseset/subject')
 const { createChapter, getChaptersByid } = require('../controller/practiceseset/chapter')
 const { createQuestions } = require('../controller/practiceseset/questions')
-const { createPracticeSet, getAllMockSets, deleteMockSet } = require('../controller/practiceseset/practiceMock')
+const { createPracticeSet, getAllMockSets, deleteMockSet, startPracticeSet } = require('../controller/practiceseset/practiceMock')
+const { submitTest, getTestResults } = require('../controller/practiceseset/practiceResult')
 
 
 // Contact us
@@ -236,5 +237,7 @@ router.post('/generate-mock-set',createPracticeSet)
 
 router.get('/practiceset',getAllMockSets)
 router.delete('/practiceset/:id',deleteMockSet)
-
+router.get("/start-test/:mockSetId",startPracticeSet)
+router.post("/submit-test", submitTest);
+router.get("/test-result/:resultId", getTestResults);
 module.exports = router

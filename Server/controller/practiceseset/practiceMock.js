@@ -120,3 +120,47 @@ exports.createPracticeSet = async (req, res) => {
       res.status(500).json({ success: false, message: "Internal Server Error" });
     }
   };
+
+
+
+  // start test 
+  exports.startPracticeSet = async (req, res) => {
+  try {
+    const { mockSetId } = req.params;
+
+    // Fetch the mock test with questions
+    const mockTest = await mocksetModel.findById(mockSetId).populate({
+      path: "questions.questionId",
+      model: "QuestionModel",
+    });
+
+    if (!mockTest) {
+      return res.status(404).json({ success: false, message: "Mock test not found" });
+    }
+
+    // Extract questions and options
+    const questions = mockTest.questions.map((q) => ({
+      questionId: q.questionId._id,
+      questionText: q.questionText,
+      options: q.options,
+      marks: q.marks,
+    }));
+
+    // Return the test data with a start time
+    return res.json({
+      success: true,
+      data: {
+        mockSetId,
+        className: mockTest.className,
+        subject: mockTest.subject,
+        totalMarks: mockTest.totalMarks,
+        duration: mockTest.duration, // Timer duration in minutes
+        questions,
+        startTime: Date.now(),
+      },
+    });
+  } catch (error) {
+    console.error("Error starting the test:", error);
+    return res.status(500).json({ success: false, message: "Server error" });
+  }
+}

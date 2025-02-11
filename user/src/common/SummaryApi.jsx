@@ -42,6 +42,18 @@ const SummaryApi = {
     url: `${backendDomain}/api/storeUserDownload`,
     method: 'post',
   },
+  getPracticeCards: {
+    url: `${backendDomain}/api/practiceset`,
+    method: 'get',
+  },
+  getResult: {
+    url: `${backendDomain}/api/result/:resultId`,
+    method: 'get',
+  },
+  submitpost: {
+    url: `${backendDomain}/api/mock-test/submit`,
+    method: 'post',
+  },
 }
 
 export default SummaryApi

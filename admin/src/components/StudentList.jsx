@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../common/SummaryAPI'
-import * as XLSX from 'xlsx' 
+import * as XLSX from 'xlsx'
+
 const StudentList = () => {
   const [students, setStudents] = useState([])
   const [selectedStudent, setSelectedStudent] = useState(null)
   const [formData, setFormData] = useState({})
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const studentsPerPage = 5
 
   useEffect(() => {
     fetchStudents()
   }, [])
 
-  // Fetch students from API
   const fetchStudents = async () => {
     try {
       const response = await axios.get(SummaryApi.Register.url)
@@ -22,19 +24,16 @@ const StudentList = () => {
     }
   }
 
-  // Open Update Modal
   const handleEdit = (student) => {
     setSelectedStudent(student)
     setFormData(student)
     setIsModalOpen(true)
   }
 
-  // Handle Input Change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // Handle Update Student
   const handleUpdate = async () => {
     try {
       await axios.put(
@@ -43,17 +42,16 @@ const StudentList = () => {
       )
       alert('Student updated successfully!')
       setIsModalOpen(false)
-      fetchStudents() // Refresh data
+      fetchStudents()
     } catch (error) {
       console.error('Error updating student:', error)
     }
   }
 
-  // Handle Delete Student
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this student?')) {
       try {
-        await axios.delete(SummaryApi.deleteRegister.url.replace(':id',id))
+        await axios.delete(SummaryApi.deleteRegister.url.replace(':id', id))
         alert('Student deleted successfully!')
         fetchStudents()
       } catch (error) {
@@ -61,20 +59,34 @@ const StudentList = () => {
       }
     }
   }
- // Export data to Excel
- const exportToExcel = () => {
-  const worksheet = XLSX.utils.json_to_sheet(students)
-  const workbook = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(workbook, worksheet, 'Students')
 
-  // Download the file
-  XLSX.writeFile(workbook, 'StudentList.xlsx')
-}
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(students)
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Students')
+    XLSX.writeFile(workbook, 'StudentList.xlsx')
+  }
+
+  const indexOfLastStudent = currentPage * studentsPerPage
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
+  const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent)
+
+  const nextPage = () => {
+    if (indexOfLastStudent < students.length) {
+      setCurrentPage((prev) => prev + 1)
+    }
+  }
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1)
+    }
+  }
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-white min-h-screen">
       <h2 className="text-2xl font-bold mb-4">Admin - Student List</h2>
-       {/* Export Button */}
-       <button
+      {/* Export Button */}
+      <button
         className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
         onClick={exportToExcel}
       >
@@ -82,7 +94,7 @@ const StudentList = () => {
       </button>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
-        <tr className="bg-primary text-white">
+          <tr className="bg-primary text-white">
             <th className="border p-2">Learner ID</th>
             <th className="border p-2">Name</th>
             <th className="border p-2">Father's Name</th>
@@ -92,8 +104,8 @@ const StudentList = () => {
             <th className="border p-2">Category</th>
             <th className="border p-2">Religion</th>
             <th className="border p-2">SSSM ID</th>
-            <th className="border p-2">Permanent Address</th>
-            <th className="border p-2">Current Address</th>
+            {/* <th className="border p-2">Permanent Address</th>
+            <th className="border p-2">Current Address</th> */}
             <th className="border p-2">Contact No.</th>
             <th className="border p-2">Last Class Studied</th>
             <th className="border p-2">Apply For</th>
@@ -102,25 +114,28 @@ const StudentList = () => {
           </tr>
         </thead>
         <tbody>
-          {students.map((student) => (
+          {currentStudents.map((student) => (
             <tr key={student._id} className="border">
               <td className="border p-2">{student.learnerId}</td>
               <td className="border p-2">
                 {student.firstName} {student.middleName} {student.lastName}
               </td>
               <td className="border p-2">
-                {student.fatherFirstName} {student.fatherMiddleName} {student.fatherLastName}
+                {student.fatherFirstName} {student.fatherMiddleName}{" "}
+                {student.fatherLastName}
               </td>
               <td className="border p-2">{student.gender}</td>
-              <td className="border p-2">{new Date(student.dob).toLocaleDateString()}</td>
+              <td className="border p-2">
+                {new Date(student.dob).toLocaleDateString()}
+              </td>
               <td className="border p-2">{student.age}</td>
               <td className="border p-2">{student.category}</td>
               <td className="border p-2">{student.religion}</td>
               <td className="border p-2">{student.sssmid}</td>
-              <td className="border p-2">{student.permanentAddress}</td>
+              {/* <td className="border p-2">{student.permanentAddress}</td>
               <td className="border p-2">
                 {student.block} {student.village} {student.tehsil} {student.district}  {student.pincode}
-              </td>
+              </td> */}
               <td className="border p-2">{student.contactNo}</td>
               <td className="border p-2">{student.lastClassStudied}</td>
               <td className="border p-2">{student.applyFor}</td>
@@ -143,7 +158,15 @@ const StudentList = () => {
           ))}
         </tbody>
       </table>
-
+      <div className="flex justify-between mt-4">
+        <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={prevPage} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span className="text-lg font-semibold">Page {currentPage}</span>
+        <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={nextPage} disabled={indexOfLastStudent >= students.length}>
+          Next
+        </button>
+      </div>
       {/* Update Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -156,16 +179,16 @@ const StudentList = () => {
             {/* Scrollable Form Fields */}
             <div className="h-[400px] overflow-y-auto">
               {Object.keys(formData)
-                .filter((field) => field !== '_id') // Exclude _id from inputs
+                .filter((field) => field !== "_id") // Exclude _id from inputs
                 .map((field) => (
                   <div key={field} className="mb-2">
                     <label className="block font-semibold capitalize">
-                      {field.replace(/([A-Z])/g, ' $1').trim()}
+                      {field.replace(/([A-Z])/g, " $1").trim()}
                     </label>
                     <input
-                      type={field === 'dob' ? 'date' : 'text'}
+                      type={field === "dob" ? "date" : "text"}
                       name={field}
-                      value={formData[field] || ''}
+                      value={formData[field] || ""}
                       onChange={handleChange}
                       className="border rounded p-2 w-full"
                     />
@@ -192,7 +215,7 @@ const StudentList = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default StudentList
+export default StudentList;

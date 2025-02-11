@@ -118,7 +118,7 @@ const NavLinks = () => {
               link: '/PreviousPaperOption',
               label: 'Previous Year Question Paper',
             },
-            { link: '/vocational-course', label: 'Practice Set' },
+            { link: '/practice-set', label: 'Practice Set' },
             { link: '/vocational-course', label: 'Model Answer Sheet' },
           ])}
       </li>

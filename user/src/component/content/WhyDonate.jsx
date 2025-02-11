@@ -30,7 +30,7 @@ const InfoSection = () => {
       icon: <FaClipboard />,
       link: "e-content",
     },
-    { label: "Practice Set", color: "bg-orange-500", icon: <FaPencilAlt /> },
+    { label: "Practice Set", color: "bg-orange-500", icon: <FaPencilAlt /> ,  link: "practice-set"},
     {
       label: "Online Vedio",
       color: "bg-purple-500",
