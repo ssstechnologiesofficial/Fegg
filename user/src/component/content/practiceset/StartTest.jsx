@@ -13,7 +13,7 @@ const StartTest = () => {
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userName, setUserName] = useState("");
-  const [userPhone, setUserPhone] = useState("");
+  const [learnerid, setLearnerid] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const StartTest = () => {
   };
 
   const handleModalSubmit = async () => {
-    if (!userName || !userPhone) {
+    if (!userName || !learnerid) {
       setError("Please enter both name and phone number.");
       return;
     }
@@ -90,8 +90,8 @@ const StartTest = () => {
 
   const handleSubmitTest = async () => {
     try {
-      const result = { mockSetId, answers, userName, userPhone };
-      const response = await axios.post( SummaryApi.submitpost.url,
+      const result = { mockSetId, answers, userName, learnerid };
+      const response = await axios.post("http://localhost:8006/api/submit-test",
         result);
       alert(`Test submitted successfully! Score: ${response.data.score}`);
       navigate(`/result/${response.data.result._id}`);
@@ -199,7 +199,7 @@ const StartTest = () => {
             </div>
             <div className="mb-4">
               <label className="block mb-2">Learner ID:</label>
-              <input type="text" className="border p-2 w-full" value={learnerid} onChange={(e) => setUserPhone(e.target.value)} />
+              <input type="text" className="border p-2 w-full" value={learnerid} onChange={(e) => setLearnerid(e.target.value)} />
             </div>
             <div className="flex justify-end">
               <button onClick={() => setIsModalOpen(false)} className="bg-gray-500 text-white py-2 px-4 rounded mr-2">

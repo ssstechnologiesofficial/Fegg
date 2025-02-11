@@ -26,7 +26,7 @@ const Crad10th = () => {
   }, []);
 
   const handleStartTest = (mockSetId) => {
-    navigate(`/start-test/${mockSetId}`); // Redirect to StartTest page
+    navigate(`/start-test/${mockSetId}`); 
   };
 
   return (
