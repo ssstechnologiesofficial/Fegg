@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import SummaryApi from '../../../common/SummaryApi'
+import logo from '../../../assets/logo.png'
 
 const StartTest = () => {
   const { mockSetId } = useParams()
@@ -19,8 +20,10 @@ const StartTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-        const response = await axios.get(SummaryApi.startTest.url.replace(":mockSetId", mockSetId));
-        const data = response.data;
+        const response = await axios.get(
+          SummaryApi.startTest.url.replace(':mockSetId', mockSetId)
+        )
+        const data = response.data
 
         if (data.success) {
           setTestData(data.data)
@@ -90,11 +93,10 @@ const StartTest = () => {
 
   const handleSubmitTest = async () => {
     try {
-      const result = { mockSetId, answers, userName, learnerid };
-      const response = await axios.post(SummaryApi.submitpost.url,
-        result);
-      alert(`Test submitted successfully! Score: ${response.data.score}`);
-      navigate(`/result/${response.data.result._id}`);
+      const result = { mockSetId, answers, userName, learnerid }
+      const response = await axios.post(SummaryApi.submitpost.url, result)
+      alert(`Test submitted successfully! Score: ${response.data.score}`)
+      navigate(`/result/${response.data.result._id}`)
     } catch (error) {
       console.error('Error submitting test:', error)
       alert('Error submitting test. Please try again.')
@@ -112,17 +114,17 @@ const StartTest = () => {
   const currentQuestion = testData.questions[currentQuestionIndex]
 
   return (
-    <div className="container mx-auto p-6 flex gap-6">
+    <div className="container mx-auto p-3 flex gap-6 flex-col-reverse sm:flex-row justify-center sm:items-start items-center">
       {/* Left Sidebar - Question Numbers */}
-      <div className="w-1/4">
+      <div className="sm:w-1/4 w-auto flex  flex-col border-l-2  border-[#fd645b] border-r-2 p-2">
         <h2 className="text-lg font-bold mb-4">Questions</h2>
-        <ul className="space-y-2">
+        <ul className="flex justify-center gap-2 items-center ">
           {testData.questions.map((q, index) => {
             const isAnswered = Object.keys(answers).length >= index + 1
             return (
               <li
                 key={q._id}
-                className={`cursor-pointer text-white font-semibold text-center py-2 rounded ${
+                className={`cursor-pointer text-white font-semibold text-center py-2 px-4 rounded ${
                   isAnswered ? 'bg-green-500' : 'bg-blue-500'
                 }`}
                 onClick={() => setCurrentQuestionIndex(index)}
@@ -136,17 +138,24 @@ const StartTest = () => {
 
       {/* Main Question Area */}
       <div className="w-3/4">
-        <h1 className="text-2xl font-bold text-gray-800 mb-6">
-          Start Test: {testData.title}
-        </h1>
-        <div className="text-right text-xl font-semibold text-red-600 mb-4">
-          Time Remaining: {formatTime(timeRemaining)}
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-6">
+            Start Test: {testData.title}
+          </h1>
+          <div className="text-right sm:text-xl text-sm  font-semibold text-red-600 mb-4">
+            Time Remaining: {formatTime(timeRemaining)}
+          </div>
         </div>
-
-        <div className="p-6 border rounded shadow-sm bg-white">
-          <h3 className="text-lg font-semibold">
-            {currentQuestion.questionText}
-          </h3>
+        <div className="py-2 px-4  border-2 border-[#fd645b] rounded shadow-sm bg-white">
+          <div className="flex justify-between items-center">
+            <h3 className="text-lg font-semibold">
+              {currentQuestion.questionText}
+            </h3>
+            <img
+              src={logo}
+              className="border border-[#fd645b] object-fill p-1 h-16 w-16 rounded-full"
+            />
+          </div>
           <ul className="mt-4">
             {currentQuestion.options.map((option, index) => (
               <li key={index} className="mt-2">
@@ -167,24 +176,24 @@ const StartTest = () => {
             ))}
           </ul>
 
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between sm:gap-0 gap-2 mt-4">
             <button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
-              className="bg-gray-500 text-white py-2 px-4 rounded"
+              className="bg-gray-500 text-white py-2 sm:px-4 px-2 rounded sm:text-base text-sm"
             >
               Previous
             </button>
             <button
               onClick={handleOpenModal}
-              className="bg-green-500 text-white py-2 px-4 rounded"
+              className="bg-[#fd645b] text-white py-2 px-4 rounded sm:text-base text-sm"
             >
               Submit
             </button>
             <button
               onClick={handleNextQuestion}
               disabled={currentQuestionIndex === testData.questions.length - 1}
-              className="bg-blue-500 text-white py-2 px-4 rounded"
+              className="bg-blue-500 text-white py-2 px-4 rounded sm:text-base text-sm"
             >
               Next
             </button>
