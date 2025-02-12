@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SummaryApi from "../../common/SummaryAPI";
 
 const QuestionBank = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const QuestionBank = () => {
     const fetchSubjects = async () => {
       if (formData.className) {
         try {
-          const response = await axios.get(`http://localhost:8006/api/get-subjects/${formData.className}`);
+          const response = await axios.get(SummaryApi.GetSubjectByClass.url.replace(":className", formData.className));
           setSubjects(response.data.subjects || []);
         } catch (error) {
           console.error("Error fetching subjects:", error);
@@ -36,7 +37,7 @@ const QuestionBank = () => {
     const fetchChapters = async () => {
       if (formData.subjectId) {
         try {
-          const response = await axios.get(`http://localhost:8006/api/get-chapters/${formData.subjectId}`);
+          const response = await axios.get(SummaryApi.GetChapterBySubjectid.url.replace(":subjectId", formData.subjectId));
           setChapters(response.data.chapters || []);
         } catch (error) {
           console.error("Error fetching chapters:", error);
@@ -68,7 +69,7 @@ const QuestionBank = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8006/api/create-questions", formData);
+      const response = await axios.post(SummaryApi.CreateQuestion.url, formData);
       setMessage(response.data.message);
       setFormData({ className: "", subjectId: "", chapterId: "", questionText: "", language: "English", options: [{ optionText: "", isCorrect: false }] });
     } catch (error) {
@@ -116,7 +117,7 @@ const QuestionBank = () => {
         ))}
 
         <button type="button" onClick={addOption} className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Add Option</button>
-        <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Create Question</button>
+        <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600">Create Question</button>
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
-// const backendDomain = 'https://feggbackend.onrender.com'
-const backendDomain = 'http://localhost:8006'
+const backendDomain = 'https://feggbackend.onrender.com'
+// const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
@@ -77,8 +77,28 @@ const SummaryApi = {
     method: 'get',
   },
 
-  GetminiMocktest: {
-    url: `${backendDomain}/api/mock-tests?mocktype=miniMock`,
+  createSUbject: {
+    url: `${backendDomain}/api/create-subject`,
+    method: 'post',
+  },
+  createChapter: {
+    url: `${backendDomain}/api/create-chapter`,
+    method: 'post',
+  },
+  GetSubjectByClass: {
+    url: `${backendDomain}/api/get-subjects/:className`,
+    method: 'get',
+  },
+  generatePracticeset: {
+    url: `${backendDomain}/api/generate-mock-set`,
+    method: 'get',
+  },
+  CreateQuestion: {
+    url: `${backendDomain}/api/create-questions`,
+    method: 'post',
+  },
+  GetChapterBySubjectid: {
+    url: `${backendDomain}/api/get-chapters/:subjectId`,
     method: 'get',
   },
   DeleteMock: {
@@ -92,6 +112,14 @@ const SummaryApi = {
   updateSubject: {
     url: `${backendDomain}/api/subjects/:id`,
     method: 'put',
+  },
+  Getpracticeset: {
+    url: `${backendDomain}/api/practiceset`,
+    method: 'get',
+  },
+  DeletePracticeset: {
+    url: `${backendDomain}/api/practiceset/:id`,
+    method: 'delete',
   },
 
   getALLResult: {

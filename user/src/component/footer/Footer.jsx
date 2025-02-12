@@ -52,8 +52,8 @@ const Footer = () => {
             <div className="bg-white w-16 h-16 rounded-full mb-4">
               <img src={logo} alt="" />
             </div>
-            <h2 className="text-lg font-semibold">ABC State Open School</h2>
-            <p className="text-sm text-gray-400">एबीसी स्टेट ओपन स्कूल</p>
+            <h2 className="text-lg font-semibold"> Foundation to Educate Girls Globally</h2>
+            {/* <p className="text-sm text-gray-400">एबीसी स्टेट ओपन स्कूल</p> */}
             <p className="text-gray-400 text-sm mt-4">
               The open schooling system was established in XXXX in the state to
               provide flexible education to diverse learners. It evolved from

@@ -19,10 +19,8 @@ const StartTest = () => {
   useEffect(() => {
     const fetchTestDetails = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8006/api/start-test/${mockSetId}`
-        )
-        const data = response.data
+        const response = await axios.get(SummaryApi.startTest.url.replace(":mockSetId", mockSetId));
+        const data = response.data;
 
         if (data.success) {
           setTestData(data.data)
@@ -92,13 +90,11 @@ const StartTest = () => {
 
   const handleSubmitTest = async () => {
     try {
-      const result = { mockSetId, answers, userName, learnerid }
-      const response = await axios.post(
-        'http://localhost:8006/api/submit-test',
-        result
-      )
-      alert(`Test submitted successfully! Score: ${response.data.score}`)
-      navigate(`/result/${response.data.result._id}`)
+      const result = { mockSetId, answers, userName, learnerid };
+      const response = await axios.post(SummaryApi.submitpost.url,
+        result);
+      alert(`Test submitted successfully! Score: ${response.data.score}`);
+      navigate(`/result/${response.data.result._id}`);
     } catch (error) {
       console.error('Error submitting test:', error)
       alert('Error submitting test. Please try again.')

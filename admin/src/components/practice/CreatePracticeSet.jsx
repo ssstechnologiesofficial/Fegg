@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PracticesetCards from "./PracticesetCards";
+import SummaryApi from "../../common/SummaryAPI";
 
 const CreatePracticeSet = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const CreatePracticeSet = () => {
 
   useEffect(() => {
     if (formData.className) {
-      axios.get(`http://localhost:8006/api/get-subjects/${formData.className}`)
+      axios.get(SummaryApi.GetSubjectByClass.url.replace(":className", formData.className))
         .then(response => setSubjects(response.data.subjects || []))
         .catch(error => console.error("Error fetching subjects:", error));
     } else {
@@ -29,7 +30,7 @@ const CreatePracticeSet = () => {
 
   useEffect(() => {
     if (formData.subjectId) {
-      axios.get(`http://localhost:8006/api/get-chapters/${formData.subjectId}`)
+      axios.get(SummaryApi.GetChapterBySubjectid.url.replace(":subjectId", formData.subjectId))
         .then(response => setChapters(response.data.chapters || []))
         .catch(error => console.error("Error fetching chapters:", error));
     } else {
@@ -56,7 +57,7 @@ const CreatePracticeSet = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8006/api/generate-mock-set", formData);
+      const response = await axios.post(SummaryApi.generatePracticeset.url, formData);
       setMessage(response.data.message);
       setFormData({
         className: "",
@@ -107,7 +108,7 @@ const CreatePracticeSet = () => {
 
         <input type="number" name="duration" value={formData.duration} onChange={handleChange} placeholder="Duration (in minutes)" className="w-full px-3 py-2 border rounded-lg" required />
 
-        <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Generate Mock Set</button>
+        <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600">Generate Mock Set</button>
       </form>
      
     </div>
