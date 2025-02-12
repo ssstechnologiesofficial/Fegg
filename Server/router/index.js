@@ -153,7 +153,7 @@ const {
   updateChapter,
   deleteChapter,
 } = require('../controller/practiceseset/chapter')
-const { createQuestions } = require('../controller/practiceseset/questions')
+const { createQuestions,  updateQuestions, deleteQuestions, getAllQuestions } = require('../controller/practiceseset/questions')
 const {
   createPracticeSet,
   getAllMockSets,
@@ -266,6 +266,9 @@ router.put("/chapter/:id", updateChapter);
 router.delete("/chapter/:id", deleteChapter);
 router.get('/get-chapters/:subjectId', getChaptersByid)
 router.post('/create-questions', createQuestions)
+router.get("/question", getAllQuestions);
+router.put("/question/:id", updateQuestions);
+router.delete("/question/:id", deleteQuestions);
 router.post('/generate-mock-set', createPracticeSet)
 
 router.get('/practiceset', getAllMockSets)

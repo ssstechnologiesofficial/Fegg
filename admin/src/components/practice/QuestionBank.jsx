@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SummaryApi from "../../common/SummaryAPI";
+import QuestionTable from "./QuestionTable";
 
 const QuestionBank = () => {
   const [formData, setFormData] = useState({
@@ -119,6 +120,7 @@ const QuestionBank = () => {
         <button type="button" onClick={addOption} className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Add Option</button>
         <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600">Create Question</button>
       </form>
+      <QuestionTable/>
     </div>
   );
 };

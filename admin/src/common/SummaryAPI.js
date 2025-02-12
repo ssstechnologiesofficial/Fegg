@@ -230,6 +230,15 @@ const SummaryApi = {
     url: `${backendDomain}/api/chapter`,
     method: 'get',
   },
+  // questions 
+  Getquestion: {
+    url: `${backendDomain}/api/question`,
+    method: 'get',
+  },
+  Question: {
+    url: `${backendDomain}/api/question/:id`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

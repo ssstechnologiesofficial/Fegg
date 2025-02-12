@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema({
-    className: { type: String, required: true },
-  language: { type: String,  },
+  // className: { type: String, required: true },
+  language: { type: String },
   questionText: String,
   options: [
     {
