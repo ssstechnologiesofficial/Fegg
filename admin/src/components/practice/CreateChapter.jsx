@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SummaryApi from "../../common/SummaryAPI";
+import ChapterTable from "./ChapterTable";
 
 const CreateChapterForm = () => {
   const [formData, setFormData] = useState({
@@ -55,6 +56,7 @@ const CreateChapterForm = () => {
   };
 
   return (
+    <>
     <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-semibold mb-4 text-center">Create Chapter</h2>
 
@@ -121,6 +123,7 @@ const CreateChapterForm = () => {
         </button>
       </form>
     </div>
+   <ChapterTable/></>
   );
 };
 

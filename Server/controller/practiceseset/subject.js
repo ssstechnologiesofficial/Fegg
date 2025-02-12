@@ -21,12 +21,13 @@ exports.createSubjects = async (req, res) => {
 // Get all subjects
 exports.getSubjectss = async (req, res) => {
   try {
-    const subjects = await subjectModel.find();
+    const subjects = await subjectModel.find().sort({ name: -1 }); 
     res.status(200).json(subjects);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
+
 
 // Get subject by ID
 exports.getSubjectById = async (req, res) => {
@@ -40,8 +41,31 @@ exports.getSubjectById = async (req, res) => {
   }
 };
 
+
+// Update Subject API
+exports.updateSubjects = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, class: subjectClass } = req.body;
+
+    const updatedSubject = await subjectModel.findByIdAndUpdate(
+      id,
+      { name, class: subjectClass },
+      { new: true }
+    );
+
+    if (!updatedSubject) {
+      return res.status(404).json({ message: "Subject not found" });
+    }
+
+    res.status(200).json({ message: "Subject updated successfully", updatedSubject });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update subject", error });
+  }
+};
+
 // Delete subject
-exports.deleteSubject = async (req, res) => {
+exports.deleteSubjects = async (req, res) => {
   try {
     const deletedSubject = await subjectModel.findByIdAndDelete(req.params.id);
     if (!deletedSubject) return res.status(404).json({ message: "Subject not found" });

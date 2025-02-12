@@ -1,5 +1,5 @@
-const backendDomain = 'https://feggbackend.onrender.com'
-// const backendDomain = 'http://localhost:8006'
+// const backendDomain = 'https://feggbackend.onrender.com'
+const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   // For Event
@@ -110,7 +110,7 @@ const SummaryApi = {
     method: 'delete',
   },
   updateSubject: {
-    url: `${backendDomain}/api/subjects/:id`,
+    url: `${backendDomain}/api/put-subjects/:id`,
     method: 'put',
   },
   Getpracticeset: {
@@ -209,6 +209,26 @@ const SummaryApi = {
   Blueprintdelete: {
     url: `${backendDomain}/api/uploadBlueprintdelete`,
     method: 'delete',
+  },
+
+  // practice set 
+  // subject
+  getSubjects: {
+    url: `${backendDomain}/api/get-subjects`,
+    method: 'get',
+  },
+  DeleteSubjects: {
+    url: `${backendDomain}/api/delete-subjects/:id`,
+    method: 'get',
+  },
+  // chapter
+  DeleteChapter: {
+    url: `${backendDomain}/api/chapter/:id`,
+    method: 'delete',
+  },
+ getChapter: {
+    url: `${backendDomain}/api/chapter`,
+    method: 'get',
   },
 }
 
