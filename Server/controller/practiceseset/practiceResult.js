@@ -1,15 +1,15 @@
-
-const mocksetModel = require("../../model/practiceset/mocksetModel");
-const TestResult = require("../../model/practiceset/resultModel");
+const mocksetModel = require('../../model/practiceset/mocksetModel')
+const TestResult = require('../../model/practiceset/resultModel')
 
 exports.submitTest = async (req, res) => {
+  console.log(req.body)
   try {
-    const { mockTestId, answers, userName, learnerid } = req.body
+    const { mockSetId, answers, userName, learnerid } = req.body
 
     // Fetch the mock test along with the questions and mockType
-    const mockTest = await mocksetModel.findById(mockTestId).populate(
-      'questions.questionId'
-    )
+    const mockTest = await mocksetModel
+      .findById(mockSetId)
+      .populate('questions.questionId')
     if (!mockTest) {
       return res
         .status(404)
@@ -41,14 +41,14 @@ exports.submitTest = async (req, res) => {
     const result = new TestResult({
       userName,
       learnerid,
-      mockTestId,
-      mocktype: mockTest.mocktype, // Ensure this is correctly populated
+      mockSetId,
+      // mocktype: mockTest.mocktype, // Ensure this is correctly populated
       score,
       correctAnswers,
       wrongAnswers,
       totalQuestions,
     })
-
+    console.log(result)
     await result.save()
 
     return res
@@ -58,21 +58,22 @@ exports.submitTest = async (req, res) => {
     console.error('Error submitting test:', error)
     res.status(500).json({ success: false, error: error.message })
   }
-  };
-  
+}
 
 exports.getTestResults = async (req, res) => {
   try {
-    const { resultId } = req.params;
-    const testResult = await TestResult.findById(resultId);
+    const { resultId } = req.params
+    const testResult = await TestResult.findById(resultId)
 
     if (!testResult) {
-      return res.status(404).json({ success: false, message: "Result not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: 'Result not found' })
     }
 
-    return res.status(200).json({ success: true, data: testResult });
+    return res.status(200).json({ success: true, data: testResult })
   } catch (error) {
-    console.error("Error fetching test result:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error" });
+    console.error('Error fetching test result:', error)
+    res.status(500).json({ success: false, message: 'Internal Server Error' })
   }
-};
+}

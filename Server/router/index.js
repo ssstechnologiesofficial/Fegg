@@ -149,8 +149,16 @@ const {
   getChaptersByid,
 } = require('../controller/practiceseset/chapter')
 const { createQuestions } = require('../controller/practiceseset/questions')
-const { createPracticeSet, getAllMockSets, deleteMockSet, startPracticeSet } = require('../controller/practiceseset/practiceMock')
-const { submitTest, getTestResults } = require('../controller/practiceseset/practiceResult')
+const {
+  createPracticeSet,
+  getAllMockSets,
+  deleteMockSet,
+  startPracticeSet,
+} = require('../controller/practiceseset/practiceMock')
+const {
+  submitTest,
+  getTestResults,
+} = require('../controller/practiceseset/practiceResult')
 
 // const {
 //   createPracticeSet,
@@ -250,11 +258,11 @@ router.get('/get-chapters/:subjectId', getChaptersByid)
 router.post('/create-questions', createQuestions)
 router.post('/generate-mock-set', createPracticeSet)
 
-router.get('/practiceset',getAllMockSets)
-router.delete('/practiceset/:id',deleteMockSet)
-router.get("/start-test/:mockSetId",startPracticeSet)
-router.post("/submit-test", submitTest);
-router.get("/test-result/:resultId", getTestResults);
+router.get('/practiceset', getAllMockSets)
+router.delete('/practiceset/:id', deleteMockSet)
+router.get('/start-test/:mockSetId', startPracticeSet)
+router.post('/submit-test', submitTest)
+router.get('/test-result/:resultId', getTestResults)
 router.get('/practiceset', getAllMockSets)
 router.delete('/practiceset/:id', deleteMockSet)
 
