@@ -127,7 +127,7 @@ const Sidebar = () => {
               >
                 <span className="flex items-center space-x-2">
                   <FiEdit />
-                  <span>Mock Test Management</span>
+                  <span>Practice Test Management</span>
                 </span>
                 {isMockDropdownOpen ? <FiChevronUp /> : <FiChevronDown />}
               </div>
@@ -185,7 +185,7 @@ const Sidebar = () => {
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
                     <FaList />
-                    <span>Mock Result</span>
+                    <span>Test Result</span>
                   </Link>
                 </div>
               )}

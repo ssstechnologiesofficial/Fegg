@@ -93,6 +93,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/generate-mock-set`,
     method: 'get',
   },
+  CreateQuestion: {
+    url: `${backendDomain}/api/create-questions`,
+    method: 'post',
+  },
   GetChapterBySubjectid: {
     url: `${backendDomain}/api/get-chapters/:subjectId`,
     method: 'get',
@@ -108,6 +112,14 @@ const SummaryApi = {
   updateSubject: {
     url: `${backendDomain}/api/subjects/:id`,
     method: 'put',
+  },
+  Getpracticeset: {
+    url: `${backendDomain}/api/practiceset`,
+    method: 'get',
+  },
+  DeletePracticeset: {
+    url: `${backendDomain}/api/practiceset/:id`,
+    method: 'delete',
   },
 
   getALLResult: {

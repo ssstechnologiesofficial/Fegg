@@ -114,7 +114,7 @@ const CreateChapterForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition"
+          className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 transition"
           disabled={!formData.className || !formData.subject} // Disable if class or subject is not selected
         >
           Create Chapter

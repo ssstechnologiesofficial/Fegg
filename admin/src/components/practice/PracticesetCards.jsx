@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaTrashAlt } from "react-icons/fa";
+import SummaryApi from "../../common/SummaryAPI";
 
 const PracticesetCards = () => {
   const [mockSets, setMockSets] = useState([]);
@@ -11,7 +12,7 @@ const PracticesetCards = () => {
 
   const fetchMockSets = async () => {
     try {
-      const response = await axios.get("http://localhost:8006/api/practiceset");
+      const response = await axios.get(SummaryApi.Getpracticeset.url);
       setMockSets(response.data.data);
     } catch (error) {
       console.error("Error fetching mock sets:", error);
@@ -20,7 +21,7 @@ const PracticesetCards = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8006/api/practiceset/${id}`);
+      await axios.delete(SummaryApi.DeletePracticeset.url.replace(':id',id));
       setMockSets(mockSets.filter((mockSet) => mockSet._id !== id));
       alert("Mock Set deleted successfully");
     } catch (error) {

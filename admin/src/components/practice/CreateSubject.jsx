@@ -48,7 +48,7 @@ const CreateSubjectForm = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-red-300"
             placeholder="Enter subject name"
             required
           />
@@ -61,7 +61,7 @@ const CreateSubjectForm = () => {
             name="class"
             value={formData.class}
             onChange={handleChange}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-red-300"
           >
             <option value="10">Class 10</option>
             <option value="12">Class 12</option>
@@ -71,7 +71,7 @@ const CreateSubjectForm = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition"
+          className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600 transition"
         >
           Create Subject
         </button>

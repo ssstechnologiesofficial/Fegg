@@ -108,7 +108,7 @@ const CreatePracticeSet = () => {
 
         <input type="number" name="duration" value={formData.duration} onChange={handleChange} placeholder="Duration (in minutes)" className="w-full px-3 py-2 border rounded-lg" required />
 
-        <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Generate Mock Set</button>
+        <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600">Generate Mock Set</button>
       </form>
      
     </div>
