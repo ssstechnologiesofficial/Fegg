@@ -10,9 +10,10 @@ const Crad12th = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedClass, setSelectedClass] = useState('12')
   const [selectedSubject, setSelectedSubject] = useState('')
-  const [selectedMockSetId, setSelectedMockSetId] = useState(null) // Store mockSetId
+  const [selectedMockSetId, setSelectedMockSetId] = useState(null)
   const [userInput, setUserInput] = useState('')
   const [userName, setUserName] = useState('')
+  const [inputError, setInputError] = useState('')
 
   useEffect(() => {
     const fetchMockTests = async () => {
@@ -34,11 +35,34 @@ const Crad12th = () => {
 
   const openModal = (subject, mockSetId) => {
     setSelectedSubject(subject)
-    setSelectedMockSetId(mockSetId) // Store mockSetId
+    setSelectedMockSetId(mockSetId)
     setIsModalOpen(true)
   }
 
+  const validateUserInput = (value) => {
+    if (/^\d{10}$/.test(value)) {
+      setInputError('')
+      return true // Valid contact number
+    } else if (/^EG\d{12,}$/.test(value)) {
+      setInputError('')
+      return true // Valid learner ID (14+ digits)
+    } else {
+      setInputError(
+        'Enter a valid 10-digit Contact Number or 14+ digit Learner ID'
+      )
+      return false
+    }
+  }
+
+  const handleUserInputChange = (e) => {
+    const value = e.target.value
+    setUserInput(value)
+    validateUserInput(value)
+  }
+
   const handleModalSubmit = async () => {
+    if (!validateUserInput(userInput)) return // Prevent submission if input is invalid
+
     const submissionData = {
       className: selectedClass,
       subject: selectedSubject,
@@ -51,9 +75,7 @@ const Crad12th = () => {
       const response = await axios.post(
         SummaryApi.practiceModal.url,
         submissionData,
-        {
-          headers: { 'Content-Type': 'application/json' },
-        }
+        { headers: { 'Content-Type': 'application/json' } }
       )
       console.log('Database Response:', response.data)
 
@@ -102,6 +124,7 @@ const Crad12th = () => {
           ))}
         </div>
       </div>
+
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
           <div className="relative bg-white p-6 rounded-lg shadow-2xl w-96 border border-gray-300">
@@ -130,11 +153,13 @@ const Crad12th = () => {
               type="text"
               placeholder="Enter Student ID or Contact Number"
               value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              className="border p-2 w-full mb-4 border-[#ff0000] rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff0000] shadow-sm"
+              onChange={handleUserInputChange}
+              className="border p-2 w-full mb-2 border-[#ff0000] rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff0000] shadow-sm"
             />
 
-            <div className="flex justify-end space-x-2">
+            {inputError && <p className="text-red-600 text-sm">{inputError}</p>}
+
+            <div className="flex justify-end space-x-2 mt-3">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2 bg-gray-500 text-white rounded shadow-md hover:bg-gray-600 transition-all"
@@ -143,7 +168,12 @@ const Crad12th = () => {
               </button>
               <button
                 onClick={handleModalSubmit}
-                className="px-4 py-2 bg-[#ff0000] text-white rounded shadow-md hover:bg-red-700 transition-all"
+                className={`px-4 py-2 rounded shadow-md transition-all ${
+                  inputError
+                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                    : 'bg-[#ff0000] text-white hover:bg-red-700'
+                }`}
+                disabled={!!inputError}
               >
                 Submit
               </button>

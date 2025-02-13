@@ -26,6 +26,7 @@ import CreatePracticeSet from '../components/practice/CreatePracticeSet'
 import PreviousPaper from '../components/PreviousPaper'
 import BluePrintupload from '../components/BluePrintupload'
 import QuestionTable from '../components/practice/QuestionTable'
+import PracticeModaldata from '../components/practice/PracticeModaldata'
 
 export const router = createBrowserRouter([
   {
@@ -81,7 +82,7 @@ export const router = createBrowserRouter([
             path: 'create-test',
             element: <CreatePracticeSet />,
           },
-         
+
           {
             path: 'create-subject',
             element: <CreateSubjectForm />,
@@ -119,8 +120,8 @@ export const router = createBrowserRouter([
             element: <PreviousPaper />,
           },
           {
-            path: 'BluePrintupload',
-            element: <BluePrintupload />,
+            path: 'PracticeModaldata',
+            element: <PracticeModaldata />,
           },
         ],
       },

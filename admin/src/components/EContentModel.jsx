@@ -11,9 +11,7 @@ const EContentModel = () => {
     // Fetch data using Axios
     const fetchDownloads = async () => {
       try {
-        const response = await axios.get(
-          SummaryApi.getAllDownloads.url
-        )
+        const response = await axios.get(SummaryApi.getAllDownloads.url)
         setDownloads(response.data)
         setFilteredDownloads(response.data) // Initialize filtered data
       } catch (error) {
