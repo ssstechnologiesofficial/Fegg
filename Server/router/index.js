@@ -160,6 +160,13 @@ const {
   getTestResults,
 } = require('../controller/practiceseset/practiceResult')
 
+//===================== Practice Modal
+
+const {
+  getPracticeTests,
+  submitPracticeTest,
+} = require('../controller/practiceseset/PracticeModelController')
+
 // const {
 //   createPracticeSet,
 //   getAllMockSets,
@@ -277,5 +284,10 @@ router.get('/getuploadBlueprint', blueprintController.getAllBlueprints) // Read 
 router.get('/getuploadBlueprint/:id', blueprintController.getBlueprintById) // Read (Get a single PDF)
 router.put('/uploadBlueprintupdate/:id', blueprintController.updateBlueprint) // Update (Title only)
 router.delete('/uploadBlueprintdelete/:id', blueprintController.deleteBlueprint)
+
+// =================== Practice set modal =================
+
+router.get('/practiceModal', getPracticeTests)
+router.post('/submitpracticeModal', submitPracticeTest)
 
 module.exports = router
