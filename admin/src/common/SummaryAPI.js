@@ -243,6 +243,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/getpracticeModal`,
     method: 'get',
   },
+  getALLstudent: {
+    url: `${backendDomain}/api/totalStudents`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

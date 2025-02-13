@@ -122,10 +122,10 @@ const validateStudentRegistration = [
 ]
 
 // Get all students
-const getAllStudents = async (req, res) => {
+const getTotalStudents = async (req, res) => {
   try {
-    const students = await studentRegister.find()
-    res.status(200).json(students)
+    const totalStudents = await studentRegister.countDocuments() // Get total count
+    res.status(200).json({ total: totalStudents })
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' })
   }
@@ -179,7 +179,7 @@ const deleteStudent = async (req, res) => {
 
 module.exports = {
   registerStudent,
-  getAllStudents,
+  getTotalStudents,
   getStudentById,
   updateStudent,
   deleteStudent,

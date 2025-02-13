@@ -69,7 +69,10 @@ const StudentList = () => {
 
   const indexOfLastStudent = currentPage * studentsPerPage
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
-  const currentStudents = students.slice(indexOfFirstStudent, indexOfLastStudent)
+  const currentStudents = students.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  )
 
   const nextPage = () => {
     if (indexOfLastStudent < students.length) {
@@ -121,7 +124,7 @@ const StudentList = () => {
                 {student.firstName} {student.middleName} {student.lastName}
               </td>
               <td className="border p-2">
-                {student.fatherFirstName} {student.fatherMiddleName}{" "}
+                {student.fatherFirstName} {student.fatherMiddleName}{' '}
                 {student.fatherLastName}
               </td>
               <td className="border p-2">{student.gender}</td>
@@ -159,11 +162,19 @@ const StudentList = () => {
         </tbody>
       </table>
       <div className="flex justify-between mt-4">
-        <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={prevPage} disabled={currentPage === 1}>
+        <button
+          className="bg-gray-500 text-white px-4 py-2 rounded"
+          onClick={prevPage}
+          disabled={currentPage === 1}
+        >
           Previous
         </button>
         <span className="text-lg font-semibold">Page {currentPage}</span>
-        <button className="bg-gray-500 text-white px-4 py-2 rounded" onClick={nextPage} disabled={indexOfLastStudent >= students.length}>
+        <button
+          className="bg-gray-500 text-white px-4 py-2 rounded"
+          onClick={nextPage}
+          disabled={indexOfLastStudent >= students.length}
+        >
           Next
         </button>
       </div>
@@ -179,16 +190,16 @@ const StudentList = () => {
             {/* Scrollable Form Fields */}
             <div className="h-[400px] overflow-y-auto">
               {Object.keys(formData)
-                .filter((field) => field !== "_id") // Exclude _id from inputs
+                .filter((field) => field !== '_id') // Exclude _id from inputs
                 .map((field) => (
                   <div key={field} className="mb-2">
                     <label className="block font-semibold capitalize">
-                      {field.replace(/([A-Z])/g, " $1").trim()}
+                      {field.replace(/([A-Z])/g, ' $1').trim()}
                     </label>
                     <input
-                      type={field === "dob" ? "date" : "text"}
+                      type={field === 'dob' ? 'date' : 'text'}
                       name={field}
-                      value={formData[field] || ""}
+                      value={formData[field] || ''}
                       onChange={handleChange}
                       className="border rounded p-2 w-full"
                     />
@@ -215,7 +226,7 @@ const StudentList = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default StudentList;
+export default StudentList

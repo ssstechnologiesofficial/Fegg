@@ -113,6 +113,7 @@ const {
   getAllStudents,
   updateStudent,
   deleteStudent,
+  getTotalStudents,
   validateStudentRegistration,
 } = require('../controller/studentController')
 const {
@@ -243,9 +244,9 @@ router.delete('/PreviousPaper/:id', deletePreviousPaper)
 
 // student register
 router.post('/register', validateStudentRegistration, registerStudent)
-router.get('/register', getAllStudents)
 router.put('/register/:id', updateStudent)
 router.delete('/register/:id', deleteStudent)
+router.get('/totalStudents', getTotalStudents)
 
 // mock test
 // mocktest
