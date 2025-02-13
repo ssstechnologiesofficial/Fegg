@@ -1,5 +1,5 @@
-const backendDomain = 'https://feggbackend.onrender.com'
-// const backendDomain = 'http://localhost:8006'
+// const backendDomain = 'https://feggbackend.onrender.com'
+const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   contact: {
@@ -65,6 +65,10 @@ const SummaryApi = {
   Blueprintget: {
     url: `${backendDomain}/api/getuploadBlueprint`,
     method: 'get',
+  },
+  practiceModal: {
+    url: `${backendDomain}/api/submitpracticeModal`,
+    method: 'post',
   },
 }
 
