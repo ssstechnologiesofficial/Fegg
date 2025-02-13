@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { Outlet, Link } from 'react-router-dom'
-import { TbLayoutDashboardFilled } from 'react-icons/tb'
-import fagglogo from '../../public/eg-logo.png'
+import React, { useState } from "react";
+import { Outlet, Link } from "react-router-dom";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
+import fagglogo from "../../public/eg-logo.png";
 
 import {
   FaChalkboardTeacher,
   FaClipboardList,
   FaSignOutAlt,
-} from 'react-icons/fa'
-import { FaBars } from 'react-icons/fa6'
+} from "react-icons/fa";
+import { FaBars } from "react-icons/fa6";
 import {
   FiChevronDown,
   FiChevronUp,
@@ -19,26 +19,26 @@ import {
   FiSave,
   FiVolume1,
   FiFile,
-} from 'react-icons/fi'
-import { FaList, FaQuestionCircle } from 'react-icons/fa'
+} from "react-icons/fi";
+import { FaList, FaQuestionCircle } from "react-icons/fa";
 
 const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed)
+    setIsCollapsed(!isCollapsed);
     if (!isCollapsed) {
-      setIsMockDropdownOpen(false) // Close dropdown when collapsing
+      setIsMockDropdownOpen(false); // Close dropdown when collapsing
     }
-  }
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
         className={`${
-          isCollapsed ? 'w-16' : 'w-60'
+          isCollapsed ? "w-16" : "w-60"
         } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto scrollbar-hide`}
       >
         <div className="p-4 flex items-center justify-between">
@@ -164,14 +164,14 @@ const Sidebar = () => {
                     <span>Create Questions</span>
                   </Link>
 
+                  */}
                   <Link
                     to="questions-manage"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
                     <FaList />
                     <span>Questions Management</span>
-                  </Link> */}
-
+                  </Link>
                   <Link
                     to="create-test"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -211,7 +211,7 @@ const Sidebar = () => {
       {/* Main Content */}
       <div
         className={`flex-grow ${
-          isCollapsed ? 'ml-16' : 'ml-60'
+          isCollapsed ? "ml-16" : "ml-60"
         } h-[100vh] transition-all duration-300`}
       >
         <main className="p-3">
@@ -219,7 +219,7 @@ const Sidebar = () => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
