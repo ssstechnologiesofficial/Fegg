@@ -247,6 +247,15 @@ const SummaryApi = {
     url: `${backendDomain}/api/totalStudents`,
     method: 'get',
   },
+  // result data
+  getTestResult: {
+    url: `${backendDomain}/api/test-result`,
+    method: 'get',
+  },
+  TestResult: {
+    url: `${backendDomain}/api/test-result/:id`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

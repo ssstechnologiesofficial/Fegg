@@ -27,6 +27,7 @@ import PreviousPaper from '../components/PreviousPaper'
 import BluePrintupload from '../components/BluePrintupload'
 import QuestionTable from '../components/practice/QuestionTable'
 import PracticeModaldata from '../components/practice/PracticeModaldata'
+import TestResultsTable from '../components/practice/TestResultTable'
 
 export const router = createBrowserRouter([
   {
@@ -105,7 +106,7 @@ export const router = createBrowserRouter([
           },
           {
             path: 'MockSidebarResult',
-            element: <MockSidebarResult />,
+            element: <TestResultsTable />,
           },
           {
             path: 'create-questions',

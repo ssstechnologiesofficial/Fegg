@@ -169,6 +169,9 @@ const {
 const {
   submitTest,
   getTestResults,
+  getTestResultsController,
+  updateTestResultsController,
+  deleteTestResultsController,
 } = require('../controller/practiceseset/practiceResult')
 
 //===================== Practice Modal
@@ -291,6 +294,9 @@ router.post('/submit-test', submitTest)
 router.get('/test-result/:resultId', getTestResults)
 router.get('/practiceset', getAllMockSets)
 router.delete('/practiceset/:id', deleteMockSet)
+router.get('/test-result', getTestResultsController)
+router.put('/test-result/:id', updateTestResultsController)
+router.put('/test-result/:id', deleteTestResultsController)
 
 //============================
 // Routes

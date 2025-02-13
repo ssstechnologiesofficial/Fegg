@@ -3,6 +3,7 @@ const TestResult = require('../../model/practiceset/resultModel')
 
 exports.submitTest = async (req, res) => {
   try {
+
     const { mockSetId, learnerId, learnerName, correctAnswers, wrongAnswers, score } = req.body;
 
     // if (!mockSetId || !learnerId || !learnerName) {
@@ -40,5 +41,31 @@ exports.getTestResults = async (req, res) => {
   } catch (error) {
     console.error('Error fetching test result:', error)
     res.status(500).json({ success: false, message: 'Internal Server Error' })
+  }
+}
+exports.getTestResultsController = async (req, res) => {
+  try {
+    const results = await TestResult.find();
+    res.json(results);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching results", error: err });
+  }
+}
+exports.updateTestResultsController = async (req, res) => {
+  try {
+    const updatedResult = await TestResult.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedResult) return res.status(404).json({ message: "Result not found" });
+    res.json({ message: "Test result updated successfully", updatedResult });
+  } catch (err) {
+    res.status(500).json({ message: "Error updating result", error: err });
+  }
+}
+exports.deleteTestResultsController = async (req, res) => {
+  try {
+    const deletedResult = await TestResult.findByIdAndDelete(req.params.id);
+    if (!deletedResult) return res.status(404).json({ message: "Result not found" });
+    res.json({ message: "Test result deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Error deleting result", error: err });
   }
 }
