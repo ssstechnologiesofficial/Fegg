@@ -70,8 +70,8 @@ const HeroImage = () => {
   }
 
   return (
-    <div className="flex mx-auto bg-white shadow-md rounded-lg p-6 gap-8 w-full mt-10">
-      <div className="w-1/2 border border-[#fe0000] rounded-xl border-r-4 border-b-4 p-2">
+    <div className=" mx-auto  shadow-md rounded-lg p-6 gap-8 w-full mt-10">
+      <div className="border bg-white border-[#fe0000] rounded-xl border-r-4 border-b-4 p-2">
         <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
           Upload Slider Image
         </h2>
@@ -90,7 +90,7 @@ const HeroImage = () => {
       </div>
 
       {/* Display Images Table */}
-      <div className="mt-6 w-1/2">
+      <div className="mt-6 bg-white ">
         <h3 className="text-xl font-semibold text-gray-700 mb-3">
           Uploaded Images
         </h3>
@@ -98,8 +98,8 @@ const HeroImage = () => {
           <thead>
             <tr className="bg-primary text-white">
               <th className=" p-2">Image</th>
-              <th className=" p-2">Title</th>
-              <th className=" p-2">Description</th>
+              {/* <th className=" p-2">Title</th>
+              <th className=" p-2">Description</th> */}
               <th className=" p-2">Actions</th>
             </tr>
           </thead>
@@ -114,8 +114,8 @@ const HeroImage = () => {
                       className="w-16 h-16 object-cover mx-auto"
                     />
                   </td>
-                  <td className="border p-2">{img.title}</td>
-                  <td className="border p-2">{img.description}</td>
+                  {/* <td className="border p-2">{img.title}</td>
+                  <td className="border p-2">{img.description}</td> */}
                   <td className="border p-2">
                     <button
                       className="bg-primary text-white px-3 py-1 rounded hover:bg-red-600"

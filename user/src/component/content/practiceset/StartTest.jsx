@@ -1,240 +1,224 @@
-import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import SummaryApi from '../../../common/SummaryApi'
-import logo from '../../../assets/logo.png'
+
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import SummaryApi from "../../../common/SummaryApi";
 
 const StartTest = () => {
-  const { mockSetId } = useParams()
-  const navigate = useNavigate()
-  const [testData, setTestData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [answers, setAnswers] = useState({})
-  const [timeRemaining, setTimeRemaining] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [userName, setUserName] = useState('')
-  const [learnerid, setLearnerid] = useState('')
-  const [error, setError] = useState('')
+  const { mockSetId } = useParams();
+  const [questions, setQuestions] = useState([]);
+  const [duration, setDuration] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [score, setScore] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [wrongAnswers, setWrongAnswers] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [name, setName] = useState("");
+  const [learnerId, setLearnerId] = useState("");
 
   useEffect(() => {
-    const fetchTestDetails = async () => {
+    if (!mockSetId) {
+      setError("Invalid test ID.");
+      setLoading(false);
+      return;
+    }
+
+    const fetchQuestions = async () => {
       try {
-        const response = await axios.get(
-          SummaryApi.startTest.url.replace(':mockSetId', mockSetId)
-        )
-        const data = response.data
+        const response = await fetch(
+          // `http://localhost:8006/api/start-test/${mockSetId}`
+SummaryApi.startTest.url.replace(":mockSetId",mockSetId)
+        );
+        const data = await response.json();
 
-        if (data.success) {
-          setTestData(data.data)
-          setTimeRemaining(data.data.duration * 60)
+        if (response.ok) {
+          setQuestions(data.questions);
+          setDuration(data.duration);
+          setTimeLeft(data.duration * 60);
         } else {
-          alert('Failed to start the test')
+          setError(data.message);
         }
-      } catch (error) {
-        console.error('Error starting test:', error)
+      } catch (err) {
+        setError("Failed to fetch questions. Please try again.");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchTestDetails()
-  }, [mockSetId])
+    fetchQuestions();
+  }, [mockSetId]);
 
   useEffect(() => {
-    if (timeRemaining === null) return
-    if (timeRemaining === 0) {
-      alert('Time is up! Test will be submitted.')
-      handleSubmitTest()
-      return
-    }
+    if (timeLeft <= 0 || submitted) return;
 
     const timer = setInterval(() => {
-      setTimeRemaining((prevTime) => prevTime - 1)
-    }, 1000)
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          openModal(); // Open modal when time runs out
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [timeRemaining])
+    return () => clearInterval(timer);
+  }, [timeLeft, submitted]);
+
+  const handleOptionChange = (questionId, optionId) => {
+    setSelectedAnswers({ ...selectedAnswers, [questionId]: optionId });
+  };
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleFinalSubmit = async () => {
+    if (!name || !learnerId) {
+      alert("Please enter your name and learner ID.");
+      return;
+    }
+  
+    let correct = 0;
+    let wrong = 0;
+    let totalScore = 0;
+  
+    questions.forEach((question) => {
+      const selectedOption = selectedAnswers[question._id];
+      const correctOption = question.options.find((opt) => opt.isCorrect);
+  
+      if (selectedOption === correctOption?._id) {
+        correct++;
+        totalScore += question.marks;
+      } else {
+        wrong++;
+      }
+    });
+  
+    setCorrectAnswers(correct);
+    setWrongAnswers(wrong);
+    setScore(totalScore);
+    setShowModal(false);
+  
+    const testResult = {
+      mockSetId,
+      name,
+      learnerId,
+      correctAnswers: correct,
+      wrongAnswers: wrong,
+      score: totalScore,
+    };
+  
+    try {
+      const response = await fetch(SummaryApi.submitpost.url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(testResult),
+      });
+  
+      const data = await response.json(); // Read the response body
+  
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit test."); // Handle API error
+      }
+  
+      alert("Test submitted successfully!");
+      setSubmitted(true); // Mark test as submitted only if successful
+    } catch (error) {
+      alert(error.message || "Failed to submit test.");
+    }
+  };
+  
 
   const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`
-  }
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+  };
 
-  const handleAnswerChange = (questionId, answer) => {
-    setAnswers((prevAnswers) => ({
-      ...prevAnswers,
-      [questionId]: answer,
-    }))
-  }
-
-  const handleNextQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
-  }
-
-  const handlePreviousQuestion = () => {
-    setCurrentQuestionIndex((prevIndex) => prevIndex - 1)
-  }
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true)
-  }
-
-  const handleModalSubmit = async () => {
-    if (!userName || !learnerid) {
-      setError('Please enter both name and phone number.')
-      return
-    }
-    setError('')
-    setIsModalOpen(false)
-    await handleSubmitTest()
-  }
-
-  const handleSubmitTest = async () => {
-    try {
-      const result = { mockSetId, answers, userName, learnerid }
-      const response = await axios.post(SummaryApi.submitpost.url, result)
-      alert(`Test submitted successfully! Score: ${response.data.score}`)
-      navigate(`/result/${response.data.result._id}`)
-    } catch (error) {
-      console.error('Error submitting test:', error)
-      alert('Error submitting test. Please try again.')
-    }
-  }
-
-  if (loading) {
-    return <p>Loading test...</p>
-  }
-
-  if (!testData || !testData.questions.length) {
-    return <p>No test data found.</p>
-  }
-
-  const currentQuestion = testData.questions[currentQuestionIndex]
+  if (loading)
+    return <div className="text-center text-gray-700">Loading...</div>;
+  if (error) return <div className="text-center text-red-500">{error}</div>;
 
   return (
-    <div className="container mx-auto p-3 flex gap-6 flex-col-reverse sm:flex-row justify-center sm:items-start items-center">
-      {/* Left Sidebar - Question Numbers */}
-      <div className="sm:w-1/4 w-auto flex  flex-col border-l-2  border-[#fd645b] border-r-2 p-2">
-        <h2 className="text-lg font-bold mb-4">Questions</h2>
-        <ul className="flex justify-center gap-2 items-center ">
-          {testData.questions.map((q, index) => {
-            const isAnswered = Object.keys(answers).length >= index + 1
-            return (
-              <li
-                key={q._id}
-                className={`cursor-pointer text-white font-semibold text-center py-2 px-4 rounded ${
-                  isAnswered ? 'bg-green-500' : 'bg-blue-500'
-                }`}
-                onClick={() => setCurrentQuestionIndex(index)}
-              >
-                {index + 1}
-              </li>
-            )
-          })}
-        </ul>
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-2xl font-bold text-center mb-6">Practice Test</h1>
+      <div className="text-center text-lg font-semibold text-red-500">
+        Time Left: {formatTime(timeLeft)}
       </div>
-
-      {/* Main Question Area */}
-      <div className="w-3/4">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">
-            Start Test: {testData.title}
-          </h1>
-          <div className="text-right sm:text-xl text-sm  font-semibold text-red-600 mb-4">
-            Time Remaining: {formatTime(timeRemaining)}
-          </div>
+      {questions.length === 0 ? (
+        <p className="text-center text-gray-600">No questions available.</p>
+      ) : (
+        <div className="space-y-6">
+          {questions.map((question, index) => (
+            <div key={question._id} className="p-4 border rounded-lg shadow">
+              <p className="text-lg font-semibold mb-2">
+                {index + 1}. {question.questionText}
+              </p>
+              <div className="space-y-2">
+                {question.options.map((option, i) => (
+                  <div key={option._id} className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name={`question-${index}`}
+                      id={`option-${index}-${i}`}
+                      className="cursor-pointer"
+                      onChange={() => handleOptionChange(question._id, option._id)}
+                      disabled={submitted}
+                    />
+                    <label htmlFor={`option-${index}-${i}`} className="cursor-pointer">
+                      {option.optionText}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="py-2 px-4  border-2 border-[#fd645b] rounded shadow-sm bg-white">
-          <div className="flex justify-between items-center">
-            <h3 className="text-lg font-semibold">
-              {currentQuestion.questionText}
-            </h3>
-            <img
-              src={logo}
-              className="border border-[#fd645b] object-fill p-1 h-16 w-16 rounded-full"
-            />
-          </div>
-          <ul className="mt-4">
-            {currentQuestion.options.map((option, index) => (
-              <li key={index} className="mt-2">
-                <input
-                  type="radio"
-                  id={`option-${index}`}
-                  name={`question-${currentQuestion._id}`}
-                  value={option._id}
-                  checked={answers[currentQuestion._id] === option._id}
-                  onChange={() =>
-                    handleAnswerChange(currentQuestion._id, option._id)
-                  }
-                />
-                <label htmlFor={`option-${index}`} className="ml-2">
-                  {option.optionText}
-                </label>
-              </li>
-            ))}
-          </ul>
+      )}
+      <button
+        onClick={openModal}
+        className={`mt-6 w-full py-2 px-4 rounded-lg ${
+          submitted ? "bg-gray-400 cursor-not-allowed" : "bg-red-500 hover:bg-red-600 text-white"
+        }`}
+        disabled={submitted}
+      >
+        {submitted ? "Test Submitted" : "Submit Test"}
+      </button>
 
-          <div className="flex justify-between sm:gap-0 gap-2 mt-4">
-            <button
-              onClick={handlePreviousQuestion}
-              disabled={currentQuestionIndex === 0}
-              className="bg-gray-500 text-white py-2 sm:px-4 px-2 rounded sm:text-base text-sm"
-            >
-              Previous
-            </button>
-            <button
-              onClick={handleOpenModal}
-              className="bg-[#fd645b] text-white py-2 px-4 rounded sm:text-base text-sm"
-            >
-              Submit
-            </button>
-            <button
-              onClick={handleNextQuestion}
-              disabled={currentQuestionIndex === testData.questions.length - 1}
-              className="bg-blue-500 text-white py-2 px-4 rounded sm:text-base text-sm"
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-lg font-semibold mb-4">Enter your details</h2>
-            {error && <p className="text-red-600">{error}</p>}
-            <div className="mb-4">
-              <label className="block mb-2">Name:</label>
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 className="text-xl font-semibold text-center mb-4">Enter Details</h2>
+            <div className="space-y-4">
               <input
                 type="text"
-                className="border p-2 w-full"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Enter your name"
+                className="w-full p-2 border rounded-lg"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
-            </div>
-            <div className="mb-4">
-              <label className="block mb-2">Learner ID:</label>
               <input
                 type="text"
-                className="border p-2 w-full"
-                value={learnerid}
-                onChange={(e) => setLearnerid(e.target.value)}
+                placeholder="Enter your Learner ID"
+                className="w-full p-2 border rounded-lg"
+                value={learnerId}
+                onChange={(e) => setLearnerId(e.target.value)}
               />
             </div>
-            <div className="flex justify-end">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="bg-gray-500 text-white py-2 px-4 rounded mr-2"
-              >
+            <div className="flex justify-end mt-4 space-x-2">
+              <button onClick={closeModal} className="px-4 py-2 bg-gray-400 rounded-lg">
                 Cancel
               </button>
-              <button
-                onClick={handleModalSubmit}
-                className="bg-green-500 text-white py-2 px-4 rounded"
-              >
+              <button onClick={handleFinalSubmit} className="px-4 py-2 bg-red-500 text-white rounded-lg">
                 Submit
               </button>
             </div>
@@ -242,7 +226,7 @@ const StartTest = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default StartTest
+export default StartTest;

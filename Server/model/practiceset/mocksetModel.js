@@ -11,18 +11,9 @@ const mockSetSchema = new mongoose.Schema({
   questions: [
     {
       questionId: { type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel" },
-      className: { type: String, required: true },
-      questionText: { type: String, required: true },
-      options: [
-        {
-          optionText: { type: String, required: true },
-          isCorrect: { type: Boolean, default: false },
-        },
-      ],
-      subject: { type: mongoose.Schema.Types.ObjectId, ref: "SubjectModel" },
-      chapter: { type: mongoose.Schema.Types.ObjectId, ref: "Chapter" },
       marks: { type: Number, required: true }, // Add marks for each question
     },
+    
   ],
 });
 

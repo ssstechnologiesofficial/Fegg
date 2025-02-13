@@ -5,104 +5,43 @@ const subjectModel = require('../../model/practiceset/subjectModel')
 
 exports.createPracticeSet = async (req, res) => {
   try {
-    const {
+    const { className, subjectId, selectedChapters, numQuestions, totalMarks, duration, language } = req.body;
+
+    // Fetch questions based on selected subject, class, and chapters
+    const questions = await questionModel.find({
+      subject: subjectId,
+      chapter: { $in: selectedChapters },
+      language: language || { $exists: true },
+    });
+
+    if (questions.length < numQuestions) {
+      return res.status(400).json({ message: "Not enough questions available." });
+    }
+
+    // Randomly select the required number of questions
+    const selectedQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, numQuestions);
+
+    // Prepare the mock set data
+    const mockSet = new mocksetModel({
       className,
-      subjectId,
+      subject: subjectId,
       selectedChapters,
       numQuestions,
       totalMarks,
       duration,
-      selectedQuestions = [],
-    } = req.body
+      language,
+      questions: selectedQuestions.map(q => ({
+        questionId: q._id,
+        marks: totalMarks / numQuestions, // Distribute marks evenly
+      })),
+    });
 
-    if (!mongoose.Types.ObjectId.isValid(subjectId)) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Invalid subject ID' })
-    }
-
-    const subject = await subjectModel.findById(subjectId)
-    if (!subject) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Subject not found' })
-    }
-
-    const chapterIds = selectedChapters.map(
-      (id) => new mongoose.Types.ObjectId(id)
-    )
-    let questions = []
-    const numQuestionsInt = parseInt(numQuestions)
-
-    if (numQuestionsInt > 0) {
-      questions = await questionModel.aggregate([
-        {
-          $match: {
-            subject: new mongoose.Types.ObjectId(subjectId),
-            className,
-            chapter: { $in: chapterIds },
-          },
-        },
-        { $sample: { size: numQuestionsInt } },
-      ])
-
-      if (questions.length < numQuestionsInt) {
-        return res.status(400).json({
-          success: false,
-          message: `Only ${questions.length} questions are available in the selected chapters.`,
-        })
-      }
-    } else {
-      const selectedQuestionIds = selectedQuestions.map(
-        (q) => new mongoose.Types.ObjectId(q.questionId)
-      )
-      questions = await questionModel.find({
-        _id: { $in: selectedQuestionIds },
-      })
-
-      if (questions.length !== selectedQuestionIds.length) {
-        return res.status(400).json({
-          success: false,
-          message: 'Some selected questions were not found in the database.',
-        })
-      }
-    }
-
-    // Transform question data to include full details and marks
-    const formattedQuestions = questions.map((q) => ({
-      questionId: q._id,
-      className: q.className,
-      language: q.language,
-      questionText: q.questionText,
-      options: q.options,
-      subject: q.subject,
-      chapter: q.chapter,
-      marks:
-        selectedQuestions.find((sq) => sq.questionId === q._id.toString())
-          ?.marks || 1, // Default marks if not provided
-    }))
-
-    // Create Practice Set
-    const practiceSet = new mocksetModel({
-      className,
-      subject: new mongoose.Types.ObjectId(subjectId),
-      selectedChapters: chapterIds,
-      numQuestions: questions.length,
-      totalMarks,
-      duration,
-      questions: formattedQuestions,
-    })
-
-    await practiceSet.save()
-
-    return res.status(201).json({
-      success: true,
-      message: 'Practice set created successfully',
-      data: practiceSet,
-    })
+    // Save to database
+    await mockSet.save();
+    res.status(201).json({ message: "Practice set generated successfully!", mockSet });
   } catch (error) {
-    console.error('Error creating practice set:', error)
-    res.status(500).json({ success: false, message: 'Internal Server Error' })
+    console.error(error);
+    res.status(500).json({ message: "Server error. Please try again." });
   }
 }
 
@@ -144,43 +83,33 @@ exports.deleteMockSet = async (req, res) => {
 // start test
 exports.startPracticeSet = async (req, res) => {
   try {
-    const { mockSetId } = req.params
+    const { mockSetId } = req.params;
+    const mockSet = await mocksetModel.findById(mockSetId).populate({
+      path: "questions.questionId",
+      select: "questionText options",
+    });
 
-    // Fetch the mock test with questions
-    const mockTest = await mocksetModel.findById(mockSetId).populate({
-      path: 'questions.questionId',
-      model: 'QuestionModel',
-    })
-
-    if (!mockTest) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Mock test not found' })
+    if (!mockSet) {
+      return res.status(404).json({ message: "Practice set not found." });
     }
 
-    // Extract questions and options
-    const questions = mockTest.questions.map((q) => ({
-      questionId: q.questionId._id,
-      questionText: q.questionText,
-      options: q.options,
-      marks: q.marks,
-    }))
+    // Include marks with each question
+    const formattedQuestions = mockSet.questions.map(q => ({
+      _id: q.questionId._id,
+      questionText: q.questionId.questionText,
+      options: q.questionId.options,
+      marks: q.marks, // Now sending marks along with the question
+    }));
 
-    // Return the test data with a start time
-    return res.json({
-      success: true,
-      data: {
-        mockSetId,
-        className: mockTest.className,
-        subject: mockTest.subject,
-        totalMarks: mockTest.totalMarks,
-        duration: mockTest.duration, // Timer duration in minutes
-        questions,
-        startTime: Date.now(),
-      },
-    })
+    res.status(200).json({ 
+      questions: formattedQuestions,
+      duration: mockSet.duration, // Include test duration
+    });
   } catch (error) {
-    console.error('Error starting the test:', error)
-    return res.status(500).json({ success: false, message: 'Server error' })
+    console.error(error);
+    res.status(500).json({ message: "Server error. Please try again." });
   }
-}
+};
+
+
+
