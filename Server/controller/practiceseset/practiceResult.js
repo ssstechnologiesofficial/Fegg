@@ -6,7 +6,7 @@ exports.submitTest = async (req, res) => {
   try {
     const { mockSetId, answers, userName, learnerid } = req.body
 
-    // Fetch the mock test along with the questions and mockType
+    // Fetch the mock test along with the questions 
     const mockTest = await mocksetModel
       .findById(mockSetId)
       .populate('questions.questionId')
@@ -22,18 +22,21 @@ exports.submitTest = async (req, res) => {
 
     // Evaluate answers
     mockTest.questions.forEach((question) => {
-      const questionId = question.questionId._id.toString()
-      const correctOption = question.questionId.options.find(
-        (option) => option.isCorrect
-      )
-
-      if (answers[questionId] === correctOption._id.toString()) {
-        score += question.marks || 1 // Add marks for the correct answer
-        correctAnswers++
+      const questionId = question.questionId._id.toString();
+      const correctOption = question.questionId.options.find((option) => option.isCorrect);
+    
+      console.log("Question ID:", questionId);
+      console.log("User Answer:", answers[questionId]);
+      console.log("Correct Answer ID:", correctOption ? correctOption._id.toString() : "No Correct Option");
+    
+      if (correctOption && answers[questionId] === correctOption._id.toString()) {
+        score += question.marks; // Add marks for correct answer
+        correctAnswers++;
       } else {
-        wrongAnswers++
+        wrongAnswers++;
       }
-    })
+    });
+    
 
     const totalQuestions = mockTest.questions.length
 
@@ -42,7 +45,6 @@ exports.submitTest = async (req, res) => {
       userName,
       learnerid,
       mockSetId,
-      // mocktype: mockTest.mocktype, // Ensure this is correctly populated
       score,
       correctAnswers,
       wrongAnswers,

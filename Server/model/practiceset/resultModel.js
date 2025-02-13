@@ -5,7 +5,7 @@ const testResultSchema = new mongoose.Schema({
   learnerid: { type: String, required: true },
   mockSetId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'MockTest',
+    ref: 'MockSet',
     required: true,
   },
   // mocktype: { type: String, required: true },

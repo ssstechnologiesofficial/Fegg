@@ -54,7 +54,44 @@ exports.getChaptersByid = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
       }
 };
+// get 
+exports.getChapters = async (req, res) => {
+  try {
+    const chapters = await chapterModel
+      .find()
+      .populate({
+        path: "subject",
+        select: "name class",
+        model: "SubjectModel", // Ensure the correct model name
+      })
+      .sort({ title: -1 });
 
+    res.status(200).json(chapters);
+  } catch (error) {
+    console.error("Error fetching chapters:", error);
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+
+
+// Update a chapter
+exports.updateChapter = async (req, res) => {
+  try {
+    const { title, subject } = req.body;
+    const updatedChapter = await chapterModel.findByIdAndUpdate(
+      req.params.id,
+      { title, subject },
+      { new: true }
+    );
+
+    if (!updatedChapter) return res.status(404).json({ message: "Chapter not found" });
+
+    res.status(200).json({ message: "Chapter updated successfully", updatedChapter });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
 // Delete chapter
 exports.deleteChapter = async (req, res) => {
   try {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SummaryApi from "../../common/SummaryAPI";
+import QuestionTable from "./QuestionTable";
 
 const QuestionBank = () => {
   const [formData, setFormData] = useState({
@@ -78,6 +79,7 @@ const QuestionBank = () => {
   };
 
   return (
+    <>
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6">
       <h2 className="text-xl font-semibold mb-4 text-center">Create Question</h2>
       {message && <p className="text-green-600 text-center">{message}</p>}
@@ -120,6 +122,7 @@ const QuestionBank = () => {
         <button type="submit" className="w-full bg-primary text-white py-2 rounded-lg hover:bg-red-600">Create Question</button>
       </form>
     </div>
+    </>
   );
 };
 
