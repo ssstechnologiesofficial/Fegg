@@ -211,7 +211,7 @@ const SummaryApi = {
     method: 'delete',
   },
 
-  // practice set 
+  // practice set
   // subject
   getSubjects: {
     url: `${backendDomain}/api/get-subjects`,
@@ -226,17 +226,21 @@ const SummaryApi = {
     url: `${backendDomain}/api/chapter/:id`,
     method: 'delete',
   },
- getChapter: {
+  getChapter: {
     url: `${backendDomain}/api/chapter`,
     method: 'get',
   },
-  // questions 
+  // questions
   Getquestion: {
     url: `${backendDomain}/api/question`,
     method: 'get',
   },
   Question: {
     url: `${backendDomain}/api/question/:id`,
+    method: 'get',
+  },
+  getPracticeModaldata: {
+    url: `${backendDomain}/api/getpracticeModal`,
     method: 'get',
   },
 }
