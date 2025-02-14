@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const HeaderTop = () => (
   <div className="hidden md:flex items-center ml-auto space-x-4 text-sm text-gray-600">
@@ -25,7 +25,7 @@ const HeaderTop = () => (
       <NavLink to="/newsletter" className="text-white hover:text-gray-300">
         Newsletter
       </NavLink>
-    
+
       <span className="text-white">|</span>
       <NavLink to="/gallery" className="text-white hover:text-gray-300">
         Gallery
@@ -37,7 +37,9 @@ const HeaderTop = () => (
       <span className="text-white">|</span>
       <div className="flex items-center space-x-2">
         <button className="text-xs px-2 text-white rounded">A</button>
-        <button className="text-sm font-bold text-white px-2 rounded">A+</button>
+        <button className="text-sm font-bold text-white px-2 rounded">
+          A+
+        </button>
       </div>
       <span className="text-white">|</span>
       <select className="bg-white border border-gray-300 px-2 py-1 text-sm rounded">
@@ -46,6 +48,6 @@ const HeaderTop = () => (
       </select>
     </div>
   </div>
-);
+)
 
-export default HeaderTop;
+export default HeaderTop

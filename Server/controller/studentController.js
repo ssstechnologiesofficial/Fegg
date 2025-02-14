@@ -121,6 +121,14 @@ const validateStudentRegistration = [
   body('status').isIn(['Pass', 'Fail']).withMessage('Invalid status'),
 ]
 
+const getAllStudents = async (req, res) => {
+  try {
+    const allstudent = await studentRegister.find()
+    res.status(200).json(allstudent)
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching student', error })
+  }
+}
 // Get all students
 const getTotalStudents = async (req, res) => {
   try {
@@ -180,6 +188,7 @@ const deleteStudent = async (req, res) => {
 module.exports = {
   registerStudent,
   getTotalStudents,
+  getAllStudents,
   getStudentById,
   updateStudent,
   deleteStudent,
