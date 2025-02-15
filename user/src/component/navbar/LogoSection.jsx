@@ -6,7 +6,7 @@ const LogoSection = () => (
   <div className="flex justify-between items-center w-full">
     {/* Left Side - First Logo and Text */}
     <div className="flex items-center space-x-4">
-      <div className="w-20 h-20 rounded-full">
+      <div className="sm:w-20 w-28 h-20 rounded-full">
         <img src={logo} alt="Logo" />
       </div>
       <div>
@@ -18,12 +18,12 @@ const LogoSection = () => (
     </div>
 
     {/* Right Side - Second Logo and Text (Vertically Aligned) */}
-    <div className="flex  items-center space-y-2">
+    <div className="flex justify-center items-center ">
       <div className="text-end">
-        <h1 className="sm:text-md text-sm font-bold text-gray-800">
+        <h1 className="sm:text-md text-xs font-bold text-gray-800 my-1 ">
           मध्य प्रदेश राज्य मुक्त स्कूल शिक्षा बोर्ड
         </h1>
-        <p className="sm:text-md text-sm font-bold text-gray-800">
+        <p className="sm:text-md text-xs font-bold text-gray-800">
           प्रदेश शासन, स्कूल शिक्षा विभाग
         </p>
       </div>

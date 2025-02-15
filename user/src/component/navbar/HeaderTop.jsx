@@ -5,7 +5,7 @@ const HeaderTop = () => (
   <div className="hidden md:flex items-center ml-auto space-x-4 text-sm text-gray-600">
     <div className="flex justify-end items-center w-full text-sm text-gray-600 mb-2 md:mb-0">
       <span>
-        Govt. Toll Free No.: <b>1800-180-9393</b>
+        Govt. Toll Free No.: <b>0755 - 2552106 , 2671066</b>
       </span>
     </div>
     <div className="bg-black flex items-center ml-auto space-x-4 pl-10 rounded-bl-full pr-5">
