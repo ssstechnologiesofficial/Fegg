@@ -40,6 +40,7 @@ import Crad10th from '../component/content/practiceset/Crad10th'
 import Crad12th from '../component/content/practiceset/Card12th'
 import StartTest from '../component/content/practiceset/StartTest'
 import ResultDisplay from '../component/content/practiceset/ResultDisplay'
+import FAQComponent from '../component/content/FAQ'
 
 export const router = createBrowserRouter([
   {
@@ -178,6 +179,10 @@ export const router = createBrowserRouter([
       {
         path: 'MissionVision',
         element: <MissionVision />,
+      },
+      {
+        path: 'faq',
+        element: <FAQComponent />,
       },
     ],
   },
