@@ -5,21 +5,18 @@ import Navbar from './component/navbar/Navbar'
 import Footer from './component/footer/Footer'
 import FooterItems from './component/footer/FooterItems'
 import Hero from './component/content/Hero'
+import WhatsApp from './component/content/WhatsApp'
 function App() {
-
-
   return (
     <>
- 
- 
-          {/* {children} */}
-          {/* <Outlet/> */}
-          <Navbar/>
-          {/* <Hero/> */}
-          <Outlet/>
-         <FooterItems/>
-       <Footer/>
-     
+      {/* {children} */}
+      {/* <Outlet/> */}
+      <Navbar />
+      {/* <Hero/> */}
+      <Outlet />
+      <WhatsApp />
+      <FooterItems />
+      <Footer />
     </>
   )
 }
