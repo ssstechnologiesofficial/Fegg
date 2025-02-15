@@ -12,10 +12,8 @@ function App() {
     <>
  
  
-          {/* {children} */}
-          {/* <Outlet/> */}
+       
           <Navbar/>
-          {/* <Hero/> */}
           <Outlet/>
          <FooterItems/>
        <Footer/>

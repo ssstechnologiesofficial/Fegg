@@ -50,10 +50,10 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center lg:space-x-10 py-12 px-4 lg:px-16 contactbg bg-SeaBlue">
+    <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center lg:space-x-10 py-12 px-4 lg:px-16 contactbg bg-white">
       {/* Form Column */}
       <div className="lg:w-1/2 w-full mb-8 lg:mb-0">
-        <h2 className="text-3xl font-bold text-green-700 mb-6">Contact Us</h2>
+        <h2 className="text-3xl font-bold text-red-700 mb-6">Contact Us</h2>
         <form
           className={`${styles.form} bg-white p-6 rounded-lg shadow-lg`}
           onSubmit={handleSubmit}
@@ -61,14 +61,14 @@ const ContactUs = () => {
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-green-800 font-semibold mb-2"
+              className="block text-red-800 font-semibold mb-2"
             >
               Name
             </label>
             <input
               type="text"
               id="name"
-              className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full p-3 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Your Name"
               name="name"
               value={data.name}
@@ -78,14 +78,14 @@ const ContactUs = () => {
           <div className="mb-4">
             <label
               htmlFor="numberMobile"
-              className="block text-green-800 font-semibold mb-2"
+              className="block text-red-800 font-semibold mb-2"
             >
               Whatsapp Number
             </label>
             <input
               type="tel"
               id="numberMobile"
-              className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full p-3 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Your Number"
               name="numberMobile"
               value={data.numberMobile}
@@ -95,14 +95,14 @@ const ContactUs = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-green-800 font-semibold mb-2"
+              className="block text-red-800 font-semibold mb-2"
             >
               Email
             </label>
             <input
               type="email"
               id="email"
-              className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full p-3 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Your Email"
               name="email"
               value={data.email}
@@ -112,13 +112,13 @@ const ContactUs = () => {
           <div className="mb-4">
             <label
               htmlFor="msg"
-              className="block text-green-800 font-semibold mb-2"
+              className="block text-red-800 font-semibold mb-2"
             >
               Message
             </label>
             <textarea
               id="msg"
-              className="w-full p-3 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full p-3 border border-red-300 rounded focus:outline-none focus:ring-2 focus:ring-red-500"
               placeholder="Your Message"
               rows="5"
               name="msg"
@@ -128,7 +128,7 @@ const ContactUs = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-3 rounded hover:bg-green-700 transition duration-300"
+            className="w-full bg-red-400 text-white py-3 rounded hover:bg-red-700 transition duration-300"
           >
             Send Message
           </button>
@@ -137,16 +137,16 @@ const ContactUs = () => {
 
       {/* Contact Details and Map Column */}
       <div className="lg:w-1/2 w-full">
-        <h2 className="text-3xl font-bold text-green-700 mb-6">Our Location</h2>
-        <p className="text-green-800 mb-4">Timing: 9:30AM to 6:30PM</p>
-        <p className="text-green-800 mb-4">
+        <h2 className="text-3xl font-bold text-red-700 mb-6">Our Location</h2>
+        <p className="text-red-800 mb-4">Timing: 9:30AM to 6:30PM</p>
+        <p className="text-red-800 mb-4">
           Office: Plot No. 67, sector A, Indrapuri, J.K. Road Bhopal (MP)
         </p>
-        <p className="text-green-800 mb-4">Pincode: 462023</p>
-        <p className="text-green-800 mb-4">Phone: +91 9826499329</p>
-        <p className="text-green-800 mb-4">Email: oxyvan65@gmail.com</p>
+        <p className="text-red-800 mb-4">Pincode: 462023</p>
+        <p className="text-red-800 mb-4">Phone: +91 9876543210</p>
+        <p className="text-red-800 mb-4">Email: abc65@gmail.com</p>
         <div
-          className={`${styles.map} w-full h-64 bg-green-100 mt-6 rounded-lg overflow-hidden`}
+          className={`${styles.map} w-full h-64 bg-red-100 mt-6 rounded-lg overflow-hidden`}
         >
           <iframe
             className="w-full h-full"

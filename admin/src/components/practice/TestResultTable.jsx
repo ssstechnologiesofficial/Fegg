@@ -6,7 +6,7 @@ const TestResultsTable = () => {
   const [editingResult, setEditingResult] = useState(null);
   const [formData, setFormData] = useState({ learnerName: "", learnerId: "", score: 0 });
   const [currentPage, setCurrentPage] = useState(1);
-  const resultsPerPage = 5;
+  const resultsPerPage = 10;
 
   const fetchResults = async () => {
     try {
