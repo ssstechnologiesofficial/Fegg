@@ -45,7 +45,7 @@ exports.getTestResults = async (req, res) => {
 }
 exports.getTestResultsController = async (req, res) => {
   try {
-    const results = await TestResult.find();
+    const results = await TestResult.find().sort({ submittedAt: -1 });
     res.json(results);
   } catch (err) {
     res.status(500).json({ message: "Error fetching results", error: err });

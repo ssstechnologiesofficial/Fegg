@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { TbLayoutDashboardFilled } from 'react-icons/tb'
+import { TbAdjustmentsQuestion, TbLayoutDashboardFilled, TbPencilQuestion } from 'react-icons/tb'
 import fagglogo from '../../public/eg-logo.png'
-
+import { FaFileCircleQuestion } from "react-icons/fa6";
+import { LuFileQuestion } from "react-icons/lu";
 import {
   FaChalkboardTeacher,
   FaClipboardList,
@@ -137,14 +138,14 @@ const Sidebar = () => {
                     to="create-subject"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
-                    <FaQuestionCircle />
+                    <TbPencilQuestion />
                     <span>Add Subject</span>
                   </Link>
                   <Link
                     to="create-chapter"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
-                    <FaQuestionCircle />
+                    <FaFileCircleQuestion />
                     <span>Add chapter</span>
                   </Link>
                   <Link
@@ -168,14 +169,14 @@ const Sidebar = () => {
                     to="questions-manage"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
-                    <FaList />
+                    <TbAdjustmentsQuestion />
                     <span>Questions Management</span>
                   </Link>
                   <Link
                     to="create-test"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
                   >
-                    <FaList />
+                    <LuFileQuestion />
                     <span>Create Test</span>
                   </Link>
 
