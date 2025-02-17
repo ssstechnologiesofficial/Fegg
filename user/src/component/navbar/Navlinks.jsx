@@ -221,6 +221,7 @@ const NavLinks = () => {
           to="/notifications"
           className="nav-link py-2"
           activeClassName="active-link"
+          
         >
           Notifications
         </NavLink>

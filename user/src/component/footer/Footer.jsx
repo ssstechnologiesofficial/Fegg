@@ -52,12 +52,15 @@ const Footer = () => {
             <div className="bg-white w-16 h-16 rounded-full mb-4">
               <img src={logo} alt="" />
             </div>
-            <h2 className="text-lg font-semibold"> Foundation to Educate Girls Globally</h2>
+            <h2 className="text-lg font-semibold">
+              {' '}
+              Foundation to Educate Girls Globally
+            </h2>
             {/* <p className="text-sm text-gray-400">एबीसी स्टेट ओपन स्कूल</p> */}
             <p className="text-gray-400 text-sm mt-4">
-              The open schooling system was established in XXXX in the state to
-              provide flexible education to diverse learners. It evolved from
-              the National Open School (NOS), aiming to address.
+              Educate Girls is a non-profit organization focused on raising
+              awareness and empowering communities to support the education of
+              girls from rural and educationally underprivileged areas of India.
             </p>
           </div>
 
@@ -112,15 +115,25 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-start footer-section">
             <h3 className="text-lg font-semibold text-red-400 mb-4">Address</h3>
             <p className="text-gray-400 text-sm">
-              Head Office Lucknow xxxx, Viram Khand - xx, Gomti Nagar, Near
-              Manisha Mandir, Lucknow -XXXXXX, Uttar Pradesh
+              Mumbai (Head Office) C103/C104, 1st Floor, Remi Bizcourt, Shah
+              Industrial Estate, Off Veera Desai Road, Andheri West, Mumbai
+              400053, Maharashtra +91-22 48932226 (Mon-Fri 9:30am-6pm IST Except
+              public holidays)
             </p>
             <p className="text-gray-400 text-sm mt-4">
               <span className="font-semibold">Email us:</span>{' '}
               info@abcopenschool.org
             </p>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
-              Locate Us on Google Maps
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.3819254361256!2d72.8368911!3d19.134752199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f4f288d61%3A0x300900382393f137!2sEducate%20Girls%20-%20Head%20Office!5e0!3m2!1sen!2sin!4v1739772938747!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
             </p>
           </div>
           {/* Social Media Links */}

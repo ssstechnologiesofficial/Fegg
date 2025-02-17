@@ -125,7 +125,7 @@
 //               className="nav-link flex items-center py-2"
 //               activeClassName="active-link"
 //             >
-//               <FaHome className="mr-2 text-xl" /> 
+//               <FaHome className="mr-2 text-xl" />
 //             </NavLink>
 //           </li>
 //           <li
@@ -279,8 +279,8 @@
 //               // onClick={() => setIsLoginOpen(!isLoginOpen)}
 //             >
 //               <button className="flex items-center nav-link">
-//                 Login 
-                
+//                 Login
+
 //               </button>
 //               {/* {isLoginOpen && (
 //                 <ul className="absolute right-0 z-10 top-full bg-white shadow-md w-40">
@@ -313,19 +313,19 @@
 // };
 
 // export default Navbar;
-import React, { useState, useEffect, useRef } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import "./navbar.css";
-import gsap from "gsap";
-import LogoSection from "./LogoSection";
-import HeaderTop from "./HeaderTop";
-import NavLinks from "./Navlinks";
+import React, { useState, useEffect, useRef } from 'react'
+import { FaBars, FaTimes } from 'react-icons/fa'
+import './navbar.css'
+import gsap from 'gsap'
+import LogoSection from './LogoSection'
+import HeaderTop from './HeaderTop'
+import NavLinks from './Navlinks'
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navRef = useRef(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navRef = useRef(null)
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   // useEffect(() => {
   //   if (isMenuOpen) {
@@ -340,20 +340,23 @@ const Navbar = () => {
       <HeaderTop />
       <div className="flex items-center justify-between px-4 py-3 md:px-8">
         <LogoSection />
-        <button onClick={toggleMenu} className="text-gray-700 text-2xl md:hidden">
+        <button
+          onClick={toggleMenu}
+          className="text-gray-700 text-2xl md:hidden"
+        >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
       <nav
         ref={navRef}
         className={`${
-          isMenuOpen ? "block" : "hidden"
+          isMenuOpen ? 'block' : 'hidden'
         } md:block bg-white w-full shadow-md md:shadow-none`}
       >
         <NavLinks />
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

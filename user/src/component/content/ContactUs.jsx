@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styles from './ContactUs.module.css';
-import SummaryApi from '../../common/SummaryApi';
+import React, { useState } from 'react'
+import styles from './ContactUs.module.css'
+import SummaryApi from '../../common/SummaryApi'
 
 const ContactUs = () => {
   const [data, setData] = useState({
@@ -8,19 +8,19 @@ const ContactUs = () => {
     numberMobile: '',
     email: '',
     msg: '',
-  });
+  })
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setData({
       ...data,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('contact form data', data);
+    e.preventDefault()
+    console.log('contact form data', data)
     try {
       const postData = await fetch(SummaryApi.contact.url, {
         method: SummaryApi.contact.method,
@@ -28,26 +28,26 @@ const ContactUs = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
-      });
-      console.log(postData);
+      })
+      console.log(postData)
       if (postData.ok) {
-        const result = await postData.json();
-        console.log('response', result);
-        alert('Submited succesfully');
+        const result = await postData.json()
+        console.log('response', result)
+        alert('Submited succesfully')
         // Reset the form data after successful submission
         setData({
           name: '',
           numberMobile: '',
           email: '',
           msg: '',
-        });
+        })
       } else {
-        console.log('Something went wrong');
+        console.log('Something went wrong')
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <div className="flex flex-col lg:flex-row justify-center items-start lg:items-center lg:space-x-10 py-12 px-4 lg:px-16 contactbg bg-white">
@@ -149,17 +149,18 @@ const ContactUs = () => {
           className={`${styles.map} w-full h-64 bg-red-100 mt-6 rounded-lg overflow-hidden`}
         >
           <iframe
-            className="w-full h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.6968190541393!2d77.45726259999999!3d23.2541172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4208f5558a31%3A0xb0f0e9bca3db4bef!2s67%2C%20Indrapuri%20A%20sector%2C%20Sector%20A%2C%20Indrapuri%2C%20Bhopal%2C%20Madhya%20Pradesh%20462022!5e0!3m2!1sen!2sin!4v1726762808540!5m2!1sen!2sin"
-            // frameBorder="0"
-            allowFullScreen=""
-            aria-hidden="false"
-            tabIndex="0"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.3819254361256!2d72.8368911!3d19.134752199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f4f288d61%3A0x300900382393f137!2sEducate%20Girls%20-%20Head%20Office!5e0!3m2!1sen!2sin!4v1739772938747!5m2!1sen!2sin"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ContactUs;
+export default ContactUs
