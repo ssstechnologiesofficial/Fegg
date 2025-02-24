@@ -29,6 +29,7 @@ const Register = () => {
     lastClassStudied: '',
     applyFor: '',
     status: '',
+    mail: '',
   })
 
   // Data for districts, tehsils, and blocks
@@ -1237,8 +1238,18 @@ const Register = () => {
                 required
               />
             </label>
-          </div>
 
+            <label className="block">
+              E-mail
+              <input
+                type="email"
+                name="mail"
+                placeholder="Enter E-mail Address"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+              />
+            </label>
+          </div>
           {/* DOB and Age calculation */}
           <div className="grid grid-cols-3 gap-4">
             <label className="block">
