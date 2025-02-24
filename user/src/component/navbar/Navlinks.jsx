@@ -262,9 +262,11 @@ const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/register" className=" py-2 ">
+       <a href="http://localhost:5174">
+       
           DEPARTMENTAL ACCESS
-        </NavLink>
+        
+       </a>
       </li>
     </ul>
   )
