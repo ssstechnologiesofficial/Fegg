@@ -30,6 +30,7 @@ import PracticeModaldata from '../components/practice/PracticeModaldata'
 import TestResultsTable from '../components/practice/TestResultTable'
 import Registration from '../components/Regisration'
 import ResetPasswordPage from '../components/ReserPasswordPage'
+import AddTestimonials from '../components/AddTestimonials'
 
 export const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
           {
             path: 'PracticeModaldata',
             element: <PracticeModaldata />,
+          },
+          {
+            path: 'testimonial',
+            element: <AddTestimonials />,
           },
         ],
       },

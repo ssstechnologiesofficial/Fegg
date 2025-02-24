@@ -5,8 +5,10 @@ const Announcement = require("../model/announcementModel");
  const createAnnouncement = async (req, res) => {
   try {
     const { date, title, description } = req.body;
-    console.log("description", description)
-    const newAnnouncement = new Announcement({ date, title, description });
+    const image = req.files["image"] ? req.files["image"][0].filename : null;
+    const pdf = req.files["pdf"] ? req.files["pdf"][0].filename : null;
+
+    const newAnnouncement = new Announcement({ date, title, description, image, pdf });
     await newAnnouncement.save();
     res.status(201).json({ message: "Announcement created successfully", newAnnouncement });
   } catch (error) {
@@ -41,9 +43,12 @@ const getAnnouncementById = async (req, res) => {
  const updateAnnouncement = async (req, res) => {
   try {
     const { date, title, description } = req.body;
+    const image = req.files["image"] ? req.files["image"][0].path : req.body.image;
+    const pdf = req.files["pdf"] ? req.files["pdf"][0].path : req.body.pdf;
+
     const updatedAnnouncement = await Announcement.findByIdAndUpdate(
       req.params.id,
-      { date, title, description },
+      { date, title, description, image, pdf },
       { new: true }
     );
 

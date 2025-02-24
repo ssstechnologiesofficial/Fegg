@@ -8,7 +8,8 @@ const AnnouncementUpload = () => {
     title: "",
     description: "",
   });
-
+  const [image, setImage] = useState(null);
+  const [pdf, setPdf] = useState(null);
   const [announcements, setAnnouncements] = useState([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -28,9 +29,13 @@ const AnnouncementUpload = () => {
       console.error("Error fetching announcements:", error);
     }
   };
-
   const handleChange = (e) => {
     setAnnouncement({ ...announcement, [e.target.name]: e.target.value });
+  };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (e.target.name === "image") setImage(file);
+    if (e.target.name === "pdf") setPdf(file);
   };
 
   const handleSubmit = async (e) => {
@@ -39,18 +44,24 @@ const AnnouncementUpload = () => {
     setMessage("");
 
     try {
-      if (editingId) {
-        await axios.put(SummaryApi.DeleteAnnouncements.url.replace(":id",editingId), announcement);
-        setMessage("Announcement updated successfully!");
-      } else {
-        await axios.post(SummaryApi.getAnnouncements.url, announcement);
-        setMessage("Announcement uploaded successfully!");
-      }
+      const formData = new FormData();
+      formData.append("date", announcement.date);
+      formData.append("title", announcement.title);
+      formData.append("description", announcement.description);
+      if (image) formData.append("image", image);
+      if (pdf) formData.append("pdf", pdf);
+
+      await axios.post(SummaryApi.getAnnouncements.url, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      setMessage("Announcement uploaded successfully!");
       setAnnouncement({ date: "", title: "", description: "" });
-      setEditingId(null);
+      setImage(null);
+      setPdf(null);
       fetchAnnouncements();
     } catch (error) {
-      setMessage(error.response?.data?.error || "Failed to process announcement");
+      setMessage(error.response?.data?.error || "Failed to upload announcement");
     } finally {
       setLoading(false);
     }
@@ -131,6 +142,14 @@ const AnnouncementUpload = () => {
               className="w-full p-2 border rounded"
             ></textarea>
           </div>
+          <div>
+            <label className="block font-medium">Upload Image</label>
+            <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full p-2 border rounded" />
+          </div>
+          <div>
+            <label className="block font-medium">Upload PDF</label>
+            <input type="file" name="pdf" accept=".pdf" onChange={handleFileChange} className="w-full p-2 border rounded" />
+          </div>
           <button
             type="submit"
             className="bg-primary text-white px-4 py-2 rounded-3xl w-full hover:bg-red-600"
@@ -150,6 +169,8 @@ const AnnouncementUpload = () => {
               <th className=" p-2">Date</th>
               <th className=" p-2">Title</th>
               <th className=" p-2">Description</th>
+              <th className=" p-2">Image</th>
+              <th className=" p-2">PDF</th>
               <th className=" p-2">Actions</th>
             </tr>
           </thead>
@@ -161,6 +182,8 @@ const AnnouncementUpload = () => {
                   <td className="border p-2">{ann.date}</td>
                   <td className="border p-2">{ann.title}</td>
                   <td className="border p-2">{ann.description}</td>
+                  <td className="border p-2">{ann.image && <img src={`http://localhost:8006/uploads/${ann.image}`} alt="announcement" width="50" />}</td>
+                <td className="border p-2">{ann.pdf && <a href={`http://localhost:8006/uploads/${ann.pdf}`} target="_blank" rel="noopener noreferrer">View PDF</a>}</td>
                   <td className="border p-2">
                     <button
                       className="bg-yellow-500 text-white px-3 py-1 rounded mr-2 hover:bg-yellow-600"
@@ -196,3 +219,5 @@ const AnnouncementUpload = () => {
 };
 
 export default AnnouncementUpload;
+
+

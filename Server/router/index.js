@@ -180,6 +180,7 @@ const {
   getPracticeTests,
   submitPracticeTest,
 } = require('../controller/practiceseset/PracticeModelController')
+const { getTestimonials, addTestimonial, deleteTestimonial } = require('../controller/testimonialController')
 
 // const {
 //   createPracticeSet,
@@ -213,10 +214,10 @@ router.delete('/carousel-img/:id', deleteCarouselImage)
 
 // announcement
 
-router.post('/announcements', createAnnouncement)
+router.post('/announcements', upload.fields([{ name: "image" }, { name: "pdf" }]), createAnnouncement)
 router.get('/announcements', getAllAnnouncements)
 router.get('/announcements/:id', getAnnouncementById)
-router.put('/announcements/:id', updateAnnouncement)
+router.put('/announcements/:id',  upload.fields([{ name: "image", maxCount: 1 }, { name: "pdf", maxCount: 1 }]), updateAnnouncement)
 router.delete('/announcements/:id', deleteAnnouncement)
 
 // -------------E-material
@@ -316,4 +317,9 @@ router.delete('/uploadBlueprintdelete/:id', blueprintController.deleteBlueprint)
 router.get('/getpracticeModal', getPracticeTests)
 router.post('/submitpracticeModal', submitPracticeTest)
 
+
+// testimonial 
+router.get('/testimonial', getTestimonials) // Fetch all testimonials
+router.post('/testimonial', upload.single('image'), addTestimonial) // Add a new testimonial
+router.delete('/testimonial/:id', deleteTestimonial)
 module.exports = router

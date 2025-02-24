@@ -131,8 +131,9 @@ const NavLinks = () => {
         {isProgrammesOpen &&
           dropdownMenu([
             { link: '/Pragati', label: 'Pragati' },
-            // { link: "/12th-class", label: "12th Class" },
-            // { link: "/vocational-course", label: "Vocational Course" },
+            { link: "/vidya", label: "Vidya" },
+            { link: "/10th-class", label: "10th Class" },
+            { link: "/12th-class", label: "12th Class" },
           ])}
       </li>
       {/* <li
