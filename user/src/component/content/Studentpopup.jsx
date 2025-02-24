@@ -19,7 +19,7 @@ const StudentPopup = ({ studentData, closePopup, showDetails }) => {
       {/* Close Popup */}
       <button
         onClick={closePopup}
-        className="mt-4 bg-red-500 p-2 rounded-full text-white font-semibold"
+        className="mt-4 bg-red-500 p-3 rounded-full text-white font-semibold"
       >
         Close
       </button>
