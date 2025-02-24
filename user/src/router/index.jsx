@@ -41,6 +41,7 @@ import Crad12th from '../component/content/practiceset/Card12th'
 import StartTest from '../component/content/practiceset/StartTest'
 import ResultDisplay from '../component/content/practiceset/ResultDisplay'
 import FAQComponent from '../component/content/FAQ'
+import FindLernerID from '../component/content/FindLernerID'
 
 export const router = createBrowserRouter([
   {
@@ -183,6 +184,10 @@ export const router = createBrowserRouter([
       {
         path: 'faq',
         element: <FAQComponent />,
+      },
+      {
+        path: 'FindLernerID',
+        element: <FindLernerID />,
       },
     ],
   },

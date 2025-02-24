@@ -174,6 +174,22 @@ const {
   deleteTestResultsController,
 } = require('../controller/practiceseset/practiceResult')
 
+//======================== forgetpassword
+const {
+  getlogin,
+  login,
+  register,
+  requestPasswordReset,
+  resetPassword,
+} = require('../controller/ForgetPassword')
+
+//===================== Lerner Id
+const {
+  getStudentByDetails,
+  getStudentLernerById,
+  updateStudentLernerid,
+} = require('../controller/LernerIDController')
+
 //===================== Practice Modal
 
 const {
@@ -316,4 +332,16 @@ router.delete('/uploadBlueprintdelete/:id', blueprintController.deleteBlueprint)
 router.get('/getpracticeModal', getPracticeTests)
 router.post('/submitpracticeModal', submitPracticeTest)
 
+//========================== reset-password ============
+router.post('/login', login)
+
+router.get('/getlogin', getlogin)
+router.post('/registerlogin', register)
+router.post('/request-password-reset', requestPasswordReset)
+router.get('/reset-password/:token', resetPassword)
+
+//=======================
+router.post('/getStudentLernerID', getStudentByDetails)
+router.get('/getStudentLernerID/:id', getStudentLernerById)
+router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
 module.exports = router
