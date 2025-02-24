@@ -112,7 +112,6 @@ const NavLinks = () => {
             { link: '/about', label: 'About us' },
             { link: '/MissionVision', label: 'Vision & Mission' },
             { link: '/EGteam', label: 'EG Senior Management Team' },
-            { link: '/objectives', label: 'MPSOS Management Team' },
             // { link: "/committee", label: "Committee" },
             // { link: "/rti", label: "RTI" },
           ])}
@@ -221,6 +220,7 @@ const NavLinks = () => {
           to="/notifications"
           className="nav-link py-2"
           activeClassName="active-link"
+          
         >
           Notifications
         </NavLink>

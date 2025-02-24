@@ -14,6 +14,7 @@ server.use(
   })
 )
 server.use(express.json())
+server.use(express.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 server.use('/api', Router)
 server.use('/uploads', express.static(path.join(__dirname, 'uploads')))

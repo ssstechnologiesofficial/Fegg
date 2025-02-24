@@ -28,6 +28,8 @@ import BluePrintupload from '../components/BluePrintupload'
 import QuestionTable from '../components/practice/QuestionTable'
 import PracticeModaldata from '../components/practice/PracticeModaldata'
 import TestResultsTable from '../components/practice/TestResultTable'
+import Registration from '../components/Regisration'
+import ResetPasswordPage from '../components/ReserPasswordPage'
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ export const router = createBrowserRouter([
       {
         path: 'forgotpassword',
         element: <ForgotPassword />,
+      },
+      {
+        path: 'Registration',
+        element: <Registration />,
+      },
+      {
+        path: 'ResetPasswordPage/:token',
+        element: <ResetPasswordPage />,
       },
       {
         path: 'dashboard',
