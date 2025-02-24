@@ -30,7 +30,7 @@ exports.getStudentLernerById = async (req, res) => {
     const student = await studentRegister.findOne({
       id: req.params.id,
     })
-    if (!student) return res.status(404).json({ message: 'Student not found' })
+    if (!student) return res.status(404).json({ message: 'Student Not found' })
     res.json(student)
   } catch (error) {
     res.status(500).json({ message: 'Server error', error })
