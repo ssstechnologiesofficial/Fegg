@@ -134,6 +134,10 @@ export const router = createBrowserRouter([
             path: 'PracticeModaldata',
             element: <PracticeModaldata />,
           },
+          {
+            path: 'BluePrintupload',
+            element: <BluePrintupload />,
+          },
         ],
       },
     ],

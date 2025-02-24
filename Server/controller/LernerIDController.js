@@ -51,7 +51,7 @@ exports.updateStudentLernerid = async (req, res) => {
     )
     console.log('data', updatedStudent)
     if (!updatedStudent) {
-      return res.status(404).json({ message: 'Student not found' })
+      return res.status(404).json({ message: 'Student not founded' })
     }
 
     res
