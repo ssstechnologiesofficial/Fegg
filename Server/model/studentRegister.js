@@ -38,6 +38,10 @@ const studentSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    mail: {
+      type: String,
+      required: true,
+    },
     district: {
       type: String,
       required: true,

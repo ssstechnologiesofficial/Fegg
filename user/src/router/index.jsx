@@ -41,8 +41,12 @@ import Crad12th from '../component/content/practiceset/Card12th'
 import StartTest from '../component/content/practiceset/StartTest'
 import ResultDisplay from '../component/content/practiceset/ResultDisplay'
 import FAQComponent from '../component/content/FAQ'
+<<<<<<< HEAD
 import Vidya from '../component/content/Vidya'
 import TenthClass from '../component/content/TenthClass'
+=======
+import FindLernerID from '../component/content/FindLernerID'
+>>>>>>> e29cde3daddd4ded09f3ed376b86c46833a90696
 
 export const router = createBrowserRouter([
   {
@@ -193,6 +197,10 @@ export const router = createBrowserRouter([
       {
         path: '10th-class',
         element: <TenthClass />,
+      },
+      {
+        path: 'FindLernerID',
+        element: <FindLernerID />,
       },
     ],
   },

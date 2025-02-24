@@ -174,6 +174,22 @@ const {
   deleteTestResultsController,
 } = require('../controller/practiceseset/practiceResult')
 
+//======================== forgetpassword
+const {
+  getlogin,
+  login,
+  register,
+  requestPasswordReset,
+  resetPassword,
+} = require('../controller/ForgetPassword')
+
+//===================== Lerner Id
+const {
+  getStudentByDetails,
+  getStudentLernerById,
+  updateStudentLernerid,
+} = require('../controller/LernerIDController')
+
 //===================== Practice Modal
 
 const {
@@ -322,4 +338,16 @@ router.post('/submitpracticeModal', submitPracticeTest)
 router.get('/testimonial', getTestimonials) // Fetch all testimonials
 router.post('/testimonial', upload.single('image'), addTestimonial) // Add a new testimonial
 router.delete('/testimonial/:id', deleteTestimonial)
+//========================== reset-password ============
+router.post('/login', login)
+
+router.get('/getlogin', getlogin)
+router.post('/registerlogin', register)
+router.post('/request-password-reset', requestPasswordReset)
+router.get('/reset-password/:token', resetPassword)
+
+//=======================
+router.post('/getStudentLernerID', getStudentByDetails)
+router.get('/getStudentLernerID/:id', getStudentLernerById)
+router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
 module.exports = router
