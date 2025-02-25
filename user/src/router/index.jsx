@@ -44,6 +44,7 @@ import FAQComponent from '../component/content/FAQ'
 import Vidya from '../component/content/Vidya'
 import TenthClass from '../component/content/TenthClass'
 import FindLernerID from '../component/content/FindLernerID'
+import TwelfthEligibility from '../component/content/TwelfthEligibility'
 
 export const router = createBrowserRouter([
   {
@@ -194,6 +195,10 @@ export const router = createBrowserRouter([
       {
         path: '10th-class',
         element: <TenthClass />,
+      },
+      {
+        path: '12th-class',
+        element: <TwelfthEligibility />,
       },
       {
         path: 'FindLernerID',
