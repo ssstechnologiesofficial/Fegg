@@ -49,7 +49,7 @@ html {
 .galleryContainer .media-container .media-image {
   height: 220px;
   width: 100%;
-  border: 2px solid #0f0f22;
+  border: 2px solid #FD645B;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.7);
   overflow: hidden;
   cursor: pointer;
