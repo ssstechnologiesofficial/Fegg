@@ -109,7 +109,7 @@ const NavLinks = () => {
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
-            { link: '/about', label: 'About us' },
+            { link: '/about', label: 'Who we are' },
             { link: '/MissionVision', label: 'Vision & Mission' },
             { link: '/EGteam', label: 'EG Senior Management Team' },
             // { link: "/committee", label: "Committee" },
