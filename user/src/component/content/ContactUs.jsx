@@ -138,25 +138,18 @@ const ContactUs = () => {
       {/* Contact Details and Map Column */}
       <div className="lg:w-1/2 w-full">
         <h2 className="text-3xl font-bold text-red-700 mb-6">Our Location</h2>
-        <p className="text-red-800 mb-4">Timing: 9:30AM to 6:30PM</p>
         <p className="text-red-800 mb-4">
-          Office: Plot No. 67, sector A, Indrapuri, J.K. Road Bhopal (MP)
+        Zone-I, Board office campus, open school building, Shivaji Nagar, Bhopal, Madhya Pradesh.
+        Pincode:- 462011
         </p>
-        <p className="text-red-800 mb-4">Pincode: 462023</p>
-        <p className="text-red-800 mb-4">Phone: +91 9876543210</p>
+        <p className="text-red-800 mb-4">Pincode: 462011</p>
+        <p className="text-red-800 mb-4">Phone: 0755 - 2552106, 2671066</p>
         <p className="text-red-800 mb-4">Email: abc65@gmail.com</p>
         <div
           className={`${styles.map} w-full h-64 bg-red-100 mt-6 rounded-lg overflow-hidden`}
         >
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.3819254361256!2d72.8368911!3d19.134752199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f4f288d61%3A0x300900382393f137!2sEducate%20Girls%20-%20Head%20Office!5e0!3m2!1sen!2sin!4v1739772938747!5m2!1sen!2sin"
-            width="600"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+         
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3666.325693180825!2d77.4281994!3d23.2312324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c431a30d258c7%3A0x812204f32b855fc5!2sMPSOS%20EDUCATION%20BOARD!5e0!3m2!1sen!2sin!4v1740466738822!5m2!1sen!2sin" width="600" height="450"  style={{ border: 0 }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

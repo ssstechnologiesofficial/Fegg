@@ -1,17 +1,18 @@
-import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import logo from '../../assets/logo.png'
-import { FaYoutube, FaFacebook, FaTwitter } from 'react-icons/fa'
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import logo from "../../assets/logo.png";
+import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-  const footerRef = useRef(null)
+  const footerRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger);
 
-    const footerSections = footerRef.current.querySelectorAll('.footer-section')
+    const footerSections =
+      footerRef.current.querySelectorAll(".footer-section");
 
     footerSections.forEach((section, index) => {
       gsap.fromTo(
@@ -24,20 +25,20 @@ const Footer = () => {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: section,
-            start: 'top 90%',
-            end: 'bottom 70%',
-            toggleActions: 'play none none reverse',
+            start: "top 90%",
+            end: "bottom 70%",
+            toggleActions: "play none none reverse",
             once: true,
             invalidateOnRefresh: true,
           },
         }
-      )
-    })
+      );
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <footer
@@ -53,7 +54,7 @@ const Footer = () => {
               <img src={logo} alt="" />
             </div>
             <h2 className="text-lg font-semibold">
-              {' '}
+              {" "}
               Foundation to Educate Girls Globally
             </h2>
             {/* <p className="text-sm text-gray-400">एबीसी स्टेट ओपन स्कूल</p> */}
@@ -121,7 +122,7 @@ const Footer = () => {
               public holidays)
             </p>
             <p className="text-gray-400 text-sm mt-4">
-              <span className="font-semibold">Email us:</span>{' '}
+              <span className="font-semibold">Email us:</span>{" "}
               info@abcopenschool.org
             </p>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
@@ -143,26 +144,33 @@ const Footer = () => {
             </h3>
             <div className="flex justify-center space-x-4 footer-section">
               <a
-                href="#"
+                href="https://www.youtube.com/channel/UC4865kQdW694JwlPa-JIpjw"
                 className="bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-red-700 transition"
               >
                 <FaYoutube className="text-2xl" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/educategirls"
                 className="bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-700 transition"
               >
                 <FaFacebook className="text-2xl" />
               </a>
               <a
-                href="#"
+                href="https://x.com/educate_girls"
                 className="bg-blue-400 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
               >
                 <FaTwitter className="text-2xl" />
               </a>
-              <button className="bg-gray-200 text-black w-12 h-12 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
+              <a
+                href="https://www.instagram.com/educategirlsngo/"
+                className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:opacity-80 transition"
+              >
+                <FaInstagram className="text-2xl" />
+              </a>
+
+              {/* <button className="bg-gray-200 text-black w-12 h-12 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
                 Aa
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -178,7 +186,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
