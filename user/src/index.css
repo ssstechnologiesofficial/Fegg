@@ -99,3 +99,9 @@ html {
   color: #fff;
   user-select: none;
 }
+.highlight {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  padding: 2px;
+}

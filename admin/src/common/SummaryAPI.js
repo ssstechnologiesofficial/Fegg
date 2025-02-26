@@ -256,6 +256,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/test-result/:id`,
     method: 'get',
   },
+  AdmitcardResult: {
+    url: `${backendDomain}/api/upload-url/:id`,
+    method: 'put',
+  },
+  getAdmitcardResult: {
+    url: `${backendDomain}/api/upload-url`,
+    method: 'put',
+  },
 }
 
 export default SummaryApi
