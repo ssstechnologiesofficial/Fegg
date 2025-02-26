@@ -12,34 +12,34 @@ import team4 from '../../assets/Vijaylakshmi-Saxena_Educate-Girls.jpg'
 import team5 from '../../assets/Vikram-Singh-Solanki.jpg'
 
 const images = [
-  { img: team1, name: 'Anushree Singh', position: 'Head- Human Resources' },
+  { img: team1, name: 'अनुश्री सिंह', position: 'प्रधान - मानव संसाधन' },
   {
     img: team2,
-    name: 'Bineesh Mathai',
-    position: 'Director - Purpose Resources',
+    name: 'बिनिश मैथाई',
+    position: 'निदेशक - उद्देश्य संसाधन',
   },
   {
     img: team3,
-    name: 'Geetika Tondan-Higgins',
-    position: 'Director - Pragati',
+    name: 'गीतिका टोंडन-हिगिंस',
+    position: 'निदेशक - प्रगति',
   },
   {
     img: team4,
-    name: 'Vijaylakshmi Saxena',
-    position: 'Chief Financial Officer (CFO)',
+    name: 'विजयलक्ष्मी सक्सेना',
+    position: 'मुख्य वित्तीय अधिकारी (CFO)',
   },
   {
     img: team5,
-    name: 'Vikram Singh Solanki',
-    position: 'Director - Operations',
+    name: 'विक्रम सिंह सोलंकी',
+    position: 'निदेशक - संचालन',
   },
 ]
 
 const EGteam = () => {
   return (
-    <div className="w-full max-w-auto  px-2">
-      <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 ">
-        Senior Management Team{' '}
+    <div className="w-full max-w-auto px-2">
+      <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1">
+        वरिष्ठ प्रबंधन टीम
       </h3>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -58,10 +58,10 @@ const EGteam = () => {
         {images.map((img, index) => (
           <SwiperSlide key={index} className="group">
             <div className="flex flex-col justify-center items-center sm:p-0 p-12">
-              <div className="text-center ">
+              <div className="text-center">
                 <img
                   src={img.img}
-                  alt={`Slide ${index + 1}`}
+                  alt={`स्लाइड ${index + 1}`}
                   className="w-full h-60 object-fill rounded-lg shadow-lg mb-2 
                             transform transition duration-300 ease-in-out group-hover:scale-105 border-l-2 border-[#fd645b]"
                 />
