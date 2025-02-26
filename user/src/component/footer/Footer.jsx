@@ -1,18 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import logo from "../../assets/logo.png";
-import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+import logo from '../../assets/logo.png'
+import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
 
 const Footer = () => {
-  const footerRef = useRef(null);
+  const footerRef = useRef(null)
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
 
-    const footerSections =
-      footerRef.current.querySelectorAll(".footer-section");
+    const footerSections = footerRef.current.querySelectorAll('.footer-section')
 
     footerSections.forEach((section, index) => {
       gsap.fromTo(
@@ -25,20 +24,20 @@ const Footer = () => {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: section,
-            start: "top 90%",
-            end: "bottom 70%",
-            toggleActions: "play none none reverse",
+            start: 'top 90%',
+            end: 'bottom 70%',
+            toggleActions: 'play none none reverse',
             once: true,
             invalidateOnRefresh: true,
           },
         }
-      );
-    });
+      )
+    })
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
 
   return (
     <footer
@@ -46,83 +45,76 @@ const Footer = () => {
       className="bg-gray-900 text-white py-8 border-t-4 border-red-400"
     >
       <div className="container mx-auto px-4">
-        {/* Top Section */}
+        {/* शीर्ष अनुभाग */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 footer-section">
-          {/* Logo and Description */}
+          {/* लोगो और विवरण */}
           <div className="flex flex-col items-center md:items-start">
             <div className="bg-white w-16 h-16 rounded-full mb-4">
               <img src={logo} alt="" />
             </div>
             <h2 className="text-lg font-semibold">
-              {" "}
-              Foundation to Educate Girls Globally
+              लड़कियों की शिक्षा के लिए वैश्विक फाउंडेशन
             </h2>
-            {/* <p className="text-sm text-gray-400">एबीसी स्टेट ओपन स्कूल</p> */}
             <p className="text-gray-400 text-sm mt-4">
-              Educate Girls is a non-profit organization focused on raising
-              awareness and empowering communities to support the education of
-              girls from rural and educationally underprivileged areas of India.
+              Educate Girls एक गैर-लाभकारी संगठन है जो ग्रामीण और शैक्षिक रूप से
+              वंचित क्षेत्रों की लड़कियों की शिक्षा को बढ़ावा देने और समुदायों
+              को सशक्त बनाने पर केंद्रित है।
             </p>
           </div>
 
-          {/* Links */}
+          {/* लिंक */}
           <div className="flex flex-col md:items-start items-center text-center md:text-start footer-section">
-            <h3 className="text-lg font-semibold text-red-400 mb-4">Links</h3>
+            <h3 className="text-lg font-semibold text-red-400 mb-4">लिंक</h3>
             <ul className="md:space-y-2 space-x-0">
               <li>
                 <Link to="/about-us" className="hover:underline">
-                  About Us
+                  हमारे बारे में
                 </Link>
               </li>
               <li>
                 <Link to="/Pragati" className="hover:underline">
-                  Pragati
+                  प्रगति
                 </Link>
               </li>
               <li>
                 <Link to="/MPSOSInfo" className="hover:underline">
-                  About MPSOS
+                  एमपीएसओएस के बारे में
                 </Link>
               </li>
               <li>
                 <Link to="/student-corner" className="hover:underline">
-                  Learners Corner
+                  शिक्षार्थी कॉर्नर
                 </Link>
               </li>
               <li>
                 <Link to="/register" className="hover:underline">
-                  Student Registration
+                  छात्र पंजीकरण
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/notification" className="hover:underline">
-                  Notification
-                </Link>
-              </li> */}
               <li>
                 <Link to="/privacy-policy" className="hover:underline">
-                  privacy policy
+                  गोपनीयता नीति
                 </Link>
               </li>
               <li>
                 <Link to="/contact-us" className="hover:underline">
-                  Contact Us
+                  संपर्क करें
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Address and Email */}
+          {/* पता और ईमेल */}
           <div className="flex flex-col items-center md:items-start footer-section">
-            <h3 className="text-lg font-semibold text-red-400 mb-4">Address</h3>
+            <h3 className="text-lg font-semibold text-red-400 mb-4">पता</h3>
             <p className="text-gray-400 text-sm">
-              Mumbai (Head Office) C103/C104, 1st Floor, Remi Bizcourt, Shah
-              Industrial Estate, Off Veera Desai Road, Andheri West, Mumbai
-              400053, Maharashtra +91-22 48932226 (Mon-Fri 9:30am-6pm IST Except
-              public holidays)
+              मुंबई (प्रधान कार्यालय) C103/C104, प्रथम तल, रेमी बिसकोर्ट, शाह
+              इंडस्ट्रियल एस्टेट, वीरा देसाई रोड के पास, अंधेरी वेस्ट, मुंबई
+              400053, महाराष्ट्र +91-22 48932226 (सोम-शुक्र 9:30am-6pm IST
+              सार्वजनिक छुट्टियों को छोड़कर)
             </p>
             <p className="text-gray-400 text-sm mt-4">
-              <span className="font-semibold">Email us:</span>{" "}
+              <span className="font-semibold">हमें ईमेल करें:</span>{' '}
               info@abcopenschool.org
             </p>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
@@ -137,10 +129,11 @@ const Footer = () => {
               />
             </p>
           </div>
-          {/* Social Media Links */}
+
+          {/* सोशल मीडिया लिंक */}
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-semibold text-red-400 mb-4">
-              Follow Us
+              हमें फॉलो करें
             </h3>
             <div className="flex justify-center space-x-4 footer-section">
               <a
@@ -167,26 +160,12 @@ const Footer = () => {
               >
                 <FaInstagram className="text-2xl" />
               </a>
-
-              {/* <button className="bg-gray-200 text-black w-12 h-12 flex items-center justify-center rounded-full hover:bg-gray-300 transition">
-                Aa
-              </button> */}
             </div>
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center mt-8 border-t border-gray-700 pt-4 footer-section">
-          <p className="text-gray-500 text-sm">
-            Copyright © 2024, Open School. All Rights Reserved
-          </p>
-          <p className="text-gray-500 text-sm">
-            Visitors Count: <span className="text-white">54,00,000</span>
-          </p>
-        </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
