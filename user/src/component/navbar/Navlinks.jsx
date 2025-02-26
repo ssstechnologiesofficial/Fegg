@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import { NavLink } from 'react-router-dom'
 import { FaHome } from 'react-icons/fa'
-import SummaryApi from '../../common/SummaryApi' // Ensure API endpoints are correctly set
+import SummaryApi from '../../common/SummaryApi' // सुनिश्चित करें कि API एंडपॉइंट सही सेट हैं
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const NavLinks = () => {
@@ -18,7 +18,7 @@ const NavLinks = () => {
   const [isContactusOpen, setIsContactusOpen] = useState(false)
   const [isStudentCornerOpen, setIsStudentCornerOpen] = useState(false)
 
-  // Fetch the latest blueprint file URL
+  // नवीनतम ब्लूप्रिंट फ़ाइल URL प्राप्त करें
   useEffect(() => {
     const fetchBlueprint = async () => {
       try {
@@ -26,12 +26,12 @@ const NavLinks = () => {
         console.log(response)
 
         if (response.data.length > 0) {
-          // Append BASE_URL if needed
+          // यदि आवश्यक हो तो BASE_URL जोड़ें
           const filePath = response.data[0].filePath
           setBlueprintFile(`${baseUrl}${filePath}`)
         }
       } catch (error) {
-        console.error('Error fetching blueprint:', error)
+        console.error('ब्लूप्रिंट प्राप्त करने में त्रुटि:', error)
       }
     }
     fetchBlueprint()
@@ -39,29 +39,29 @@ const NavLinks = () => {
 
   const downloadPDF = async () => {
     if (!blueprintFile) {
-      alert('No file available for download.')
+      alert('डाउनलोड के लिए कोई फ़ाइल उपलब्ध नहीं है।')
       return
     }
 
     try {
       const response = await axios.get(blueprintFile, {
-        responseType: 'blob', // Get file as binary (Blob)
+        responseType: 'blob', // फ़ाइल को बाइनरी (Blob) के रूप में प्राप्त करें
       })
 
       console.log(response)
 
-      // Create a Blob URL and trigger download
+      // एक ब्लॉब URL बनाएँ और डाउनलोड प्रारंभ करें
       const fileURL = window.URL.createObjectURL(
         new Blob([response.data], { type: 'application/pdf' })
       )
       const link = document.createElement('a')
       link.href = fileURL
-      link.setAttribute('download', 'Blueprint.pdf') // Set filename
+      link.setAttribute('download', 'Blueprint.pdf') // फ़ाइल नाम सेट करें
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
     } catch (error) {
-      console.error('Error downloading file:', error)
+      console.error('फ़ाइल डाउनलोड करने में त्रुटि:', error)
     }
   }
 
@@ -96,18 +96,17 @@ const NavLinks = () => {
         </li>
       ))}
     </ul>
-  );
-  
-  
+  )
+
   return (
-    <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12  space-y-4 md:space-y-0 md:space-x-6">
+    <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12 space-y-4 md:space-y-0 md:space-x-6">
       <li>
         <NavLink
           to="/"
           className="nav-link flex items-center py-2"
           activeClassName="active-link"
         >
-          <FaHome className="mr-2 text-xl" /> Home
+          <FaHome className="mr-2 text-xl" /> होम
         </NavLink>
       </li>
       <li
@@ -116,15 +115,13 @@ const NavLinks = () => {
         onMouseLeave={() => setIsAboutOpen(false)}
       >
         <NavLink to="/" className="nav-link py-2" activeClassName="active-link">
-          About Us
+          हमारे बारे में
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
-            { link: '/about', label: 'Who we are' },
-            { link: '/MissionVision', label: 'Vision & Mission' },
-            { link: '/EGteam', label: 'EG Senior Management Team' },
-            // { link: "/committee", label: "Committee" },
-            // { link: "/rti", label: "RTI" },
+            { link: '/about', label: 'हम कौन हैं' },
+            { link: '/MissionVision', label: 'दृष्टि और मिशन' },
+            { link: '/EGteam', label: 'ईजी वरिष्ठ प्रबंधन टीम' },
           ])}
       </li>
       <li
@@ -137,35 +134,16 @@ const NavLinks = () => {
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          Programmes
+          कार्यक्रम
         </NavLink>
         {isProgrammesOpen &&
           dropdownMenu([
-            { link: '/Pragati', label: 'Pragati' },
-            { link: "/vidya", label: "Vidya" },
-            { link: "/10th-class", label: "10th Class" },
-            { link: "/12th-class", label: "12th Class" },
+            { link: '/Pragati', label: 'प्रगति' },
+            { link: '/vidya', label: 'विद्या' },
+            { link: '/10th-class', label: '10वीं कक्षा' },
+            { link: '/12th-class', label: '12वीं कक्षा' },
           ])}
       </li>
-      {/* <li
-        className="relative group"
-        onMouseEnter={() => setIsAdmissionOpen(true)}
-        onMouseLeave={() => setIsAdmissionOpen(false)}
-      >
-        <NavLink
-          to="/admission"
-          className="nav-link py-2"
-          activeClassName="active-link"
-        >
-          Admission
-        </NavLink>
-        {isAdmissionOpen &&
-          dropdownMenu([
-            { link: "/10th-class", label: "10th Class" },
-            { link: "/12th-class", label: "12th Class" },
-            { link: "/vocational-course", label: "Vocational Course" },
-          ])}
-      </li> */}
       <li
         className="relative group"
         onMouseEnter={() => setIsStudentCornerOpen(true)}
@@ -176,114 +154,26 @@ const NavLinks = () => {
           className="nav-link py-2"
           activeClassName="active-link"
         >
-          Learners Corner
+          शिक्षार्थी कार्नर
         </NavLink>
         {isStudentCornerOpen &&
           dropdownMenu([
-            // djfj
-            { link: '/e-content', label: 'Online Books' },
-            { link: '/12th-class', label: 'Syllabus' },
-            { link: '/onlinevideo', label: 'Recorded Videos' },
-            { label: 'Blue Print', isDownload: true },
-            {
-              link: '/PreviousPaperOption',
-              label: 'Previous Year Question Paper',
-            },
-            { link: '/practice-set', label: 'Practice Set' },
-            { link: '/vocational-course', label: 'Model Answer Sheet' },
+            { link: '/e-content', label: 'ऑनलाइन पुस्तकें' },
+            { link: '/12th-class', label: 'पाठ्यक्रम' },
+            { link: '/onlinevideo', label: 'रिकॉर्डेड वीडियो' },
+            { label: 'ब्लूप्रिंट', isDownload: true },
+            { link: '/PreviousPaperOption', label: 'पिछले वर्ष के प्रश्नपत्र' },
+            { link: '/practice-set', label: 'अभ्यास सेट' },
+            { link: '/vocational-course', label: 'मॉडल उत्तर पत्रक' },
           ])}
       </li>
-      <li
-  className="relative group"
-  onMouseEnter={() => setIsEventsOpen(true)}
-  onMouseLeave={() => setIsEventsOpen(false)}
->
-  <NavLink
-    to="/events"
-    className="nav-link py-2"
-    activeClassName="active-link"
-  >
-    MPSOS
-  </NavLink>
-  {isEventsOpen &&
-    dropdownMenu([
-      { link: '/MPSOSInfo', label: 'About MPSOS' },
-      { link: '/12th-class', label: 'Prospectus' },
-      { link: '/CourseDetails', label: 'Registration procedure' },
-      { link: '/AISECTInfo', label: 'About Aisect' },
-      { 
-        external: true, 
-        link: 'https://www.aisectonline.com/Student/Login', 
-        label: 'Aisect EG Login' 
-      }
-    ])}
-</li>
-
-      <li>
-        <NavLink
-          to="/contactus"
-          className="nav-link py-2"
-          activeClassName="active-link"
-        >
-          Contact Us
-        </NavLink>
-      </li>
-      {/* <li
-        className="relative group"
-        onMouseEnter={() => setIsNotificationsOpen(true)}
-        onMouseLeave={() => setIsNotificationsOpen(false)}
-      >
-        <NavLink
-          to="/notifications"
-          className="nav-link py-2"
-          activeClassName="active-link"
-          
-        >
-          Notifications
-        </NavLink>
-        {isNotificationsOpen &&
-          dropdownMenu([
-            { link: "/10th-class", label: "Publication" },
-            { link: "/12th-class", label: "Press Release" },
-            { link: "/vocational-course", label: "Circular" },
-            { link: "/vocational-course", label: "Results" },
-            { link: "/vocational-course", label: "Fake Website" },
-          ])}
-      </li>
-      <li
-       className="relative group"
-       onMouseEnter={() => setIsContactusOpen(true)}
-       onMouseLeave={() => setIsContactusOpen(false)}>
-        <NavLink
-          to="/contactus"
-          className="nav-link py-2"
-          activeClassName="active-link"
-        >
-          Contact Us
-        </NavLink>
-        {isContactusOpen &&
-          dropdownMenu([
-            { link: "/10th-class", label: "Headquarter" },
-            { link: "/12th-class", label: "Regional center list" },
-            { link: "/vocational-course", label: "Nodal center list" },
-          ])}
-      </li>
-      <li className="relative group">
-        <button className="flex items-center nav-link py-2">Login</button>
-        
-      </li>
-      */}
       <li>
         <NavLink to="/register" className=" py-2 ">
-          STUDENT REGISTRATION
+          छात्र पंजीकरण
         </NavLink>
       </li>
       <li>
-       <a href="http://localhost:5174">
-       
-          DEPARTMENTAL ACCESS
-        
-       </a>
+        <a href="http://localhost:5174">विभागीय एक्सेस</a>
       </li>
     </ul>
   )
