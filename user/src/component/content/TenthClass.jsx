@@ -1,169 +1,159 @@
-import React from 'react'
-import FeeStructureTable from './Feestucture'
-import HighSchoolSubjectsTable from './HeighSchoolTbale'
+import React from "react";
+import FeeStructureTable from "./Feestucture";
+import HighSchoolSubjectsTable from "./HeighSchoolTbale";
 const TenthClass = () => {
+  const eligibilityData = [
+    { criteria: "न्यूनतम आयु", details: "कोई बंधन नहीं।" },
+    { criteria: "अधिकतम आयु", details: "कोई बंधन नहीं।" },
+    {
+      criteria: " संलग्न किये जाने वाले जन्मतिथि संबंधी प्रमाण पत्र ",
+      details: `निम्नलिखित से प्राप्त जन्मतिथि प्रमाण पत्र की प्रमाणित प्रति। अध्ययनरत अंतिम शाला कास्थानान्तरण प्रमाण-पत्र अथवा 5वींबोर्ड / 8वींबोर्ड /10वीं बोर्ड परीक्षा की मूल अंकसूचीमें दर्ज जन्मतिथि मान्य होगी। इस हेतु सत्यापित प्रति आवेदन पत्र के साथ संलग्न करें। 
+अथवा 
+ग्रामपंचायत / नगरपंचायत / नगर पालिका/नगर निगम के सक्षम अधिकारी द्वारा जारी जन्म प्रमाण-पत्र की सत्यापित प्रति फार्म के साथ संलग्न करें। 
+जिन विद्यार्थियों ने किसी भी स्कूल में प्रवेश नहीं लिया है, और उनका जन्म 1989 के पूर्व हुआ है, उनको जन्मतिथि के प्रमाणीकरण हेतु शपथ पत्र प्रस्तुत करना होगा। जिसमें सही जन्मतिथि अंकित हो।
+`,
+    },
+    { criteria: "न्यूनतम शैक्षणिक योग्यता", details: "कक्षा 8वीं उत्तीर्ण।" },
+    {
+      criteria: "अ.जा./अ.ज.जा. छात्रों के लिए छूट",
+      details: "सक्षम प्राधिकारी द्वारा प्रदत्त जाति प्रमाण पत्र।",
+    },
+    {
+      criteria: "40% या अधिक विकलांगता वाले छात्रों हेतु छूट",
+      details: "जिला चिकित्सा बोर्ड द्वारा प्रदत्त विकलांगता प्रमाण-पत्र।",
+    },
+    {
+      criteria: "बी.पी.एल. कार्डधारी छात्रों हेतु छूट",
+      details:
+        "जिला खाद्य नियंत्रक अधिकारी अथवा म.प्र. शासन द्वारा समय-समय पर प्राधिकृत सक्षम प्राधिकारी द्वारा प्रदत्त प्रमाण पत्र । ",
+    },
+  ];
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold text-center text-red-600">
-        कक्षा 10वीं
-      </h1>
-      <h1 className="text-xl font-bold text-center">
-        पात्रता और आवश्यक दस्तावेज़
-      </h1>
-      <h1 className="text-lg text-center mb-6">
-        एम.पी.एस.ओ.एस.ई.बी. परीक्षाओं में प्रवेश के लिए निम्नलिखित योग्यता और
-        दस्तावेज़ आवश्यक हैं:
-      </h1>
-
-      {/* Eligibility Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse border border-gray-300">
+      <div className="p-4 rounded-lg">
+        <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full">
+          अर्हताएँ एवं आवश्यक दस्तावेज (कक्षा 10वीं)
+        </h3>
+        <p className="text-center pb-5">
+          एम.पी.एस.ओ.एस.ई.बी की परीक्षाओं में प्रवेश हेतु निम्नलिखित अर्हताएँ
+          एवं दस्तावेजों की आवश्यकता होंगी :-
+        </p>
+        <table className="w-full border-collapse border border-gray-300 bg-white">
           <thead>
-            <tr className="bg-red-500 text-white">
-              <th className="border border-gray-300 px-4 py-2 text-left">
-                श्रेणी
-              </th>
-              <th className="border border-gray-300 px-4 py-2 text-left">
-                विवरण
-              </th>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-300 px-4 py-2">अर्हता</th>
+              <th className="border border-gray-300 px-4 py-2">विवरण</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                न्यूनतम आयु
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                कोई प्रतिबंध नहीं
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                अधिकतम आयु
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                कोई प्रतिबंध नहीं
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                जन्म प्रमाण पत्र आवश्यक
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                - अंतिम अध्ययन किए गए विद्यालय से स्थानांतरण प्रमाण पत्र या
-                कक्षा 5वीं, 8वीं या 10वीं की मूल अंक सूची।
-                <br />
-                - ग्राम पंचायत, नगर परिषद या निगम द्वारा जारी जन्म प्रमाण पत्र
-                की प्रमाणित प्रति।
-                <br />- 1989 से पहले जन्मे छात्रों के लिए, यदि उन्होंने किसी
-                विद्यालय में प्रवेश नहीं लिया है, तो जन्म तिथि की सही जानकारी
-                वाला शपथ पत्र आवश्यक होगा।
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                न्यूनतम शैक्षणिक योग्यता
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                कक्षा 8वीं उत्तीर्ण
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                अनुसूचित जाति/जनजाति के लिए शुल्क छूट
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                सक्षम प्राधिकारी द्वारा जारी जाति प्रमाण पत्र
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                40% या अधिक दिव्यांग छात्रों के लिए शुल्क छूट
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                जिला चिकित्सा बोर्ड द्वारा जारी दिव्यांग प्रमाण पत्र
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                बीपीएल (गरीबी रेखा से नीचे) कार्ड धारकों के लिए शुल्क छूट
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                जिला खाद्य नियंत्रक या मध्य प्रदेश सरकार के अधिकृत प्राधिकारी
-                द्वारा जारी प्रमाण पत्र
-              </td>
-            </tr>
+            {eligibilityData.map((item, index) => (
+              <tr key={index} className="hover:bg-gray-100">
+                <td className="border border-gray-300 px-4 py-2 font-semibold">
+                  {item.criteria}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">
+                  {item.details}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      <h2 className="text-xl font-bold text-center my-6 text-red-600">
+      <div className="p-4">
+      <h2 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full">
         संचालित योजनाएँ
       </h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-300">
           <thead>
-            <tr className="bg-red-500 text-white">
+            <tr className="">
               <th className="border border-gray-300 px-4 py-2 text-left">
-                योजना
+                योजनाऐं
               </th>
               <th className="border border-gray-300 px-4 py-2 text-left">
-                आवश्यक दस्तावेज़
+                हाईस्कूल पाठ्यक्रम
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-gray-100">
+            <tr className="">
               <td className="border border-gray-300 px-4 py-2 font-semibold">
-                सामान्य योजना
+                सामान्य योजनान्तर्गत
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                - राजपत्रित अधिकारी द्वारा प्रमाणित जन्म प्रमाण पत्र
-                <br />- यदि औपचारिक शिक्षा प्राप्त की गई है, तो स्थानांतरण
-                प्रमाण पत्र/मूल अंक सूची
+                1- जन्म प्रमाण पत्र की राजपत्रित अधिकारी द्वारा सत्यापित प्रति।
+                <br />
+                2- यदि औपचारिक शिक्षा प्राप्त की हो तो स्थानांतरण प्रमाण
+                पत्र/अंतिम परीक्षा की मूल अंकसूची।
               </td>
             </tr>
             <tr>
               <td className="border border-gray-300 px-4 py-2 font-semibold">
-                पूर्ण क्रेडिट योजना
+                पूर्णक्रेडिट योजनान्तर्गत
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                - कक्षा 10वीं में अनुत्तीर्ण की मूल एवं प्रमाणित अंक सूची
+                - पूर्व मंडल की 10 वीं अनुत्तीर्ण की अंकसूची की मूलप्रति एवं
+                सत्यापित छायाप्रति ।
               </td>
             </tr>
-            <tr className="bg-gray-100">
+            <tr className="">
               <td className="border border-gray-300 px-4 py-2 font-semibold">
-                आंशिक क्रेडिट योजना
+                अंशतः क्रेडिट योजनान्तर्गत
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                - किसी मान्यता प्राप्त बोर्ड से प्राप्त कक्षा 10वीं की प्रमाणित
-                अंक सूची
+                - मा.शि.नं. द्वारा मान्य बोर्ड से 10 वी उत्तीर्ण होने पर बोर्ड
+                अंकसूची की सत्यापित प्रति ।
               </td>
             </tr>
             <tr>
               <td className="border border-gray-300 px-4 py-2 font-semibold">
-                अंक/ग्रेड सुधार योजना
+                अंक / श्रेणीसुधार योजनान्तर्गत
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                - एमपी ओपन स्कूल से उत्तीर्ण कक्षा 10वीं की मूल अंक सूची
+                - म.प्र. राज्य ओपन से 10 वीं उत्तीर्ण की मूल अंकसूची।
               </td>
             </tr>
-            <tr className="bg-gray-100">
+            <tr className="">
               <td className="border border-gray-300 px-4 py-2 font-semibold">
-                पुनः प्रवेश योजना
+                पुनप्रवेश योजना
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                - यदि 9 प्रयासों में उत्तीर्ण नहीं हुए हैं, तो पुनः प्रवेश
-                आवश्यक
+                - 9 अवसरों की समयावधि में भी उत्तीर्ण नहीं होने पर परीक्षा में
+                बैठने के लिए पुनःप्रवेश लेना होगा।
               </td>
+            </tr>
+            <tr className="">
+              <td className="border border-gray-300 px-4 py-2 font-semibold">
+                रूक जाना नहीं योजना पुनप्रवेश योजना
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                - मध्यमिक शिक्षा मंडल म.प्र. भोपाल की उसी सत्र में अनुत्तीर्ण
+                दर्शायी गई मूल अंकसूची। इस योजना में परीक्षाऐं हिन्दी एवं
+                अंग्रेजी माध्यम में ही होगी। भाषा के रूप में हिन्दी, अंग्रेजी,
+                संस्कृत और उर्दू विषय चयन की ही सुविधा योजनांतर्गत रखी गयी है।
+              </td>
+            </tr>
+            <tr className="">
+              <td className="border border-gray-300 px-4 py-2 font-semibold">
+                सुविधा योजना
+              </td>
+              <td className="border border-gray-300 px-4 py-2">----</td>
+            </tr>
+            <tr className="">
+              <td className="border border-gray-300 px-4 py-2 font-semibold">
+                समकक्षता योजना
+              </td>
+              <td className="border border-gray-300 px-4 py-2">----</td>
             </tr>
           </tbody>
         </table>
       </div>
+      </div>
       <FeeStructureTable />
       <HighSchoolSubjectsTable />
     </div>
-  )
-}
+  );
+};
 
-export default TenthClass
+export default TenthClass;
