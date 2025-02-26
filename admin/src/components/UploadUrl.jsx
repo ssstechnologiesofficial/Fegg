@@ -13,7 +13,7 @@ const UploadUrl = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8006/api/upload-url");
+        const response = await axios.get(SummaryApi.getAdmitcardResult.url);
         setEntries(response.data);
       } catch (error) {
         setMessage("Error fetching data");
@@ -40,7 +40,7 @@ const UploadUrl = () => {
   // Handle Update (PUT Request)
   const handleUpdate = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:8006/api/upload-url/${id}`, {
+      const response = await axios.put(SummaryApi.AdmitcardResult.url.replace(":id",id), {
         resultUrl,
         admitCardUrl,
       });
