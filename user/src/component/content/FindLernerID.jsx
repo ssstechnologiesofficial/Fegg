@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import StudentPopup from './Studentpopup'
+import SummaryApi from '../../common/SummaryApi'
 
 const FindLernerID = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ const FindLernerID = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'http://localhost:8006/api/getStudentLernerID',
+        SummaryApi.getStudentLernerID.url,
         formData
       )
       setStudentData(response.data)
@@ -56,7 +57,7 @@ const FindLernerID = () => {
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8006/api/updateStudentLERnerID/${studentData._id}`,
+        ` ${SummaryApi.updateStudentLERnerID.url}${studentData._id}`,
         editedData
       )
 

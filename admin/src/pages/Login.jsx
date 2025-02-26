@@ -181,6 +181,7 @@ import fagglogo from '../../public/eg-logo.png'
 import mpsoslogo from '../../public/mpsos_logo.png'
 import singin from '../../public/loginbg0.jpg'
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -208,7 +209,7 @@ const Login = () => {
     setError('')
 
     try {
-      const response = await axios.post('http://localhost:8006/api/login', data)
+      const response = await axios.post(SummaryApi.login.url, data)
       localStorage.setItem('token', response.data.token)
       navigate('/dashboard')
     } catch (error) {

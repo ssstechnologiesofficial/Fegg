@@ -93,7 +93,7 @@
 // export default ForgotPassword
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import SummaryApi from '../common/SummaryAPI'
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -101,10 +101,9 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post(
-        'http://localhost:8006/api/request-password-reset',
-        { email }
-      )
+      const response = await axios.post(SummaryApi.requestpasswordreset.url, {
+        email,
+      })
       setMessage(response.data.message)
     } catch (error) {
       setMessage(
@@ -114,22 +113,30 @@ const ForgotPassword = () => {
   }
 
   return (
-    <div>
-      <h2>Forgot Password</h2>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col border-2 border-red-500 p-5 justify-center items-center"
-      >
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          placeholder="Enter your email"
-        />
-        <button type="submit">Request Password Reset</button>
-      </form>
-      {message && <p>{message}</p>}
+    <div className="flex flex-col border-2 border-red-500 p-5 justify-center items-center h-[100vh]">
+      <h2 className="text-4xl font-bold text-red-500">Forgot Password</h2>
+      <div className="p-10 shadow-lg">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col  p-5 justify-center items-center"
+        >
+          <input
+            type="email"
+            value={email}
+            className="w-full px-4 pb-3 bg-white text-black rounded-lg border-2 border-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 my-5"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="Enter your email"
+          />
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#d2d2d2] text-[#fe0000] font-bold rounded-lg hover:bg-[#c9c7c7] focus:outline-none focus:ring-2 focus:ring-[#ff0000] focus:ring-opacity-100 focus:scale-105 transition-all"
+          >
+            Request Password Reset
+          </button>
+        </form>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   )
 }

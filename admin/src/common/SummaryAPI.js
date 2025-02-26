@@ -264,6 +264,18 @@ const SummaryApi = {
     url: `${backendDomain}/api/upload-url`,
     method: 'put',
   },
+  login: {
+    url: `${backendDomain}/api/login`,
+    method: 'post',
+  },
+  requestpasswordreset: {
+    url: `${backendDomain}/api/requestpasswordreset`,
+    method: 'post',
+  },
+  resetpasswordLink: {
+    url: `${backendDomain}/api/reset-password`,
+    method: 'post',
+  },
 }
 
 export default SummaryApi
