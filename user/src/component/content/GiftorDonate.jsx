@@ -3,7 +3,7 @@ import axios from 'axios'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SummaryApi from '../../common/SummaryApi'
-
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 gsap.registerPlugin(ScrollTrigger)
 
 const ImportantLinks = () => {
@@ -149,7 +149,7 @@ const ImportantLinks = () => {
                     </p>
                     {announcement.pdf && (
                       <a
-                        href={`http://localhost:8006/uploads/${announcement.pdf}`}
+                        href={`${baseUrl}/uploads/${announcement.pdf}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block mt-2 text-red-500 px-3 py-1 text-sm rounded-md"
@@ -162,7 +162,7 @@ const ImportantLinks = () => {
                   {/* घोषणा छवि */}
                   {announcement.image && (
                     <img
-                      src={`http://localhost:8006/uploads/${announcement.image}`}
+                      src={`${baseUrl}/uploads/${announcement.image}`}
                       alt="घोषणा"
                       className="w-40 h-full object-cover rounded-lg"
                     />

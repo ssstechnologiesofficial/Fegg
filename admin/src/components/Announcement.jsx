@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SummaryApi from "../common/SummaryAPI";
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const AnnouncementUpload = () => {
   const [announcement, setAnnouncement] = useState({
@@ -182,8 +183,8 @@ const AnnouncementUpload = () => {
                   <td className="border p-2">{ann.date}</td>
                   <td className="border p-2">{ann.title}</td>
                   <td className="border p-2">{ann.description}</td>
-                  <td className="border p-2">{ann.image && <img src={`http://localhost:8006/uploads/${ann.image}`} alt="announcement" width="50" />}</td>
-                <td className="border p-2">{ann.pdf && <a href={`http://localhost:8006/uploads/${ann.pdf}`} target="_blank" rel="noopener noreferrer">View PDF</a>}</td>
+                  <td className="border p-2">{ann.image && <img src={`${baseUrl}/uploads/${ann.image}`} alt="announcement" width="50" />}</td>
+                <td className="border p-2">{ann.pdf && <a href={`${baseUrl}/uploads/${ann.pdf}`} target="_blank" rel="noopener noreferrer">View PDF</a>}</td>
                   <td className="border p-2">
                     <button
                       className="bg-yellow-500 text-white px-3 py-1 rounded mr-2 hover:bg-yellow-600"
