@@ -76,10 +76,19 @@ const NavLinks = () => {
             >
               {item.label}
             </button>
+          ) : item.external ? (
+            <a
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dropdown-item border-t py-2 px-4 block"
+            >
+              {item.label}
+            </a>
           ) : (
             <NavLink
               to={item.link}
-              className="dropdown-item border-t py-2 px-4"
+              className="dropdown-item border-t py-2 px-4 block"
             >
               {item.label}
             </NavLink>
@@ -87,7 +96,9 @@ const NavLinks = () => {
         </li>
       ))}
     </ul>
-  )
+  );
+  
+  
   return (
     <ul className="flex flex-col md:flex-row md:items-center md:justify-between px-12  space-y-4 md:space-y-0 md:space-x-6">
       <li>
@@ -109,7 +120,7 @@ const NavLinks = () => {
         </NavLink>
         {isAboutOpen &&
           dropdownMenu([
-            { link: '/about', label: 'About us' },
+            { link: '/about', label: 'Who we are' },
             { link: '/MissionVision', label: 'Vision & Mission' },
             { link: '/EGteam', label: 'EG Senior Management Team' },
             // { link: "/committee", label: "Committee" },
@@ -183,26 +194,31 @@ const NavLinks = () => {
           ])}
       </li>
       <li
-        className="relative group"
-        onMouseEnter={() => setIsEventsOpen(true)}
-        onMouseLeave={() => setIsEventsOpen(false)}
-      >
-        <NavLink
-          to="/events"
-          className="nav-link py-2"
-          activeClassName="active-link"
-        >
-          MPSOS
-        </NavLink>
-        {isEventsOpen &&
-          dropdownMenu([
-            { link: '/MPSOSInfo', label: 'About MPSOS' },
-            { link: '/12th-class', label: 'Prospectus' },
-            { link: '/CourseDetails', label: 'Registration procedure' },
-            { link: '/AISECTInfo', label: 'About Aisect' },
-            { link: '/FeesDetails', label: 'Aisect EG Login' },
-          ])}
-      </li>
+  className="relative group"
+  onMouseEnter={() => setIsEventsOpen(true)}
+  onMouseLeave={() => setIsEventsOpen(false)}
+>
+  <NavLink
+    to="/events"
+    className="nav-link py-2"
+    activeClassName="active-link"
+  >
+    MPSOS
+  </NavLink>
+  {isEventsOpen &&
+    dropdownMenu([
+      { link: '/MPSOSInfo', label: 'About MPSOS' },
+      { link: '/12th-class', label: 'Prospectus' },
+      { link: '/CourseDetails', label: 'Registration procedure' },
+      { link: '/AISECTInfo', label: 'About Aisect' },
+      { 
+        external: true, 
+        link: 'https://www.aisectonline.com/Student/Login', 
+        label: 'Aisect EG Login' 
+      }
+    ])}
+</li>
+
       <li>
         <NavLink
           to="/contactus"
