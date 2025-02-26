@@ -5,7 +5,7 @@ const Pragati = () => {
   return (
     <div className="p-5">
       <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] py-1">
-        About Pragati
+        प्रगति
       </h3>
       <div className="flex flex-col sm:flex-row justify-evenly items-center mt-8">
         {/* Image Container with Layered Effect */}
@@ -24,23 +24,18 @@ const Pragati = () => {
         {/* Text Content */}
         <div className="sm:m-3 flex justify-center items-start flex-col sm:w-[600px] sm:p-3 p-5 mt-7 text-sm sm:text-base  card">
           <p className="mb-5">
-            In India, <span className="text-[#fd645b] font-bold">90</span>{' '}
-            million young women (aged 15-29) are outside the scope of education,
-            employment, and training (NEET - Not in Education, Employment &
-            Training). The primary reasons for this include early marriage,
-            motherhood, migration, lack of access to secondary education,
-            academic barriers, and poverty. Many of these young women are
-            deprived of the autonomy needed to make informed decisions about
-            their health, homes, and communities, effectively pushing them to
-            the margins of the formal economy.
-          </p>
-          <p>
-            Through <i className="text-[#fd645b] font-bold">Pragati</i>, we
-            aspire to support these young women in completing their 10th-grade
-            education while also creating opportunities for further education,
-            employment, and skill development. Our goal is to empower adolescent
-            girls and young women by providing them with the choices and
-            resources necessary to realize their full potential.
+            भारत में 9 करोड़ युवा महिलाएँ (15-29 वर्ष) शिक्षा, रोजगार और
+            प्रशिक्षण (NEET - Not in Education, Employment & Training) दायरे से
+            बाहर हैं।। इसका मुख्य कारण कम उम्र में विवाह, मातृत्व, पलायन,
+            माध्यमिक विद्यालय तक पहुँच की कमी, शैक्षणिक बाधाएँ और गरीबी है।
+            इनमें से कई युवतियाँ अपने स्वास्थ्य, घरों और समुदायों के बारे में
+            सूचित निर्णय लेने के लिए आवश्यक स्वायत्तता से वंचित हैं, जो उन्हें
+            औपचारिक अर्थव्यवस्था से प्रभावी रूप से हाशिए पर डाल देता है। हम
+            प्रगति के माध्यम से इन युवतियों को अपनी 10वीं कक्षा की शिक्षा पूरी
+            करने में सहायता करने के साथ-साथ आगे की शिक्षा, रोजगार और कौशल विकास
+            के अवसरों का सृजन करने की आकांक्षा रखते हैं। हमारा लक्ष्य किशोरीयों
+            और युवतियों को सशक्त बनाना है, उन्हें अपनी पूरी क्षमता का एहसास करने
+            के लिए आवश्यक विकल्प और संसाधन प्रदान करना है।
           </p>
         </div>
       </div>

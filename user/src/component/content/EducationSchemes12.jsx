@@ -3,245 +3,148 @@ import React from 'react'
 const EducationSchemes = () => {
   const schemes = [
     {
-      title: 'General Scheme',
+      title: 'सामान्य योजनान्तर्गत',
       description:
-        'Certified copy of the high school examination mark sheet passed from Madhya Pradesh or any other recognized board.',
+        'मध्यप्रदेश या किसी अन्य मान्यता प्राप्त बोर्ड से उत्तीर्ण हाई स्कूल परीक्षा की प्रमाणित अंक सूची की प्रति।',
     },
     {
-      title: 'Full Credit Scheme',
+      title: 'पूर्ण क्रेडिट योजना',
       description:
-        'Certified copy of the 10th class mark sheet and original & certified copy of the 12th class failed mark sheet.',
+        'दसवीं कक्षा की अंक सूची की प्रमाणित प्रति और बारहवीं कक्षा में अनुत्तीर्ण अंक सूची की मूल एवं प्रमाणित प्रति।',
     },
     {
-      title: 'Partial Credit Scheme',
+      title: 'आंशिक क्रेडिट योजना',
       description:
-        'Certified copy of the board mark sheet for 12th class passed from a board recognized by the education board.',
+        'शिक्षा बोर्ड द्वारा मान्यता प्राप्त बोर्ड से उत्तीर्ण बारहवीं कक्षा की प्रमाणित अंक सूची की प्रति।',
     },
     {
-      title: 'Marks/Grade Improvement Scheme',
+      title: 'अंक/ग्रेड सुधार योजना',
       description:
-        'Original mark sheet of 12th class passed from MP State Open School.',
+        'एमपी स्टेट ओपन स्कूल से उत्तीर्ण बारहवीं कक्षा की मूल अंक सूची।',
     },
     {
-      title: 'Re-admission Scheme',
+      title: 'पुनः प्रवेश योजना',
       description:
-        'If not passed even in 9 attempts, re-admission is required to appear in the examination.',
+        'यदि 9 प्रयासों में भी उत्तीर्ण नहीं हुए हैं, तो परीक्षा में बैठने के लिए पुनः प्रवेश आवश्यक है।',
     },
     {
-      title: 'Do Not Stop Scheme',
+      title: 'रुको मत योजना',
       description:
-        'Original mark sheet of the same session where the student was declared failed by MP Board, Bhopal.',
+        'एमपी बोर्ड, भोपाल द्वारा उसी सत्र में अनुत्तीर्ण घोषित छात्र की मूल अंक सूची।',
     },
     {
-      title: 'Facility Scheme',
+      title: 'सुविधा योजना',
       description:
-        'Only after passing all subjects, the 12th mark sheet cum certificate will be provided by the MP State Open School Board.',
+        'सभी विषयों में उत्तीर्ण होने के बाद ही एमपी स्टेट ओपन स्कूल बोर्ड द्वारा बारहवीं की अंक सूची-कम-प्रमाण पत्र प्रदान किया जाएगा।',
     },
     {
-      title: 'Equivalency Scheme',
+      title: 'समकक्षता योजना',
       description:
-        'For students who have passed 10th along with ITI, they need to pass one language and an entrepreneurship subject. Upon passing, they will be given credit for three ITI subjects and issued a 12th mark sheet.',
+        'जिन छात्रों ने आईटीआई के साथ दसवीं उत्तीर्ण की है, उन्हें एक भाषा और उद्यमिता विषय उत्तीर्ण करना होगा। उत्तीर्ण होने पर, उन्हें तीन आईटीआई विषयों का क्रेडिट दिया जाएगा और बारहवीं की अंक सूची प्रदान की जाएगी।',
     },
   ]
 
   const subjects = [
     {
-      group: 'A (Minimum one, Maximum two)',
+      group: 'A (न्यूनतम एक, अधिकतम दो)',
       data: [
         {
           code: 301,
-          subject: 'Hindi',
+          subject: 'हिन्दी',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 302,
-          subject: 'English',
+          subject: 'अंग्रेज़ी',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 309,
-          subject: 'Sanskrit',
+          subject: 'संस्कृत',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
       ],
     },
     {
-      group: 'B (Minimum one, Maximum two)',
+      group: 'B (न्यूनतम एक, अधिकतम दो)',
       data: [
         {
           code: 311,
-          subject: 'Mathematics',
+          subject: 'गणित',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 321,
-          subject: 'Home Science (Theory & Practical)',
+          subject: 'गृह विज्ञान (सिद्धांत एवं प्रयोगात्मक)',
           papers: 2,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 318,
-          subject: 'Economics',
+          subject: 'अर्थशास्त्र',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
       ],
     },
     {
-      group: 'C (Minimum one, Maximum two)',
+      group: 'C (न्यूनतम एक, अधिकतम दो)',
       data: [
         {
           code: 312,
-          subject: 'Physics (Theory & Practical)',
+          subject: 'भौतिकी (सिद्धांत एवं प्रयोगात्मक)',
           papers: 2,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 315,
-          subject: 'History',
+          subject: 'इतिहास',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
         {
           code: 319,
-          subject: 'Business Studies',
+          subject: 'व्यवसाय अध्ययन',
           papers: 1,
           totalMarks: 100,
           passingMarks: 33,
-          duration: '3 hrs',
-        },
-      ],
-    },
-    {
-      group: 'D (Minimum one, Maximum two)',
-      data: [
-        {
-          code: 313,
-          subject: 'Chemistry (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
-        },
-        {
-          code: 317,
-          subject: 'Political Science',
-          papers: 1,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
-        },
-      ],
-    },
-    {
-      group: 'E (Minimum one, Maximum two)',
-      data: [
-        {
-          code: 314,
-          subject: 'Biology (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
-        },
-        {
-          code: 316,
-          subject: 'Geography',
-          papers: 1,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
-        },
-        {
-          code: 320,
-          subject: 'Accounting',
-          papers: 1,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
-        },
-      ],
-    },
-    {
-      group: 'F (Maximum one)',
-      data: [
-        {
-          code: 324,
-          subject: 'Hindi Stenography (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '1 hr 30 min each',
-        },
-        {
-          code: 358,
-          subject: 'Food Processing (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '2 & 3 hrs',
-        },
-        {
-          code: 605,
-          subject: 'Cutting, Tailoring & Dress Material (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '2 & 3 hrs',
-        },
-        {
-          code: 616,
-          subject:
-            'Computer Hardware Assembly & Maintenance (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '2 & 3 hrs',
-        },
-        {
-          code: 650,
-          subject: 'Entrepreneurship & Employment Skills (Theory & Practical)',
-          papers: 2,
-          totalMarks: 100,
-          passingMarks: 33,
-          duration: '3 hrs',
+          duration: '3 घंटे',
         },
       ],
     },
   ]
-
   return (
     <div className="py-4 bg-gray-100 rounded-lg">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
-        Operational Schemes
+        संचालित योजनाऐं
       </h3>
       <div className="overflow-x-auto">
         <table className="w-full border border-gray-300">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">Schemes</th>
+              <th className="border border-gray-400 px-4 py-2">योजनाऐं </th>
               <th className="border border-gray-400 px-4 py-2">
-                Higher Secondary Curriculum 12
+                हायर सेकेण्डरी पाठ्यक्रम 12
               </th>
             </tr>
           </thead>
@@ -262,39 +165,40 @@ const EducationSchemes = () => {
 
       <div className="p-4 mt-5 bg-white shadow-md rounded-lg">
         <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
-          Fee Structure for Class 12
+          शुल्क कक्षा 12वीं विवरण तालिका
         </h3>
         <p className="mb-4 text-xs sm:text-base text-gray-700">
-          The fee details for various courses conducted by the M.P. State Open
-          School are shown in the table. Apply for admission registration
-          through the designated kiosk. If the fee is paid partially or not paid
-          at all, the admission application will be deemed invalid and canceled.
+          म.प्र. राज्य ओपन स्कूल द्वारा संचालित विभिन्न पाठ्यक्रमों के लिये
+          निर्धारित शुल्क विवरण तालिका में दर्शाया गया है। प्रवेश पंजीयन हेतु
+          निर्धारित कियोस्क के माध्यम से आवेदन करें। कम/बिना शुल्क भरे जाने की
+          स्थिति में प्रवेश आवेदन पत्र अमान्य होकर निरस्त हो जावेंगे।
         </p>
         <p className="mb-4 text-xs sm:text-base text-gray-600">
-          As per the current system, for admission to Open School (Traditional),
-          the online application form must be filled out, and the fee must be
-          submitted through the authorized AISECT Online Kiosk. The complete fee
-          amount to be paid is detailed in the table below. While applying,
-          ensure that all the information is correctly filled in, read
-          carefully, and sign the form.
+          वर्तमान व्यवस्था अनुसार ओपन स्कूल (परम्परागत) में प्रवेश हेतु ऑनलाइन
+          आवेदन पत्र भरकर शुल्क जमा कराने हेतु आईसेक्टऑनलाइन कियोस्क अधिकृत है।
+          सम्पूर्ण शुल्क जो जमा की जाना है उसकी जानकारी नीचे तालिका में दिये गये
+          विवरण अनुसारहै। आवेदन करते समय सम्पूर्ण जानकारी सही भरी है पढ़कर
+          हस्ताक्षर करें
         </p>
 
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300 mb-6 text-sm md:text-base">
             <thead>
               <tr className="bg-gray-200">
-                <th className="border border-gray-300 p-2">Subjects</th>
+                <th className="border border-gray-300 p-2">विषय</th>
                 <th className="border border-gray-300 p-2 text-center">
-                  High School (General)
+                  हाईस्कूल सामान्य
                 </th>
                 <th className="border border-gray-300 p-2 text-center">
-                  BPL / SC-ST / Women / 40% Disabled
+                  बी.पी.एल.कार्डधारी, अनु. जाति/अ.ज.जा. महिला एवं 40% या अधिक
+                  विकलांग
                 </th>
                 <th className="border border-gray-300 p-2 text-center">
-                  Higher Secondary (General)
+                  हायर सेकण्डरी सामान्य
                 </th>
                 <th className="border border-gray-300 p-2 text-center">
-                  BPL / SC-ST / Women / 40% Disabled
+                  बी.पी.एल.कार्डधारी, अनु. जाति/अ.ज.जा. महिला एवं 40% या अधिक
+                  विकलांग
                 </th>
               </tr>
             </thead>
@@ -320,7 +224,7 @@ const EducationSchemes = () => {
         </div>
         <div className="container py-4">
           <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
-            Higher Secondary Subjects
+            हायर सेकण्डरी हेतु विषय
           </h3>
           {subjects.map((group, index) => (
             <div key={index} className="mb-8">
@@ -331,23 +235,21 @@ const EducationSchemes = () => {
                 <table className="w-full border-collapse border border-gray-300 text-sm md:text-base">
                   <thead>
                     <tr className="bg-gray-100">
+                      <th className="border border-gray-300 p-2 md:p-3">कोड</th>
                       <th className="border border-gray-300 p-2 md:p-3">
-                        Code
+                        विषय
                       </th>
                       <th className="border border-gray-300 p-2 md:p-3">
-                        Subject
+                        प्रश्न पत्र संख्या
                       </th>
                       <th className="border border-gray-300 p-2 md:p-3">
-                        Papers
+                        पूर्णांक
                       </th>
                       <th className="border border-gray-300 p-2 md:p-3">
-                        Total Marks
+                        उत्तीर्णांक
                       </th>
                       <th className="border border-gray-300 p-2 md:p-3">
-                        Passing Marks
-                      </th>
-                      <th className="border border-gray-300 p-2 md:p-3">
-                        Duration
+                        समयावधि (घंटे)
                       </th>
                     </tr>
                   </thead>

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import mpsoLogo from '../../../src/assets/mpsoslogo.png'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+
 const MPSOSInfo = () => {
   const footerRef = useRef(null)
 
@@ -35,9 +36,10 @@ const MPSOSInfo = () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
     }
   }, [])
+
   return (
-    <div ref={footerRef} className="flex justify-center items-center ">
-      <div className="p-6 sm:px-20 px-10 bg-gray-100 rounded-lg shadow-md shadow-[#fd645b]  sm:mx-40 sm:my-10 flex justify-center flex-col items-center MPSOS-section">
+    <div ref={footerRef} className="flex flex-col justify-center items-center">
+      <div className="p-6 sm:px-20 px-10 bg-gray-100 rounded-lg shadow-md shadow-[#fd645b] sm:mx-40 sm:my-10 flex justify-center flex-col items-center MPSOS-section">
         <img
           src={mpsoLogo}
           alt="MPSOS Logo"
@@ -56,6 +58,35 @@ const MPSOSInfo = () => {
           से स्वायत्तशासी संस्था के रूप में पंजीकृत समिति के रूप में कार्य कर
           रही है।
         </p>
+
+        <h2 className="text-2xl font-bold text-center mt-6 mb-4">
+          संचालन समिति
+        </h2>
+        <div className="flex flex-col items-center w-full">
+          <div className="text-center mb-6">
+            <strong>श्री प्रभात राज तिवारी</strong>
+            <br />
+            संचालक
+            <br />
+            म.प्र. राज्य मुक्त स्कूल शिक्षा बोर्ड
+          </div>
+          <div className="flex justify-between w-full">
+            <div className="text-left">
+              <strong>श्रीमती संचिता जैन</strong>
+              <br />
+              <strong>श्री फारूख शेख</strong>
+            </div>
+            <div className="text-right">
+              <strong>श्री राम वैद्य</strong>
+              <br />
+              सहायक संचालक
+              <br />
+              <strong>श्री सचिचदानंद प्रसाद</strong>
+              <br />
+              सहायक संचालक
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
