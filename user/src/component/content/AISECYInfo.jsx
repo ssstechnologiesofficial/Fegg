@@ -41,7 +41,7 @@ const AISECTInfo = () => {
   return (
     <div ref={AISECTInfoRef} className="">
       <h2 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full">
-        About AISECT
+        AISECT के बारे में
       </h2>{' '}
       <div className="sm:p-6 p-4  rounded-xl max-w-2xl mx-auto text-center pb-10 sm:pb-10 AISECTInfo-section flex justify-center items-center flex-col">
         <img

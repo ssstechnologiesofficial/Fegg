@@ -1,36 +1,43 @@
-
-import React from "react";
+import React from 'react'
 import vidya from '../../assets/pragati2.jpg'
 const Vidya = () => {
   return (
-    <div className="m-6   mx-10  shadow-lg rounded-lg">
-      <h3 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] py-1">
-      Vidya Program
-      </h3>
-      <div className="flex flex-col md:flex-row items-center ">
+    <div className="m-6  p-6 mx-10  shadow-lg rounded-lg">
+      <div className="flex flex-col md:flex-row items-center">
         <img
-          src={vidya}// Replace with actual image URL
+          src={vidya} // Replace with actual image URL
           alt="Vidya Program"
           className="w-full md:w-1/2 rounded-lg border-r-8 border-b-8 border-[#fd645b]"
         />
-        <div className="md:ml-6 mt-4 md:mt-0 text-center md:text-left card">
-          {/* <h2 className="text-3xl font-bold text-primary mb-4">Vidya Program</h2> */}
+        <div className="md:ml-6 mt-4 md:mt-0 text-center md:text-left">
+          <h2 className="text-3xl font-bold text-primary mb-4">विद्या </h2>
           <p className="text-gray-700">
-            Utilizing government school infrastructure and community engagement, 
-            the Vidya Program reintegrates out-of-school girls (aged 6-14) into the mainstream education system. 
-            Our community network, "Team Balika," identifies marginalized girls in rural areas, raises awareness, 
-            and assists with enrollment.
+            सरकारी सार्वजनिक विद्यालयों के बुनियादी ढांचे और सामुदायिक सहभागिता
+            का उपयोग करके 6 से 14 वर्ष की आयु की विद्यालय छोड़ चुकी बालिकाओं को
+            मुख्यधारा की शिक्षा प्रणाली में पुनः सम्मिलित करना।
           </p>
           <p className="text-gray-700 mt-3">
-            To support their learning, our partners provide supplementary literacy classes to help them catch up. 
-            Many of these girls are the first generation in their families to attend school, facing academic challenges. 
-            To bridge these gaps, we use a specially designed micro-competency-based curriculum, 
-            "Box of Knowledge" (GKP), for grades 3-5, focusing on foundational skills crucial for long-term success.
+            हमारे विद्या प्रोग्राम के साझेदार ग्रामीण क्षेत्रों में हाशिए पर
+            मौजूद बालिकाओं की पहचान कर के, जागरूकता और नामांकन में सहायता करने
+            के लिए गाँव-आधारित सामुदायिक स्वयंसेवकों और लैंगिक समानता समर्थकों
+            का एक नेटवर्क तैयार करते हैं, जिसे "टीम बालिका" के नाम से जाना जाता
+            है। नामांकन के बाद, हमारे साझेदार बालिकाओं के सीखने के परिणामों में
+            सुधार लाने के लिए पूरक पुनर्साक्षरता कक्षाएँ प्रदान करके यह
+            सुनिश्चित करते हैं कि वे प्रभावी रूप से सीख रही हैं। इनमें से कई
+            बालिकाओं को अपनी सहपाठियों के साथ तालमेल बिठाने में गंभीर चुनौतियों
+            का सामना करना पड़ता है, क्योंकि वे अक्सर अपने परिवार में स्कूल जाने
+            वाली पहली पीढ़ी की बालिकाएं होती हैं। इन अंतरालों को दूर करने के
+            लिए, हम एक सूक्ष्म-दक्षता आधारित विद्यालयीन पाठ्यक्रम "ज्ञान का
+            पिटारा" (GKP या “Box of Knowledge”) का उपयोग करते हैं, जो विशेष रूप
+            से तीसरी से पाँचवीं कक्षा के बच्चों के लिए तैयार किया गया है। यह
+            दृष्टिकोण मूलभूत कौशलों को मजबूत करने पर केंद्रित है और नए
+            शिक्षार्थियों को अकादमिक सफलता और दीर्घकालिक शैक्षिक उपलब्धियों के
+            लिए आवश्यक आधार तैयार करने में सक्षम बनाता है।
           </p>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Vidya;
+export default Vidya
