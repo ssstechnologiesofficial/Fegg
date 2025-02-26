@@ -25,42 +25,42 @@ const InfoSection = () => {
 
   const infoItems = [
     {
-      label: 'Registration',
+      label: 'पंजीकरण',
       color: 'bg-yellow-500',
       icon: <FaWpforms />,
       link: 'register',
     },
     {
-      label: 'E-Content',
+      label: 'ई-सामग्री',
       color: 'bg-teal-500',
       icon: <FaClipboard />,
       link: 'e-content',
     },
     {
-      label: 'Practice Set',
+      label: 'अभ्यास सेट',
       color: 'bg-orange-500',
       icon: <FaPencilAlt />,
       link: 'practice-set',
     },
     {
-      label: 'Online Vedio',
+      label: 'ऑनलाइन वीडियो',
       color: 'bg-purple-500',
       icon: <FaLaptop />,
       link: 'onlinevideo',
     },
-    { label: 'Admit Card', color: 'bg-green-500', icon: <FaAddressCard /> },
+    { label: 'प्रवेश पत्र', color: 'bg-green-500', icon: <FaAddressCard /> },
     {
-      label: 'Find your Lerner ID',
+      label: 'अपने लर्नर आईडी खोजें',
       color: 'bg-blue-500',
       icon: <FaSearch />,
       link: 'FindLernerID',
     },
 
-    { label: 'Result', color: 'bg-red-500', icon: <FaGraduationCap /> },
+    { label: 'परिणाम', color: 'bg-red-500', icon: <FaGraduationCap /> },
   ]
 
   useEffect(() => {
-    // GSAP Animation
+    // GSAP एनीमेशन
     const context = gsap.context(() => {
       itemsRef.current.forEach((item, index) => {
         gsap.fromTo(
@@ -73,32 +73,32 @@ const InfoSection = () => {
             ease: 'power2.out',
             scrollTrigger: {
               trigger: item,
-              start: 'top 80%', // Trigger when the item enters the viewport
+              start: 'top 80%', // जब आइटम व्यू में आता है तब ट्रिगर होता है
             },
           }
         )
       })
     }, sectionRef)
 
-    return () => context.revert() // Clean up GSAP context on unmount
+    return () => context.revert() // अनमाउंट पर GSAP कॉन्टेक्स्ट को रीसेट करें
   }, [])
 
   return (
     <div ref={sectionRef} className="py-12 bg-gray-100 px-4 md:px-8">
       <h2 className="text-center text-xl md:text-3xl font-bold mb-8">
-        INFORMATION ABOUT
+        जानकारी
       </h2>
       <div className="container mx-auto">
         <Swiper
           modules={[Navigation]}
           navigation
           spaceBetween={10}
-          slidesPerView={1} // Default for smallest screens
+          slidesPerView={1} // सबसे छोटे स्क्रीन के लिए डिफ़ॉल्ट
           breakpoints={{
-            480: { slidesPerView: 2, spaceBetween: 10 }, // Small screens
-            768: { slidesPerView: 3, spaceBetween: 15 }, // Medium screens
-            1024: { slidesPerView: 4, spaceBetween: 10 }, // Large screens
-            1280: { slidesPerView: 7, spaceBetween: 10 }, // Extra-large screens
+            480: { slidesPerView: 2, spaceBetween: 10 }, // छोटे स्क्रीन
+            768: { slidesPerView: 3, spaceBetween: 15 }, // मध्यम स्क्रीन
+            1024: { slidesPerView: 4, spaceBetween: 10 }, // बड़े स्क्रीन
+            1280: { slidesPerView: 7, spaceBetween: 10 }, // अतिरिक्त बड़े स्क्रीन
           }}
         >
           {infoItems.map((item, index) => (
@@ -107,7 +107,7 @@ const InfoSection = () => {
                 ref={(el) => (itemsRef.current[index] = el)}
                 className="flex flex-col items-center"
               >
-                {/* Circle containing the icon */}
+                {/* आइकन वाला सर्कल */}
                 <Link
                   to={item.link}
                   className={`flex items-center justify-center w-20 h-20 md:w-28 md:h-28 lg:w-30 lg:h-30 ${item.color} text-white rounded-full shadow-lg`}
@@ -116,7 +116,7 @@ const InfoSection = () => {
                     {item.icon}
                   </div>
                 </Link>
-                {/* Label outside the circle */}
+                {/* सर्कल के बाहर लेबल */}
                 <p className="text-sm md:text-base lg:text-lg font-medium mt-2 text-center">
                   {item.label}
                 </p>
