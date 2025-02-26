@@ -54,6 +54,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/submit-test`,
     method: 'post',
   },
+  resultAdmitcard: {
+    url: `${backendDomain}/api/upload-url`,
+    method: 'get',
+  },
   TestResult: {
     url: `${backendDomain}/api/test-result/:resultId`,
     method: 'get',
