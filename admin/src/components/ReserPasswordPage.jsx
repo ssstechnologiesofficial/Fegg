@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom' // or next/router for Next.js
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 export default function ResetPasswordPage() {
   const { token } = useParams()
@@ -9,7 +10,7 @@ export default function ResetPasswordPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('http://localhost:8006/api/reset-password', {
+      const res = await axios.post(SummaryApi.Resetpassword.url, {
         token,
         newPassword,
       })

@@ -34,6 +34,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 export default function ForgetPasswordRegistration() {
   const [formData, setFormData] = useState({
@@ -63,7 +64,7 @@ export default function ForgetPasswordRegistration() {
 
     try {
       const response = await axios.post(
-        'http://localhost:8006/api/registerlogin',
+        SummaryApi.Registerlogin.url,
         formData
       )
       console.log(response)

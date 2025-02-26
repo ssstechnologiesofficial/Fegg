@@ -74,6 +74,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/submitpracticeModal`,
     method: 'post',
   },
+  getStudentLernerID: {
+    url: `${backendDomain}/api/getStudentLernerID`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

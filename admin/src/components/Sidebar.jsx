@@ -111,13 +111,13 @@ const Sidebar = () => {
             <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Slider Image</span>}
           </Link>
-          <Link
+          {/* <Link
             to="testimonial"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Add Testimonials</span>}
-          </Link>
+          </Link> */}
           <Link
             to="resultAdmitcardUrl"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"

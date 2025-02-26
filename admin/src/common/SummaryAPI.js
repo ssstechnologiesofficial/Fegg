@@ -51,6 +51,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/loginAdmin`,
     method: 'post',
   },
+  loginPost: {
+    url: `${backendDomain}/api/login`,
+    method: 'post',
+  },
+  requestPasswordReset: {
+    url: `${backendDomain}/api/request-password-reset`,
+    method: 'post',
+  },
   // mock test
   subjects: {
     url: `${backendDomain}/api/subjects`,
@@ -263,6 +271,14 @@ const SummaryApi = {
   getAdmitcardResult: {
     url: `${backendDomain}/api/upload-url`,
     method: 'put',
+  },
+  Registerlogin: {
+    url: `${backendDomain}/api/registerlogin`,
+    method: 'get',
+  },
+  Resetpassword: {
+    url: `${backendDomain}/api/reset-password`,
+    method: 'post',
   },
 }
 

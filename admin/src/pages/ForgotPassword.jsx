@@ -93,6 +93,7 @@
 // export default ForgotPassword
 import React, { useState } from 'react'
 import axios from 'axios'
+import SummaryApi from '../common/SummaryAPI'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('')
@@ -102,7 +103,7 @@ const ForgotPassword = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'http://localhost:8006/api/request-password-reset',
+        SummaryApi.requestPasswordReset.url,
         { email }
       )
       setMessage(response.data.message)

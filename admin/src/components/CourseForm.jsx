@@ -350,6 +350,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SummaryApi from '../common/SummaryAPI'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const CourseForm = () => {
   const [courses, setCourses] = useState([])
@@ -619,7 +620,7 @@ const CourseForm = () => {
                 <td className="px-4 py-2">
                   {course.banner && (
                     <img
-                      src={`http://localhost:5000${course.banner}`}
+                      src={`${baseUrl}/${course.banner}`}
                       alt={course.title}
                       className="w-16 h-16 object-cover"
                     />
