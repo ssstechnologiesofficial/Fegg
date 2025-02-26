@@ -9,10 +9,8 @@ import WhatsApp from './component/content/WhatsApp'
 function App() {
   return (
     <>
-      {/* {children} */}
-      {/* <Outlet/> */}
+    
       <Navbar />
-      {/* <Hero/> */}
       <Outlet />
       <WhatsApp />
       <FooterItems />

@@ -197,6 +197,7 @@ const {
   submitPracticeTest,
 } = require('../controller/practiceseset/PracticeModelController')
 const { getTestimonials, addTestimonial, deleteTestimonial } = require('../controller/testimonialController')
+const {  getResultAdmitcardurl, uploadResultAdmitUrls, updateResultAdmitUrls } = require('../controller/resultAdmitcardController')
 
 // const {
 //   createPracticeSet,
@@ -350,4 +351,9 @@ router.get('/reset-password/:token', resetPassword)
 router.post('/getStudentLernerID', getStudentByDetails)
 router.get('/getStudentLernerID/:id', getStudentLernerById)
 router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
+
+// upload result and admit card url 
+router.post('/upload-url', uploadResultAdmitUrls)
+router.put('/upload-url/:id', updateResultAdmitUrls)
+router.get('/upload-url', getResultAdmitcardurl)
 module.exports = router

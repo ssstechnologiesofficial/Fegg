@@ -31,6 +31,8 @@ import TestResultsTable from '../components/practice/TestResultTable'
 import Registration from '../components/Regisration'
 import ResetPasswordPage from '../components/ReserPasswordPage'
 import AddTestimonials from '../components/AddTestimonials'
+import UploadUrl from '../components/UploadUrl'
+
 
 export const router = createBrowserRouter([
   {
@@ -142,6 +144,10 @@ export const router = createBrowserRouter([
           {
             path: 'testimonial',
             element: <AddTestimonials />,
+          },
+          {
+            path: 'resultAdmitcardUrl',
+            element: <UploadUrl />,
           },
         ],
       },

@@ -165,3 +165,9 @@ body {
     --angle: 360deg;
   }
 }
+.highlight {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  padding: 2px;
+}
