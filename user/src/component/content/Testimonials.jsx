@@ -1,5 +1,3 @@
-
-
 // import React, { useEffect, useState } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
 // import { Pagination, Autoplay } from "swiper/modules";
@@ -95,50 +93,48 @@
 
 // export default Testimonials;
 
-
-
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-import "swiper/css";
-import "swiper/css/pagination";
-import avatar from "../../assets/avatar1.png";
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay } from 'swiper/modules'
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import avatar from '../../assets/avatar1.png'
 
 const dummyTestimonials = [
   {
-    text: "This platform has truly transformed my learning experience. The content is top-notch!",
-    author: "John Doe",
-    image: "",
+    text: 'इस प्लेटफॉर्म ने वास्तव में मेरे सीखने के अनुभव को बदल दिया है। सामग्री बेहतरीन है!',
+    author: 'जॉन डो',
+    image: '',
   },
   {
-    text: "I love the interactive lessons and supportive community. Highly recommend!",
-    author: "Jane Smith",
-    image: "",
+    text: 'मुझे इंटरैक्टिव पाठ और सहायक समुदाय बहुत पसंद हैं। अत्यधिक सिफारिश करता हूँ!',
+    author: 'जेन स्मिथ',
+    image: '',
   },
   {
-    text: "The instructors are amazing, and the course material is well-structured.",
-    author: "Michael Johnson",
-    image: "",
+    text: 'शिक्षक अद्भुत हैं, और पाठ्य सामग्री अच्छी तरह से संरचित है।',
+    author: 'माइकल जॉनसन',
+    image: '',
   },
   {
-    text: "Best decision I made for my career! The skills I gained are invaluable.",
-    author: "Emily Davis",
-    image: "",
+    text: 'मेरे करियर के लिए सबसे अच्छा निर्णय! मैंने जो कौशल सीखे हैं वे अमूल्य हैं।',
+    author: 'एमिली डेविस',
+    image: '',
   },
   {
-    text: "A truly engaging and effective way to learn. Five stars!",
-    author: "Robert Brown",
-    image: "",
+    text: 'एक वास्तव में आकर्षक और प्रभावी तरीका सीखने का। पाँच सितारे!',
+    author: 'रॉबर्ट ब्राउन',
+    image: '',
   },
-];
+]
 
 const Testimonials = () => {
   return (
     <section className="flex justify-center items-center py-12 px-4">
       <div className="w-full">
         <h2 className="text-center text-gray-800 text-3xl font-bold mb-8">
-          What Our Students Say
+          हमारे छात्रों की राय
         </h2>
 
         <Swiper
@@ -181,7 +177,7 @@ const Testimonials = () => {
         </Swiper>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials
