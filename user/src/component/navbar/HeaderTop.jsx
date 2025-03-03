@@ -1,31 +1,32 @@
-
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const HeaderTop = () => {
-  const [fontSize, setFontSize] = useState(16); // Default font size
-  const [searchTerm, setSearchTerm] = useState(""); // State for search input
+  const [fontSize, setFontSize] = useState(16) // Default font size
+  const [searchTerm, setSearchTerm] = useState('') // State for search input
 
   // Increase Font Size
   const increaseFontSize = () => {
-    setFontSize((prevSize) => prevSize + 2);
-    document.documentElement.style.fontSize = `${fontSize + 2}px`;
-  };
+    setFontSize((prevSize) => prevSize + 2)
+    document.documentElement.style.fontSize = `${fontSize + 2}px`
+  }
 
   // Decrease Font Size
   const decreaseFontSize = () => {
-    setFontSize((prevSize) => Math.max(12, prevSize - 2)); // Prevents font size from getting too small
-    document.documentElement.style.fontSize = `${Math.max(12, fontSize - 2)}px`;
-  };
+    setFontSize((prevSize) => Math.max(12, prevSize - 2)) // Prevents font size from getting too small
+    document.documentElement.style.fontSize = `${Math.max(12, fontSize - 2)}px`
+  }
 
   // Handle search input change
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+    setSearchTerm(e.target.value)
+  }
 
   // Function to highlight search term
   useEffect(() => {
-    const elements = document.querySelectorAll("p, span, div, h1, h2, h3, h4, h5, h6, a");
+    const elements = document.querySelectorAll(
+      'p, span, div, h1, h2, h3, h4, h5, h6, a'
+    )
 
     elements.forEach((element) => {
       if (element.children.length === 0) {
@@ -33,8 +34,11 @@ const HeaderTop = () => {
         if (searchTerm.trim() === "") {
           element.innerHTML = originalText; 
         } else {
-          const regex = new RegExp(`(${searchTerm})`, "gi");
-          element.innerHTML = originalText.replace(regex, `<mark class="bg-yellow-300">$1</mark>`);
+          const regex = new RegExp(`(${searchTerm})`, 'gi')
+          element.innerHTML = originalText.replace(
+            regex,
+            `<mark class="bg-yellow-300">$1</mark>`
+          )
         }
       }
     });
@@ -61,9 +65,7 @@ const HeaderTop = () => {
               className="w-full px-14 text-black placeholder-gray-400 bg-transparent focus:outline-none"
               placeholder="Enter word..."
             />
-            <button
-              className="absolute right-2 text-white bg-gray-600 rounded "
-            >
+            <button className="absolute right-2 text-white bg-gray-600 rounded ">
               🔍
             </button>
           </div>
@@ -103,8 +105,7 @@ const HeaderTop = () => {
         </select>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeaderTop;
-
+export default HeaderTop

@@ -338,7 +338,7 @@ const Navbar = () => {
   return (
     <header className="header bg-white shadow-md sticky top-0 w-full z-50">
       <HeaderTop />
-      <div className="flex items-center justify-between px-4 py-3 md:px-8">
+      <div className="flex items-center justify-between px-4 py-3 md:px-4">
         <LogoSection />
         <button
           onClick={toggleMenu}

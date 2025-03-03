@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { TbAdjustmentsQuestion, TbLayoutDashboardFilled, TbPencilQuestion } from 'react-icons/tb'
+import {
+  TbAdjustmentsQuestion,
+  TbLayoutDashboardFilled,
+  TbPencilQuestion,
+} from 'react-icons/tb'
 import fagglogo from '../../public/eg-logo.png'
-import { FaFileCircleQuestion } from "react-icons/fa6";
-import { LuFileQuestion } from "react-icons/lu";
+import { FaFileCircleQuestion } from 'react-icons/fa6'
+import { LuFileQuestion } from 'react-icons/lu'
 import {
   FaChalkboardTeacher,
   FaClipboardList,
@@ -213,13 +217,6 @@ const Sidebar = () => {
             {!isCollapsed && <span>E-Book Modal Data</span>}
           </Link>
 
-          <Link
-            to="PracticeModaldata"
-            className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
-          >
-            <FiSave className="mr-2" size={20} />
-            {!isCollapsed && <span>Practice Form data</span>}
-          </Link>
           <Link
             to="/"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"

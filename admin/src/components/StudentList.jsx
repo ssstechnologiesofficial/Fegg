@@ -5,20 +5,26 @@ import * as XLSX from 'xlsx'
 
 const StudentList = () => {
   const [students, setStudents] = useState([])
+  const [filteredStudents, setFilteredStudents] = useState([])
   const [selectedStudent, setSelectedStudent] = useState(null)
   const [formData, setFormData] = useState({})
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const studentsPerPage = 5
+  const [searchTerm, setSearchTerm] = useState('')
+  const [studentsPerPage, setStudentsPerPage] = useState(5)
 
   useEffect(() => {
     fetchStudents()
   }, [])
+  useEffect(() => {
+    filterStudents()
+  }, [searchTerm, students])
 
   const fetchStudents = async () => {
     try {
       const response = await axios.get(SummaryApi.Register.url)
       setStudents(response.data)
+      setFilteredStudents(response.data)
     } catch (error) {
       console.error('Error fetching students:', error)
     }
@@ -60,22 +66,51 @@ const StudentList = () => {
     }
   }
 
+  const filterStudents = () => {
+    const filtered = students.filter((student) =>
+      student.learnerId.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFilteredStudents(filtered)
+  }
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value)
+    setCurrentPage(1)
+  }
+  const handleStudentsPerPageChange = (e) => {
+    setStudentsPerPage(
+      e.target.value === 'all'
+        ? filteredStudents.length
+        : parseInt(e.target.value)
+    )
+    setCurrentPage(1)
+  }
+
   const exportToExcel = () => {
     const worksheet = XLSX.utils.json_to_sheet(students)
     const workbook = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Students')
     XLSX.writeFile(workbook, 'StudentList.xlsx')
   }
+  const handleSearch = (e) => {
+    const searchValue = e.target.value
+    setSearchTerm(searchValue)
+    const filtered = students.filter((student) =>
+      student.learnerId.toLowerCase().includes(searchValue.toLowerCase())
+    )
+    setFilteredStudents(filtered)
+    setCurrentPage(1) // Reset pagination when searching
+  }
 
   const indexOfLastStudent = currentPage * studentsPerPage
   const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
-  const currentStudents = students.slice(
+  const currentStudents = filteredStudents.slice(
     indexOfFirstStudent,
     indexOfLastStudent
   )
 
   const nextPage = () => {
-    if (indexOfLastStudent < students.length) {
+    if (indexOfLastStudent < filteredStudents.length) {
       setCurrentPage((prev) => prev + 1)
     }
   }
@@ -85,16 +120,58 @@ const StudentList = () => {
       setCurrentPage((prev) => prev - 1)
     }
   }
+
   return (
     <div className="p-6 bg-white min-h-screen">
-      <h2 className="text-2xl font-bold mb-4">Admin - Student List</h2>
-      {/* Export Button */}
-      <button
-        className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
-        onClick={exportToExcel}
-      >
-        Export to Excel
-      </button>
+      <h2 className="text-2xl font-bold mb-4">Registered Student Details.</h2>
+      <div className="flex justify-start items-center gap-4">
+        {/* Search Bar */}
+        <div className="flex flex-col justify-start items-start">
+          <label>Search by Unique ID</label>
+          <input
+            type="text"
+            placeholder="Search by  Unique ID"
+            value={searchTerm}
+            onChange={handleSearch}
+            className="mb-4 p-2 border rounded w-40"
+          />{' '}
+        </div>
+        {/* Select Students Per Page */}
+        <div className="flex flex-col justify-center items-start">
+          <label>Student List</label>
+          <select
+            value={
+              studentsPerPage === filteredStudents.length
+                ? 'all'
+                : studentsPerPage
+            }
+            onChange={handleStudentsPerPageChange}
+            className="mb-4 p-2 border rounded"
+          >
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="70">70</option>
+            <option value="80">80</option>
+            <option value="90">90</option>
+            <option value="100">100</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+        {/* Export Button */}
+        <div className="flex justify-center items-start mt-5">
+          <button
+            className="mb-4 bg-green-500 text-white px-4 py-2 rounded"
+            onClick={exportToExcel}
+          >
+            Export to Excel
+          </button>
+        </div>
+      </div>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-primary text-white">
@@ -173,7 +250,7 @@ const StudentList = () => {
         <button
           className="bg-gray-500 text-white px-4 py-2 rounded"
           onClick={nextPage}
-          disabled={indexOfLastStudent >= students.length}
+          disabled={indexOfLastStudent >= filteredStudents.length}
         >
           Next
         </button>

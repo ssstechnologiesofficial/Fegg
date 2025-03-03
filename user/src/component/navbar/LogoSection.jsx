@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png'
 import logo1 from '../../assets/MPSOSLogo.png'
 
 const LogoSection = () => (
-  <div className="flex justify-between items-center w-full">
+  <div className="flex justify-between items-center w-full border-b border-red-400">
     {/* Left Side - First Logo and Text */}
     <div className="flex items-center space-x-4">
       <div className="sm:w-24 w-28  rounded-full">
