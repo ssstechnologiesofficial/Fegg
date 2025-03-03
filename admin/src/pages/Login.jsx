@@ -232,8 +232,8 @@ const Login = () => {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <div className="flex items-center justify-start">
-                <label className="block text-sm font-medium mb-2 bg-[#ff0000] w-[50px] px-1">
-                  Email :
+                <label className="block text-sm font-medium mb-2 bg-[#ff0000] w-[65px] px-1">
+                  Login ID:
                 </label>
                 <span className="w-0 h-0 border-l-[0px] border-l-transparent border-t-[20px] border-t-[#ff0000] border-r-[13px] border-r-transparent mb-2"></span>
               </div>
