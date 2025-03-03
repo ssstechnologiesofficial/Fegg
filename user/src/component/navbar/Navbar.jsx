@@ -351,7 +351,7 @@ const Navbar = () => {
         ref={navRef}
         className={`${
           isMenuOpen ? 'block' : 'hidden'
-        } md:block bg-white w-full shadow-md md:shadow-none`}
+        } md:block bg-gray-50 w-full shadow-md md:shadow-none`}
       >
         <NavLinks />
       </nav>
