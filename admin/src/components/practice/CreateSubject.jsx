@@ -1,24 +1,24 @@
-import { useState } from "react";
-import axios from "axios";
-import SummaryApi from "../../common/SummaryAPI";
-import SubjectsTable from "./SubjectTable";
+import { useState } from 'react'
+import axios from 'axios'
+import SummaryApi from '../../common/SummaryAPI'
+import SubjectsTable from './SubjectTable'
 
 const CreateSubjectForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    class: "10",
-  });
+    name: '',
+    class: '10',
+  })
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('')
 
   // Handle Input Change
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   // Handle Form Submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const response = await axios.post(
@@ -26,17 +26,17 @@ const CreateSubjectForm = () => {
         formData,
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
-      );
+      )
 
-      setMessage(response.data.message);
-      setFormData({ name: "", class: "10" }); // Reset Form
+      setMessage(response.data.message)
+      setFormData({ name: '', class: '10' }) // Reset Form
     } catch (error) {
-      setMessage(error.response?.data?.message || "Something went wrong!");
+      setMessage(error.response?.data?.message || 'Something went wrong!')
     }
-  };
+  }
 
   return (
     <>
@@ -84,10 +84,10 @@ const CreateSubjectForm = () => {
             Create Subject
           </button>
         </form>
-      </div>{" "}
+      </div>{' '}
       <SubjectsTable />
     </>
-  );
-};
+  )
+}
 
-export default CreateSubjectForm;
+export default CreateSubjectForm
