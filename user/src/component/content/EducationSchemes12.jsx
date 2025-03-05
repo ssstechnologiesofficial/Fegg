@@ -135,7 +135,7 @@ const EducationSchemes = () => {
   ]
   return (
     <div className="py-4 bg-gray-100 rounded-lg">
-      <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
+      <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full mb-5">
         संचालित योजनाऐं
       </h3>
       <div className="overflow-x-auto">
@@ -164,7 +164,7 @@ const EducationSchemes = () => {
       </div>
 
       <div className="p-4 mt-5 bg-white shadow-md rounded-lg">
-        <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
+        <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full mb-5">
           शुल्क कक्षा 12वीं विवरण तालिका
         </h3>
         <p className="mb-4 text-xs sm:text-base text-gray-700">
@@ -223,7 +223,7 @@ const EducationSchemes = () => {
           </table>
         </div>
         <div className="container py-4">
-          <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full mb-5">
+          <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full mb-5">
             हायर सेकण्डरी हेतु विषय
           </h3>
           {subjects.map((group, index) => (

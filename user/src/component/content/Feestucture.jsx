@@ -48,7 +48,7 @@ const FeeStructureTable = () => {
 
   return (
     <div className="p-4 rounded-lg">
-      <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full">
+      <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         शुल्क संरचना तालिका (कक्षा 10वीं)
       </h3>
       <p className="text-center mb-5">
