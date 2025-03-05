@@ -245,7 +245,6 @@ const NavLinks = () => {
           {ismpsosOpen &&
             dropdownMenu([
               { link: '/MPSOSInfo', label: 'MPSOS के बारे में' },
-              { link: '/mpsosTesm', label: 'संचालन समिति' },
               { link: '/AISECTInfo', label: 'AISECT के बारे में' },
               {
                 link: 'https://www.aisectonline.com',
