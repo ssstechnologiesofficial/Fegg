@@ -65,13 +65,25 @@ const TestResultsTable = () => {
     })
   }
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
   const updateResult = async () => {
     try {
-      await fetch(SummaryApi.TestResult.url.replace(':id', editingResult), {
+      const apiUrl = SummaryApi.TestResult.url.replace(':id', editingResult)
+
+      const response = await fetch(apiUrl, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.message || 'Failed to update result')
+      }
+
       setEditingResult(null)
       fetchResults()
     } catch (error) {
@@ -88,35 +100,41 @@ const TestResultsTable = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold text-center mb-4 text-red-500">
+      <h2 className="text-3xl font-bold text-center mb-4 text-red-500">
         Test Results
       </h2>
 
-      <div className="flex justify-between mb-4">
-        <select
-          className="p-2 border rounded"
-          onChange={(e) => setSelectedClass(e.target.value)}
-        >
-          <option value="">Select Class</option>
-          {[...new Set(results.map((result) => result.className))].map(
-            (className) => (
-              <option key={className} value={className}>
-                {className}
+      <div className="flex justify-around mb-4 border-2 border-[#fd645b] border-double rounded-md py-10">
+        <div className="flex justify-center items-center">
+          <label className="text-xl font-semibold me-1">Class :</label>
+          <select
+            className="border p-2 rounded focus:ring-2 focus:ring-[#fd645b]"
+            onChange={(e) => setSelectedClass(e.target.value)}
+          >
+            <option value="">Select Class</option>
+            {[...new Set(results.map((result) => result.className))].map(
+              (className) => (
+                <option key={className} value={className}>
+                  {className}
+                </option>
+              )
+            )}
+          </select>
+        </div>
+        <div className="flex justify-center items-center">
+          <label className="text-xl font-semibold me-1">Subject name: </label>
+          <select
+            className="border p-2 rounded focus:ring-2 focus:ring-[#fd645b]"
+            onChange={(e) => setSelectedName(e.target.value)}
+          >
+            <option value="">Select Name</option>
+            {[...new Set(results.map((result) => result.name))].map((name) => (
+              <option key={name} value={name}>
+                {name}
               </option>
-            )
-          )}
-        </select>
-        <select
-          className="p-2 border rounded"
-          onChange={(e) => setSelectedName(e.target.value)}
-        >
-          <option value="">Select Name</option>
-          {[...new Set(results.map((result) => result.name))].map((name) => (
-            <option key={name} value={name}>
-              {name}
-            </option>
-          ))}
-        </select>
+            ))}
+          </select>
+        </div>
       </div>
 
       <table className="w-full border-collapse border border-red-500">
@@ -140,23 +158,52 @@ const TestResultsTable = () => {
                   result.score >= 50 ? 'text-green-600' : 'text-blue-600'
                 }`}
               >
-                {result.score}
+                {editingResult === result._id ? (
+                  <input
+                    type="number"
+                    name="score"
+                    value={formData.score}
+                    onChange={handleChange}
+                    className="border p-1 w-16"
+                  />
+                ) : (
+                  result.score
+                )}
               </td>
               <td className="border p-2">{result.correctAnswers}</td>
               <td className="border p-2">{result.wrongAnswers}</td>
               <td className="border p-2">
-                <button
-                  onClick={() => handleEdit(result)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => deleteResult(result._id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded"
-                >
-                  Delete
-                </button>
+                {editingResult === result._id ? (
+                  <>
+                    <button
+                      onClick={updateResult}
+                      className="bg-green-500 text-white px-3 py-1 rounded mr-2"
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setEditingResult(null)}
+                      className="bg-gray-500 text-white px-3 py-1 rounded"
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => handleEdit(result)}
+                      className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => deleteResult(result._id)}
+                      className="bg-red-500 text-white px-3 py-1 rounded"
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
               </td>
             </tr>
           ))}

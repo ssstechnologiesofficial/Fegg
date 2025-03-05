@@ -16,7 +16,6 @@ const CreatePracticeSet = () => {
   const [subjects, setSubjects] = useState([])
   const [chapters, setChapters] = useState([])
   const [message, setMessage] = useState('')
-
   useEffect(() => {
     if (formData.className) {
       axios
@@ -26,6 +25,7 @@ const CreatePracticeSet = () => {
             formData.className
           )
         )
+
         .then((response) => setSubjects(response.data.subjects || []))
         .catch((error) => console.error('Error fetching subjects:', error))
     } else {
@@ -40,7 +40,8 @@ const CreatePracticeSet = () => {
         .get(
           SummaryApi.GetChapterBySubjectid.url.replace(
             ':subjectId',
-            formData.subjectId
+            formData.subjectId,
+            formData.name
           )
         )
         .then((response) => setChapters(response.data.chapters || []))
