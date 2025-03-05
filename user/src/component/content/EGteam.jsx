@@ -78,32 +78,33 @@
 
 // export default EGteam
 
-import React from "react";
-import team1 from "../../assets/Anushree-Singh_Educate-Girls.jpg";
-import team2 from "../../assets/Bineesh-Mathai.jpg";
-import team3 from "../../assets/Geetika-Tondon-Higgins.jpg";
-import team4 from "../../assets/Vijaylakshmi-Saxena_Educate-Girls.jpg";
-import team5 from "../../assets/Vikram-Singh-Solanki.jpg";
+import React from 'react'
+import team1 from '../../assets/Anushree-Singh_Educate-Girls.jpg'
+import team2 from '../../assets/Bineesh-Mathai.jpg'
+import team3 from '../../assets/Geetika-Tondon-Higgins.jpg'
+import team4 from '../../assets/Vijaylakshmi-Saxena_Educate-Girls.jpg'
+import team5 from '../../assets/Vikram-Singh-Solanki.jpg'
 
 const images = [
   {
     img: team4,
-    name: "विजयलक्ष्मी सक्सेना",
-    position: "मुख्य वित्तीय अधिकारी (CFO)",
+    name: 'विजयलक्ष्मी सक्सेना',
+    position: 'मुख्य वित्तीय अधिकारी (CFO)',
   },
-  { img: team5, name: "विक्रम सिंह सोलंकी", position: "निदेशक - संचालन" },
-  { img: team2, name: "बिनिश मैथाई", position: "निदेशक - उद्देश्य संसाधन" },
-  { img: team3, name: "गीतिका टोंडन-हिगिंस", position: "निदेशक - प्रगति" },
-  { img: team1, name: "अनुश्री सिंह", position: "प्रधान - मानव संसाधन" },
-];
+  { img: team5, name: 'विक्रम सिंह सोलंकी', position: 'निदेशक - संचालन' },
+  { img: team2, name: 'बिनिश मैथाई', position: 'निदेशक - उद्देश्य संसाधन' },
+  { img: team3, name: 'गीतिका टोंडन-हिगिंस', position: 'निदेशक - प्रगति' },
+  { img: team1, name: 'अनुश्री सिंह', position: 'प्रधान - मानव संसाधन' },
+]
 
 const EGteam = () => {
   return (
     <div className="w-full  sm:px-8 mt-4 px-4">
       <div className="text-center py-4">
-        <h3 className="text-xl md:text-2xl font-bold text-red-400 pt-1  border-b-4 border-red-400 inline-block">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-2 pb-1 w-full">
+          {' '}
           वरिष्ठ प्रबंधन टीम
-        </h3>
+        </h2>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {images.map((img, index) => (
@@ -123,7 +124,7 @@ const EGteam = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EGteam;
+export default EGteam
