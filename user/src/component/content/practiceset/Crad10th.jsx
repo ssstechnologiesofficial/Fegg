@@ -12,6 +12,7 @@ const Crad10th = () => {
     const fetchMockTests = async () => {
       try {
         const response = await axios.get(SummaryApi.getPracticeCards.url)
+        console.log(response)
         if (response.data.success) {
           const filteredTests = response.data.data.filter(
             (test) => test.className === '10'
@@ -30,7 +31,7 @@ const Crad10th = () => {
     <div>
       <div className="container mx-auto p-4">
         <h2 className="text-xl font-bold mb-4">
-          Class 12th Practice Mock Tests
+          Class 10th Practice Mock Tests
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {mockTests.map((test) => (

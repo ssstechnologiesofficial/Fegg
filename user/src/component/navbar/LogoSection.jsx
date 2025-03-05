@@ -27,7 +27,7 @@ const LogoSection = () => (
           प्रदेश शासन, स्कूल शिक्षा विभाग
         </p>
       </div>
-      <div className="w-24  rounded-full">
+      <div className="w-24  rounded-full mb-1">
         <img src={logo1} alt="Second Logo" className="object-contain" />
       </div>
     </div>

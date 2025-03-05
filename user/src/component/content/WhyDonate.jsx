@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import {
   FaGraduationCap,
@@ -11,83 +11,83 @@ import {
   FaAddressCard,
   FaPencilAlt,
   FaSearch,
-} from "react-icons/fa";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SummaryApi from "../../common/SummaryApi";
+} from 'react-icons/fa'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper/modules'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import SummaryApi from '../../common/SummaryApi'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const InfoSection = () => {
-  const sectionRef = useRef(null);
-  const itemsRef = useRef([]);
-  const [admitCardUrl, setAdmitCardUrl] = useState("");
-  const [resultUrl, setResultUrl] = useState("");
+  const sectionRef = useRef(null)
+  const itemsRef = useRef([])
+  const [admitCardUrl, setAdmitCardUrl] = useState('')
+  const [resultUrl, setResultUrl] = useState('')
 
   const infoItems = [
     {
-      label: "पंजीकरण", // Registration
-      color: "bg-yellow-500",
+      label: 'पंजीकरण', // Registration
+      color: 'bg-yellow-500',
       icon: <FaWpforms />,
-      link: "register",
+      link: 'register',
     },
     {
-      label: "ई-कंटेंट", // E-Content
-      color: "bg-teal-500",
+      label: 'ई-बुक', // E-Content
+      color: 'bg-teal-500',
       icon: <FaClipboard />,
-      link: "e-content",
+      link: 'e-content',
     },
     {
-      label: "प्रैक्टिस सेट", // Practice Set
-      color: "bg-orange-500",
+      label: 'प्रैक्टिस सेट', // Practice Set
+      color: 'bg-orange-500',
       icon: <FaPencilAlt />,
-      link: "practice-set",
+      link: 'practice-set',
     },
     {
-      label: "ऑनलाइन वीडियो", // Online Video
-      color: "bg-purple-500",
+      label: 'ऑनलाइन वीडियो', // Online Video
+      color: 'bg-purple-500',
       icon: <FaLaptop />,
-      link: "onlinevideo",
+      link: 'onlinevideo',
     },
     {
-      label: "प्रवेश पत्र", // Admit Card
-      color: "bg-green-500",
+      label: 'प्रवेश पत्र', // Admit Card
+      color: 'bg-green-500',
       icon: <FaAddressCard />,
-      link: "#",
+      link: '#',
     },
     {
-      label: "अपना लर्नर आईडी खोजें", // Find your Learner ID
-      color: "bg-blue-500",
+      label: 'अपना लर्नर आईडी खोजें', // Find your Learner ID
+      color: 'bg-blue-500',
       icon: <FaSearch />,
-      link: "FindLernerID",
+      link: 'FindLernerID',
     },
     {
-      label: "परिणाम", // Result
-      color: "bg-red-500",
+      label: 'परिणाम', // Result
+      color: 'bg-red-500',
       icon: <FaGraduationCap />,
-      link: "#",
+      link: '#',
     },
-  ];
+  ]
 
   useEffect(() => {
     // Fetch Admit Card & Result URL
     const fetchUrls = async () => {
       try {
-        const response = await axios.get(SummaryApi.resultAdmitcard.url);
+        const response = await axios.get(SummaryApi.resultAdmitcard.url)
         if (response.data.length > 0) {
-          const latestEntry = response.data[0]; // Assuming the latest entry is needed
-          setAdmitCardUrl(latestEntry.admitCardUrl);
-          setResultUrl(latestEntry.resultUrl);
+          const latestEntry = response.data[0] // Assuming the latest entry is needed
+          setAdmitCardUrl(latestEntry.admitCardUrl)
+          setResultUrl(latestEntry.resultUrl)
         }
       } catch (error) {
-        console.error("Error fetching URLs:", error);
+        console.error('Error fetching URLs:', error)
       }
-    };
+    }
 
-    fetchUrls();
+    fetchUrls()
 
     // GSAP Animation
     const context = gsap.context(() => {
@@ -99,18 +99,18 @@ const InfoSection = () => {
             opacity: 1,
             y: 0,
             duration: 1,
-            ease: "power2.out",
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: item,
-              start: "top 80%",
+              start: 'top 80%',
             },
           }
-        );
-      });
-    }, sectionRef);
+        )
+      })
+    }, sectionRef)
 
-    return () => context.revert(); // Clean up GSAP context on unmount
-  }, []);
+    return () => context.revert() // Clean up GSAP context on unmount
+  }, [])
 
   return (
     <div ref={sectionRef} className="py-12 bg-gray-100 px-4 md:px-8">
@@ -138,7 +138,7 @@ const InfoSection = () => {
                 className="flex flex-col items-center"
               >
                 <a
-                  href={item.link !== "#" ? item.link : undefined} // Use href for non-navigation items
+                  href={item.link !== '#' ? item.link : undefined} // Use href for non-navigation items
                   className={`flex items-center justify-center w-20 h-20 md:w-28 md:h-28 lg:w-30 lg:h-30 ${item.color} text-white rounded-full shadow-lg`}
                 >
                   <div className="text-2xl md:text-4xl lg:text-6xl">
@@ -192,7 +192,7 @@ const InfoSection = () => {
         </Swiper>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default InfoSection;
+export default InfoSection
