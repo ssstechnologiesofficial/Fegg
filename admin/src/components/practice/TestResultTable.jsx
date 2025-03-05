@@ -3,6 +3,7 @@ import SummaryApi from '../../common/SummaryAPI'
 
 const TestResultsTable = () => {
   const [results, setResults] = useState([])
+  const [filteredResults, setFilteredResults] = useState([])
   const [editingResult, setEditingResult] = useState(null)
   const [formData, setFormData] = useState({
     learnerName: '',
@@ -11,22 +12,37 @@ const TestResultsTable = () => {
   })
   const [currentPage, setCurrentPage] = useState(1)
   const resultsPerPage = 10
+  const [selectedClass, setSelectedClass] = useState('')
+  const [selectedName, setSelectedName] = useState('')
+
+  useEffect(() => {
+    fetchResults()
+  }, [])
+
+  useEffect(() => {
+    filterResults()
+  }, [selectedClass, selectedName, results])
 
   const fetchResults = async () => {
     try {
       const response = await fetch(SummaryApi.getTestResult.url)
       const data = await response.json()
-      console.log(data)
-
       setResults(data)
     } catch (error) {
       console.error('Error fetching results:', error)
     }
   }
 
-  useEffect(() => {
-    fetchResults()
-  }, [])
+  const filterResults = () => {
+    let filtered = results
+    if (selectedClass) {
+      filtered = filtered.filter((result) => result.className === selectedClass)
+    }
+    if (selectedName) {
+      filtered = filtered.filter((result) => result.name === selectedName)
+    }
+    setFilteredResults(filtered)
+  }
 
   const deleteResult = async (id) => {
     if (!window.confirm('Are you sure you want to delete this result?')) return
@@ -65,7 +81,10 @@ const TestResultsTable = () => {
 
   const indexOfLastResult = currentPage * resultsPerPage
   const indexOfFirstResult = indexOfLastResult - resultsPerPage
-  const currentResults = results.slice(indexOfFirstResult, indexOfLastResult)
+  const currentResults = filteredResults.slice(
+    indexOfFirstResult,
+    indexOfLastResult
+  )
 
   return (
     <div className="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-lg">
@@ -73,50 +92,37 @@ const TestResultsTable = () => {
         Test Results
       </h2>
 
-      {editingResult && (
-        <div className="mb-6 p-4 bg-gray-100 border border-red-500 rounded">
-          <h3 className="text-lg font-bold mb-2 text-red-600">Edit Result</h3>
-          <input
-            type="text"
-            placeholder="Learner Name"
-            className="w-full p-2 mb-2 border rounded"
-            value={formData.learnerName}
-            onChange={(e) =>
-              setFormData({ ...formData, learnerName: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Learner ID"
-            className="w-full p-2 mb-2 border rounded"
-            value={formData.learnerId}
-            onChange={(e) =>
-              setFormData({ ...formData, learnerId: e.target.value })
-            }
-          />
-          <input
-            type="number"
-            placeholder="Score"
-            className="w-full p-2 mb-2 border rounded"
-            value={formData.score}
-            onChange={(e) =>
-              setFormData({ ...formData, score: e.target.value })
-            }
-          />
-          <button
-            onClick={updateResult}
-            className="bg-green-500 text-white px-4 py-2 rounded"
-          >
-            Update
-          </button>
-        </div>
-      )}
+      <div className="flex justify-between mb-4">
+        <select
+          className="p-2 border rounded"
+          onChange={(e) => setSelectedClass(e.target.value)}
+        >
+          <option value="">Select Class</option>
+          {[...new Set(results.map((result) => result.className))].map(
+            (className) => (
+              <option key={className} value={className}>
+                {className}
+              </option>
+            )
+          )}
+        </select>
+        <select
+          className="p-2 border rounded"
+          onChange={(e) => setSelectedName(e.target.value)}
+        >
+          <option value="">Select Name</option>
+          {[...new Set(results.map((result) => result.name))].map((name) => (
+            <option key={name} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <table className="w-full border-collapse border border-red-500">
         <thead className="bg-red-500 text-white">
           <tr>
             <th className="border p-2">#</th>
-            {/* <th className="border p-2">Learner Name</th> */}
             <th className="border p-2">Learner ID</th>
             <th className="border p-2">Score</th>
             <th className="border p-2">Correct Answer</th>
@@ -128,7 +134,6 @@ const TestResultsTable = () => {
           {currentResults.map((result, index) => (
             <tr key={result._id} className="text-center">
               <td className="border p-2">{indexOfFirstResult + index + 1}</td>
-              {/* <td className="border p-2">{result.learnerName}</td> */}
               <td className="border p-2">{result.learnerId}</td>
               <td
                 className={`border p-2 ${
@@ -170,10 +175,10 @@ const TestResultsTable = () => {
         <button
           onClick={() =>
             setCurrentPage((prev) =>
-              indexOfLastResult < results.length ? prev + 1 : prev
+              indexOfLastResult < filteredResults.length ? prev + 1 : prev
             )
           }
-          disabled={indexOfLastResult >= results.length}
+          disabled={indexOfLastResult >= filteredResults.length}
           className="bg-gray-500 text-white px-4 py-2 rounded disabled:opacity-50"
         >
           Next

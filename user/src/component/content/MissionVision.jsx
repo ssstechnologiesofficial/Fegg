@@ -5,7 +5,7 @@ import hero2 from '../../assets/pp2.webp'
 const MissionVision = () => {
   return (
     <div className="p-10">
-      <h3 className="sm:text-5xl text-2xl text-center font-semibold border-x-4 py-1 my-3 text-white border-[#fd645b] bg-[#00043c]">
+      <h3 className="sm:text-4xl text-2xl text-center font-semibold border-x-4 py-2 my-3 text-white border-[#fd645b] bg-[#fd645b]">
         मिशन और विजन
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

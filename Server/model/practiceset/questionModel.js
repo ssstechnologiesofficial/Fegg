@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const questionSchema = new mongoose.Schema({
   // className: { type: String, required: true },
@@ -10,8 +10,8 @@ const questionSchema = new mongoose.Schema({
       isCorrect: { type: Boolean, default: false },
     },
   ],
-  subject: { type: mongoose.Schema.Types.ObjectId, ref: "Subject" },
-  chapter: { type: mongoose.Schema.Types.ObjectId, ref: "Chapter" },
-});
+  subject: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject' },
+  chapter: { type: mongoose.Schema.Types.ObjectId, ref: 'Chapter' },
+})
 
-module.exports = mongoose.model("QuestionModel", questionSchema);
+module.exports = mongoose.model('QuestionModel', questionSchema)

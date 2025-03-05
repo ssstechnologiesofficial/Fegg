@@ -196,8 +196,16 @@ const {
   getPracticeTests,
   submitPracticeTest,
 } = require('../controller/practiceseset/PracticeModelController')
-const { getTestimonials, addTestimonial, deleteTestimonial } = require('../controller/testimonialController')
-const {  getResultAdmitcardurl, uploadResultAdmitUrls, updateResultAdmitUrls } = require('../controller/resultAdmitcardController')
+const {
+  getTestimonials,
+  addTestimonial,
+  deleteTestimonial,
+} = require('../controller/testimonialController')
+const {
+  getResultAdmitcardurl,
+  uploadResultAdmitUrls,
+  updateResultAdmitUrls,
+} = require('../controller/resultAdmitcardController')
 
 // const {
 //   createPracticeSet,
@@ -231,10 +239,21 @@ router.delete('/carousel-img/:id', deleteCarouselImage)
 
 // announcement
 
-router.post('/announcements', upload.fields([{ name: "image" }, { name: "pdf" }]), createAnnouncement)
+router.post(
+  '/announcements',
+  upload.fields([{ name: 'image' }, { name: 'pdf' }]),
+  createAnnouncement
+)
 router.get('/announcements', getAllAnnouncements)
 router.get('/announcements/:id', getAnnouncementById)
-router.put('/announcements/:id',  upload.fields([{ name: "image", maxCount: 1 }, { name: "pdf", maxCount: 1 }]), updateAnnouncement)
+router.put(
+  '/announcements/:id',
+  upload.fields([
+    { name: 'image', maxCount: 1 },
+    { name: 'pdf', maxCount: 1 },
+  ]),
+  updateAnnouncement
+)
 router.delete('/announcements/:id', deleteAnnouncement)
 
 // -------------E-material
@@ -334,8 +353,7 @@ router.delete('/uploadBlueprintdelete/:id', blueprintController.deleteBlueprint)
 router.get('/getpracticeModal', getPracticeTests)
 router.post('/submitpracticeModal', submitPracticeTest)
 
-
-// testimonial 
+// testimonial
 router.get('/testimonial', getTestimonials) // Fetch all testimonials
 router.post('/testimonial', upload.single('image'), addTestimonial) // Add a new testimonial
 router.delete('/testimonial/:id', deleteTestimonial)
@@ -344,15 +362,15 @@ router.post('/login', login)
 
 router.get('/getlogin', getlogin)
 router.post('/registerlogin', register)
-router.post('/request-password-reset', requestPasswordReset)
-router.get('/reset-password/:token', resetPassword)
+router.post('/requestpasswordreset', requestPasswordReset)
+router.post('/reset-password', resetPassword)
 
 //=======================
 router.post('/getStudentLernerID', getStudentByDetails)
-router.get('/getStudentLernerID/:id', getStudentLernerById)
+router.get('/getStudentsLernerID/:id', getStudentLernerById)
 router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
 
-// upload result and admit card url 
+// upload result and admit card url
 router.post('/upload-url', uploadResultAdmitUrls)
 router.put('/upload-url/:id', updateResultAdmitUrls)
 router.get('/upload-url', getResultAdmitcardurl)

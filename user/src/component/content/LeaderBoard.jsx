@@ -102,7 +102,7 @@ const AboutSection = () => {
               विशेष रूप से लड़कियों पर ध्यान दिया जा जाता है।
             </p>
             <button className="border border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-red-300 transition">
-              और पढ़ें{' '}
+              और पढ़ें
             </button>
           </div>
         </div>

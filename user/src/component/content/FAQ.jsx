@@ -137,7 +137,7 @@ const FAQComponent = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h3 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1">
+      <h3 className="text-2xl sm:text-3xl font-semibold text-white text-center mb-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1">
         अक्सर पूछे जाने वाले प्रश्न
       </h3>
       <div className="space-y-4">
