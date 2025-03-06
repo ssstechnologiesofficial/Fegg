@@ -1,17 +1,24 @@
-import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import logo from '../../assets/logo.png'
-import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
+import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import logo from "../../assets/logo.png";
+import {
+  FaYoutube,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+} from "react-icons/fa";
 
 const Footer = () => {
-  const footerRef = useRef(null)
+  const footerRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+    gsap.registerPlugin(ScrollTrigger);
 
-    const footerSections = footerRef.current.querySelectorAll('.footer-section')
+    const footerSections =
+      footerRef.current.querySelectorAll(".footer-section");
 
     footerSections.forEach((section, index) => {
       gsap.fromTo(
@@ -24,25 +31,25 @@ const Footer = () => {
           delay: index * 0.2,
           scrollTrigger: {
             trigger: section,
-            start: 'top 90%',
-            end: 'bottom 70%',
-            toggleActions: 'play none none reverse',
+            start: "top 90%",
+            end: "bottom 70%",
+            toggleActions: "play none none reverse",
             once: true,
             invalidateOnRefresh: true,
           },
         }
-      )
-    })
+      );
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [])
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <footer
       ref={footerRef}
-      className="bg-gray-900 text-white py-8 border-t-4 border-red-400"
+      className="bg-gray-900 text-white py-8 border-t-4 border-red-400 sm:px-8"
     >
       <div className="container mx-auto px-4">
         {/* शीर्ष अनुभाग */}
@@ -52,9 +59,9 @@ const Footer = () => {
             <div className="bg-white w-16 h-16 rounded-full mb-4">
               <img src={logo} alt="" />
             </div>
-            <h2 className="text-lg font-semibold">
+            {/* <h2 className="text-lg font-semibold">
               लड़कियों की शिक्षा के लिए वैश्विक फाउंडेशन
-            </h2>
+            </h2> */}
             <p className="text-gray-400 text-sm mt-4">
               Educate Girls एक गैर-लाभकारी संगठन है जो ग्रामीण और शैक्षिक रूप से
               वंचित क्षेत्रों की लड़कियों की शिक्षा को बढ़ावा देने और समुदायों
@@ -91,11 +98,7 @@ const Footer = () => {
                   छात्र पंजीकरण
                 </Link>
               </li>
-              <li>
-                <Link to="/privacy-policy" className="hover:underline">
-                  गोपनीयता नीति
-                </Link>
-              </li>
+
               <li>
                 <Link to="/contact-us" className="hover:underline">
                   संपर्क करें
@@ -114,7 +117,7 @@ const Footer = () => {
               सार्वजनिक छुट्टियों को छोड़कर)
             </p>
             <p className="text-gray-400 text-sm mt-4">
-              <span className="font-semibold">हमें ईमेल करें:</span>{' '}
+              <span className="font-semibold">हमें ईमेल करें:</span>{" "}
               info@abcopenschool.org
             </p>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
@@ -155,6 +158,12 @@ const Footer = () => {
                 <FaTwitter className="text-2xl" />
               </a>
               <a
+                href="https://x.com/educate_girls"
+                className="bg-blue-700 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
+              >
+                <FaLinkedin className="text-2xl" />
+              </a>
+              <a
                 href="https://www.instagram.com/educategirlsngo/"
                 className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:opacity-80 transition"
               >
@@ -163,9 +172,34 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="mt-8 text-gray-400 text-sm text-center">
+          <p>
+            <span className="text-primary">
+              {" "}
+              <Link to="/privacy-policy" className="hover:underline">
+                नियम और शर्तें
+              </Link>
+            </span>{" "}
+            |{" "}
+            <span className="text-primary">
+              {" "}
+              <Link to="/privacy-policy" className="hover:underline">
+                गोपनीयता नीति
+              </Link>
+            </span>
+          </p>
+          <p>
+            Educate Girls is a project of Foundation To Educate Girls Globally
+            (FEGG) | FEGG is registered in India under Section 8 of the Indian
+            Companies Act, 2013.{" "}
+          </p>
+          <p>
+          @2018 All rights reserved. <span className="text-primary">Educate Girls</span>{" "}
+          </p>
+        </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

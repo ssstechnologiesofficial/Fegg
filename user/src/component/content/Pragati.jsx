@@ -62,7 +62,8 @@ const Pragati = () => {
   return (
     <div className="">
       {/* Header Section with Background Image */}
-      <div
+     <div className="relative">
+     <div
         className="pragati-img flex items-center justify-start px-10"
         style={{
           width: "100%",
@@ -83,9 +84,10 @@ const Pragati = () => {
           </p>
         </div>
       </div>
+     </div>
 
       {/* Content Section */}
-      <div className="p-5">
+      <div className="p-5 mx-10 relative -mt-14 rounded-lg shadow-lg mb-8 z-10 bg-white">
         
         <div className="flex flex-col sm:flex-row justify-evenly items-center mt-8">
           {/* Image Container with Layered Effect */}
@@ -103,7 +105,7 @@ const Pragati = () => {
           {/* Text Content */}
           <div className="sm:m-3 flex justify-center items-start flex-col sm:w-[600px] sm:p-3 p-5 mt-7 text-sm sm:text-base">
           <div className="text-center py-4">
-          <h3 className="text-xl md:text-2xl font-bold text-red-400 pt-1 border-b-4 border-red-400 inline-block">
+          <h3 className="text-xl md:text-2xl font-bold text-red-400 pt-1  inline-block">
             प्रगति कार्यक्रम कैसे कार्य करता है
           </h3>
         </div>
