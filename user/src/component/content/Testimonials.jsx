@@ -159,11 +159,11 @@ const Testimonials = () => {
             <SwiperSlide key={index}>
               <div className="bg-white mb-3 p-6 h-[380px] flex flex-col justify-between rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-r-4 border-red-500">
                 <div className="text-center">
-                  <FaQuoteLeft className="text-red-400 text-xl inline-block mb-4" />
-                  <p className="text-gray-700 italic mb-4 overflow-hidden text-ellipsis line-clamp-5 max-h-[120px]">
-                    {testimonial.text}
-                  </p>
-                  <FaQuoteRight className="text-red-400 text-xl inline-block mt-4" />
+                  <FaQuoteLeft className="text-red-400 text-xl inline-block mb-2" />
+                  <p className="testimonial-text text-gray-700 italic">
+  {testimonial.text}
+</p>
+                  <FaQuoteRight className="text-red-400 text-xl inline-block mt-2" />
                 </div>
                 <div className="flex flex-col items-center mt-4">
                   <img

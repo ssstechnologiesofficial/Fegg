@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../common/SummaryApi'
+import { Link } from 'react-router-dom'
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -69,7 +70,7 @@ const EventsAnnouncements = () => {
                   <p className="text-gray-600 text-sm mt-2 line-clamp-2">
                     {announcement.description}
                   </p>
-                  {announcement.pdf && (
+                  {/* {announcement.pdf && (
                     <a
                       href={`${baseUrl}/uploads/${announcement.pdf}`}
                       target="_blank"
@@ -78,7 +79,12 @@ const EventsAnnouncements = () => {
                     >
                       अधिक जानें
                     </a>
-                  )}
+                  )} */}
+                  <Link to={`/announcement/${announcement._id}`}>
+  <button className="inline-block mt-2 text-red-500 px-3 py-1 text-sm rounded-md">
+    अधिक जानें
+  </button>
+</Link>
                 </div>
 
                 {/* घोषणा छवि */}

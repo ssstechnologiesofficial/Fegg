@@ -85,7 +85,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/MPSOSInfo" className="hover:underline">
-                  एमपीएसओएस के बारे में
+                  एम.पी.एस.ओ.एस. के बारे में
                 </Link>
               </li>
               <li>
@@ -118,7 +118,7 @@ const Footer = () => {
             </p>
             <p className="text-gray-400 text-sm mt-4">
               <span className="font-semibold">हमें ईमेल करें:</span>{" "}
-              info@abcopenschool.org
+              info.in@educategirls.ngo
             </p>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
               <iframe
@@ -158,7 +158,7 @@ const Footer = () => {
                 <FaTwitter className="text-2xl" />
               </a>
               <a
-                href="https://x.com/educate_girls"
+                href="http://linkedin.com/company/educate-girls"
                 className="bg-blue-700 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
               >
                 <FaLinkedin className="text-2xl" />

@@ -179,3 +179,10 @@ body {
   font-weight: bold;
   padding: 2px;
 }
+.testimonial-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
