@@ -1,12 +1,11 @@
 const mongoose = require('mongoose')
 
-const PreviousPaper = new mongoose.Schema(
+const PreviousPaperSchema = new mongoose.Schema(
   {
     year: {
       type: String,
       required: true,
     },
-
     className: {
       type: String,
       required: true,
@@ -19,13 +18,22 @@ const PreviousPaper = new mongoose.Schema(
       type: String,
       required: true,
     },
-    file: {
-      type: String, // Store the file URL after uploading
+    session: {
+      type: String,
+      enum: ['June', 'December'],
       required: true,
+    },
+    file: {
+      type: String, // Stores the file path of the uploaded paper
+      required: true,
+    },
+    answerKey: {
+      type: String, // Stores the file path of the uploaded answer key
+      required: false, // Answer key is optional
     },
   },
   { timestamps: true }
 )
 
-const PreviousPaperModel = mongoose.model('PreviousPaperModel', PreviousPaper)
+const PreviousPaperModel = mongoose.model('PreviousPaper', PreviousPaperSchema)
 module.exports = PreviousPaperModel

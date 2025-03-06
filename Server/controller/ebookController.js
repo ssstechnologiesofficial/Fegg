@@ -4,8 +4,7 @@ const Ebook = require('../model/ebookSchema')
 const createEbook = async (req, res) => {
   console.log(req.body)
   try {
-    const { sessionYear, sessionMonth, className, subject, language, Volume } =
-      req.body
+    const { sessionYear, className, subject, language, Volume } = req.body
     const file = req.file.path
     const ebook = new Ebook({
       sessionYear,

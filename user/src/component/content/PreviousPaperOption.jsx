@@ -26,28 +26,9 @@ const PreviousPaperOption = () => {
               <h3 className="text-xl font-bold text-center">
                 Class <span className="text-[#fd645b]">10</span>
               </h3>
-              <span className="text-[#fd645b]">(English)</span>
-              <p className="text-center">Click here for Class 10 eContent</p>
-            </div>
-          </Link>
-        </div>
-        {/* Card for Class 12 */}
-        <div className="w-96 h-80 overflow-hidden rounded-lg relative group">
-          <Link
-            to="/Class10HindiPapers"
-            className="block w-full h-full border rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-200 bg-no-repeat bg-cover bg-center transform hover:scale-105 relative"
-            style={{ backgroundImage: `url(${op12})` }}
-          >
-            {/* Layer Effect */}
-            <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-            <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8 text-center">
-              <h3 className="text-xl font-bold text-center">
-                Class <span className="text-[#fd645b]">10</span>
-              </h3>
-              <span className="text-[#fd645b]">(Hindi)</span>
-
-              <p className="text-center">Click here for Class 12 eContent</p>
+              <p className="text-center">
+                Click here for Class 10 Previous Year Paper
+              </p>
             </div>
           </Link>
         </div>
@@ -65,31 +46,13 @@ const PreviousPaperOption = () => {
               <h3 className="text-xl font-bold text-center">
                 Class <span className="text-[#fd645b]">12</span>
               </h3>
-              <span className="text-[#fd645b] ">(English)</span>
-              <p className="text-center">Click here for Class 12 eContent</p>
+              <p className="text-center">
+                Click here for Class 12 Previous Year Paper
+              </p>
             </div>
           </Link>
         </div>{' '}
         {/* Card for Class 12 */}
-        <div className="w-96 h-80 overflow-hidden rounded-lg relative group">
-          <Link
-            to="/Class12HindiPapers"
-            className="block w-full h-full border rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-200 bg-no-repeat bg-cover bg-center transform hover:scale-105 relative"
-            style={{ backgroundImage: `url(${PY10h})` }}
-          >
-            {/* Layer Effect */}
-            <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-            <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8 text-center">
-              <h3 className="text-xl font-bold text-center">
-                Class <span className="text-[#fd645b]">12</span>
-              </h3>
-              <span className="text-[#fd645b]">(Hindi)</span>
-
-              <p className="text-center">Click here for Class 12 eContent</p>
-            </div>
-          </Link>
-        </div>
       </div>
     </div>
   )
