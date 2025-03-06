@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SummaryApi from '../common/SummaryAPI'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const NewsLetterUpload = () => {
   const [gallery, setGallery] = useState([])
@@ -51,7 +52,7 @@ const NewsLetterUpload = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl sm:text-4xl font-semibold text-center my-5 text-white bg-blue-900 py-2 rounded-md">
+      <h1 className="text-2xl sm:text-4xl font-semibold text-center my-5 text-white bg-red-500 py-2 rounded-md">
         News Letter Upload
       </h1>
 
@@ -77,7 +78,7 @@ const NewsLetterUpload = () => {
         )}
         <button
           type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+          className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-700"
         >
           Upload
         </button>
@@ -87,7 +88,7 @@ const NewsLetterUpload = () => {
       <div className="overflow-x-auto mt-5">
         <table className="min-w-full bg-white shadow-md rounded-md overflow-hidden">
           <thead>
-            <tr className="bg-blue-800 text-white">
+            <tr className="bg-red-500 text-white">
               <th className="py-2 px-4">Image</th>
               <th className="py-2 px-4">Actions</th>
             </tr>
@@ -97,7 +98,7 @@ const NewsLetterUpload = () => {
               <tr key={file._id} className="border-b">
                 <td className="py-2 px-4 flex justify-center">
                   <img
-                    src={file.url}
+                    src={`${baseUrl}/${file.image.replace(/\\/g, '/')}`}
                     alt="Gallery"
                     className="w-20 h-20 object-cover rounded-md"
                   />
@@ -105,7 +106,7 @@ const NewsLetterUpload = () => {
                 <td className="py-2 px-4 text-center">
                   <button
                     onClick={() => handleDelete(file._id)}
-                    className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700"
+                    className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700"
                   >
                     Delete
                   </button>

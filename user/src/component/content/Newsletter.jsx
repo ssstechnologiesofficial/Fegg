@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../common/SummaryApi'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const Newsletter = () => {
   const [gallery, setGallery] = useState([]) // State to store images
@@ -31,7 +32,7 @@ const Newsletter = () => {
         {gallery.map((item) => (
           <div className="media" key={item._id} onClick={() => setFile(item)}>
             <img
-              src={`http://localhost:8006/${item.image.replace(/\\/g, '/')}`}
+              src={`${baseUrl}/${item.image.replace(/\\/g, '/')}`}
               alt={`Gallery Image ${item._id}`}
               className="media-image"
             />
