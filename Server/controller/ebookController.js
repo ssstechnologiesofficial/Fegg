@@ -9,7 +9,6 @@ const createEbook = async (req, res) => {
     const file = req.file.path
     const ebook = new Ebook({
       sessionYear,
-      sessionMonth,
       className,
       subject,
       Volume,
@@ -50,18 +49,10 @@ const getEbooksByClass = async (req, res) => {
 const updateEbook = async (req, res) => {
   try {
     const { id } = req.params
-    const {
-      sessionYear,
-      sessionMonth,
-      className,
-      subject,
-      language,
-      file,
-      Volume,
-    } = req.body
+    const { sessionYear, className, subject, language, file, Volume } = req.body
     const ebook = await Ebook.findByIdAndUpdate(
       id,
-      { sessionYear, sessionMonth, className, subject, language, Volume, file },
+      { sessionYear, className, subject, language, Volume, file },
       { new: true }
     )
     if (!ebook) {

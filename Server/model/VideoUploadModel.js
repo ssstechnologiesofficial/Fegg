@@ -5,13 +5,17 @@ const videoUploadSchema = new mongoose.Schema(
     sessionYear: {
       type: String,
       required: true,
-      enum: ['2023-2024', '2024-2025', '2025-2026'],
+      enum: [
+        '2023-2024',
+        '2024-2025',
+        '2025-2026',
+        '2026-2027',
+        '2027-2028',
+        '2028-2029',
+        '2029-2030',
+      ],
     },
-    sessionMonth: {
-      type: String,
-      required: true,
-      enum: ['April-October', 'November-March'],
-    },
+
     className: {
       type: String,
       required: true,

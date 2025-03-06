@@ -13,13 +13,38 @@ const OlineVideoUpload = () => {
   const [formData, setFormData] = useState({})
   const [filters, setFilters] = useState({
     sessionYear: '',
-    sessionMonth: '',
     className: '',
     subject: '',
   })
   const subjects = {
-    10: ['Mathematics', 'Science', 'Social Studies', 'English', 'Hindi'],
-    12: ['Physics', 'Chemistry', 'Mathematics', 'Biology', 'English', 'Hindi'],
+    10: [
+      'हिंदी (201)',
+      'अंग्रेज़ी (202)',
+      'मराठी (204)',
+      'उर्दू (206)',
+      'संस्कृत (209)',
+      'गणित (211)',
+      'विज्ञान (212)',
+      'सामाजिक विज्ञान (213)',
+      'अर्थशास्त्र (214)',
+      'व्यवसाय अध्ययन (215)',
+      'गृह विज्ञान (216)',
+      'भारतीय संस्कृति (223)',
+      'उद्यमिता (249)',
+    ],
+    12: [
+      'हिंदी (301)',
+      'अंग्रेज़ी (302)',
+      'संस्कृत (309)',
+
+      'गणित (311)',
+      'गृह विज्ञान  (सिद्धांत एवं प्रयोगात्मक) (321)',
+      'अर्थशास्त्र (318)',
+
+      'भारतीय  (सिद्धांत एवं प्रयोगात्मक)(321)',
+      'इतिहास (315)',
+      'व्यवसाय अध्ययन (319)',
+    ],
   }
 
   useEffect(() => {
@@ -76,7 +101,6 @@ const OlineVideoUpload = () => {
         setUploads([...uploads, response.data])
         setFormData({
           sessionYear: '',
-          sessionMonth: '',
           className: '10',
           subject: subjects['10'][0],
           chapterName: '', // Reset the chapter name field
@@ -102,8 +126,6 @@ const OlineVideoUpload = () => {
       return (
         (!filters.sessionYear ||
           String(upload.sessionYear) === String(filters.sessionYear)) &&
-        (!filters.sessionMonth ||
-          String(upload.sessionMonth) === String(filters.sessionMonth)) &&
         (!filters.className ||
           String(upload.className) === String(filters.className)) &&
         (!filters.subject || String(upload.subject) === String(filters.subject))
@@ -135,22 +157,13 @@ const OlineVideoUpload = () => {
                 className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
               >
                 <option value=""></option>
-
                 <option value="2023-2024">2023-2024</option>
                 <option value="2024-2025">2024-2025</option>
                 <option value="2025-2026">2025-2026</option>
-              </select>
-              <select
-                name="sessionMonth"
-                value={formData.sessionMonth}
-                onChange={handleChange}
-                required
-                className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
-              >
-                <option value=""></option>
-
-                <option value="April-October">April-October</option>
-                <option value="November-March">November-March</option>
+                <option value="2026-2027">2026-2027</option>
+                <option value="2027-2028">2027-2028</option>
+                <option value="2028-2029">2028-2029</option>
+                <option value="2029-2030">2029-2030</option>{' '}
               </select>
             </div>
           </div>
@@ -253,16 +266,7 @@ const OlineVideoUpload = () => {
           <option value="2024-2025">2024-2025</option>
           <option value="2025-2026">2025-2026</option>
         </select>
-        <select
-          name="sessionMonth"
-          value={filters.sessionMonth}
-          onChange={handleFilterChange}
-          className="border p-2 rounded"
-        >
-          <option value="">All Months</option>
-          <option value="April-October">April-October</option>
-          <option value="November-March">November-March</option>
-        </select>
+
         <select
           name="className"
           value={filters.className}

@@ -6,10 +6,7 @@ const ebookSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    sessionMonth: {
-      type: String,
-      required: true,
-    },
+
     className: {
       type: String,
       required: true,

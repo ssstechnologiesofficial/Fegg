@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const UserDownloadSchema = new mongoose.Schema({
-  userName: {
-    type: String,
-    required: true,
-  },
   userInput: {
     type: String,
     required: true,
