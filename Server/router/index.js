@@ -284,7 +284,14 @@ router.post('/storeUserDownload', storeUserDownload)
 router.get('/getAllDownloads', getAllDownloads)
 
 // ------------- Paper
-router.post('/PreviousPaperpost', upload.single('file'), createPreviousPaper)
+router.post(
+  '/PreviousPaperpost',
+  upload.fields([
+    { name: 'file', maxCount: 1 },
+    { name: 'answerKey', maxCount: 1 },
+  ]),
+  createPreviousPaper
+)
 router.get('/PreviousPaperget', getAllPreviousPaper)
 router.put('/PreviousPaper/:id', updatePreviousPaper)
 router.delete('/PreviousPaper/:id', deletePreviousPaper)

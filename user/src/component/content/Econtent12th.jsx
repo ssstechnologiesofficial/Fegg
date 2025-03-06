@@ -5,7 +5,7 @@ import fagglogo from '../../../public/eg-logo.png'
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
-const Econtent12th = () => {
+const Econtent10th = () => {
   const [data, setData] = useState([])
   const [activeIndex, setActiveIndex] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -13,7 +13,11 @@ const Econtent12th = () => {
   const [selectedSubject, setSelectedSubject] = useState('')
   const [selectedClass, setSelectedClass] = useState('')
   const [userInput, setUserInput] = useState('')
+  const [activeSubject, setActiveSubject] = useState(null)
+  const [selectedLanguage, setSelectedLanguage] = useState('')
   useEffect(() => {
+    setSelectedLanguage('Hindi')
+
     axios
       .get(`${SummaryApi.Ebooks.url}?className=12`)
       .then((response) => {
@@ -24,9 +28,24 @@ const Econtent12th = () => {
       })
   }, [])
 
-  const handleAccordionToggle = (index) => {
-    setActiveIndex(activeIndex === index ? null : index)
+  const handleSubjectClick = (subject) => {
+    setActiveSubject(subject)
   }
+
+  const handleLanguageChange = (event) => {
+    setSelectedLanguage(event.target.value)
+    setActiveSubject(null)
+  }
+
+  const filteredData = data.filter((item) => item.language === selectedLanguage)
+
+  const groupedSubjects = filteredData.reduce((acc, item) => {
+    if (!acc[item.subject]) {
+      acc[item.subject] = []
+    }
+    acc[item.subject].push(item)
+    return acc
+  }, {})
 
   const handleDownloadClick = (fileUrl, subject, className) => {
     setSelectedFile(fileUrl)
@@ -66,47 +85,84 @@ const Econtent12th = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">Econtent for 12th Class</h2>
-      <div className="space-y-4">
-        {data.map((item, index) => (
-          <div
-            key={item._id}
-            className="border-r-2 border-l-2 border-[#ff0000] shadow"
-          >
-            <div
-              className="bg-gray-200 p-1 cursor-pointer"
-              onClick={() => handleAccordionToggle(index)}
+      <h2 className="text-2xl font-bold mb-4">कक्षा 12वीं के लिए ई-पुस्तकें</h2>
+      <div className="flex flex-col sm:flex-row p-4 bg-gray-50 min-h-screen">
+        {/* Sidebar */}
+        <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
+          <h2 className="text-2xl font-bold text-[#fd645b] mb-4 border-b-2 border-[#fd645b] pb-2 text-center uppercase">
+            Subjects
+          </h2>
+          <div className="flex-1 mb-4">
+            <label className="font-semibold">Select Medium:</label>
+            <select
+              name="language"
+              className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
+              value={selectedLanguage}
+              onChange={handleLanguageChange}
             >
-              <h3 className="sm:text-xl text-lg font-semibold ">
-                {item.subject}
-                <span className="ms-1 text-[#ff0000] text-xs">
-                  ({item.language})
-                </span>
-              </h3>
-            </div>
-            {activeIndex === index && (
-              <div className="p-1">
-                <div className="flex justify-between items-center py-2">
-                  <span className="font-medium bg-[#ff0000] text-white px-1 text-sm">
-                    {item.Volume}
-                  </span>
-                  <button
-                    onClick={() =>
-                      handleDownloadClick(
-                        item.file,
-                        item.subject,
-                        item.className
-                      )
-                    }
-                    className="text-blue-600 hover:underline flex items-center"
-                  >
-                    📄 Download PDF
-                  </button>
-                </div>
-              </div>
-            )}
+              <option value="">Select Medium</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
           </div>
-        ))}
+          <ul className="space-y-3">
+            {Object.keys(groupedSubjects).map((subjectName) => (
+              <li
+                key={subjectName}
+                className={`cursor-pointer text-black font-semibold px-4 py-2 border-l-4 hover:border-[#fd645b] transition-all hover:bg-[#fd635b5d]  duration-200 ${
+                  activeSubject === groupedSubjects[subjectName]
+                    ? 'border-[#fd645b]'
+                    : 'border-transparent'
+                }`}
+                onClick={() => handleSubjectClick(groupedSubjects[subjectName])}
+              >
+                {subjectName}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Main Content */}
+        <div className="sm:w-3/4 w-full p-6">
+          {activeSubject && (
+            <div className="bg-white shadow-md rounded-md p-6">
+              <h3 className="text-2xl font-bold text-[#fd645b] mb-4">
+                {activeSubject[0].subject} ({activeSubject[0].language})
+              </h3>
+              <table className="w-full border-collapse rounded-md overflow-hidden">
+                <thead>
+                  <tr className="bg-[#fd645b] text-white">
+                    <th className="p-3">Volume</th>
+
+                    <th className="p-3">Video Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activeSubject.map((item, index) => (
+                    <tr key={index} className="border-b hover:bg-gray-100">
+                      <td className="p-3 text-center">{item.Volume}</td>
+
+                      <td className="p-3 text-center">
+                        <button
+                          onClick={() =>
+                            handleDownloadClick(
+                              item.file,
+                              item.subject,
+                              item.className
+                            )
+                          }
+                          className="text-blue-600 hover:underline"
+                        >
+                          📄 Download Book
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-10">
@@ -154,4 +210,4 @@ const Econtent12th = () => {
   )
 }
 
-export default Econtent12th
+export default Econtent10th

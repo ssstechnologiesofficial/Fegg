@@ -43,7 +43,7 @@ const Newsletter = () => {
       {file && (
         <div className="popup-media">
           <span onClick={() => setFile(null)}>&times;</span>
-          <img src={file.image} alt={`Gallery Image ${file._id}`} />
+          <img src={`${baseUrl}/${file.image.replace(/\\/g, '/')}`} />
         </div>
       )}
     </div>
