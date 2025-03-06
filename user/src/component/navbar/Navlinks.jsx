@@ -51,6 +51,16 @@ const NavLinks = () => {
     }
   }
 
+  const downloadPDFVivernika = () => {
+    const pdfUrl = '/public/Vivernika.pdf' // Use an absolute path from the public folder
+    const link = document.createElement('a')
+    link.href = pdfUrl
+    link.setAttribute('download', 'Vivernika.pdf') // Set the correct filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   const dropdownMenu = (menuItems) => (
     <ul className="absolute left-0 z-10 top-full bg-white shadow-md w-40">
       {menuItems.map((item, index) => (
@@ -116,7 +126,7 @@ const NavLinks = () => {
               </li>
               <li className="border-l-4 border-red-500">
                 <button
-                  onClick={downloadPDF}
+                  onClick={downloadPDFVivernika}
                   className="block py-2 px-4 w-full text-left"
                 >
                   विवरणिका
@@ -150,7 +160,7 @@ const NavLinks = () => {
               </li>
               <li className="border-l-4 border-red-500">
                 <button
-                  onClick={downloadPDF}
+                  onClick={downloadPDFVivernika}
                   className="block py-2 px-4 w-full text-left"
                 >
                   विवरणिका
