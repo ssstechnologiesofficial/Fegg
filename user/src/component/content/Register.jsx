@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../common/SummaryApi'
-import singin from '../../../public/rg.avif'
 import fagglogo from '../../../public/eg-logo.png'
 import districtData from '../../data/Mpdistricts.json'
 
@@ -1070,10 +1069,7 @@ const Register = () => {
     : []
 
   return (
-    <div
-      className=" min-h-screen flex items-center justify-center p-4 bg-cover bg-no-repeat"
-      style={{ backgroundImage: `url(${singin})` }}
-    >
+    <div className=" min-h-screen flex items-center justify-center p-4 bg-cover bg-no-repeat">
       <div className=" bg-[#00000085] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10   p-6 border text-white border-[#fe0000] rounded-xl border-r-4 border-b-4 shadow-lg w-full max-w-4xl">
         <div className="flex justify-center items-center flex-col">
           <img
@@ -1087,7 +1083,8 @@ const Register = () => {
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-3 gap-4">
             <label className="block font-semibold">
-              First Name <span className="text-red-500 font-semibold">*</span>
+              छात्र का फ़र्स्ट नेम{' '}
+              <span className="text-red-500 font-semibold">*</span>
               <input
                 type="text"
                 name="firstName"
@@ -1098,7 +1095,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Middle Name
+              मिडल नेम
               <input
                 type="text"
                 name="middleName"
@@ -1108,7 +1105,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Last Name <span className="text-red-500">*</span>
+              लास्ट नेम <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="lastName"
@@ -1122,7 +1119,7 @@ const Register = () => {
 
           <div className="grid grid-cols-3 gap-4">
             <label className="block">
-              Father's First Name <span className="text-red-500">*</span>
+              पिता का फ़र्स्ट नेम <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="fatherFirstName"
@@ -1133,7 +1130,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Father's Middle Name
+              मिडल नेम
               <input
                 type="text"
                 name="fatherMiddleName"
@@ -1143,7 +1140,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Father's Last Name <span className="text-red-500">*</span>
+              लास्ट नेम <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="fatherLastName"
@@ -1156,7 +1153,7 @@ const Register = () => {
           </div>
 
           <label className="block">
-            Permanent Address <span className="text-red-500">*</span>
+            स्थाई पता <span className="text-red-500">*</span>
             <input
               type="text"
               name="permanentAddress"
@@ -1169,7 +1166,7 @@ const Register = () => {
 
           <div className="grid grid-cols-3 gap-4">
             <label className="block">
-              District <span className="text-red-500">*</span>
+              जिला <span className="text-red-500">*</span>
               <select
                 name="district"
                 className="w-full border  text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1185,7 +1182,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Tehsil / Sub-District <span className="text-red-500">*</span>
+              तहसील<span className="text-red-500">*</span>
               <select
                 name="tehsil"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1201,7 +1198,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Block <span className="text-red-500">*</span>
+              ब्लॉक <span className="text-red-500">*</span>
               <select
                 name="block"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1217,7 +1214,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Village
+              गाँव
               <input
                 type="text"
                 name="village"
@@ -1226,7 +1223,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Pincode <span className="text-red-500">*</span>
+              पिन कोड <span className="text-red-500">*</span>
               <input
                 type="number"
                 name="pincode"
@@ -1240,7 +1237,7 @@ const Register = () => {
             </label>
 
             <label className="block">
-              E-mail
+              ई-मेल
               <input
                 type="email"
                 name="mail"
@@ -1253,7 +1250,7 @@ const Register = () => {
           {/* DOB and Age calculation */}
           <div className="grid grid-cols-3 gap-4">
             <label className="block">
-              Date of Birth <span className="text-red-500">*</span>
+              जन्म तिथि <span className="text-red-500">*</span>
               <input
                 type="date"
                 name="dob"
@@ -1263,7 +1260,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Age <span className="text-red-500">*</span>
+              आयु <span className="text-red-500">*</span>
               <input
                 type="number"
                 name="age"
@@ -1273,7 +1270,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Gender <span className="text-red-500">*</span>
+              लिंग <span className="text-red-500">*</span>
               <select
                 name="gender"
                 className="w-full text-black border border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1290,7 +1287,7 @@ const Register = () => {
 
           <div className="grid grid-cols-3 gap-4">
             <label className="block">
-              Religion <span className="text-red-500">*</span>
+              धर्म <span className="text-red-500">*</span>
               <select
                 name="religion"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1310,7 +1307,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Category <span className="text-red-500">*</span>
+              श्रेणी <span className="text-red-500">*</span>
               <select
                 name="category"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1326,7 +1323,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Contact No <span className="text-red-500">*</span>
+              संपर्क नंबर <span className="text-red-500">*</span>
               <input
                 type="text"
                 name="contactNo"
@@ -1354,7 +1351,8 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              Last Class Studied <span className="text-red-500">*</span>
+              आप ने अंतिम कक्षा कौन सी पढ़ी है ?{' '}
+              <span className="text-red-500">*</span>
               <select
                 name="lastClassStudied"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1372,7 +1370,7 @@ const Register = () => {
             </label>
 
             <label className="block">
-              Status <span className="text-red-500">*</span>
+              स्तिथि <span className="text-red-500">*</span>
               <select
                 name="status"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1385,7 +1383,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              Student Applying For <span className="text-red-500">*</span>
+              आवेदन का प्रकार <span className="text-red-500">*</span>
               <select
                 name="applyFor"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -1404,13 +1402,13 @@ const Register = () => {
               type="reset"
               className="bg-red-500 text-white px-6 py-2 rounded-lg shadow hover:bg-red-600"
             >
-              CLEAR
+              साफ करे
             </button>
             <button
               type="submit"
               className="bg-green-500 text-white px-6 py-2 rounded-lg shadow hover:bg-green-600"
             >
-              SUBMIT
+              जमा करे
             </button>
           </div>
         </form>

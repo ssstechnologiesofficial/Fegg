@@ -264,6 +264,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/test-result/:id`,
     method: 'get',
   },
+  TestResultupdate: {
+    url: `${backendDomain}/api/test-result/:id`,
+    method: 'get',
+  },
   AdmitcardResult: {
     url: `${backendDomain}/api/upload-url/:id`,
     method: 'put',
@@ -283,6 +287,18 @@ const SummaryApi = {
   resetpasswordLink: {
     url: `${backendDomain}/api/reset-password`,
     method: 'post',
+  },
+  getNewsLetterImages: {
+    url: `${backendDomain}/api/getNewsLetterImages`,
+    method: 'get',
+  },
+  NewsLuploads: {
+    url: `${backendDomain}/api/NLuploads`,
+    method: 'post',
+  },
+  NLuploadsdelete: {
+    url: `${backendDomain}/api/NLuploadsdelete`,
+    method: 'delete',
   },
 }
 

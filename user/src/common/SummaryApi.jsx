@@ -82,6 +82,10 @@ const SummaryApi = {
     url: `${backendDomain}/api/updateStudentLERnerID/`,
     method: 'put',
   },
+  getNewsLetterImages: {
+    url: `${backendDomain}/api/getNewsLetterImages`,
+    method: 'get',
+  },
 }
 
 export default SummaryApi

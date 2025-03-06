@@ -108,6 +108,14 @@ const Sidebar = () => {
             <FiFile className="mr-2" size={20} />
             {!isCollapsed && <span>Upload Blue Print</span>}
           </Link>
+
+          <Link
+            to="NewsLetterUpload"
+            className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <FiFile className="mr-2" size={20} />
+            {!isCollapsed && <span>News Letter Upload</span>}
+          </Link>
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -216,7 +224,6 @@ const Sidebar = () => {
             <FiSave className="mr-2" size={20} />
             {!isCollapsed && <span>E-Book Modal Data</span>}
           </Link>
-
           <Link
             to="/"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"

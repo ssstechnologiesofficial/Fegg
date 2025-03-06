@@ -213,6 +213,13 @@ const {
 //   deleteMockSet,
 // } = require('../controller/practiceseset/practiceMock')
 
+// ========================================== News Letter
+const {
+  uploadNewsLetter,
+  getNewsLetterImages,
+  deleteNewsLetterImage,
+} = require('../controller/NewsLettercontroller')
+
 // Contact us
 router.post('/contact', submitContactForm)
 router.get('/get-contact', getContactFormInfo)
@@ -365,7 +372,7 @@ router.post('/registerlogin', register)
 router.post('/requestpasswordreset', requestPasswordReset)
 router.post('/reset-password', resetPassword)
 
-//=======================
+//======================= find LernerID
 router.post('/getStudentLernerID', getStudentByDetails)
 router.get('/getStudentsLernerID/:id', getStudentLernerById)
 router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
@@ -374,4 +381,10 @@ router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
 router.post('/upload-url', uploadResultAdmitUrls)
 router.put('/upload-url/:id', updateResultAdmitUrls)
 router.get('/upload-url', getResultAdmitcardurl)
+
+//============================== news letter
+
+router.post('/NLuploads', upload.single('image'), uploadNewsLetter) // Upload an image
+router.get('/getNewsLetterImages', getNewsLetterImages) // Fetch all images
+router.delete('/NLuploadsdelete/:id', deleteNewsLetterImage)
 module.exports = router

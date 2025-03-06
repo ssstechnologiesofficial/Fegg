@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const nodemailer = require('nodemailer')
 
+console.log('Email User:', process.env.EMAIL_USER)
+console.log('Email Pass:', process.env.EMAIL_PASS ? 'Exists' : 'Missing')
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -23,7 +25,7 @@ exports.login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: 'Invalid credentials' })
 
-    const token = jwt.sign({ userId: user._id }, 'your_jwt_secret', {
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     })
     res.status(200).json({ token, message: 'Login successful!' })
@@ -71,10 +73,12 @@ exports.requestPasswordReset = async (req, res) => {
       return res.status(404).json({ message: 'User not found' })
     }
 
-    const token = jwt.sign({ email }, 'your_jwt_secret', { expiresIn: '1h' })
+    const token = jwt.sign({ email }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    })
     console.log('Generated JWT Token:', token)
 
-    const link = `http://localhost:5174/ResetPasswordPage/${token}`
+    const link = `${process.env.ADMIN_URL}/ResetPasswordPage/${token}`
     console.log('Password reset link:', link)
 
     await transporter.sendMail({
@@ -99,7 +103,7 @@ exports.resetPassword = async (req, res) => {
   }
 
   try {
-    const { email } = jwt.verify(token, 'your_jwt_secret')
+    const { email } = jwt.verify(token, process.env.JWT_SECRET)
     const user = await Forgetpassword.findOne({ email })
     if (!user) return res.status(404).json({ message: 'User not found' })
 

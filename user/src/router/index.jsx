@@ -46,6 +46,7 @@ import TenthClass from '../component/content/TenthClass'
 import FindLernerID from '../component/content/FindLernerID'
 import TwelfthEligibility from '../component/content/TwelfthEligibility'
 import MpsosTeam from '../component/content/MpsosTeam'
+import Newsletter from '../component/content/Newsletter'
 
 export const router = createBrowserRouter([
   {
@@ -208,6 +209,10 @@ export const router = createBrowserRouter([
       {
         path: 'FindLernerID',
         element: <FindLernerID />,
+      },
+      {
+        path: 'Newsletter',
+        element: <Newsletter />,
       },
     ],
   },

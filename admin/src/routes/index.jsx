@@ -32,7 +32,7 @@ import Registration from '../components/Regisration'
 import ResetPasswordPage from '../components/ReserPasswordPage'
 import AddTestimonials from '../components/AddTestimonials'
 import UploadUrl from '../components/UploadUrl'
-
+import NewsLetterUpload from '../components/NewsLetterUpload'
 
 export const router = createBrowserRouter([
   {
@@ -146,8 +146,8 @@ export const router = createBrowserRouter([
             element: <AddTestimonials />,
           },
           {
-            path: 'resultAdmitcardUrl',
-            element: <UploadUrl />,
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
           },
         ],
       },
