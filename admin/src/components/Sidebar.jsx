@@ -169,11 +169,15 @@ const Sidebar = () => {
                   <FiEdit size={21} />
                   <span>Practice Test Management</span>
                 </span>
-                {isMockDropdownOpen ? <FiChevronUp /> : <FiChevronDown />}
+                {isMockDropdownOpen ? (
+                  <FiChevronUp size={30} />
+                ) : (
+                  <FiChevronDown size={30} />
+                )}
               </div>
 
               {isMockDropdownOpen && (
-                <div className="ml-4 mt-2 space-y-2">
+                <div className="border-y-2 border-red-600 mx-3 mt-1 space-y-2 bg-red-100 rounded-lg">
                   <Link
                     to="create-subject"
                     className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
