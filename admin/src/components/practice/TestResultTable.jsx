@@ -28,6 +28,7 @@ const TestResultsTable = () => {
       const response = await fetch(SummaryApi.getTestResult.url)
       const data = await response.json()
       setResults(data)
+      console.log(data)
     } catch (error) {
       console.error('Error fetching results:', error)
     }
@@ -141,6 +142,8 @@ const TestResultsTable = () => {
         <thead className="bg-red-500 text-white">
           <tr>
             <th className="border p-2">#</th>
+            <th className="border p-2">Test Name</th>
+
             <th className="border p-2">Learner ID</th>
             <th className="border p-2">Score</th>
             <th className="border p-2">Correct Answer</th>
@@ -152,6 +155,7 @@ const TestResultsTable = () => {
           {currentResults.map((result, index) => (
             <tr key={result._id} className="text-center">
               <td className="border p-2">{indexOfFirstResult + index + 1}</td>
+              <td className="border p-2">{result.name}</td>
               <td className="border p-2">{result.learnerId}</td>
               <td
                 className={`border p-2 ${
