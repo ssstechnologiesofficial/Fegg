@@ -134,7 +134,7 @@ const EducationSchemes = () => {
     },
   ]
   return (
-    <div className="py-4 bg-gray-100 rounded-lg">
+    <div className="py-4  bg-gray-100 rounded-lg">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full mb-5">
         संचालित योजनाऐं
       </h3>

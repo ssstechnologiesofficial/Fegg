@@ -95,22 +95,22 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class10' && isClass10Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/class10-documents" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4">
                   10th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/schemes" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4">
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/fees" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4">
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/subjects" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4">
                   हाईस्कूल विषय
                 </NavLink>
               </li>
@@ -129,22 +129,22 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class12' && isClass12Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/class12-documents" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4">
                   12th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/schemes-12" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4">
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/fees-12" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4">
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/subjects-12" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4">
                   इंटरमीडिएट विषय
                 </NavLink>
               </li>
@@ -182,9 +182,9 @@ const NavLinks = () => {
           {isAboutOpen &&
             dropdownMenu([
               { link: '/about', label: 'एजुकेट गर्ल्स के बारे में' },
-              { link: '/MissionVision', label: 'लक्ष्य' },
-              { link: '/MissionVision', label: 'उद्देश्य' },
-              { link: '/MissionVision', label: 'परिकल्पना' },
+              { link: '/about', label: 'लक्ष्य' },
+              { link: '/about', label: 'उद्देश्य' },
+              { link: '/about', label: 'परिकल्पना' },
               { link: '/EGteam', label: 'वरिष्ठ प्रबंधन टीम' },
             ])}
         </li>
@@ -223,7 +223,7 @@ const NavLinks = () => {
           {isStudentCornerOpen &&
             dropdownMenu([
               { link: '/e-content', label: 'ऑनलाइन पुस्तकें' },
-              { link: '/12th-class', label: 'पाठ्यक्रम' },
+              // { link: '/12th-class', label: 'पाठ्यक्रम' },
               { link: '/onlinevideo', label: 'रिकॉर्डेड वीडियो' },
               { label: 'ब्लूप्रिंट', isDownload: true },
               {
@@ -246,6 +246,11 @@ const NavLinks = () => {
             dropdownMenu([
               { link: '/MPSOSInfo', label: 'MPSOS के बारे में' },
               { link: '/AISECTInfo', label: 'AISECT के बारे में' },
+              {
+                link: 'https://www.aisectonline.com',
+                label: 'Prospectus',
+                isExternal: true,
+              },
               {
                 link: 'https://www.aisectonline.com',
                 label: 'EG login to AISECT',

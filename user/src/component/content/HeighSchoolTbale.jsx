@@ -133,7 +133,7 @@ const HighSchoolSubjectsTable = () => {
   ]
 
   return (
-    <div className="p-4 rounded-lg ">
+    <div className=" rounded-lg ">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         हाई स्कूल विषय विवरण
       </h3>
