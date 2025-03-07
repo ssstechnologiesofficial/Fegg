@@ -87,7 +87,7 @@ const Pragati = () => {
      </div>
 
       {/* Content Section */}
-      <div className="p-5 mx-10 relative -mt-14 rounded-lg shadow-lg mb-8 z-10 bg-white">
+      <div className="p-5 sm:mx-12 mx-4 relative -mt-14 rounded-lg shadow-lg mb-8 z-10 bg-white">
         
         <div className="flex flex-col sm:flex-row justify-evenly items-center mt-8">
           {/* Image Container with Layered Effect */}
