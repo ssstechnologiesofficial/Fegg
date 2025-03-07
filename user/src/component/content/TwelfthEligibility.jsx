@@ -36,7 +36,7 @@ const TwelfthEligibility = () => {
   ]
 
   return (
-    <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+    <div className="px-4 sm:px-12  rounded-lg shadow-md">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         Class 12th
       </h3>
