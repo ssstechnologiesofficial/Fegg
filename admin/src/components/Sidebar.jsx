@@ -12,6 +12,13 @@ import {
   FaChalkboardTeacher,
   FaClipboardList,
   FaSignOutAlt,
+  FaCalendarAlt,
+  FaFileCode,
+  FaFile,
+  FaVideo,
+  FaShareAlt,
+  FaPhotoVideo,
+  FaRegFileArchive,
 } from 'react-icons/fa'
 import { FaBars } from 'react-icons/fa6'
 import {
@@ -91,7 +98,7 @@ const Sidebar = () => {
             to="OlineVideoUpload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiVideo className="mr-2" size={20} />
+            <FaVideo className="mr-2 font-bold" size={20} />
             {!isCollapsed && <span>Online Video Upload</span>}
           </Link>
           <Link
@@ -105,22 +112,29 @@ const Sidebar = () => {
             to="BluePrintupload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiFile className="mr-2" size={20} />
+            <FaFileCode className="mr-2" size={20} />
             {!isCollapsed && <span>Upload Blue Print</span>}
           </Link>
-
           <Link
             to="NewsLetterUpload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiFile className="mr-2" size={20} />
+            <FaFile className="mr-2" size={20} />
             {!isCollapsed && <span>News Letter Upload</span>}
+          </Link>
+
+          <Link
+            to="SessionAdd"
+            className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <FaCalendarAlt className="mr-2" size={20} />
+            {!isCollapsed && <span>Update Session</span>}
           </Link>
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiAirplay className="mr-2" size={20} />
+            <FaPhotoVideo className="mr-2" size={20} />
             {!isCollapsed && <span>Slider Image</span>}
           </Link>
           {/* <Link
@@ -134,14 +148,14 @@ const Sidebar = () => {
             to="resultAdmitcardUrl"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiAirplay className="mr-2" size={20} />
+            <FaShareAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Add URL</span>}
           </Link>
           <Link
             to="announcement"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiVolume1 className="mr-2" size={20} />
+            <FiVolume1 className="mr-2" size={28} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
           {/* Mock Test Dropdown */}
@@ -152,7 +166,7 @@ const Sidebar = () => {
                 className="flex justify-between items-center px-4 py-2 rounded-lg cursor-pointer hover:text-white transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
               >
                 <span className="flex items-center space-x-2">
-                  <FiEdit />
+                  <FiEdit size={21} />
                   <span>Practice Test Management</span>
                 </span>
                 {isMockDropdownOpen ? <FiChevronUp /> : <FiChevronDown />}
@@ -221,7 +235,7 @@ const Sidebar = () => {
             to="EContentModel"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiSave className="mr-2" size={20} />
+            <FaRegFileArchive className="mr-2" size={20} />
             {!isCollapsed && <span>E-Book Modal Data</span>}
           </Link>
           <Link

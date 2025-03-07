@@ -156,7 +156,7 @@ const Class10EnglishPapers = () => {
                           }
                           className="text-blue-600 hover:underline"
                         >
-                          📄 Download Book
+                          📄 Download Paper
                         </button>
                       </td>
                       <td className="p-3 text-center">

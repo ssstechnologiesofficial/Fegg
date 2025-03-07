@@ -8,8 +8,8 @@ import PY10h from '../../../src/assets/pp.jpg'
 const PreviousPaperOption = () => {
   return (
     <div className="p-3">
-      <h3 className="sm:text-4xl text-2xl text-center font-semibold border-x-4 py-1 my-3 text-white border-[#fd645b] bg-[#00043c]">
-        Previous Year Paper{' '}
+      <h3 className="sm:text-4xl text-2xl text-center font-semibold border-x-4 pb-1 pt-2 my-3 text-white border-[#fd645b] bg-[#fd645b]">
+        पिछले वर्ष के प्रश्नपत्र{' '}
       </h3>
       <div className="flex flex-col sm:flex-row justify-around items-center gap-4 p-4">
         {/* Card for Class 10 */}

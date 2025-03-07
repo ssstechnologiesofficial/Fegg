@@ -92,13 +92,14 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { FaUser } from 'react-icons/fa'
+import { FaUser, FaCalendarAlt } from 'react-icons/fa'
 import SummaryApi from '../common/SummaryAPI'
 
 const Dashboard = () => {
   const [counts, setCounts] = useState({
     enrolledUsers: 0,
   })
+  const [sessions, setSessions] = useState([])
 
   const fetchCounts = async () => {
     try {
@@ -114,7 +115,18 @@ const Dashboard = () => {
     }
   }
 
+  const fetchSessions = async () => {
+    try {
+      const response = await axios.get(SummaryApi.Getsession.url)
+      setSessions(response.data)
+    } catch (error) {
+      console.error('Error fetching sessions:', error)
+    }
+  }
+
   useEffect(() => {
+    fetchSessions()
+
     fetchCounts()
   }, [])
 
@@ -139,6 +151,33 @@ const Dashboard = () => {
               <p className="text-4xl font-bold text-gray-900 mt-2">
                 {counts.enrolledUsers}
               </p>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-lg p-6 border-2 border-red-500 shadow-lg bg-white">
+          <div className="flex items-center space-x-4">
+            <div className="p-4 rounded-full bg-gray-100">
+              <FaCalendarAlt size={30} className="text-red-500" />
+            </div>
+            <div>
+              {' '}
+              <h2 className="text-xl font-semibold text-gray-700">
+                Active Sessions
+              </h2>
+              <ul className="mt-4">
+                {sessions.length > 0 ? (
+                  sessions.map((session, index) => (
+                    <li
+                      key={index}
+                      className="p-2 text-lg font-semibold border-b"
+                    >
+                      {session.year} - {session.month}
+                    </li>
+                  ))
+                ) : (
+                  <p>No sessions added yet.</p>
+                )}
+              </ul>
             </div>
           </div>
         </div>

@@ -190,6 +190,10 @@ const {
   updateStudentLernerid,
 } = require('../controller/LernerIDController')
 
+//=====================session
+
+const { updateSession, Getsession } = require('../controller/SessionController')
+
 //===================== Practice Modal
 
 const {
@@ -394,4 +398,9 @@ router.get('/upload-url', getResultAdmitcardurl)
 router.post('/NLuploads', upload.single('image'), uploadNewsLetter) // Upload an image
 router.get('/getNewsLetterImages', getNewsLetterImages) // Fetch all images
 router.delete('/NLuploadsdelete/:id', deleteNewsLetterImage)
+
+// ================= Session
+router.post('/uploadsession', updateSession)
+router.get('/getsession', Getsession)
+
 module.exports = router

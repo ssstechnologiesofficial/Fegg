@@ -47,6 +47,7 @@ import FindLernerID from '../component/content/FindLernerID'
 import TwelfthEligibility from '../component/content/TwelfthEligibility'
 import MpsosTeam from '../component/content/MpsosTeam'
 import Newsletter from '../component/content/Newsletter'
+import AnnouncementDetails from '../component/content/EventAnnouncementDetails'
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path: 'certificate',
         element: <Certificates />,
+      },
+      {
+        path: 'announcement/:id',
+        element: <AnnouncementDetails />,
       },
       {
         path: 'privacy-policy',

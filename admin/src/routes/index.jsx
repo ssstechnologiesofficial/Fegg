@@ -33,6 +33,7 @@ import ResetPasswordPage from '../components/ReserPasswordPage'
 import AddTestimonials from '../components/AddTestimonials'
 import UploadUrl from '../components/UploadUrl'
 import NewsLetterUpload from '../components/NewsLetterUpload'
+import SessionAdd from '../components/SessionAdd'
 
 export const router = createBrowserRouter([
   {
@@ -148,6 +149,10 @@ export const router = createBrowserRouter([
           {
             path: 'NewsLetterUpload',
             element: <NewsLetterUpload />,
+          },
+          {
+            path: 'SessionAdd',
+            element: <SessionAdd />,
           },
         ],
       },

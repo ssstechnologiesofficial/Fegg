@@ -300,6 +300,14 @@ const SummaryApi = {
     url: `${backendDomain}/api/NLuploadsdelete`,
     method: 'delete',
   },
+  Getsession: {
+    url: `${backendDomain}/api/getsession`,
+    method: 'get',
+  },
+  uploadsession: {
+    url: `${backendDomain}/api/uploadsession`,
+    method: 'post',
+  },
 }
 
 export default SummaryApi
