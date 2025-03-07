@@ -3,8 +3,12 @@ import axios from 'axios'
 import SummaryApi from '../../common/SummaryApi'
 import fagglogo from '../../../public/eg-logo.png'
 import districtData from '../../data/Mpdistricts.json'
+import { FaAngleLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
+  const [declarationAccepted, setDeclarationAccepted] = useState(false)
+
   const [formData, setFormData] = useState({
     firstName: '',
     middleName: '',
@@ -12,6 +16,9 @@ const Register = () => {
     fatherFirstName: '',
     fatherMiddleName: '',
     fatherLastName: '',
+    motherFirstName: '',
+    motherMiddleName: '',
+    motherLastName: '',
     permanentAddress: '',
     block: '',
     village: '',
@@ -27,8 +34,10 @@ const Register = () => {
     sssmid: '',
     lastClassStudied: '',
     applyFor: '',
+    appearing: '',
     status: '',
     mail: '',
+    declarationAccepted: false,
   })
 
   // Data for districts, tehsils, and blocks
@@ -1068,20 +1077,30 @@ const Register = () => {
     ? districtData[formData.district]?.blocks
     : []
 
+  const handleCheckboxChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      declarationAccepted: e.target.checked, // Update state correctly
+    }))
+  }
   return (
-    <div className=" min-h-screen flex items-center justify-center p-4 bg-cover bg-no-repeat">
-      <div className=" bg-[#00000085] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10   p-6 border text-white border-[#fe0000] rounded-xl border-r-4 border-b-4 shadow-lg w-full max-w-4xl">
-        <div className="flex justify-center items-center flex-col">
+    <div className=" min-h-screen flex sm:flex-row flex-col  items-start justify-center p-4 bg-cover bg-no-repeat">
+      <Link
+        to="/"
+        className="relative bg-[#fd645b] sm:px-4 px-2  rounded-lg me-2"
+      >
+        <FaAngleLeft size={30} className="text-white" />
+      </Link>
+      <div className="  shadow-2xl w-full max-w-4xl sm:p-7 p-5">
+        <div className="flex justify-center items-center flex-col ">
           <img
             src={fagglogo}
             className="w-24 bg-[#ffffff86] bg-cover bg-no-repeat object-fill border-[#fe0000] border-l-2  border-b-2 rounded-full py-2"
           />
-          <h1 className="text-2xl font-bold text-center mb-6">
-            STUDENT REGISTRATION
-          </h1>
+          <h1 className="text-2xl font-bold text-center my-5 ">छात्र पंजीयन</h1>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
             <label className="block font-semibold">
               छात्र का फ़र्स्ट नेम{' '}
               <span className="text-red-500 font-semibold">*</span>
@@ -1116,8 +1135,7 @@ const Register = () => {
               />
             </label>
           </div>
-
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
             <label className="block">
               पिता का फ़र्स्ट नेम <span className="text-red-500">*</span>
               <input
@@ -1144,6 +1162,40 @@ const Register = () => {
               <input
                 type="text"
                 name="fatherLastName"
+                placeholder="Enter Father's Last Name"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+                required
+              />
+            </label>
+          </div>
+          <div className="grid sm:grid-cols-3  grid-cols-2 gap-4">
+            <label className="block sm:text-base text-sm">
+              माता का फ़र्स्ट नेम<span className="text-red-500">*</span>
+              <input
+                type="text"
+                name="motherFirstName"
+                placeholder="Enter Father's First Name"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label className="block">
+              मिडल नेम
+              <input
+                type="text"
+                name="motherMiddleName"
+                placeholder="Enter Father's Middle Name"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+              />
+            </label>
+            <label className="block">
+              लास्ट नेम <span className="text-red-500">*</span>
+              <input
+                type="text"
+                name="motherLastName"
                 placeholder="Enter Father's Last Name"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
@@ -1336,7 +1388,7 @@ const Register = () => {
               />
             </label>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
             <label className="block">
               SSSM ID <span className="text-red-500">*</span>
               <input
@@ -1351,7 +1403,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              आप ने अंतिम कक्षा कौन सी पढ़ी है ?{' '}
+              आप ने अंतिम कक्षा कौन सी पढ़ी है ?
               <span className="text-red-500">*</span>
               <select
                 name="lastClassStudied"
@@ -1383,6 +1435,20 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
+              आप किस कक्षा के लिए आवेदन कर रहे है?
+              <span className="text-red-500">*</span>
+              <select
+                name="appearing"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Class</option>
+                <option value="10th">10th</option>
+                <option value="12th">12th</option>
+              </select>
+            </label>
+            <label className="block">
               आवेदन का प्रकार <span className="text-red-500">*</span>
               <select
                 name="applyFor"
@@ -1396,6 +1462,32 @@ const Register = () => {
                 <option value="SYC">SYC</option>
               </select>
             </label>
+          </div>
+          <div>
+            <div className="flex gap-2 mb-3">
+              <input
+                type="checkbox"
+                checked={formData.declarationAccepted}
+                onChange={handleCheckboxChange}
+              />
+              <p className="text-[#fd645b]">
+                एजुकेट गर्ल्स द्वारा प्रदान की गई सुविधाओं का उपयोग करने के लिए
+                आवेदक को निम्नलिखित घोषणा देना अनिवार्य है:
+              </p>
+            </div>
+            <p className="text-sm text-center">
+              मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत
+              जानकारी सत्य, सटीक और पूर्ण है। यदि इसमें किसी प्रकार की कोई असत्य
+              जानकारी पायी गयी तो मेरा पंजीकरण रद्द किया जा सकता है। मैं एजुकेट
+              गर्ल्स को अधिकृत करता /करती हूँ कि वो प्रदान की गई जानकारी की
+              प्रामाणिकता को सत्यापित कर सकते हैं। मैं पंजीकरण, शैक्षणिक और
+              संचार उद्देश्यों के लिए अपनी व्यक्तिगत जानकारी के उपयोग के लिए
+              सहमति देता/देती हूँ, और स्वीकार करता /करती हूँ कि मेरा डेटा एजुकेट
+              गर्ल्स गोपनीयता नीति के अनुसार सुरक्षित रूप से संग्रहीत किया
+              जाएगा। मैं एजुकेट गर्ल्स के सभी नियमों और विनियमों का पालन करने के
+              लिए सहमत हूँ और समझता /समझती हूँ कि गैर-अनुपालन के
+              परिणामस्वरूपअनुशासनात्मक कार्रवाई हो सकती है।
+            </p>
           </div>
           <div className="flex justify-center gap-4">
             <button

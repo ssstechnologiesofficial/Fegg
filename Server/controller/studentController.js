@@ -35,7 +35,7 @@ const registerStudent = async (req, res) => {
   }
 
   try {
-    const { lastClassStudied, ...studentData } = req.body
+    const { lastClassStudied, declarationAccepted, ...studentData } = req.body
     const learnerId = await generateLearnerId(lastClassStudied)
     console.log('Generated learner ID:', learnerId)
 
@@ -43,6 +43,7 @@ const registerStudent = async (req, res) => {
       ...studentData,
       lastClassStudied,
       learnerId,
+      declarationAccepted,
     })
 
     await newStudent.save()
@@ -72,6 +73,10 @@ const validateStudentRegistration = [
     .notEmpty()
     .withMessage('Father first name is required'),
   body('fatherLastName').notEmpty().withMessage('Father last name is required'),
+  body('motherFirstName')
+    .notEmpty()
+    .withMessage('Father first name is required'),
+  body('motherLastName').notEmpty().withMessage('Father last name is required'),
   body('permanentAddress')
     .notEmpty()
     .withMessage('Permanent address is required'),
@@ -101,6 +106,8 @@ const validateStudentRegistration = [
       'Others',
     ])
     .withMessage('Invalid religion'),
+
+  body('appearing').isIn(['10th', '12th']).withMessage('Invalid category'),
   body('category')
     .isIn(['General', 'SC', 'ST', 'OBC', 'EWS'])
     .withMessage('Invalid category'),
@@ -119,6 +126,9 @@ const validateStudentRegistration = [
     .isIn(['New Student', 'TOC', 'SYC'])
     .withMessage('Invalid applyFor value'),
   body('status').isIn(['Pass', 'Fail']).withMessage('Invalid status'),
+  body('declarationAccepted')
+    .isBoolean()
+    .withMessage('Declaration acceptance must be true or false'),
 ]
 
 const getAllStudents = async (req, res) => {

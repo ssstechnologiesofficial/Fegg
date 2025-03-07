@@ -26,6 +26,18 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    motherFirstName: {
+      type: String,
+      required: true,
+    },
+    motherMiddleName: {
+      type: String,
+      default: '',
+    },
+    motherLastName: {
+      type: String,
+      required: true,
+    },
     permanentAddress: {
       type: String,
       required: true,
@@ -112,10 +124,19 @@ const studentSchema = new mongoose.Schema(
       required: true,
       enum: ['New Student', 'TOC', 'SYC'],
     },
+    appearing: {
+      type: String,
+      required: true,
+      enum: ['10th', '12th'],
+    },
     status: {
       type: String,
       required: true,
       enum: ['Pass', 'Fail'],
+    },
+    declarationAccepted: {
+      type: Boolean,
+      required: true,
     },
   },
   {
