@@ -222,13 +222,13 @@ const StudentList = () => {
               <td className="border p-2">{student.status}</td>
               <td className="border p-2">
                 <button
-                  className="bg-blue-500 text-white px-3 py-1 rounded mr-2"
+                  className="bg-blue-500 text-white px-5  py-1 rounded mr-2"
                   onClick={() => handleEdit(student)}
                 >
                   Edit
                 </button>
                 <button
-                  className="bg-red-500 text-white px-3 py-1 rounded"
+                  className="bg-red-500 text-white px-3 py-1 rounded mt-1"
                   onClick={() => handleDelete(student._id)}
                 >
                   Delete
