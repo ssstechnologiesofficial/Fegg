@@ -63,10 +63,7 @@ export default function ForgetPasswordRegistration() {
     }
 
     try {
-      const response = await axios.post(
-        SummaryApi.Registerlogin.url,
-        formData
-      )
+      const response = await axios.post(SummaryApi.Registerlogin.url, formData)
       console.log(response)
       setSuccess(response.data.message)
       console.log(response)
