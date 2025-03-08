@@ -57,14 +57,9 @@ const HeaderTop = () => {
             Search:
           </label>
           <div className="border rounded-sm relative">
-            <input
-              type="text"
-              id="search"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              className="w-full px-14 text-black placeholder-gray-400 bg-transparent focus:outline-none"
-              placeholder="Enter word..."
-            />
+            
+            <input type="text" value={searchTerm}
+              onChange={handleSearchChange} />
             <button className="absolute right-2 text-white bg-gray-600 rounded ">
               🔍
             </button>
