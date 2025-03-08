@@ -5,6 +5,7 @@ import { Autoplay } from 'swiper/modules'
 import axios from 'axios'
 import 'swiper/css'
 import SummaryApi from '../../common/SummaryApi'
+import { Link } from 'react-router-dom'
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
@@ -51,7 +52,7 @@ const Hero = () => {
           ease: 'power3.in',
         })
       }
-    }, 10000) // Hide after 10 seconds (5s delay + 5s display time)
+    }, 20000) // Hide after 10 seconds (5s delay + 5s display time)
 
     return () => {
       clearTimeout(showTimer)
@@ -77,9 +78,9 @@ const Hero = () => {
           {carouselImages.map((image, index) => (
             <SwiperSlide key={index}>
               <img
-                src={`${baseUrl}/${image.image}`} // Ensure correct image path
+                src={`${baseUrl}/${image.image}`} 
                 alt={`Slide ${index + 1}`}
-                className="w-full h-[560px] object-cover" // Fixed height and responsive width
+                className="w-full h-[560px] object-cover" 
               />
             </SwiperSlide>
           ))}
@@ -92,18 +93,17 @@ const Hero = () => {
           ref={popupRef}
           className="bg-white p-6 rounded-sm border-t-4 border-red-400 shadow-lg w-96 opacity-0"
         >
-          <h2 className="text-2xl font-semibold mb-4">Open School</h2>
+          <h2 className="text-2xl font-semibold mb-4">शिक्षा का नया अवसर! 📚✨</h2>
           <p className="text-sm text-gray-600 mb-4">
-            This popup will appear only if there is a notification and the
-            result is announced.
+          अभी अपना पंजीयन करें या अपना परिणाम देखें।
           </p>
           <div className="flex space-x-4">
-            <button className="w-40 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
-              Registration
-            </button>
-            <button className="w-36 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
-              Result
-            </button>
+           <Link to={"/register"} > <button className="w-40 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
+            पंजीकरण
+            </button></Link>
+            <a href="https://mpsos.nic.in/"><button className="w-36 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
+            परिणाम 
+            </button></a>
           </div>
         </div>
       </div>
