@@ -56,8 +56,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 footer-section">
           {/* लोगो और विवरण */}
           <div className="flex flex-col items-center md:items-start">
-            <div className="bg-white w-16 h-16 rounded-full mb-4">
-              <img src={logo} alt="" />
+            <div className="bg-white w-20 h-20 rounded-full mb-4 flex justify-center items-center">
+              <img
+                src={logo}
+                alt="Educate Girls Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             {/* <h2 className="text-lg font-semibold">
               लड़कियों की शिक्षा के लिए वैश्विक फाउंडेशन
@@ -74,7 +78,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-red-400 mb-4">लिंक</h3>
             <ul className="md:space-y-2 space-x-0">
               <li>
-                <Link to="/about-us" className="hover:underline">
+                <Link to="/aboutus" className="hover:underline">
                   हमारे बारे में
                 </Link>
               </li>
@@ -85,7 +89,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/MPSOSInfo" className="hover:underline">
-                  एमपीएसओएस के बारे में
+                  एम.पी.एस.ओ.एस. के बारे में
                 </Link>
               </li>
               <li>
@@ -100,7 +104,7 @@ const Footer = () => {
               </li>
 
               <li>
-                <Link to="/contact-us" className="hover:underline">
+                <Link to="/contactus" className="hover:underline">
                   संपर्क करें
                 </Link>
               </li>
@@ -118,13 +122,18 @@ const Footer = () => {
             </p>
             <p className="text-gray-400 text-sm mt-4">
               <span className="font-semibold">हमें ईमेल करें:</span>{" "}
-              info@abcopenschool.org
+              info.in@educategirls.ngo
             </p>
+          </div>
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-semibold text-red-400 mb-4">
+              भौगोलिक स्थान
+            </h3>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.3819254361256!2d72.8368911!3d19.134752199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63f4f288d61%3A0x300900382393f137!2sEducate%20Girls%20-%20Head%20Office!5e0!3m2!1sen!2sin!4v1739772938747!5m2!1sen!2sin"
                 width="260"
-                height="140"
+                height="150"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
@@ -132,46 +141,46 @@ const Footer = () => {
               />
             </p>
           </div>
-
-          {/* सोशल मीडिया लिंक */}
-          <div className="flex flex-col items-center md:items-start">
-            <h3 className="text-lg font-semibold text-red-400 mb-4">
-              हमें फॉलो करें
-            </h3>
-            <div className="flex justify-center space-x-4 footer-section">
-              <a
-                href="https://www.youtube.com/channel/UC4865kQdW694JwlPa-JIpjw"
-                className="bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-red-700 transition"
-              >
-                <FaYoutube className="text-2xl" />
-              </a>
-              <a
-                href="https://www.facebook.com/educategirls"
-                className="bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-700 transition"
-              >
-                <FaFacebook className="text-2xl" />
-              </a>
-              <a
-                href="https://x.com/educate_girls"
-                className="bg-blue-400 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
-              >
-                <FaTwitter className="text-2xl" />
-              </a>
-              <a
-                href="https://x.com/educate_girls"
-                className="bg-blue-700 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
-              >
-                <FaLinkedin className="text-2xl" />
-              </a>
-              <a
-                href="https://www.instagram.com/educategirlsngo/"
-                className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:opacity-80 transition"
-              >
-                <FaInstagram className="text-2xl" />
-              </a>
-            </div>
+        </div>
+        {/* सोशल मीडिया लिंक */}
+        <div className="flex flex-col items-center text-center w-full mt-5">
+          <h3 className="text-lg font-semibold text-red-400 mb-4">
+            हमें फॉलो करें
+          </h3>
+          <div className="flex justify-center items-center space-x-4 footer-section">
+            <a
+              href="https://www.youtube.com/channel/UC4865kQdW694JwlPa-JIpjw"
+              className="bg-red-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-red-700 transition"
+            >
+              <FaYoutube className="text-2xl" />
+            </a>
+            <a
+              href="https://www.facebook.com/educategirls"
+              className="bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-700 transition"
+            >
+              <FaFacebook className="text-2xl" />
+            </a>
+            <a
+              href="https://x.com/educate_girls"
+              className="bg-blue-400 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
+            >
+              <FaTwitter className="text-2xl" />
+            </a>
+            <a
+              href="http://linkedin.com/company/educate-girls"
+              className="bg-blue-700 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-500 transition"
+            >
+              <FaLinkedin className="text-2xl" />
+            </a>
+            <a
+              href="https://www.instagram.com/educategirlsngo/"
+              className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white w-12 h-12 flex items-center justify-center rounded-full hover:opacity-80 transition"
+            >
+              <FaInstagram className="text-2xl" />
+            </a>
           </div>
         </div>
+
         <div className="mt-8 text-gray-400 text-sm text-center">
           <p>
             <span className="text-primary">
@@ -194,7 +203,8 @@ const Footer = () => {
             Companies Act, 2013.{" "}
           </p>
           <p>
-          @2018 All rights reserved. <span className="text-primary">Educate Girls</span>{" "}
+            @2018 All rights reserved.{" "}
+            <span className="text-primary">Educate Girls</span>{" "}
           </p>
         </div>
       </div>
