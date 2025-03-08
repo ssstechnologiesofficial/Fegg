@@ -72,22 +72,26 @@ const HeroImage = () => {
   return (
     <div className=" mx-auto  shadow-md rounded-lg p-6 gap-8 w-full mt-10">
       <div className="border bg-white border-[#fe0000] rounded-xl border-r-4 border-b-4 p-2">
-        <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
-          Upload Slider Image
-        </h2>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="w-full border border-gray-300 rounded-lg p-2 mb-3"
-        />
-        <button
-          onClick={handleUpload}
-          disabled={loading}
-          className="w-full bg-primary hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:opacity-50"
-        >
-          {loading ? 'Uploading...' : 'Upload'}
-        </button>
-      </div>
+  <h2 className="text-2xl font-semibold text-gray-700 mb-4 text-center">
+    Upload Slider Image
+  </h2>
+  <input
+    type="file"
+    onChange={handleFileChange}
+    className="w-full border border-gray-300 rounded-lg p-2 mb-3"
+  />
+  <p className="text-sm text-gray-500 mb-3">
+    Recommended size: <span className="font-semibold">1920 × 1080 px</span>
+  </p>
+  <button
+    onClick={handleUpload}
+    disabled={loading}
+    className="w-full bg-primary hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:opacity-50"
+  >
+    {loading ? 'Uploading...' : 'Upload'}
+  </button>
+</div>
+
 
       {/* Display Images Table */}
       <div className="mt-6 bg-white ">

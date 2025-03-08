@@ -60,7 +60,7 @@ const MPSOSInfo = () => {
         </p>
 
         <h2 className="text-2xl font-bold text-center mt-6 mb-4">
-          संचालन समिति
+        स्टीयरिंग कमेटी
         </h2>
         <div className="flex flex-col items-center w-full">
           <div className="text-center mb-6">
@@ -70,17 +70,19 @@ const MPSOSInfo = () => {
             <br />
             म.प्र. राज्य मुक्त स्कूल शिक्षा बोर्ड
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex justify-between w-full  mt-4 sm:my-8">
             <div className="text-left">
-              <strong>श्रीमती संचिता जैन</strong>
-              <br />
-              <strong>श्री फारूख शेख</strong>
-            </div>
-            <div className="text-right">
-              <strong>श्री राम वैद्य</strong>
+            <strong>श्री राम वैद्य</strong>
               <br />
               सहायक संचालक
+              <br /> 
+            </div>
+            <div className="text-center">
+              <strong>श्रीमती संचिता जैन </strong>
               <br />
+              सहायक संचालक
+            </div>
+            <div className="text-right">
               <strong>श्री सचिचदानंद प्रसाद</strong>
               <br />
               सहायक संचालक
