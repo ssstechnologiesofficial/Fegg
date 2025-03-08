@@ -5,7 +5,7 @@ const Gallery = () => {
   const [file, setFile] = useState(null)
   return (
     <div className="galleryContainer">
-      <h1 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#00043c] pt-1 py-1 w-full">
+      <h1 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         Our Gallery
       </h1>
       <div className="media-container mt-2">
