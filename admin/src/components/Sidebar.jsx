@@ -167,7 +167,7 @@ const Sidebar = () => {
               >
                 <span className="flex items-center space-x-2">
                   <FiEdit size={21} />
-                  <span>Practice Test Management</span>
+                  <span>Practice Test management</span>
                 </span>
                 {isMockDropdownOpen ? (
                   <FiChevronUp size={30} />
