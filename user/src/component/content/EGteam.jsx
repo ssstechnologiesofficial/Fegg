@@ -99,7 +99,7 @@ const images = [
 
 const EGteam = () => {
   return (
-    <div className="w-full  sm:px-8 mt-4 px-4">
+    <div className="w-full  sm:px-12 mt-4 px-4">
       <div className="text-center py-4">
         <h2 className="text-2xl sm:text-4xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-2 pb-1 w-full">
           {' '}

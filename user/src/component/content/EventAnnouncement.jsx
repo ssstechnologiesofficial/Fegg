@@ -1,29 +1,30 @@
 // src/components/EventsAnnouncements.js
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import SummaryApi from '../../common/SummaryApi'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SummaryApi from "../../common/SummaryApi";
+import { Link } from "react-router-dom";
 
-const baseUrl = import.meta.env.VITE_BACKEND_URL
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const EventsAnnouncements = () => {
-  const [announcements, setAnnouncements] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [announcements, setAnnouncements] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await axios.get(SummaryApi.getAnnouncements.url)
-        setAnnouncements(response.data)
+        const response = await axios.get(SummaryApi.getAnnouncements.url);
+        setAnnouncements(response.data);
       } catch (error) {
-        setError('घोषणाएँ लोड करने में असफल।')
+        setError("घोषणाएँ लोड करने में असफल।");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchAnnouncements()
-  }, [])
+    fetchAnnouncements();
+  }, []);
 
   return (
     <div>
@@ -47,15 +48,17 @@ const EventsAnnouncements = () => {
               {/* तारीख बॉक्स */}
               <div className="absolute top-0 left-0 bg-[#FD645B] text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
                 {(() => {
-                  const dateObj = new Date(announcement.date)
-                  const day = dateObj.getDate()
-                  const month = dateObj.toLocaleString('hi-IN', { month: 'long' })
+                  const dateObj = new Date(announcement.date);
+                  const day = dateObj.getDate();
+                  const month = dateObj.toLocaleString("hi-IN", {
+                    month: "long",
+                  });
                   return (
                     <>
                       <span className="text-lg">{day}</span>
                       <span className="text-sm">{month}</span>
                     </>
-                  )
+                  );
                 })()}
               </div>
 
@@ -70,14 +73,12 @@ const EventsAnnouncements = () => {
                     {announcement.description}
                   </p>
                   {announcement.pdf && (
-                    <a
-                      href={`${baseUrl}/uploads/${announcement.pdf}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block mt-2 text-red-500 px-3 py-1 text-sm rounded-md"
-                    >
-                      अधिक जानें
-                    </a>
+                    // Inside the map function for announcements:
+                    <Link to={`/announcement/${announcement._id}`}>
+                      <button className="inline-block mt-2 text-red-500 px-3 py-1 text-sm rounded-md">
+                        अधिक जानें
+                      </button>
+                    </Link>
                   )}
                 </div>
 
@@ -95,7 +96,7 @@ const EventsAnnouncements = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default EventsAnnouncements
+export default EventsAnnouncements;

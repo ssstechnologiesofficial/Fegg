@@ -39,7 +39,7 @@ const AISECTInfo = () => {
   }, [])
 
   return (
-    <div ref={AISECTInfoRef} className="">
+    <div ref={AISECTInfoRef} className="sm:px-12 px-4">
       <h2 className="text-2xl sm:text-4xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-2 pb-1 w-full">
         AISECT के बारे में
       </h2>{' '}

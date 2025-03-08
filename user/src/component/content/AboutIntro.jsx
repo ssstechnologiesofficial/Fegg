@@ -144,15 +144,24 @@ const AboutIntro = () => {
               </p>
             </div>
           </div>
-          <div className="py-3 ">
-            <h3 className="text-xl font-semibold  mt-4 relative inline-block">
-              परिकल्पना
-              <span className="absolute left-0 bottom-0 w-full h-0.5 bg-red-500"></span>
-            </h3>
-            <p className="py-2">
-              एजुकेट गर्ल्स का लक्ष्य 2035 तक 1 करोड़ शिक्षार्थियों को प्रभावित
-              करना है।
-            </p>
+          <div
+            className="flex bg-gray-50 shadow-lg mt-12"
+            ref={historySectionRef}
+          >
+            <div className="w-2/3 pl-6">
+              <h3 className="text-xl font-semibold text-gray-800 p-6 mb-4">
+                परिकल्पना
+              </h3>
+              <p className="text-gray-600">
+                एजुकेट गर्ल्स का लक्ष्य 2035 तक 1 करोड़ शिक्षार्थियों को प्रभावित
+                करना है।
+              </p>
+            </div>
+            <img
+              src={hero}
+              alt="इतिहास"
+              className="w-1/3 rounded-md object-cover"
+            />
           </div>
         </div>
       </div>

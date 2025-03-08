@@ -241,7 +241,7 @@ const NavLinks = () => {
                 label: 'पिछले वर्ष के प्रश्नपत्र',
               },
               { link: '/practice-set', label: 'अभ्यास सेट' },
-              { link: '/vocational-course', label: 'मॉडल उत्तर पत्रक' },
+              { link: '/PreviousPaperOption', label: 'मॉडल उत्तर पत्रक' },
             ])}
         </li>
         <li
