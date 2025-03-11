@@ -52,12 +52,12 @@ const registerStudent = async (req, res) => {
       learnerId,
     })
   } catch (err) {
-    // If there's a duplicate key error (e.g., contactNo is already in use)
-    if (err.code === 11000) {
-      return res.status(400).json({
-        message: `Contact number ${err.keyValue.contactNo} is already in use. Please provide a different contact number.`,
-      })
-    }
+    // // If there's a duplicate key error (e.g., contactNo is already in use)
+    // if (err.code === 11000) {
+    //   return res.status(400).json({
+    //     message: `Contact number ${err.keyValue.contactNo} is already in use. Please provide a different contact number.`,
+    //   })
+    // }
 
     // Handle other potential errors (like database connection issues)
     console.error('Error during registration:', err)
@@ -75,7 +75,7 @@ const validateStudentRegistration = [
   body('fatherLastName').notEmpty().withMessage('Father last name is required'),
   body('motherFirstName')
     .notEmpty()
-    .withMessage('Father first name is required'),
+    .withMessage('Mother first name is required'),
   body('motherLastName').notEmpty().withMessage('Father last name is required'),
   body('permanentAddress')
     .notEmpty()

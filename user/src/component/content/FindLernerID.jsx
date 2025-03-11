@@ -90,7 +90,7 @@ const FindLernerID = () => {
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="flex flex-col">
             <label htmlFor="firstName" className="font-medium text-gray-700">
-              First Name
+              छात्र का फ़र्स्ट नेम{' '}
             </label>
             <input
               type="text"
@@ -105,7 +105,7 @@ const FindLernerID = () => {
 
           <div className="flex flex-col">
             <label htmlFor="middleName" className="font-medium text-gray-700">
-              Middle Name
+              मिडल नेम{' '}
             </label>
             <input
               type="text"
@@ -114,13 +114,12 @@ const FindLernerID = () => {
               className="border p-2 rounded focus:ring-2 focus:ring-[#fd645b]"
               placeholder="Middle Name"
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className="flex flex-col">
             <label htmlFor="lastName" className="font-medium text-gray-700">
-              Last Name
+              लास्ट नेम{' '}
             </label>
             <input
               type="text"
@@ -151,7 +150,7 @@ const FindLernerID = () => {
 
           <div className="flex flex-col">
             <label htmlFor="contactNo" className="font-medium text-gray-700">
-              Contact No.
+              संपर्क नंबर
             </label>
             <input
               type="text"
@@ -166,7 +165,7 @@ const FindLernerID = () => {
 
         <div className="flex flex-col">
           <label htmlFor="dob" className="font-medium text-gray-700">
-            Date of Birth
+            जन्म तिथि
           </label>
           <input
             type="date"
@@ -183,7 +182,7 @@ const FindLernerID = () => {
             type="submit"
             className="bg-[#fd645b] text-white p-3 rounded-lg font-semibold w-full sm:w-auto focus:ring-2 focus:ring-[#fd645b] hover:bg-white hover:text-[#fd645b] border-[#fd645b] border transition-all"
           >
-            Submit
+            जमा करे{' '}
           </button>
         </div>
       </form>
@@ -201,7 +200,7 @@ const FindLernerID = () => {
       {showDetails && studentData && (
         <div className="mt-6 w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-center text-[#fd645b] mb-6">
-            Student Registration Details
+            छात्र पंजीकरण विवरण{' '}
           </h2>
 
           {/* Details Grid */}
@@ -210,58 +209,59 @@ const FindLernerID = () => {
               <strong>Learner ID:</strong> {studentData.learnerId}
             </p>
             <p>
-              <strong>Full Name:</strong> {studentData.firstName}{' '}
+              <strong>पूरा नाम:</strong> {studentData.firstName}{' '}
               {studentData.middleName} {studentData.lastName}
             </p>
             <p>
               <strong>SSSM ID:</strong> {studentData.sssmid}
             </p>
             <p>
-              <strong>Date of Birth:</strong> {studentData.dob}
+              <strong>जन्म तिथि:</strong> {studentData.dob}
             </p>
             <p>
-              <strong>Age:</strong> {studentData.age}
+              <strong>आयु:</strong> {studentData.age}
             </p>
             <p>
-              <strong>Gender:</strong> {studentData.gender}
+              <strong>लिंग:</strong> {studentData.gender}
             </p>
             <p>
-              <strong>Religion:</strong> {studentData.religion}
+              <strong>धर्म:</strong> {studentData.religion}
             </p>
             <p>
-              <strong>Category:</strong> {studentData.category}
+              <strong>श्रेणी:</strong> {studentData.category}
             </p>
             <p className="sm:col-span-2">
-              <strong>Father's Name:</strong> {studentData.fatherFirstName}{' '}
+              <strong>पिता का नाम:</strong> {studentData.fatherFirstName}{' '}
               {studentData.fatherMiddleName} {studentData.fatherLastName}
             </p>
             <p>
-              <strong>Mother's Name:</strong> {studentData.motherName}
+              <strong>माता का नाम:</strong> {studentData.motherFirstName}{' '}
+              {studentData.motherMiddleName} {studentData.motherLastName}
             </p>
             <p>
-              <strong>Last Class Studied:</strong>{' '}
+              <strong>आप ने अंतिम कक्षा कौन सी पढ़ी है ?:</strong>{' '}
               {studentData.lastClassStudied}
             </p>
             <p>
-              <strong>Applied For:</strong> {studentData.applyFor}
+              <strong>आवेदन का प्रकार:</strong> {studentData.applyFor}
             </p>
             <p>
-              <strong>Status:</strong> {studentData.status}
+              <strong>स्तिथि :</strong> {studentData.status}
             </p>
             <p>
-              <strong>District:</strong> {studentData.district}
+              <strong>जिला:</strong> {studentData.district}
             </p>
             <p>
-              <strong>Tehsil:</strong> {studentData.tehsil}
+              <strong>तहसील:</strong> {studentData.tehsil}
             </p>
             <p>
-              <strong>Block:</strong> {studentData.block}
+              <strong>ब्लॉक:</strong> {studentData.block}
             </p>
             <p>
-              <strong>Village:</strong> {studentData.village}
+              <strong>गाँव:</strong> {studentData.village}
             </p>
             <p>
-              <strong>Pincode:</strong> {studentData.pincode}
+              <strong>पिन कोड:</strong> {studentData.pincode}
             </p>
           </div>
 
@@ -272,7 +272,9 @@ const FindLernerID = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="font-medium text-gray-700">Contact No:</label>
+                <label className="font-medium text-gray-700">
+                  संपर्क नंबर:
+                </label>
                 {isEditing ? (
                   <input
                     type="text"
@@ -287,7 +289,7 @@ const FindLernerID = () => {
               </div>
 
               <div>
-                <label className="font-medium text-gray-700">Email:</label>
+                <label className="font-medium text-gray-700">ई-मेल:</label>
                 {isEditing ? (
                   <input
                     type="email"
@@ -302,9 +304,7 @@ const FindLernerID = () => {
               </div>
 
               <div className="sm:col-span-2">
-                <label className="font-medium text-gray-700">
-                  Permanent Address:
-                </label>
+                <label className="font-medium text-gray-700">स्थाई पता:</label>
                 {isEditing ? (
                   <textarea
                     name="permanentAddress"
