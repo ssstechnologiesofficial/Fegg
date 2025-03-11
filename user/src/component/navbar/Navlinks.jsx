@@ -105,26 +105,26 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class10' && isClass10Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   10th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4">
+                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   हाईस्कूल विषय
                 </NavLink>
               </li>
-              <li className="border-l-4 border-red-500">
+              <li className="border-l-4 border-red-500  hover:bg-gray-50">
                 <button
                   onClick={downloadPDFVivernika}
                   className="block py-2 px-4 w-full text-left"
@@ -139,26 +139,26 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class12' && isClass12Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   12th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4">
+                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
                   इंटरमीडिएट विषय
                 </NavLink>
               </li>
-              <li className="border-l-4 border-red-500">
+              <li className="border-l-4 border-red-500  hover:bg-gray-50">
                 <button
                   onClick={downloadPDFVivernika}
                   className="block py-2 px-4 w-full text-left"
@@ -250,11 +250,11 @@ const NavLinks = () => {
           onMouseLeave={() => setIsmpsosOpen(false)}
         >
           <NavLink to="/" className="nav-link py-2">
-            MPSOS
+          एम.पी.एस.ओ.एस.
           </NavLink>
           {ismpsosOpen &&
             dropdownMenu([
-              { link: '/MPSOSInfo', label: 'MPSOS के बारे में' },
+              { link: '/MPSOSInfo', label: 'एम.पी.एस.ओ.एस. के बारे में' },
               { link: '/AISECTInfo', label: 'AISECT के बारे में' },
               {
                 link: 'https://www.aisectonline.com',
