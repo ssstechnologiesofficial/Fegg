@@ -79,7 +79,7 @@ const FindLernerID = () => {
   return (
     <div className="flex flex-col justify-center items-center w-full p-6 sm:px-12 px-4">
       <h2 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
-        Know Your Student Learner ID
+        अपना लर्नर आईडी खोजें
       </h2>
 
       {/* Form to Find Learner ID */}
