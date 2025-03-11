@@ -19,51 +19,44 @@ const HeaderTop = () => {
 
  
   useEffect(() => {
-    if (!searchTerm) {
-      // Remove all highlights when input is cleared
+    const delayDebounce = setTimeout(() => {
+      if (!searchTerm.trim()) {
+        // Remove all existing highlights when input is cleared
+        document.querySelectorAll("mark").forEach((mark) => {
+          mark.replaceWith(document.createTextNode(mark.textContent));
+        });
+        return;
+      }
+  
+      const highlightTextNodes = (node) => {
+        if (node.nodeType === 3) {
+          const text = node.nodeValue;
+          const search = searchTerm.trim(); // Remove extra spaces
+          const regex = new RegExp(search, "gi"); // Case insensitive search
+  
+          if (regex.test(text)) {
+            const span = document.createElement("span");
+            span.innerHTML = text.replace(regex, (match) => `<mark style="background: yellow;">${match}</mark>`);
+            node.replaceWith(span);
+          }
+        } else {
+          node.childNodes.forEach((child) => highlightTextNodes(child));
+        }
+      };
+  
+      // Clear previous highlights before applying new ones
       document.querySelectorAll("mark").forEach((mark) => {
         mark.replaceWith(document.createTextNode(mark.textContent));
       });
-      return;
-    }
   
-    const highlightTextNodes = (node) => {
-      if (node.nodeType === 3) {
-        const text = node.nodeValue;
-        const regex = new RegExp(`(${searchTerm})`, "gi");
+      // Apply new highlights
+      document.body.childNodes.forEach((node) => highlightTextNodes(node));
+    }, 800); // Delay for 300ms to wait for typing to settle
   
-        if (regex.test(text)) {
-          // Split the text into parts based on the search term
-          const parts = text.split(regex);
-          const fragment = document.createDocumentFragment();
-  
-          parts.forEach((part) => {
-            if (part.toLowerCase() === searchTerm.toLowerCase()) {
-              const mark = document.createElement("mark");
-              mark.style.background = "yellow";
-              mark.textContent = part;
-              fragment.appendChild(mark);
-            } else {
-              fragment.appendChild(document.createTextNode(part));
-            }
-          });
-  
-          node.replaceWith(fragment);
-        }
-      } else {
-        node.childNodes.forEach((child) => highlightTextNodes(child));
-      }
-    };
-  
-    // Clear previous highlights
-    document.querySelectorAll("mark").forEach((mark) => {
-      mark.replaceWith(document.createTextNode(mark.textContent));
-    });
-  
-    // Apply new highlights
-    document.body.childNodes.forEach((node) => highlightTextNodes(node));
+    return () => clearTimeout(delayDebounce); // Cleanup timeout
   }, [searchTerm]);
   
+
   
 
   return (
