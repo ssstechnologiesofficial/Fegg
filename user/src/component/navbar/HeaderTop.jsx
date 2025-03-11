@@ -13,36 +13,51 @@ const HeaderTop = () => {
 
   // Decrease Font Size
   const decreaseFontSize = () => {
-    setFontSize((prevSize) => Math.max(12, prevSize - 2)) // Prevents font size from getting too small
+    setFontSize((prevSize) => Math.max(12, prevSize - 2)) 
     document.documentElement.style.fontSize = `${Math.max(12, fontSize - 2)}px`
   }
 
-  // Handle search input change
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
-  // Function to highlight search term
+ 
   useEffect(() => {
-    const elements = document.querySelectorAll(
-      'p, span, div, h1, h2, h3, h4, h5, h6, a'
-    )
-
-    elements.forEach((element) => {
-      if (element.children.length === 0) {
-        let originalText = element.textContent;
-        if (searchTerm.trim() === "") {
-          element.innerHTML = originalText; 
-        } else {
-          const regex = new RegExp(`(${searchTerm})`, 'gi')
-          element.innerHTML = originalText.replace(
-            regex,
-            `<mark class="bg-yellow-300">$1</mark>`
-          )
-        }
+    const delayDebounce = setTimeout(() => {
+      if (!searchTerm.trim()) {
+        // Remove all existing highlights when input is cleared
+        document.querySelectorAll("mark").forEach((mark) => {
+          mark.replaceWith(document.createTextNode(mark.textContent));
+        });
+        return;
       }
-    });
+  
+      const highlightTextNodes = (node) => {
+        if (node.nodeType === 3) {
+          const text = node.nodeValue;
+          const search = searchTerm.trim(); // Remove extra spaces
+          const regex = new RegExp(search, "gi"); // Case insensitive search
+  
+          if (regex.test(text)) {
+            const span = document.createElement("span");
+            span.innerHTML = text.replace(regex, (match) => `<mark style="background: yellow;">${match}</mark>`);
+            node.replaceWith(span);
+          }
+        } else {
+          node.childNodes.forEach((child) => highlightTextNodes(child));
+        }
+      };
+  
+      // Clear previous highlights before applying new ones
+      document.querySelectorAll("mark").forEach((mark) => {
+        mark.replaceWith(document.createTextNode(mark.textContent));
+      });
+  
+      // Apply new highlights
+      document.body.childNodes.forEach((node) => highlightTextNodes(node));
+    }, 800); // Delay for 300ms to wait for typing to settle
+  
+    return () => clearTimeout(delayDebounce); // Cleanup timeout
   }, [searchTerm]);
+  
+
+  
 
   return (
     <div className="hidden md:flex items-center ml-auto space-x-4 text-sm text-gray-600">
@@ -58,8 +73,8 @@ const HeaderTop = () => {
           </label>
           <div className="border rounded-sm relative">
             
-            <input type="text" value={searchTerm}
-              onChange={handleSearchChange} />
+            <input type="text"  value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}/>
             <button className="absolute right-2 text-white bg-gray-600 rounded ">
               🔍
             </button>
