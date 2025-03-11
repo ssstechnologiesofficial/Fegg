@@ -126,11 +126,7 @@ const dummyTestimonials = [
     author: "करजुना",
     image: "",
   },
-  {
-    text: "एक वास्तव में आकर्षक और प्रभावी तरीका सीखने का। पाँच सितारे!",
-    author: "रॉबर्ट ब्राउन",
-    image: "",
-  },
+  
 ];
 
 const Testimonials = () => {
@@ -151,7 +147,7 @@ const Testimonials = () => {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 },
-            1536: { slidesPerView: 5 },
+            1536: { slidesPerView: 4 }, // Change from 5 to 4
           }}
           className="pb-10"
         >
