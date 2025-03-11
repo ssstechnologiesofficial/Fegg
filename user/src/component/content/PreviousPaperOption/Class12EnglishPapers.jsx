@@ -167,7 +167,9 @@ const Class10EnglishPapers = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">कक्षा 12वीं के लिए ई-पुस्तकें</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        कक्षा 12वीं के लिए पिछले वर्ष के प्रश्नपत्र
+      </h2>
       <div className="flex flex-col sm:flex-row p-4 bg-gray-50 min-h-screen">
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
@@ -205,7 +207,7 @@ const Class10EnglishPapers = () => {
         </div>
 
         {/* Main Content */}
-        <div className="sm:w-3/4 w-full p-6">
+        <div className="sm:w-3/4 w-full p-6 sm:block flex justify-center">
           {activeSubject && (
             <div className="bg-white shadow-md rounded-md p-6">
               <h3 className="text-2xl font-bold text-[#fd645b] mb-4">
