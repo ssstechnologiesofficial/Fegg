@@ -56,7 +56,7 @@ const InfoSection = () => {
       label: 'प्रवेश पत्र', // Admit Card
       color: 'bg-green-500',
       icon: <FaAddressCard />,
-      link: '#',
+      link: 'https://www.aisectonline.com/',
     },
     {
       label: 'अपना लर्नर आईडी खोजें', // Find your Learner ID
@@ -68,7 +68,7 @@ const InfoSection = () => {
       label: 'परिणाम', // Result
       color: 'bg-red-500',
       icon: <FaGraduationCap />,
-      link: '#',
+      link: 'https://www.aisectonline.com/',
     },
   ]
 
