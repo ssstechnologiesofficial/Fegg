@@ -2,7 +2,6 @@ const backendDomain = 'https://feggbackend.onrender.com'
 // const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
-  // For Event
   addEvent: {
     url: `${backendDomain}/api/events`,
     method: 'post',
