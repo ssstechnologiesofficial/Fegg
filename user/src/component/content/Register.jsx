@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Register = () => {
   const [declarationAccepted, setDeclarationAccepted] = useState(false)
+  const [showFullText, setShowFullText] = useState(false)
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -991,17 +992,13 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Required Field Check
-    for (const key in formData) {
-      if (
-        !formData[key] &&
-        key !== 'middleName' &&
-        key !== 'fatherMiddleName'
-      ) {
-        alert(`${key.replace(/([A-Z])/g, ' $1')} is required.`)
-        return
-      }
-    }
+    // // Required Field Check
+    // for (const key in formData) {
+    //   if (!formData[key] && key !== 'fatherMiddleName') {
+    //     alert(`${key.replace(/([A-Z])/g, ' $1')} is required.`)
+    //     return
+    //   }
+    // }
 
     // Phone Number Validation
     const phoneRegex = /^[6-9]\d{9}$/
@@ -1083,6 +1080,10 @@ const Register = () => {
       declarationAccepted: e.target.checked, // Update state correctly
     }))
   }
+
+  const handleToggle = () => {
+    setShowFullText(!showFullText)
+  }
   return (
     <div className=" min-h-screen flex sm:flex-row flex-col  items-start justify-center p-4 bg-cover bg-no-repeat">
       <Link
@@ -1101,7 +1102,7 @@ const Register = () => {
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
-            <label className="block font-semibold">
+            <label className="block">
               छात्र का फ़र्स्ट नेम{' '}
               <span className="text-red-500 font-semibold">*</span>
               <input
@@ -1463,8 +1464,8 @@ const Register = () => {
               </select>
             </label>
           </div>
-          <div>
-            <div className="flex gap-2 mb-3">
+          <div className="flex flex-col justify-center">
+            <div className="flex justify-center gap-2 mb-3">
               <input
                 type="checkbox"
                 checked={formData.declarationAccepted}
@@ -1475,19 +1476,19 @@ const Register = () => {
                 आवेदक को निम्नलिखित घोषणा देना अनिवार्य है:
               </p>
             </div>
-            <p className="text-sm text-center">
-              मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत
-              जानकारी सत्य, सटीक और पूर्ण है। यदि इसमें किसी प्रकार की कोई असत्य
-              जानकारी पायी गयी तो मेरा पंजीकरण रद्द किया जा सकता है। मैं एजुकेट
-              गर्ल्स को अधिकृत करता /करती हूँ कि वो प्रदान की गई जानकारी की
-              प्रामाणिकता को सत्यापित कर सकते हैं। मैं पंजीकरण, शैक्षणिक और
-              संचार उद्देश्यों के लिए अपनी व्यक्तिगत जानकारी के उपयोग के लिए
-              सहमति देता/देती हूँ, और स्वीकार करता /करती हूँ कि मेरा डेटा एजुकेट
-              गर्ल्स गोपनीयता नीति के अनुसार सुरक्षित रूप से संग्रहीत किया
-              जाएगा। मैं एजुकेट गर्ल्स के सभी नियमों और विनियमों का पालन करने के
-              लिए सहमत हूँ और समझता /समझती हूँ कि गैर-अनुपालन के
-              परिणामस्वरूपअनुशासनात्मक कार्रवाई हो सकती है।
-            </p>
+            <div className="flex justify-center">
+              <p className="text-sm text-center inline">
+                {showFullText
+                  ? `मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत जानकारी सत्य, सटीक और पूर्ण है। यदि इसमें किसी प्रकार की कोई असत्य जानकारी पायी गयी तो मेरा पंजीकरण रद्द किया जा सकता है। मैं एजुकेट गर्ल्स को अधिकृत करता /करती हूँ कि वो प्रदान की गई जानकारी की प्रामाणिकता को सत्यापित कर सकते हैं। मैं पंजीकरण, शैक्षणिक और संचार उद्देश्यों के लिए अपनी व्यक्तिगत जानकारी के उपयोग के लिए सहमति देता/देती हूँ, और स्वीकार करता /करती हूँ कि मेरा डेटा एजुकेट गर्ल्स गोपनीयता नीति के अनुसार सुरक्षित रूप से संग्रहीत किया जाएगा। मैं एजुकेट गर्ल्स के सभी नियमों और विनियमों का पालन करने के लिए सहमत हूँ और समझता /समझती हूँ कि गैर-अनुपालन के परिणामस्वरूप अनुशासनात्मक कार्रवाई हो सकती है।`
+                  : `मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत जानकारी सत्य, सटीक और पूर्ण है...`}
+              </p>
+              <button
+                onClick={handleToggle}
+                className="text-blue-500 cursor-pointer"
+              >
+                {showFullText ? 'कम पढ़ें' : 'और पढ़ें'}
+              </button>
+            </div>
           </div>
           <div className="flex justify-center gap-4">
             <button

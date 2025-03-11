@@ -105,22 +105,34 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class10' && isClass10Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/10th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   10th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/10th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/10th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/10th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/10th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   हाईस्कूल विषय
                 </NavLink>
               </li>
@@ -139,22 +151,34 @@ const NavLinks = () => {
           {item.hasSubMenu === 'class12' && isClass12Open && (
             <ul className="absolute left-full top-0 bg-white shadow-md w-40">
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/12th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   12th दस्तावेज
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/12th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   संचालित योजनाऐं
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/12th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   शुल्क
                 </NavLink>
               </li>
               <li className="border-l-4 border-red-500">
-                <NavLink to="/12th-class" className="block py-2 px-4 border-b hover:bg-gray-50">
+                <NavLink
+                  to="/12th-class"
+                  className="block py-2 px-4 border-b hover:bg-gray-50"
+                >
                   इंटरमीडिएट विषय
                 </NavLink>
               </li>
@@ -174,7 +198,7 @@ const NavLinks = () => {
   )
 
   return (
-    <div className="flex items-center justify-between px-12 pb-2">
+    <div className="flex md:flex-row flex-col items-center justify-between px-12 pb-2">
       <ul className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-8">
         <li>
           <NavLink to="/" className="nav-link flex items-center py-2">
@@ -250,7 +274,7 @@ const NavLinks = () => {
           onMouseLeave={() => setIsmpsosOpen(false)}
         >
           <NavLink to="/" className="nav-link py-2">
-          एम.पी.एस.ओ.एस.
+            एम.पी.एस.ओ.एस.
           </NavLink>
           {ismpsosOpen &&
             dropdownMenu([
@@ -274,7 +298,7 @@ const NavLinks = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className="flex space-x-8">
+      <ul className="flex space-x-8 md:mt-0 mt-3">
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
           <NavLink to="/register" className="">
             छात्र पंजीकरण

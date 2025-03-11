@@ -52,7 +52,6 @@ const studentSchema = new mongoose.Schema(
     },
     mail: {
       type: String,
-      required: true,
     },
     district: {
       type: String,
