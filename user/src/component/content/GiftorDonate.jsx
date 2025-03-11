@@ -29,13 +29,13 @@ const ImportantLinks = () => {
 
   // Updated Links Array with title & route
   const importantLinks = [
-    { title: 'ऑनलाइन पुस्तकें', path: '/e-content' },
+    { title: 'वर्चुअल क्लास सेंटर्स', path: '/' },
     // { title: 'पाठ्यक्रम', path: '/curriculum' },
-    { title: 'रिकॉर्डेड वीडियो', path: '/onlinevideo' },
+    { title: 'वर्चुअल क्लास सेंटर्स (ट्राइबल डिवीजन)', path: '/onlinevideo' },
     // { title: 'ब्लू प्रिंट', path: '/blueprint' },
-    { title: 'पिछले वर्ष के प्रश्न पत्र', path: '/PreviousPaperOption' },
-    { title: 'प्रैक्टिस सेट', path: '/practice-set' },
-    { title: 'मॉडल उत्तर पत्रक', path: '/PreviousPaperOption' },
+    { title: 'EFA सेंटर लिस्ट', path: '/' },
+    { title: 'ब्लू प्रिंट', path: '/-set' },
+    { title: 'उनलोड करे महत्वपूर्ण आदेश, पत्र, निर्देश ', path: '/' },
   ]
 
   return (
