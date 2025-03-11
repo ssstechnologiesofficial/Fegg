@@ -90,7 +90,7 @@ const FindLernerID = () => {
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="flex flex-col">
             <label htmlFor="firstName" className="font-medium text-gray-700">
-              छात्र का फ़र्स्ट नेम{' '}
+              छात्र का फ़र्स्ट नेम
             </label>
             <input
               type="text"

@@ -93,6 +93,9 @@ const images = [
   },
   { img: team5, name: 'विक्रम सिंह सोलंकी', position: 'निदेशक - संचालन' },
   { img: team2, name: 'बिनिश मैथाई', position: 'निदेशक - उद्देश्य संसाधन' },
+]
+
+const img2 = [
   { img: team3, name: 'गीतिका टोंडन-हिगिंस', position: 'निदेशक - प्रगति' },
   { img: team1, name: 'अनुश्री सिंह', position: 'प्रधान - मानव संसाधन' },
 ]
@@ -116,6 +119,23 @@ const EGteam = () => {
               src={img.img}
               alt={img.name}
               className="w-full h-full object-cover rounded-lg shadow-lg mb-2 
+                        transform transition duration-300 ease-in-out hover:scale-105 border-l-2 border-[#fd645b]"
+            />
+            <h3 className="font-semibold text-lg">{img.name}</h3>
+            <h3 className="text-gray-600">{img.position}</h3>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-6 ">
+        {img2.map((img, index) => (
+          <div
+            key={index}
+            className="flex flex-col justify-center items-center text-center p-4"
+          >
+            <img
+              src={img.img}
+              alt={img.name}
+              className="w-full h-96 object-cover rounded-lg shadow-lg mb-2 
                         transform transition duration-300 ease-in-out hover:scale-105 border-l-2 border-[#fd645b]"
             />
             <h3 className="font-semibold text-lg">{img.name}</h3>
