@@ -152,43 +152,7 @@ const InfoSection = () => {
             </SwiperSlide>
           ))}
 
-          {/* Admit Card */}
-          {admitCardUrl && (
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <a
-                  href={admitCardUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-20 h-20 md:w-28 md:h-28 lg:w-30 lg:h-30 bg-green-500 text-white rounded-full shadow-lg"
-                >
-                  <FaAddressCard className="text-2xl md:text-4xl lg:text-6xl" />
-                </a>
-                <p className="text-sm md:text-base lg:text-lg font-medium mt-2 text-center">
-                  Admit Card
-                </p>
-              </div>
-            </SwiperSlide>
-          )}
-
-          {/* Result */}
-          {resultUrl && (
-            <SwiperSlide>
-              <div className="flex flex-col items-center">
-                <a
-                  href={resultUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-20 h-20 md:w-28 md:h-28 lg:w-30 lg:h-30 bg-red-500 text-white rounded-full shadow-lg"
-                >
-                  <FaGraduationCap className="text-2xl md:text-4xl lg:text-6xl" />
-                </a>
-                <p className="text-sm md:text-base lg:text-lg font-medium mt-2 text-center">
-                  Result
-                </p>
-              </div>
-            </SwiperSlide>
-          )}
+          
         </Swiper>
       </div>
     </div>
