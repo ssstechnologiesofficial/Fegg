@@ -49,10 +49,14 @@ const Sidebar = () => {
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
-        className={`${
-          isCollapsed ? 'w-16' : 'w-60'
-        } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto scrollbar-hide`}
-      >
+  className={`${
+    isCollapsed ? 'w-16' : 'w-60'
+  } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto overflow-x-hidden`}
+>
+  {/* Sidebar content here */}
+
+
+
         <div className="p-4 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex flex-col items-center">
@@ -144,18 +148,18 @@ const Sidebar = () => {
             <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Add Testimonials</span>}
           </Link> */}
-          <Link
+          {/* <Link
             to="resultAdmitcardUrl"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaShareAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Add URL</span>}
-          </Link>
+          </Link> */}
           <Link
             to="announcement"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
-            <FiVolume1 className="mr-2" size={28} />
+            <FiVolume1 className="" size={28} />
             {!isCollapsed && <span>Announcement</span>}
           </Link>
           {/* Mock Test Dropdown */}

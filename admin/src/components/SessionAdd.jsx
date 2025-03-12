@@ -45,9 +45,9 @@ const SessionAdd = () => {
   }
 
   return (
-    <div className="p-6 bg-white shadow-lg rounded-lg">
+    <div className="p-6 bg-white shadow-lg rounded-lg ">
       <h2 className="text-2xl font-bold mb-4">Add Session</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
         <input
           type="number"
           placeholder="Enter Year"
@@ -66,7 +66,7 @@ const SessionAdd = () => {
         </select>
         <button
           type="submit"
-          className="bg-blue-500 text-white p-2 rounded w-full"
+          className="bg-primary text-white p-2 rounded w-full"
         >
           Add Session
         </button>

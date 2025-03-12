@@ -257,7 +257,6 @@ const NavLinks = () => {
           {isStudentCornerOpen &&
             dropdownMenu([
               { link: '/e-content', label: 'ऑनलाइन पुस्तकें' },
-              // { link: '/12th-class', label: 'पाठ्यक्रम' },
               { link: '/onlinevideo', label: 'रिकॉर्डेड वीडियो' },
               { label: 'ब्लूप्रिंट', isDownload: true },
               {
@@ -265,7 +264,7 @@ const NavLinks = () => {
                 label: 'पिछले वर्ष के प्रश्नपत्र',
               },
               { link: '/practice-set', label: 'अभ्यास सेट' },
-              // { link: '/PreviousPaperOption', label: 'मॉडल उत्तर पत्रक' },
+              
             ])}
         </li>
         <li
@@ -305,7 +304,7 @@ const NavLinks = () => {
           </NavLink>
         </li>
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
-          <a href="http://localhost:5174">विभागीय एक्सेस</a>
+          <a href="https://polite-cranachan-2169e8.netlify.app">विभागीय एक्सेस</a>
         </li>
       </ul>
     </div>

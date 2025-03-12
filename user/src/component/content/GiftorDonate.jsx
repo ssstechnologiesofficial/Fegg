@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import EventsAnnouncements from './EventAnnouncement'
+import Tribal from '../../assets/tribal.pdf'
+import Virtual from '../../assets/virtual.pdf'
+import EFA from '../../assets/EFA.pdf'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const ImportantLinks = () => {
+
+  
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -27,15 +32,13 @@ const ImportantLinks = () => {
     )
   }, [])
 
-  // Updated Links Array with title & route
+  // Updated Links Array with title, route, and document URL
   const importantLinks = [
-    { title: 'वर्चुअल क्लास सेंटर्स', path: '/' },
-    // { title: 'पाठ्यक्रम', path: '/curriculum' },
-    { title: 'वर्चुअल क्लास सेंटर्स (ट्राइबल डिवीजन)', path: '/onlinevideo' },
-    // { title: 'ब्लू प्रिंट', path: '/blueprint' },
-    { title: 'EFA सेंटर लिस्ट', path: '/' },
-    { title: 'ब्लू प्रिंट', path: '/-set' },
-    { title: 'उनलोड करे महत्वपूर्ण आदेश, पत्र, निर्देश ', path: '/' },
+    { title: 'वर्चुअल क्लास सेंटर्स', path: '/', doc: Virtual },
+    { title: 'वर्चुअल क्लास सेंटर्स (ट्राइबल डिवीजन)', path: '/onlinevideo', doc: Tribal },
+    { title: 'EFA सेंटर लिस्ट', path: '/', doc: EFA },
+    { title: 'ब्लू प्रिंट', path: '/-set', doc: '/documents/blueprint.pdf' },
+    { title: 'उनलोड करे महत्वपूर्ण आदेश, पत्र, निर्देश', path: '/', doc: '/documents/orders.pdf' },
   ]
 
   return (
@@ -54,14 +57,26 @@ const ImportantLinks = () => {
 
           <div className="space-y-3">
             {importantLinks.map((link, index) => (
-              <Link
-                key={index}
-                to={link.path}
-                className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-400 transition hover:scale-105 hover:bg-gray-50"
-              >
-                <span className="font-medium text-gray-800">{link.title}</span>
-                <span className="text-primary text-lg font-bold">→</span>
-              </Link>
+              link.doc ? (
+                <a
+                  key={index}
+                  href={link.doc}
+                  download
+                  className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-400 transition hover:scale-105 hover:bg-gray-50"
+                >
+                  <span className="font-medium text-gray-800">{link.title}</span>
+                  <span className="text-primary text-lg font-bold">↓</span>
+                </a>
+              ) : (
+                <Link
+                  key={index}
+                  to={link.path}
+                  className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-400 transition hover:scale-105 hover:bg-gray-50"
+                >
+                  <span className="font-medium text-gray-800">{link.title}</span>
+                  <span className="text-primary text-lg font-bold">→</span>
+                </Link>
+              )
             ))}
           </div>
         </div>

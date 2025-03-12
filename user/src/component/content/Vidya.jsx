@@ -1,6 +1,6 @@
 
 import React from "react";
-import img from "../../assets/pragati.jpg";
+import img from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya2.jpg";
 import bgImage from "../../assets/pp1.webp"; // Ensure this is the correct path
 
 const Vidya = () => {
@@ -39,7 +39,7 @@ const Vidya = () => {
 
             <img
               src={img}
-              className="w-full object-fill rounded-lg shadow-lg border-4 border-white"
+              className="w-full h-full object-fill rounded-lg shadow-lg border-4 border-white"
               alt="Pragati Program"
             />
           </div>

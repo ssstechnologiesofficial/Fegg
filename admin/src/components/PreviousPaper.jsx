@@ -124,7 +124,7 @@ const PreviousPaper = () => {
     <div className="p-4 bg-white">
       <h2 className="text-3xl font-bold mb-4">Previous Year Paper Upload</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="border border-[#fd645b] rounded-xl p-5">
+        <div className="border  border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
           <div className="mb-4">
             <label className="font-semibold">Year:</label>
             <input

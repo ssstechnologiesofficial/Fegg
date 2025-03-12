@@ -90,12 +90,12 @@ const CreatePracticeSet = () => {
 
   return (
     <>
-      <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6">
+      <div className="max-w-lg mx-auto bg-white shadow-lg border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5  ">
         <h2 className="text-xl font-semibold mb-4 text-center">
           Create Practice Set
         </h2>
         {message && <p className="text-green-600 text-center">{message}</p>}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 ">
           <select
             name="className"
             value={formData.className}

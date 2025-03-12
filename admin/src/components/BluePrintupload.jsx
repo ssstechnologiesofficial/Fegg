@@ -70,13 +70,13 @@ const BluePrintupload = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-4xl font-bold text-center mb-4">
+    <div className="bg-white mx-auto p-4">
+      <h2 className="text-4xl font-bold  mb-4">
         Upload Blueprints (PDF)
       </h2>
 
       {/* Upload Form */}
-      <form onSubmit={handleUpload} className="flex flex-col gap-3 mb-6">
+      <form onSubmit={handleUpload} className="flex flex-col gap-3 mb-6 border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
         <input
           type="text"
           placeholder="Enter Title"

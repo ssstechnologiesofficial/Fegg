@@ -51,15 +51,15 @@ const NewsLetterUpload = () => {
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl sm:text-4xl font-semibold text-center my-5 text-white bg-red-500 py-2 rounded-md">
+    <div className="container mx-auto  bg-white p-4">
+      <h1 className="text-2xl sm:text-4xl font-semibold py-3">
         News Letter Upload
       </h1>
 
       {/* File Upload Form */}
       <form
         onSubmit={handleUpload}
-        className="bg-white p-4 shadow-md rounded-md flex flex-col items-center gap-3"
+        className="bg-white  shadow-md  flex flex-col items-center gap-3 border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5"
       >
         <input
           type="file"

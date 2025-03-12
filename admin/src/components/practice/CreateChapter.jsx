@@ -57,12 +57,12 @@ const CreateChapterForm = () => {
 
   return (
     <>
-    <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6">
+    <div className="max-w-md mx-auto bg-white shadow-lg  p-6 border border-[#fd645b] rounded-xl border-r-4 border-b-4 p-5">
       <h2 className="text-xl font-semibold mb-4 text-center">Create Chapter</h2>
 
       {message && <p className="text-green-600 text-center">{message}</p>}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 ">
         {/* Select Class */}
         <div>
           <label className="block text-gray-700">Select Class</label>

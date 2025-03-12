@@ -56,7 +56,7 @@
 
 import React from "react";
 import img from "../../assets/pragati.jpg";
-import bgImage from "../../assets/pp1.webp"; // Ensure this is the correct path
+import bgImage from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Pragati-2.jpg"; // Ensure this is the correct path
 
 const Pragati = () => {
   return (
@@ -96,7 +96,7 @@ const Pragati = () => {
             <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-full h-full bg-[#fd645b] rounded-lg -z-10"></div>
 
             <img
-              src={img}
+              src={bgImage}
               className="w-full object-fill rounded-lg shadow-lg border-4 border-white"
               alt="Pragati Program"
             />

@@ -6,11 +6,17 @@ option:hover {
   background-color: #fe0000;
 }
 /* Hide scrollbar but allow scrolling */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Custom Scrollbar */
+aside::-webkit-scrollbar {
+  width: 6px;
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none;  /* Hide scrollbar in IE & Edge */
-  scrollbar-width: none;      /* Hide scrollbar in Firefox */
+aside::-webkit-scrollbar-thumb {
+  background: #fe0000;
+  border-radius: 4px;
 }
+
+aside::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+

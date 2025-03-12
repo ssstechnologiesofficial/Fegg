@@ -105,7 +105,7 @@ const AnnouncementUpload = () => {
   return (
     <div className=" mx-auto p-6 bg-white shadow-lg rounded-md  gap-8">
       <div className="">
-        <h2 className="text-xl font-bold mb-4">
+        <h2 className="text-4xl font-bold mb-4">
           {editingId ? "Edit Announcement" : "Upload Announcement"}
         </h2>
         {message && <p className="text-green-600 mb-4">{message}</p>}
