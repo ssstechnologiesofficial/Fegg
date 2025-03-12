@@ -65,8 +65,8 @@ const EventsAnnouncements = () => {
               {/* घोषणा विवरण और छवि */}
               <div className="flex flex-row items-center gap-4 h-full ml-20">
                 {/* घोषणा विवरण */}
-                <div className="flex-1 justify-between h-full">
-                  <h3 className="text-gray-800 font-semibold">
+                <div className="flex-1 justify-between items-start h-full">
+                  <h3 className="text-gray-800 font-semibold h-10">
                     {announcement.title}
                   </h3>
                   <div className="flex justify-between items-center">
@@ -88,7 +88,7 @@ const EventsAnnouncements = () => {
                       <img
                         src={`${baseUrl}/uploads/${announcement.image}`}
                         alt="घोषणा"
-                        className="w-40 h-full object-cover rounded-lg"
+                        className="w-40 h-36 object-cover rounded-lg"
                       />
                     )}
                   </div>
