@@ -292,7 +292,7 @@ const Econtent10th = () => {
                   <tr className="bg-[#fd645b] text-white">
                     <th className="p-3">Volume</th>
 
-                    <th className="p-3">Video Link</th>
+                    <th className="p-3">Books</th>
                   </tr>
                 </thead>
                 <tbody>

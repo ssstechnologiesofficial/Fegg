@@ -22,7 +22,7 @@ const OlineVideoOption = () => {
 
             <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
               <h3 className="text-xl font-bold text-center mb-4">
-                कक्षा <span className="text-[#fd645b]">10</span>
+                कक्षा <span className="text-[#fd645b]">10वीं</span>
               </h3>
               <p className="text-center">
                 कक्षा 10वीं के रिकॉर्डेड वीडियो के लिए यहाँ क्लिक करें
@@ -43,7 +43,7 @@ const OlineVideoOption = () => {
 
             <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
               <h3 className="text-xl font-bold text-center mb-4">
-                कक्षा <span className="text-[#fd645b]">12</span>
+                कक्षा <span className="text-[#fd645b]">12वीं</span>
               </h3>
               <p className="text-center">
                 कक्षा 12वीं के रिकॉर्डेड वीडियो के लिए यहाँ क्लिक करें

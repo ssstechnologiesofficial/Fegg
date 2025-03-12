@@ -45,9 +45,11 @@ const EventsAnnouncements = () => {
             key={index}
             className="announcement-card border-2 border-gray-400 bg-white shadow-md flex flex-col transition hover:scale-105 hover:bg-gray-50"
           >
+            <Link to={`/announcement/${announcement._id}`}>
             {/* तारीख बॉक्स और शीर्षक */}
-            <div className="border-b-2 border-gray-400 relative h-24 flex items-center">
-              <div className="absolute top-0 left-0 bg-[#FD645B] text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
+            <div className=" relative h-16 flex items-center">
+              
+              <div className="absolute -top-2 -left-2 bg-[#FD645B] text-white text-center w-16 h-16 flex flex-col justify-center font-bold">
                 {(() => {
                   const dateObj = new Date(announcement.date);
                   const day = dateObj.getDate();
@@ -62,36 +64,12 @@ const EventsAnnouncements = () => {
                   );
                 })()}
               </div>
-              <h3 className="text-gray-800 font-semibold pl-24 pr-4 py-2">
+              <h3 className="text-gray-800 font-semibold pl-24 pr-4 ">
                 {announcement.title}
               </h3>
             </div>
-      
-            {/* घोषणा विवरण और छवि */}
-            <div className="flex flex-row items-center gap-4 h-full px-4 py-2">
-              {/* घोषणा विवरण */}
-              
-              <div className="flex-1">
-                <p className="text-gray-600 text-sm mt-2 line-clamp-2">
-                  {announcement.description}
-                </p>
-                {announcement.pdf && (
-                  <Link to={`/announcement/${announcement._id}`}>
-                    <button className="inline-block mt-2 text-white bg-red-400 w-full px-4 py-2 text-sm rounded-md">
-                      अधिक जानें
-                    </button>
-                  </Link>
-                )}
-              </div>
-              {/* घोषणा छवि */}
-              {announcement.image && (
-                <img
-                  src={`${baseUrl}/uploads/${announcement.image}`}
-                  alt="घोषणा"
-                  className="w-56 h-56 object-cover rounded-md"
-                />
-              )}
-            </div>
+            </Link>
+           
           </div>
         ))}
       </div>

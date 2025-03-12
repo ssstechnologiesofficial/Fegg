@@ -83,15 +83,15 @@ const HeaderTop = () => {
 
         <span className="text-white">|</span>
         <NavLink to="/newsletter" className="text-white hover:text-gray-300">
-          Newsletter
+        न्यूज़लेटर
         </NavLink>
         <span className="text-white">|</span>
         <NavLink to="/gallery" className="text-white hover:text-gray-300">
-          Gallery
+        गैलरी
         </NavLink>
         <span className="text-white">|</span>
         <NavLink to="/faq" className="text-white hover:text-gray-300">
-          FAQ
+        एफ़एक्यू
         </NavLink>
         <span className="text-white">|</span>
         <div className="flex items-center space-x-2">

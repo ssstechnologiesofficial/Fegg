@@ -49,6 +49,7 @@ import MpsosTeam from '../component/content/MpsosTeam'
 import Newsletter from '../component/content/Newsletter'
 import AnnouncementDetails from '../component/content/AnnouncementDetails'
 import ScrollToTop from '../component/linktop/ScrollLinkTop'
+import TermsAndConditions from '../component/content/Terms'
 // import AnnouncementDetails from '../component/content/EventAnnouncementDetails'
 
 export const router = createBrowserRouter([
@@ -129,6 +130,10 @@ export const router = createBrowserRouter([
       {
         path: 'class10',
         element: <Econtent10th />,
+      },
+      {
+        path: 'terms',
+        element: <TermsAndConditions />,
       },
       {
         path: 'start-test/:mockSetId',

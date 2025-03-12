@@ -209,7 +209,7 @@ const Login = () => {
     try {
       const response = await axios.post(SummaryApi.login.url, data)
       localStorage.setItem('token', response.data.token)
-      navigate('/dashboard')
+      navigate('/dashboard/dashboardCards')
     } catch (error) {
       setError(error.response?.data?.message || 'Invalid email or password')
     }

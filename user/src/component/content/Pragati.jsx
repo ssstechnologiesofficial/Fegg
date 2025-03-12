@@ -55,7 +55,7 @@
 // export default Pragati;
 
 import React from "react";
-import img from "../../assets/pragati.jpg";
+import img from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Banner.png";
 import bgImage from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Pragati-2.jpg"; // Ensure this is the correct path
 
 const Pragati = () => {
@@ -64,17 +64,10 @@ const Pragati = () => {
       {/* Header Section with Background Image */}
      <div className="relative">
      <div
-        className="pragati-img flex items-center justify-start px-10"
-        style={{
-          width: "100%",
-          height: "560px",
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          position: "relative",
-        }}
+        className="pragati-img flex items-center justify-start px-10 pt-16"
+        
       >
-        <div className="absolute top-10 right-10 text-red-600 text-3xl sm:text-5xl font-bold text-right">
+        {/* <div className="absolute top-10 right-10 text-red-600 text-3xl sm:text-5xl font-bold text-right">
           <h1 className="uppercase  pt-2 inline-block">
             प्रगति
           </h1>
@@ -82,7 +75,7 @@ const Pragati = () => {
             किशोरियों और युवा महिलाओं के लिए <br />
             दूसरा मौका कार्यक्रम
           </p>
-        </div>
+        </div> */}
       </div>
      </div>
 

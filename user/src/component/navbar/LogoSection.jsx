@@ -11,7 +11,7 @@ const LogoSection = () => (
       </div>
       <div>
         <h1 className="sm:text-lg text-sm font-bold text-gray-800">
-          Foundation to Educate Girls Globally
+        फाउंडेशन टू एजुकेट गर्ल्स ग्लोबली
         </h1>
         {/* <p className="text-sm text-gray-500">(एबीसी स्टेट ओपन स्कूल)</p> */}
       </div>

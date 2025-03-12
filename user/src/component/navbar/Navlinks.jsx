@@ -278,15 +278,12 @@ const NavLinks = () => {
           {ismpsosOpen &&
             dropdownMenu([
               { link: '/MPSOSInfo', label: 'एम.पी.एस.ओ.एस. के बारे में' },
-              { link: '/AISECTInfo', label: 'AISECT के बारे में' },
+              { link: '/MPSOSInfo', label: 'संचालन समिति' },
+              { link: '/AISECTInfo', label: 'एआईएसईसीटी के बारे में' },
+              
               {
                 link: 'https://www.aisectonline.com',
-                label: 'Prospectus',
-                isExternal: true,
-              },
-              {
-                link: 'https://www.aisectonline.com',
-                label: 'EG login to AISECT',
+                label: 'ईजी लॉगिन टू एआईएसईसीटी',
                 isExternal: true,
               },
             ])}

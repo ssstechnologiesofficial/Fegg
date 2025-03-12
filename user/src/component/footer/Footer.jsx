@@ -185,7 +185,7 @@ const Footer = () => {
           <p>
             <span className="text-primary">
               {" "}
-              <Link to="/privacy-policy" className="hover:underline">
+              <Link to="/terms" className="hover:underline">
                 नियम और शर्तें
               </Link>
             </span>{" "}

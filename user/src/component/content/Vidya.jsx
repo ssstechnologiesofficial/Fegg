@@ -1,7 +1,7 @@
 
 import React from "react";
 import img from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya2.jpg";
-import bgImage from "../../assets/pp1.webp"; // Ensure this is the correct path
+import bgImage from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya1.png"; // Ensure this is the correct path
 
 const Vidya = () => {
   return (
@@ -9,7 +9,7 @@ const Vidya = () => {
       {/* Header Section with Background Image */}
       <div className="relative">
         <div
-          className="pragati-img flex items-center justify-start px-10"
+          className="vidya-img flex items-center justify-start px-10"
           style={{
             width: "100%",
             height: "560px",
