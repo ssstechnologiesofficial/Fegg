@@ -78,9 +78,9 @@ const Hero = () => {
           {carouselImages.map((image, index) => (
             <SwiperSlide key={index}>
               <img
-                src={`${baseUrl}/${image.image}`} 
+                src={`${baseUrl}/${image.image}`}
                 alt={`Slide ${index + 1}`}
-                className="w-full h-[560px] object-cover" 
+                className="w-full h-[560px] object-cover"
               />
             </SwiperSlide>
           ))}
@@ -93,17 +93,24 @@ const Hero = () => {
           ref={popupRef}
           className="bg-white p-6 rounded-sm border-t-4 border-red-400 shadow-lg w-96 opacity-0"
         >
-          <h2 className="text-2xl font-semibold mb-4">शिक्षा का नया अवसर! 📚✨</h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            शिक्षा का नया अवसर! 📚✨
+          </h2>
           <p className="text-sm text-gray-600 mb-4">
-          अभी अपना पंजीयन करें या अपना परिणाम देखें।
+            अभी अपना पंजीयन करें या अपना परिणाम देखें।
           </p>
           <div className="flex space-x-4">
-           <Link to={"/register"} > <button className="w-40 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
-            पंजीकरण
-            </button></Link>
-            <a href="https://mpsos.nic.in/"><button className="w-36 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
-            परिणाम 
-            </button></a>
+            <Link to={'/register'}>
+              {' '}
+              <button className="w-40 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
+                पंजीकरण
+              </button>
+            </Link>
+            <a href="https://mpsos.nic.in/">
+              <button className="w-36 py-3 bg-[#FD645B] text-white rounded-3xl uppercase">
+                परिणाम
+              </button>
+            </a>
           </div>
         </div>
       </div>

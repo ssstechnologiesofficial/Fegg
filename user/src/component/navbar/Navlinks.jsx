@@ -218,7 +218,7 @@ const NavLinks = () => {
               { link: '/about', label: 'एजुकेट गर्ल्स के बारे में' },
               { link: '/about', label: 'लक्ष्य' },
               { link: '/about', label: 'उद्देश्य' },
-              { link: '/about', label: 'परिकल्पना' },
+              { link: '/about', label: 'परिकल्पना', href: '#परिकल्पना' },
               { link: '/EGteam', label: 'वरिष्ठ प्रबंधन टीम' },
             ])}
         </li>
@@ -264,7 +264,6 @@ const NavLinks = () => {
                 label: 'पिछले वर्ष के प्रश्नपत्र',
               },
               { link: '/practice-set', label: 'अभ्यास सेट' },
-              
             ])}
         </li>
         <li
@@ -280,7 +279,7 @@ const NavLinks = () => {
               { link: '/MPSOSInfo', label: 'एम.पी.एस.ओ.एस. के बारे में' },
               { link: '/MPSOSInfo', label: 'संचालन समिति' },
               { link: '/AISECTInfo', label: 'एआईएसईसीटी के बारे में' },
-              
+
               {
                 link: 'https://www.aisectonline.com',
                 label: 'ईजी लॉगिन टू एआईएसईसीटी',
@@ -301,7 +300,9 @@ const NavLinks = () => {
           </NavLink>
         </li>
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
-          <a href="https://polite-cranachan-2169e8.netlify.app">विभागीय एक्सेस</a>
+          <a href="https://polite-cranachan-2169e8.netlify.app">
+            विभागीय एक्सेस
+          </a>
         </li>
       </ul>
     </div>

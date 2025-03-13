@@ -54,20 +54,19 @@
 
 // export default Pragati;
 
-import React from "react";
-import img from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Banner.png";
-import bgImage from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Pragati-2.jpg"; // Ensure this is the correct path
+import React from 'react'
+import img from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Banner.png'
+import bgImage from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Pragati-2.jpg' // Ensure this is the correct path
+
+import bg2img from '../../assets/pra.png'
 
 const Pragati = () => {
   return (
     <div className="">
       {/* Header Section with Background Image */}
-     <div className="relative">
-     <div
-        className="pragati-img flex items-center justify-start px-10 pt-16"
-        
-      >
-        {/* <div className="absolute top-10 right-10 text-red-600 text-3xl sm:text-5xl font-bold text-right">
+      <div className="relative">
+        <div className="pragati-img flex items-center justify-start px-10 pt-16">
+          {/* <div className="absolute top-10 right-10 text-red-600 text-3xl sm:text-5xl font-bold text-right">
           <h1 className="uppercase  pt-2 inline-block">
             प्रगति
           </h1>
@@ -76,12 +75,11 @@ const Pragati = () => {
             दूसरा मौका कार्यक्रम
           </p>
         </div> */}
+        </div>
       </div>
-     </div>
 
       {/* Content Section */}
       <div className="p-5 sm:mx-12 mx-4 relative -mt-14 rounded-lg shadow-lg mb-8 z-10 bg-white">
-        
         <div className="flex flex-col sm:flex-row justify-evenly items-center mt-8">
           {/* Image Container with Layered Effect */}
           <div className="relative w-60 sm:w-80 m-3">
@@ -97,11 +95,11 @@ const Pragati = () => {
 
           {/* Text Content */}
           <div className="sm:m-3 flex justify-center items-start flex-col sm:w-[600px] sm:p-3 p-5 mt-7 text-sm sm:text-base">
-          <div className="text-center py-4">
-          <h3 className="text-xl md:text-2xl font-bold text-red-400 pt-1  inline-block">
-            प्रगति कार्यक्रम कैसे कार्य करता है
-          </h3>
-        </div>
+            <div className="text-center py-4">
+              <h3 className="text-xl md:text-2xl font-bold text-red-400 pt-1  inline-block">
+                प्रगति कार्यक्रम कैसे कार्य करता है
+              </h3>
+            </div>
             <p className="mb-5">
               भारत में 9 करोड़ युवा महिलाएँ (15-29 वर्ष) शिक्षा, रोजगार और
               प्रशिक्षण (NEET - Not in Education, Employment & Training) दायरे
@@ -119,8 +117,18 @@ const Pragati = () => {
           </div>
         </div>
       </div>
+      <div className="p-12">
+        <h1 className="flex justify-center sm:text-5xl text-3xl mb-8 font-semibold">
+          प्रगति कार्यक्रम कैसे कार्य करता है ?
+        </h1>
+        <img
+          src={bg2img}
+          className="w-full object-fill rounded-lg shadow-lg border-4 border-white"
+          alt="Pragati Program"
+        />
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Pragati;
+export default Pragati

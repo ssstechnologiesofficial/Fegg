@@ -1,17 +1,17 @@
-import hero from "../../assets/hero.webp";
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import hero from '../../assets/hero.webp'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger)
 
 const AboutIntro = () => {
-  const heroImageRef = useRef(null);
-  const textSectionRef = useRef(null);
-  const historySectionRef = useRef(null);
-  const visionSectionRef = useRef(null);
-  const missionSectionRef = useRef(null);
-  const ordinanceSectionRef = useRef(null);
+  const heroImageRef = useRef(null)
+  const textSectionRef = useRef(null)
+  const historySectionRef = useRef(null)
+  const visionSectionRef = useRef(null)
+  const missionSectionRef = useRef(null)
+  const ordinanceSectionRef = useRef(null)
 
   useEffect(() => {
     gsap.fromTo(
@@ -21,15 +21,15 @@ const AboutIntro = () => {
         opacity: 1,
         x: 0,
         duration: 1,
-        ease: "power2.out",
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: heroImageRef.current,
-          start: "top 80%",
-          end: "top 20%",
-          toggleActions: "play none none none",
+          start: 'top 80%',
+          end: 'top 20%',
+          toggleActions: 'play none none none',
         },
       }
-    );
+    )
 
     gsap.fromTo(
       textSectionRef.current,
@@ -38,16 +38,16 @@ const AboutIntro = () => {
         opacity: 1,
         x: 0,
         duration: 1,
-        ease: "power2.out",
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: textSectionRef.current,
-          start: "top 80%",
-          end: "top 20%",
-          toggleActions: "play none none none",
+          start: 'top 80%',
+          end: 'top 20%',
+          toggleActions: 'play none none none',
         },
       }
-    );
-  }, []);
+    )
+  }, [])
 
   return (
     <div className="bg-gray-50 relative">
@@ -57,7 +57,7 @@ const AboutIntro = () => {
           <div className="text-sm text-gray-600 mb-6">
             <a href="/" className="hover:text-red-400">
               होम
-            </a>{" "}
+            </a>{' '}
             &gt; हमारे बारे में
           </div>
 
@@ -166,7 +166,7 @@ const AboutIntro = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AboutIntro;
+export default AboutIntro

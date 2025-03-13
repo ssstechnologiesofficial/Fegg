@@ -151,8 +151,6 @@ const InfoSection = () => {
               </div>
             </SwiperSlide>
           ))}
-
-          
         </Swiper>
       </div>
     </div>
