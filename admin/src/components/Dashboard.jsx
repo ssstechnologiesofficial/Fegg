@@ -146,7 +146,7 @@ const Dashboard = () => {
             </div>
             <div>
               <h2 className="text-xl font-semibold text-gray-700">
-                Enrolled Students
+                Registered Students
               </h2>
               <p className="text-4xl font-bold text-gray-900 mt-2">
                 {counts.enrolledUsers}
