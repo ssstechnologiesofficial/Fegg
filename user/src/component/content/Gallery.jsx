@@ -6,7 +6,7 @@ const Gallery = () => {
   return (
     <div className="galleryContainer  sm:px-4">
       <h1 className="text-2xl sm:text-5xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-4 py-1 w-full">
-      हमारा चित्र संग्रह
+        हमारा चित्र संग्रह
       </h1>
       <div className="media-container mt-4">
         {gallery.map((file) => (
