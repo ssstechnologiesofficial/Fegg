@@ -13,6 +13,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 })
+
 exports.login = async (req, res) => {
   const { email, password } = req.body
   console.log(req.body)

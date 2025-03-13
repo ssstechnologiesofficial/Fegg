@@ -137,6 +137,17 @@ const studentSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    scheme: {
+      type: String,
+      required: true,
+      enum: [
+        'Open School (Parampragat)',
+        'RJN (Rook Jana Nahi)',
+        'ALC (Aa Laut Chale)',
+        'Super Section (SS)',
+        'Saksham Bhaiya Behna (SBB)',
+      ],
+    },
   },
   {
     timestamps: true,

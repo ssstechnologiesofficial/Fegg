@@ -38,6 +38,7 @@ const Register = () => {
     appearing: '',
     status: '',
     mail: '',
+    scheme: '',
     declarationAccepted: false,
   })
 
@@ -1030,7 +1031,10 @@ const Register = () => {
       alert('You are not eligible to register.')
       return
     }
-
+    if (formData.declarationAccepted === false) {
+      alert('please check mark the declaration.')
+      return
+    }
     try {
       const response = await axios.post(SummaryApi.Register.url, formData)
       if (response.status === 200) {
@@ -1103,7 +1107,7 @@ const Register = () => {
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
             <label className="block">
-              छात्र का फ़र्स्ट नेम{' '}
+              छात्र का फ़र्स्ट नेम
               <span className="text-red-500 font-semibold">*</span>
               <input
                 type="text"
@@ -1433,6 +1437,28 @@ const Register = () => {
                 <option value="">Status (Pass/Fail)</option>
                 <option value="Pass">Pass</option>
                 <option value="Fail">Fail</option>
+              </select>
+            </label>
+            <label className="block">
+              आवेदन किस योजना अंतर्गत है <span className="text-red-500">*</span>
+              <select
+                name="scheme"
+                className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select Class</option>
+                <option value="Open School (Parampragat)">
+                  Open School (Parampragat)
+                </option>
+                <option value="RJN (Rook Jana Nahi)">
+                  RJN (Rook Jana Nahi)
+                </option>
+                <option value="ALC (Aa Laut Chale)">ALC (Aa Laut Chale)</option>{' '}
+                <option value="Super Section (SS)">Super Section (SS)</option>{' '}
+                <option value="Saksham Bhaiya Behna (SBB)">
+                  Saksham Bhaiya Behna (SBB)
+                </option>
               </select>
             </label>
             <label className="block">
