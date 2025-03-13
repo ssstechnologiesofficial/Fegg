@@ -192,7 +192,12 @@ const {
 
 //=====================session
 
-const { updateSession, Getsession } = require('../controller/SessionController')
+const {
+  createSession,
+  getSessions,
+  updateSession,
+  deleteSession,
+} = require('../controller/SessionController')
 
 //===================== Practice Modal
 
@@ -401,6 +406,7 @@ router.delete('/NLuploadsdelete/:id', deleteNewsLetterImage)
 
 // ================= Session
 router.post('/uploadsession', updateSession)
-router.get('/getsession', Getsession)
-
+router.get('/getsession', getSessions)
+router.put('/uploadsession/:id', updateSession) // Update session
+router.delete('/uploadsession/:id', deleteSession) // Delete session
 module.exports = router
