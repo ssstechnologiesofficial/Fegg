@@ -216,9 +216,9 @@ const NavLinks = () => {
           {isAboutOpen &&
             dropdownMenu([
               { link: '/about', label: 'एजुकेट गर्ल्स के बारे में' },
-              { link: '/about', label: 'लक्ष्य' },
-              { link: '/about', label: 'उद्देश्य' },
-              { link: '/about', label: 'परिकल्पना', href: '#परिकल्पना' },
+              { link: '/about#लक्ष्य', label: 'लक्ष्य' },
+              { link: '/about#उद्देश्य', label: 'उद्देश्य' },
+              { link: '/about#परिकल्पना', label: 'परिकल्पना' },
               { link: '/EGteam', label: 'वरिष्ठ प्रबंधन टीम' },
             ])}
         </li>

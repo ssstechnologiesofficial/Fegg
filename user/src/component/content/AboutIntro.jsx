@@ -1,17 +1,17 @@
-import hero from '../../assets/hero.webp'
-import React, { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import hero from "../../assets/hero.webp";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutIntro = () => {
-  const heroImageRef = useRef(null)
-  const textSectionRef = useRef(null)
-  const historySectionRef = useRef(null)
-  const visionSectionRef = useRef(null)
-  const missionSectionRef = useRef(null)
-  const ordinanceSectionRef = useRef(null)
+  const heroImageRef = useRef(null);
+  const textSectionRef = useRef(null);
+  const historySectionRef = useRef(null);
+  const visionSectionRef = useRef(null);
+  const missionSectionRef = useRef(null);
+  const objectiveSectionRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -21,15 +21,15 @@ const AboutIntro = () => {
         opacity: 1,
         x: 0,
         duration: 1,
-        ease: 'power2.out',
+        ease: "power2.out",
         scrollTrigger: {
           trigger: heroImageRef.current,
-          start: 'top 80%',
-          end: 'top 20%',
-          toggleActions: 'play none none none',
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       }
-    )
+    );
 
     gsap.fromTo(
       textSectionRef.current,
@@ -38,16 +38,30 @@ const AboutIntro = () => {
         opacity: 1,
         x: 0,
         duration: 1,
-        ease: 'power2.out',
+        ease: "power2.out",
         scrollTrigger: {
           trigger: textSectionRef.current,
-          start: 'top 80%',
-          end: 'top 20%',
-          toggleActions: 'play none none none',
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none none",
         },
       }
-    )
-  }, [])
+    );
+  }, []);
+
+  // Scroll to section when the page loads
+  useEffect(() => {
+    const { hash } = window.location;
+    if (hash) {
+      const targetId = hash.replace("#", "");
+      const element = document.getElementById(decodeURIComponent(targetId));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 500); // Small delay to ensure page is loaded before scrolling
+      }
+    }
+  }, []);
 
   return (
     <div className="bg-gray-50 relative">
@@ -57,7 +71,7 @@ const AboutIntro = () => {
           <div className="text-sm text-gray-600 mb-6">
             <a href="/" className="hover:text-red-400">
               होम
-            </a>{' '}
+            </a>{" "}
             &gt; हमारे बारे में
           </div>
 
@@ -112,6 +126,7 @@ const AboutIntro = () => {
             <div
               className="flex flex-col border rounded-md"
               ref={visionSectionRef}
+              id="लक्ष्य"
             >
               <img
                 src={hero}
@@ -132,6 +147,7 @@ const AboutIntro = () => {
             <div
               className="flex flex-col border rounded-md"
               ref={missionSectionRef}
+              id="उद्देश्य"
             >
               <img src={hero} alt="मिशन" className="rounded-md object-cover" />
               <h3 className="text-xl font-semibold text-gray-800 mt-4 ps-2">
@@ -147,6 +163,7 @@ const AboutIntro = () => {
           <div
             className="flex bg-gray-50 shadow-lg mt-12"
             ref={historySectionRef}
+            id='परिकल्पना'
           >
             <div className="w-2/3 pl-6">
               <h3 className="text-xl font-semibold text-gray-800 p-6 mb-4">
@@ -166,7 +183,7 @@ const AboutIntro = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutIntro
+export default AboutIntro;
