@@ -1,4 +1,8 @@
-import hero from "../../assets/hero.webp";
+import hero from "../../assets/hero.png";
+import vision from "../../assets/उद्देश्य.png";
+import mission from "../../assets/लक्ष्य.jpg";
+import हमारासफ़र from "../../assets/हमारासफ़र.jpg";
+import परिकल्पना from "../../assets/परिकल्पना.jpg";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -65,7 +69,7 @@ const AboutIntro = () => {
 
   return (
     <div className="bg-gray-50 relative">
-      <img src={hero} alt="इतिहास" className="object-cover w-full" />
+      <img src={hero} alt="इतिहास" className="object-cover w-full h-screen" />
       <div className="bg-white mx-6 relative -mt-16 rounded-lg shadow-lg mb-8">
         <div className="container px-4 md:px-8 lg:px-16 py-12">
           <div className="text-sm text-gray-600 mb-6">
@@ -105,7 +109,7 @@ const AboutIntro = () => {
             ref={historySectionRef}
           >
             <img
-              src={hero}
+              src={हमारासफ़र}
               alt="इतिहास"
               className="w-1/3 rounded-md object-cover"
             />
@@ -129,7 +133,7 @@ const AboutIntro = () => {
               id="लक्ष्य"
             >
               <img
-                src={hero}
+                src={mission}
                 alt="दृष्टि"
                 className="rounded-md object-cover"
               />
@@ -149,7 +153,7 @@ const AboutIntro = () => {
               ref={missionSectionRef}
               id="उद्देश्य"
             >
-              <img src={hero} alt="मिशन" className="rounded-md object-cover" />
+              <img src={vision} alt="मिशन" className="rounded-md object-cover" />
               <h3 className="text-xl font-semibold text-gray-800 mt-4 ps-2">
                 उद्देश्य
               </h3>
@@ -175,7 +179,7 @@ const AboutIntro = () => {
               </p>
             </div>
             <img
-              src={hero}
+              src={परिकल्पना}
               alt="इतिहास"
               className="w-1/3 rounded-md object-cover"
             />
