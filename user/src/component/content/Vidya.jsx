@@ -1,7 +1,6 @@
-
-import React from "react";
-import img from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya2.jpg";
-import bgImage from "../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya1.png"; // Ensure this is the correct path
+import React from 'react'
+import img from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya2.jpg'
+import bgImage from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Vidhya/Vidhya1.png' // Ensure this is the correct path
 
 const Vidya = () => {
   return (
@@ -11,20 +10,17 @@ const Vidya = () => {
         <div
           className="vidya-img flex items-center justify-start px-10"
           style={{
-            width: "100%",
-            height: "560px",
+            width: '100%',
+            height: '560px',
             backgroundImage: `url(${bgImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            position: "relative",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'relative',
           }}
         >
           <div className="absolute top-10 right-10 text-red-600 text-3xl sm:text-5xl font-bold text-right">
             <h1 className="uppercase pt-2 inline-block">विद्या</h1>
-            <p className="text-gray-100 border-t-4 border-red-600 py-3 text-sm sm:text-lg">
-              किशोरियों और युवा महिलाओं के लिए <br />
-              दूसरा मौका कार्यक्रम
-            </p>
+            <p className="text-gray-100 border-t-4 border-red-600 py-6 text-sm sm:text-lg w-56"></p>
           </div>
         </div>
       </div>
@@ -69,26 +65,47 @@ const Vidya = () => {
               नए शिक्षार्थियों को अकादमिक सफलता और दीर्घकालिक शैक्षिक उपलब्धियों
               के लिए आवश्यक आधार तैयार करने में सक्षम बनाता है।
             </p> */}
-            
+
             <p className="mb-5">
               {/* <strong>विद्या:</strong>  */}
-              एजुकेट गर्ल्स का इन-स्कूल प्राथमिक कार्यक्रम 6-14 वर्ष की लड़कियों पर केंद्रित है जो औपचारिक शिक्षा प्रणाली से बाहर हैं। हमारा मिशन ग्रामीण भारत में शिक्षा से वंचित लड़कियों को चिन्हित कर, उनका नामांकन और ठहराव करने के साथ उन्हें गुणवत्तापूर्ण शिक्षा एवं अवसर प्रदान करना है।
+              एजुकेट गर्ल्स का इन-स्कूल प्राथमिक कार्यक्रम 6-14 वर्ष की लड़कियों
+              पर केंद्रित है जो औपचारिक शिक्षा प्रणाली से बाहर हैं। हमारा मिशन
+              ग्रामीण भारत में शिक्षा से वंचित लड़कियों को चिन्हित कर, उनका
+              नामांकन और ठहराव करने के साथ उन्हें गुणवत्तापूर्ण शिक्षा एवं अवसर
+              प्रदान करना है।
             </p>
-            
+
             <ul className="list-disc pl-5 mb-5">
-              <li><strong>लोकल चैंपियन:</strong> गांव के सबसे शिक्षित युवाओं को टीम बालिका के रूप में नियुक्त किया जाता है।</li>
-              <li><strong>घर-घर सर्वेक्षण:</strong> शिक्षा से वंचित लड़कियों की पहचान करना।</li>
-              <li><strong>मानसिकता परिवर्तन:</strong> गाय की बैठकों के माध्यम से स्थायी मानसिकता परिवर्तन लाना।</li>
-              <li><strong>नामांकन और ठहराव:</strong> स्कूल प्रबंधन समिति की मदद करना ताकि लड़कियों का ठहराव बना रहे।</li>
-              <li><strong>गुणवत्तापूर्ण शिक्षा:</strong> शिक्षा परिणामों को बढ़ाने के लिए।</li>
-              <li><strong>जीवन कौशल प्रशिक्षण:</strong> जीवन की चुनौतियों का सामना करने में मदद, आत्मनिर्भरता और लचीलापन को बढ़ावा देना।</li>
+              <li>
+                <strong>लोकल चैंपियन:</strong> गांव के सबसे शिक्षित युवाओं को
+                टीम बालिका के रूप में नियुक्त किया जाता है।
+              </li>
+              <li>
+                <strong>घर-घर सर्वेक्षण:</strong> शिक्षा से वंचित लड़कियों की
+                पहचान करना।
+              </li>
+              <li>
+                <strong>मानसिकता परिवर्तन:</strong> गाय की बैठकों के माध्यम से
+                स्थायी मानसिकता परिवर्तन लाना।
+              </li>
+              <li>
+                <strong>नामांकन और ठहराव:</strong> स्कूल प्रबंधन समिति की मदद
+                करना ताकि लड़कियों का ठहराव बना रहे।
+              </li>
+              <li>
+                <strong>गुणवत्तापूर्ण शिक्षा:</strong> शिक्षा परिणामों को बढ़ाने
+                के लिए।
+              </li>
+              <li>
+                <strong>जीवन कौशल प्रशिक्षण:</strong> जीवन की चुनौतियों का सामना
+                करने में मदद, आत्मनिर्भरता और लचीलापन को बढ़ावा देना।
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Vidya;
-
+export default Vidya
