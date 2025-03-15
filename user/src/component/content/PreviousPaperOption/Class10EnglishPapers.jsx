@@ -24,7 +24,7 @@ const Class10EnglishPapers = () => {
         setData(response.data)
       })
       .catch((error) => {
-        console.error('Error fetching eBooks:', error)
+        console.error('Error fetching Papers:', error)
       })
   }, [])
 

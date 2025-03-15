@@ -21,6 +21,7 @@ const {
   getEbooksByClass,
   updateEbook,
   deleteEbook,
+  toggleEbookStatus,
 } = require('../controller/ebookController')
 
 // --------------PreviousPaper
@@ -278,6 +279,7 @@ router.post('/eupload', upload.single('file'), createEbook)
 router.get('/ebooks', getAllEbooks)
 router.put('/ebooks/:id', updateEbook)
 router.delete('/ebooks/:id', deleteEbook)
+router.put('/Ebookstatus/:id', toggleEbookStatus)
 
 //----------all Route uploaded videos
 
@@ -288,6 +290,8 @@ router.post('/uploadvideo', videoController.uploadVideo)
 router.put('Ovideoupdate/:id', videoController.updateVideo)
 
 router.delete('Ovideodelete/:id', videoController.deleteVideo)
+
+router.put('/VideoStatus/:id', videoController.toggleVideoStatus)
 
 //---------------- User modal 10th and 12th
 router.post('/storeUserDownload', storeUserDownload)

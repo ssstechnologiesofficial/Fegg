@@ -5,7 +5,7 @@ import fagglogo from '../../../public/eg-logo.png'
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
-const Econtent10th = () => {
+const Econtent12th = () => {
   const [data, setData] = useState([])
   const [activeIndex, setActiveIndex] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -15,6 +15,7 @@ const Econtent10th = () => {
   const [userInput, setUserInput] = useState('')
   const [activeSubject, setActiveSubject] = useState(null)
   const [selectedLanguage, setSelectedLanguage] = useState('')
+
   useEffect(() => {
     setSelectedLanguage('Hindi')
 
@@ -22,6 +23,7 @@ const Econtent10th = () => {
       .get(`${SummaryApi.Ebooks.url}?className=12`)
       .then((response) => {
         setData(response.data)
+        console.log(response.data)
       })
       .catch((error) => {
         console.error('Error fetching eBooks:', error)
@@ -37,7 +39,9 @@ const Econtent10th = () => {
     setActiveSubject(null)
   }
 
-  const filteredData = data.filter((item) => item.language === selectedLanguage)
+  const filteredData = data.filter(
+    (item) => item.language === selectedLanguage && item.isActive
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
@@ -47,10 +51,14 @@ const Econtent10th = () => {
     return acc
   }, {})
 
-  const handleDownloadClick = (fileUrl, subject, className) => {
+  const handleDownloadClick = (fileUrl, subject, className, isActive) => {
+    if (!isActive) {
+      alert('This file is currently deactivated.')
+      return
+    }
     setSelectedFile(fileUrl)
     setSelectedSubject(subject)
-    setSelectedClass(className) // Ensure className is set
+    setSelectedClass(className)
     setIsModalOpen(true)
   }
 
@@ -85,7 +93,7 @@ const Econtent10th = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">कक्षा 12वीं के लिए ई-पुस्तकें</h2>
+      <h2 className="text-2xl font-bold mb-4">कक्षा 10वीं के लिए ई-पुस्तकें</h2>
       <div className="flex flex-col sm:flex-row p-4 bg-gray-50 min-h-screen">
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
@@ -134,7 +142,7 @@ const Econtent10th = () => {
                   <tr className="bg-[#fd645b] text-white">
                     <th className="p-3">Volume</th>
 
-                    <th className="p-3">Video Link</th>
+                    <th className="p-3">Books</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,7 +156,8 @@ const Econtent10th = () => {
                             handleDownloadClick(
                               item.file,
                               item.subject,
-                              item.className
+                              item.className,
+                              item.isActive
                             )
                           }
                           className="text-blue-600 hover:underline"
@@ -210,4 +219,4 @@ const Econtent10th = () => {
   )
 }
 
-export default Econtent10th
+export default Econtent12th

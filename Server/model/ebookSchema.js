@@ -26,7 +26,9 @@ const ebookSchema = new mongoose.Schema(
     Volume: {
       type: String,
     },
+    isActive: { type: Boolean, default: true }, // Add isActive field
   },
+
   { timestamps: true }
 )
 

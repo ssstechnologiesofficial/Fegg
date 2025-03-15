@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import op10 from "../../../public/class10.jpg";
-import op12 from "../../../public/class12.jpg";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import op10 from '../../../public/class10.jpg'
+import op12 from '../../../public/class12.jpg'
 
 const EcontentOption = () => {
   return (
     <div className="px-4 sm:px-12">
       <h3 className="sm:text-4xl text-2xl text-center font-semibold border-x-4 pb-1 pt-2 my-3 text-white border-[#fd645b] bg-[#fd645b]">
-      ऑनलाइन पुस्तकें{" "}
+        ऑनलाइन पुस्तकें{' '}
       </h3>
       <div className="flex flex-col sm:flex-row justify-around items-center gap-4 p-4">
         {/* Card for Class 10 */}
@@ -22,9 +22,9 @@ const EcontentOption = () => {
 
             <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
               <h3 className="text-xl font-bold text-center mb-4">
-              कक्षा <span className="text-[#fd645b]">12वीं </span>
+                कक्षा <span className="text-[#fd645b]">10वीं </span>
               </h3>
-              <p className="text-center">कक्षा 10वीं के लिए पिछले वर्ष के प्रश्नपत्र</p>
+              <p className="text-center">कक्षा 10वीं के लिए पुस्तकें</p>
             </div>
           </Link>
         </div>
@@ -41,15 +41,15 @@ const EcontentOption = () => {
 
             <div className="relative z-10 bg-white border-2 rounded-lg border-[#fd645b] p-2 mx-4 my-8">
               <h3 className="text-xl font-bold text-center mb-4">
-              कक्षा <span className="text-[#fd645b]">12वीं </span>
+                कक्षा <span className="text-[#fd645b]">12वीं </span>
               </h3>
-              <p className="text-center">कक्षा 12वीं के लिए पिछले वर्ष के प्रश्नपत्र</p>
+              <p className="text-center">कक्षा 12वीं के लिए पुस्तकें</p>
             </div>
           </Link>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default EcontentOption;
+export default EcontentOption

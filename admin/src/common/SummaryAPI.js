@@ -150,7 +150,7 @@ const SummaryApi = {
     method: 'delete',
   },
   Ebooks: {
-    url: `${backendDomain}/api/ebooks`,
+    url: `${backendDomain}/api/ebooks?admin=true`,
     method: 'get',
   },
   EbooksId: {
@@ -161,16 +161,24 @@ const SummaryApi = {
     url: `${backendDomain}/api/eupload`,
     method: 'post',
   },
+  Ebookstatus: {
+    url: `${backendDomain}/api/Ebookstatus`,
+    method: 'put',
+  },
   getAllDownloads: {
     url: `${backendDomain}/api/getAllDownloads`,
     method: 'get',
   },
   getuploadvideo: {
-    url: `${backendDomain}/api/getuploadvideo`,
+    url: `${backendDomain}/api/getuploadvideo?admin=true`,
     method: 'get',
   },
   Ovideoupdate: {
     url: `${backendDomain}/api/Ovideoupdate/:id`,
+    method: 'put',
+  },
+  VideoStatus: {
+    url: `${backendDomain}/api/VideoStatus`,
     method: 'put',
   },
   Uploadvideo: {
@@ -178,7 +186,7 @@ const SummaryApi = {
     method: 'post',
   },
   Ovideodelete: {
-    url: `${backendDomain}/api/Ovideodelete/:id`,
+    url: `${backendDomain}/api/Ovideodelete`,
     method: 'delete',
   },
   Register: {
@@ -194,11 +202,19 @@ const SummaryApi = {
     method: 'post',
   },
   PreviousPaper: {
-    url: `${backendDomain}/api/PreviousPaperget`,
+    url: `${backendDomain}/api/PreviousPaperget?admin=true`,
     method: 'get',
   },
+  previouspaperstatus: {
+    url: `${backendDomain}/api/previouspaperstatus`,
+    method: 'put',
+  },
   PreviousPaperId: {
-    url: `${backendDomain}/api/PreviousPaper/:id`,
+    url: `${backendDomain}/api/PreviousPaper`,
+    method: 'put',
+  },
+  PreviousPaperupdate: {
+    url: `${backendDomain}/api/PreviousPaperupdate`,
     method: 'put',
   },
   Blueprint: {

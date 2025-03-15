@@ -1,85 +1,3 @@
-// import { useState, useEffect } from 'react'
-// import axios from 'axios'
-// import SummaryApi from '../../../common/SummaryApi'
-// const baseUrl = import.meta.env.VITE_BACKEND_URL
-
-// const Class10EnglishPapers = () => {
-//   const [papers, setPapers] = useState([])
-//   const [openSubject, setOpenSubject] = useState(null) // Track open accordion
-
-//   useEffect(() => {
-//     const fetchPapers = async () => {
-//       try {
-//         const response = await axios.get(`${SummaryApi.PreviousPaperget.url}`, {
-//           params: { className: '10', language: 'English' },
-//         })
-//         setPapers(response.data)
-//       } catch (error) {
-//         console.error('Error fetching papers:', error)
-//       }
-//     }
-//     fetchPapers()
-//   }, [])
-
-//   // Group papers by subject
-//   const groupedPapers = papers.reduce((acc, paper) => {
-//     const { subject } = paper
-//     if (!acc[subject]) acc[subject] = []
-//     acc[subject].push(paper)
-//     return acc
-//   }, {})
-
-//   return (
-//     <div className="max-w-2xl mx-auto p-4">
-//       <h2 className="text-2xl font-bold text-center text-[#fd645b] mb-4">
-//         Class 10 (English) - Previous Year Papers
-//       </h2>
-
-//       {Object.keys(groupedPapers).length > 0 ? (
-//         <div>
-//           {Object.keys(groupedPapers).map((subject) => (
-//             <div key={subject} className="mb-4 border-b border-gray-300">
-//               <button
-//                 onClick={() =>
-//                   setOpenSubject(openSubject === subject ? null : subject)
-//                 }
-//                 className="w-full text-left p-3 font-semibold bg-gray-100 hover:bg-gray-200 flex justify-between"
-//               >
-//                 {subject}
-//                 <span>{openSubject === subject ? '▲' : '▼'}</span>
-//               </button>
-
-//               {openSubject === subject && (
-//                 <div className="p-3 bg-gray-50">
-//                   <ul className="list-disc pl-5">
-//                     {groupedPapers[subject].map((paper) => (
-//                       <li key={paper._id} className="mb-2">
-//                         {paper.year} -
-//                         <a
-//                           href={new URL(paper.file, baseUrl).href}
-//                           target="_blank"
-//                           rel="noopener noreferrer"
-//                           className="text-blue-500 underline ml-2"
-//                         >
-//                           Download PDF
-//                         </a>
-//                       </li>
-//                     ))}
-//                   </ul>
-//                 </div>
-//               )}
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         <p className="text-center text-gray-500">No papers available.</p>
-//       )}
-//     </div>
-//   )
-// }
-
-// export default Class10EnglishPapers
-
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../../common/SummaryApi'
@@ -87,7 +5,7 @@ import fagglogo from '../../../../public/eg-logo.png'
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
-const Class10EnglishPapers = () => {
+const Class12EnglishPapers = () => {
   const [data, setData] = useState([])
   const [activeIndex, setActiveIndex] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -106,7 +24,7 @@ const Class10EnglishPapers = () => {
         setData(response.data)
       })
       .catch((error) => {
-        console.error('Error fetching eBooks:', error)
+        console.error('Error fetching Papers:', error)
       })
   }, [])
 
@@ -119,7 +37,9 @@ const Class10EnglishPapers = () => {
     setActiveSubject(null)
   }
 
-  const filteredData = data.filter((item) => item.language === selectedLanguage)
+  const filteredData = data.filter(
+    (item) => item.language === selectedLanguage && item.isActive
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
@@ -129,10 +49,14 @@ const Class10EnglishPapers = () => {
     return acc
   }, {})
 
-  const handleDownloadClick = (fileUrl, subject, className) => {
+  const handleDownloadClick = (fileUrl, subject, className, isActive) => {
+    if (!isActive) {
+      alert('This file is currently deactivated.')
+      return
+    }
     setSelectedFile(fileUrl)
     setSelectedSubject(subject)
-    setSelectedClass(className) // Ensure className is set
+    setSelectedClass(className)
     setIsModalOpen(true)
   }
 
@@ -170,6 +94,7 @@ const Class10EnglishPapers = () => {
       <h2 className="text-2xl font-bold mb-4">
         कक्षा 12वीं के लिए पिछले वर्ष के प्रश्नपत्र
       </h2>
+
       <div className="flex flex-col sm:flex-row p-4 bg-gray-50 min-h-screen">
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
@@ -209,7 +134,7 @@ const Class10EnglishPapers = () => {
         {/* Main Content */}
         <div className="sm:w-3/4 w-full p-6 sm:block flex justify-center">
           {activeSubject && (
-            <div className="bg-white shadow-md rounded-md p-6">
+            <div className="bg-white shadow-md rounded-md p-4">
               <h3 className="text-2xl font-bold text-[#fd645b] mb-4">
                 {activeSubject[0].subject} ({activeSubject[0].language})
               </h3>
@@ -235,10 +160,16 @@ const Class10EnglishPapers = () => {
                             handleDownloadClick(
                               item.file,
                               item.subject,
-                              item.className
+                              item.className,
+                              item.isActive
                             )
                           }
-                          className="text-blue-600 hover:underline"
+                          className={`text-blue-600 hover:underline ${
+                            !item.isActive
+                              ? 'cursor-not-allowed opacity-50'
+                              : ''
+                          }`}
+                          disabled={!item.isActive}
                         >
                           📄 Download Paper
                         </button>
@@ -311,4 +242,4 @@ const Class10EnglishPapers = () => {
   )
 }
 
-export default Class10EnglishPapers
+export default Class12EnglishPapers

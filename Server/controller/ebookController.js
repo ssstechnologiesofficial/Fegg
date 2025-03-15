@@ -24,8 +24,17 @@ const createEbook = async (req, res) => {
 // Get all eBooks
 const getAllEbooks = async (req, res) => {
   try {
-    const { className } = req.query
-    const query = className ? { className } : {}
+    const { className, admin } = req.query
+    let query = {} // Default: fetch all records
+
+    if (!admin) {
+      query.isActive = true // Only show active PDFs to users
+    }
+
+    if (className) {
+      query.className = className
+    }
+
     const ebooks = await Ebook.find(query)
     res.status(200).json(ebooks)
   } catch (error) {
@@ -33,6 +42,22 @@ const getAllEbooks = async (req, res) => {
   }
 }
 
+// const getAllEbooks = async (req, res) => {
+//   console.log(`ertyui`, req.query)
+//   try {
+//     const { className } = req.query
+//     const query = { isActive: true } // Only fetch active papers
+//     console.log(query)
+//     if (className) {
+//       query.className = className
+//     }
+
+//     const prev = await Ebook.find(query)
+//     res.status(200).json(prev)
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error fetching papers', error })
+//   }
+// }
 // Get eBooks by class
 const getEbooksByClass = async (req, res) => {
   try {
@@ -77,10 +102,24 @@ const deleteEbook = async (req, res) => {
   }
 }
 
+const toggleEbookStatus = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { isActive } = req.body
+
+    await Ebook.findByIdAndUpdate(id, { isActive })
+
+    res.status(200).json({ message: 'Status updated successfully' })
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' })
+  }
+}
+
 module.exports = {
   createEbook,
   getAllEbooks,
   getEbooksByClass,
   updateEbook,
   deleteEbook,
+  toggleEbookStatus,
 }

@@ -113,9 +113,26 @@ const OlineVideoUpload = () => {
     }
   }
 
+  const toggleStatus = async (id, currentStatus) => {
+    try {
+      await axios.put(`${SummaryApi.VideoStatus.url}/${id}`, {
+        isActive: !currentStatus,
+      })
+
+      // Update status in state without re-fetching data
+      setUploads((prevUploads) =>
+        prevUploads.map((upload) =>
+          upload._id === id ? { ...upload, isActive: !currentStatus } : upload
+        )
+      )
+    } catch (error) {
+      console.error('Error updating status:', error)
+    }
+  }
+
   const handleDelete = async (id) => {
     try {
-      await axios.delete(SummaryApi.Ovideodelete.url.replace(':id', id))
+      await axios.delete(SummaryApi.Ovideodelete.url)
       setUploads(uploads.filter((upload) => upload._id !== id))
     } catch (error) {
       console.error('Error deleting ebook:', error)
@@ -306,6 +323,7 @@ const OlineVideoUpload = () => {
             <th className="p-1">Language</th>
             <th className="p-1">Chapter Name</th> {/* Updated column */}
             <th className="p-1">Video Link</th> {/* Updated column */}
+            <th className="p-1">Status</th>
             <th className="p-1">Actions</th>
           </tr>
         </thead>
@@ -365,6 +383,18 @@ const OlineVideoUpload = () => {
                   >
                     View Video
                   </a>
+                </td>
+                <td>
+                  <button
+                    onClick={() => toggleStatus(upload._id, upload.isActive)}
+                    className={`p-2 rounded-lg ${
+                      upload.isActive
+                        ? 'bg-green-500 text-white'
+                        : 'bg-red-500 text-white'
+                    }`}
+                  >
+                    {upload.isActive ? 'Deactivate' : 'Activate'}
+                  </button>
                 </td>
                 <td className="border p-2 flex justify-center gap-2">
                   {editId === upload._id ? (

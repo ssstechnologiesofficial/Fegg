@@ -32,28 +32,21 @@ const createPreviousPaper = async (req, res) => {
   }
 }
 
-// Get all Previous Year Papers with optional filters
-// const getAllPreviousPaper = async (req, res) => {
-//   try {
-//     const { className, language, session } = req.query
-//     const query = {}
-//     if (className) query.className = className
-//     if (language) query.language = language
-//     if (session) query.session = session
-
-//     const previousPapers = await PreviousPaperModel.find(query)
-//     res.status(200).json(previousPapers)
-//   } catch (error) {
-//     res.status(500).json({ message: 'Error fetching previous papers', error })
-//   }
-// }
-
 const getAllPreviousPaper = async (req, res) => {
   try {
-    const { className } = req.query
-    const query = className ? { className } : {}
-    const prev = await PreviousPaperModel.find(query)
-    res.status(200).json(prev)
+    const { className, admin } = req.query
+    let query = {} // Default: fetch all records
+
+    if (!admin) {
+      query.isActive = true // Only show active PDFs to users
+    }
+
+    if (className) {
+      query.className = className
+    }
+
+    const ebooks = await PreviousPaperModel.find(query)
+    res.status(200).json(ebooks)
   } catch (error) {
     res.status(500).json({ message: 'Error fetching ebooks', error })
   }
@@ -63,7 +56,7 @@ const getAllPreviousPaper = async (req, res) => {
 const getPreviousPaperByClass = async (req, res) => {
   try {
     const { className } = req.params
-    const papers = await PreviousPaperModel.find({ className })
+    const papers = await PreviousPaperModel.find({ className, isActive: true })
     res.status(200).json(papers)
   } catch (error) {
     res.status(500).json({ message: 'Error fetching papers by class', error })
@@ -72,6 +65,7 @@ const getPreviousPaperByClass = async (req, res) => {
 
 // Update a Previous Year Paper
 const updatePreviousPaper = async (req, res) => {
+  console.log('update', req.params)
   try {
     const { id } = req.params
     const { year, className, subject, language, session } = req.body
@@ -115,6 +109,18 @@ const deletePreviousPaper = async (req, res) => {
     res.status(500).json({ message: 'Error deleting paper', error })
   }
 }
+const togglePreviousPaperStatus = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { isActive } = req.body
+
+    await PreviousPaperModel.findByIdAndUpdate(id, { isActive })
+
+    res.status(200).json({ message: 'Status updated successfully' })
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' })
+  }
+}
 
 module.exports = {
   createPreviousPaper,
@@ -122,4 +128,5 @@ module.exports = {
   getPreviousPaperByClass,
   updatePreviousPaper,
   deletePreviousPaper,
+  togglePreviousPaperStatus,
 }

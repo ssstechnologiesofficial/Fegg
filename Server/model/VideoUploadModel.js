@@ -34,6 +34,8 @@ const videoUploadSchema = new mongoose.Schema(
       required: true,
       enum: ['English', 'Hindi'],
     },
+    isActive: { type: Boolean, default: true }, // Add isActive field
+
     youtubeLink: {
       type: String,
       required: true,

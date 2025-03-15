@@ -20,6 +20,7 @@ const Video10th = () => {
       .get(`${SummaryApi.getuploadvideo.url}?className=10`)
       .then((response) => {
         setData(response.data)
+        console.log(response.data)
       })
       .catch((error) => {
         console.error('Error fetching videos:', error)
@@ -35,7 +36,11 @@ const Video10th = () => {
     setActiveSubject(null)
   }
 
-  const handleVideoClick = (videoLink, subject, className) => {
+  const handleVideoClick = (videoLink, subject, className, isActive) => {
+    if (!isActive) {
+      alert('This file is currently deactivated.')
+      return
+    }
     setSelectedVideo(videoLink)
     setSelectedSubject(subject)
     setSelectedClass(className) // Ensure className is set
@@ -59,7 +64,9 @@ const Video10th = () => {
     }
   }
 
-  const filteredData = data.filter((item) => item.language === selectedLanguage)
+  const filteredData = data.filter(
+    (item) => item.language === selectedLanguage && item.isActive
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
@@ -129,7 +136,8 @@ const Video10th = () => {
                           handleVideoClick(
                             item.youtubeLink,
                             item.subject,
-                            item.className
+                            item.className,
+                            item.isActive
                           )
                         }
                         className="text-blue-600 font-medium hover:underline"

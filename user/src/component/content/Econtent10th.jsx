@@ -173,6 +173,7 @@ const Econtent10th = () => {
   const [userInput, setUserInput] = useState('')
   const [activeSubject, setActiveSubject] = useState(null)
   const [selectedLanguage, setSelectedLanguage] = useState('')
+
   useEffect(() => {
     setSelectedLanguage('Hindi')
 
@@ -180,6 +181,7 @@ const Econtent10th = () => {
       .get(`${SummaryApi.Ebooks.url}?className=10`)
       .then((response) => {
         setData(response.data)
+        console.log(response.data)
       })
       .catch((error) => {
         console.error('Error fetching eBooks:', error)
@@ -195,7 +197,9 @@ const Econtent10th = () => {
     setActiveSubject(null)
   }
 
-  const filteredData = data.filter((item) => item.language === selectedLanguage)
+  const filteredData = data.filter(
+    (item) => item.language === selectedLanguage && item.isActive
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
@@ -205,10 +209,14 @@ const Econtent10th = () => {
     return acc
   }, {})
 
-  const handleDownloadClick = (fileUrl, subject, className) => {
+  const handleDownloadClick = (fileUrl, subject, className, isActive) => {
+    if (!isActive) {
+      alert('This file is currently deactivated.')
+      return
+    }
     setSelectedFile(fileUrl)
     setSelectedSubject(subject)
-    setSelectedClass(className) // Ensure className is set
+    setSelectedClass(className)
     setIsModalOpen(true)
   }
 
@@ -306,7 +314,8 @@ const Econtent10th = () => {
                             handleDownloadClick(
                               item.file,
                               item.subject,
-                              item.className
+                              item.className,
+                              item.isActive
                             )
                           }
                           className="text-blue-600 hover:underline"
