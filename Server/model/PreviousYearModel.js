@@ -31,6 +31,7 @@ const PreviousPaperSchema = new mongoose.Schema(
       type: String, // Stores the file path of the uploaded answer key
       required: false, // Answer key is optional
     },
+    isActive: { type: Boolean, default: true }, // Add isActive field
   },
   { timestamps: true }
 )

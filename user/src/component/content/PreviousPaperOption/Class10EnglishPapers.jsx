@@ -37,7 +37,9 @@ const Class10EnglishPapers = () => {
     setActiveSubject(null)
   }
 
-  const filteredData = data.filter((item) => item.language === selectedLanguage)
+  const filteredData = data.filter(
+    (item) => item.language === selectedLanguage && item.isActive
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
@@ -47,10 +49,14 @@ const Class10EnglishPapers = () => {
     return acc
   }, {})
 
-  const handleDownloadClick = (fileUrl, subject, className) => {
+  const handleDownloadClick = (fileUrl, subject, className, isActive) => {
+    if (!isActive) {
+      alert('This file is currently deactivated.')
+      return
+    }
     setSelectedFile(fileUrl)
     setSelectedSubject(subject)
-    setSelectedClass(className) // Ensure className is set
+    setSelectedClass(className)
     setIsModalOpen(true)
   }
 
@@ -154,10 +160,16 @@ const Class10EnglishPapers = () => {
                             handleDownloadClick(
                               item.file,
                               item.subject,
-                              item.className
+                              item.className,
+                              item.isActive
                             )
                           }
-                          className="text-blue-600 hover:underline"
+                          className={`text-blue-600 hover:underline ${
+                            !item.isActive
+                              ? 'cursor-not-allowed opacity-50'
+                              : ''
+                          }`}
+                          disabled={!item.isActive}
                         >
                           📄 Download Paper
                         </button>

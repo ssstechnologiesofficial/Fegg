@@ -30,6 +30,7 @@ const {
   getAllPreviousPaper,
   getPreviousPaperByClass,
   updatePreviousPaper,
+  togglePreviousPaperStatus,
   deletePreviousPaper,
 } = require('../controller/PreviousYearController')
 // ==========================Route video
@@ -302,8 +303,9 @@ router.post(
   createPreviousPaper
 )
 router.get('/PreviousPaperget', getAllPreviousPaper)
-router.put('/PreviousPaper/:id', updatePreviousPaper)
+router.put('/PreviousPaperupdate/:id', updatePreviousPaper)
 router.delete('/PreviousPaper/:id', deletePreviousPaper)
+router.put('/previouspaperstatus/:id', togglePreviousPaperStatus)
 
 // student register
 router.post('/register', validateStudentRegistration, registerStudent)

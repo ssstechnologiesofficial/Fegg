@@ -60,6 +60,10 @@ const PreviousPaper = () => {
   }
 
   useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = () => {
     axios
       .get(SummaryApi.PreviousPaper.url)
       .then((response) => {
@@ -70,7 +74,7 @@ const PreviousPaper = () => {
         }
       })
       .catch((error) => console.error('Error fetching eBooks:', error))
-  }, [])
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -79,6 +83,24 @@ const PreviousPaper = () => {
 
   const handleFileChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.files[0] })
+  }
+
+  // Handle Activate/Deactivate
+  const toggleStatus = async (id, currentStatus) => {
+    try {
+      await axios.put(`${SummaryApi.previouspaperstatus.url}/${id}`, {
+        isActive: !currentStatus,
+      })
+
+      // Update status in state without re-fetching data
+      setUploads((prevUploads) =>
+        prevUploads.map((upload) =>
+          upload._id === id ? { ...upload, isActive: !currentStatus } : upload
+        )
+      )
+    } catch (error) {
+      console.error('Error updating status:', error)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -109,6 +131,40 @@ const PreviousPaper = () => {
     }
   }
 
+  const handleEditChange = (e, id) => {
+    const { name, value } = e.target
+
+    setUploads((prevUploads) =>
+      prevUploads.map((upload) =>
+        upload._id === id ? { ...upload, [name]: value } : upload
+      )
+    )
+
+    if (editId === id) {
+      setEditData((prev) => ({ ...prev, [name]: value }))
+    }
+  }
+
+  const handleEdit = (id) => {
+    const selectedUpload = uploads.find((upload) => upload._id === id)
+    setEditId(id)
+    setEditData({ ...selectedUpload }) // Ensure a copy is stored
+  }
+
+  const handleSave = async (id) => {
+    try {
+      const updatedData = uploads.find((upload) => upload._id === id) // Get updated data
+      await axios.put(
+        `${SummaryApi.PreviousPaperupdate.url}/${id}`,
+        updatedData
+      )
+      setEditId(null)
+      fetchData()
+    } catch (error) {
+      console.error('Error updating file:', error)
+    }
+  }
+
   useEffect(() => {
     if (!Array.isArray(uploads)) return
     const filteredData = uploads.filter(
@@ -119,6 +175,17 @@ const PreviousPaper = () => {
     )
     setFilteredUploads(filteredData)
   }, [filters, uploads])
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this file?')) {
+      try {
+        await axios.delete(`${SummaryApi.PreviousPaperId.url}/${id}`)
+        fetchData() // Refresh data after deletion
+      } catch (error) {
+        console.error('Error deleting file:', error)
+      }
+    }
+  }
 
   return (
     <div className="p-4 bg-white">
@@ -226,6 +293,70 @@ const PreviousPaper = () => {
         </button>
       </form>
 
+      {/* ============= filter Section================== */}
+      <div className="my-4 p-4 bg-gray-100 rounded">
+        <h3 className="font-semibold text-lg mb-2">Filter Papers</h3>
+        <div className="flex flex-wrap gap-3">
+          <div className="flex-1">
+            <label className="font-semibold">Class:</label>
+            <select
+              name="className"
+              value={filters.className}
+              onChange={(e) =>
+                setFilters({ ...filters, className: e.target.value })
+              }
+              className="border p-2 w-full rounded"
+            >
+              <option value="">All</option>
+              <option value="10">10</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+
+          <div className="flex-1">
+            <label className="font-semibold">Subject:</label>
+            <select
+              name="subject"
+              value={filters.subject}
+              onChange={(e) =>
+                setFilters({ ...filters, subject: e.target.value })
+              }
+              className="border p-2 w-full rounded"
+            >
+              <option value="">All</option>
+              {subjects[filters.className || '10']?.map((subj) => (
+                <option key={subj} value={subj}>
+                  {subj}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex-1">
+            <label className="font-semibold">Year:</label>
+            <input
+              type="text"
+              name="year"
+              value={filters.year}
+              onChange={(e) => setFilters({ ...filters, year: e.target.value })}
+              className="border p-2 w-full rounded"
+              placeholder="Enter Year"
+            />
+          </div>
+
+          <div className="flex-1 self-end">
+            <button
+              onClick={() =>
+                setFilters({ year: '', className: '', subject: '' })
+              }
+              className="bg-red-500 text-white px-4 py-2 rounded"
+            >
+              Reset Filters
+            </button>
+          </div>
+        </div>
+      </div>
+
       <h3 className="text-lg font-bold mt-5 mb-1">Uploaded Files:</h3>
       <table className="w-full border mt-4">
         <thead>
@@ -238,17 +369,74 @@ const PreviousPaper = () => {
             <th>Language</th>
             <th>Paper</th>
             <th>Answer Key</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredUploads.map((upload, index) => (
+          {uploads.map((upload, index) => (
             <tr key={upload._id} className="text-center">
               <td>{index + 1}</td>
-              <td>{upload.subject}</td>
-              <td>{upload.className}</td>
-              <td>{upload.year}</td>
-              <td>{upload.session}</td>
-              <td>{upload.language}</td>
+              <td>
+                {editId === upload._id ? (
+                  <input
+                    type="text"
+                    name="subject"
+                    value={upload.subject}
+                    onChange={(e) => handleEditChange(e, upload._id)}
+                  />
+                ) : (
+                  upload.subject
+                )}
+              </td>{' '}
+              <td>
+                {editId === upload._id ? (
+                  <input
+                    type="text"
+                    name="className"
+                    value={upload.className}
+                    onChange={(e) => handleEditChange(e, upload._id)}
+                  />
+                ) : (
+                  upload.className
+                )}
+              </td>
+              <td>
+                {editId === upload._id ? (
+                  <input
+                    type="text"
+                    name="year"
+                    value={upload.year}
+                    onChange={(e) => handleEditChange(e, upload._id)}
+                  />
+                ) : (
+                  upload.year
+                )}
+              </td>
+              <td>
+                {editId === upload._id ? (
+                  <input
+                    type="text"
+                    name="session"
+                    value={upload.session}
+                    onChange={(e) => handleEditChange(e, upload._id)}
+                  />
+                ) : (
+                  upload.session
+                )}
+              </td>
+              <td>
+                {editId === upload._id ? (
+                  <input
+                    type="text"
+                    name="language"
+                    value={upload.language}
+                    onChange={(e) => handleEditChange(e, upload._id)}
+                  />
+                ) : (
+                  upload.language
+                )}
+              </td>
               <td>
                 <a href={`${baseUrl}/${upload.file}`} target="_blank">
                   View
@@ -258,6 +446,41 @@ const PreviousPaper = () => {
                 <a href={`${baseUrl}/${upload.answerKey}`} target="_blank">
                   View
                 </a>
+              </td>
+              <td>
+                <button
+                  onClick={() => toggleStatus(upload._id, upload.isActive)}
+                  className={`p-2 rounded-lg ${
+                    upload.isActive
+                      ? 'bg-green-500 text-white'
+                      : 'bg-red-500 text-white'
+                  }`}
+                >
+                  {upload.isActive ? 'Deactivate' : 'Activate'}
+                </button>
+              </td>
+              <td>
+                {editId === upload._id ? (
+                  <button
+                    onClick={() => handleSave(upload._id)}
+                    className="bg-green-500 text-white p-2 rounded-lg mx-1"
+                  >
+                    <FaSave />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleEdit(upload._id)}
+                    className="bg-blue-500 text-white p-2 rounded-lg mx-1"
+                  >
+                    <FaEdit />
+                  </button>
+                )}
+                <button
+                  onClick={() => handleDelete(upload._id)}
+                  className="bg-red-500 text-white p-2 rounded-lg mx-1"
+                >
+                  <FaTrash />
+                </button>
               </td>
             </tr>
           ))}
