@@ -1119,7 +1119,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              मिडल नेम
+              मिडिल नेम
               <input
                 type="text"
                 name="middleName"
@@ -1427,7 +1427,7 @@ const Register = () => {
             </label>
 
             <label className="block">
-              स्तिथि <span className="text-red-500">*</span>
+              स्थिति <span className="text-red-500">*</span>
               <select
                 name="status"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"

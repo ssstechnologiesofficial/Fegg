@@ -252,7 +252,7 @@ const NavLinks = () => {
           onMouseLeave={() => setIsStudentCornerOpen(false)}
         >
           <NavLink to="/student-corner" className="nav-link py-2">
-            शिक्षार्थी अनुभाग
+            शिक्षार्थी कॉर्नर
           </NavLink>
           {isStudentCornerOpen &&
             dropdownMenu([
@@ -261,7 +261,7 @@ const NavLinks = () => {
               { label: 'ब्लूप्रिंट', isDownload: true },
               {
                 link: '/PreviousPaperOption',
-                label: 'पिछले वर्ष के प्रश्नपत्र',
+                label: 'पिछले वर्षो के प्रश्नपत्र',
               },
               { link: '/practice-set', label: 'अभ्यास सेट' },
             ])}

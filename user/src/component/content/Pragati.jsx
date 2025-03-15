@@ -95,7 +95,6 @@ const Pragati = () => {
 
           {/* Text Content */}
           <div className="sm:m-3 flex justify-center items-start flex-col sm:w-[600px] sm:p-3 p-5 mt-7 text-sm sm:text-base">
-            
             <p className="mb-5">
               भारत में 9 करोड़ युवा महिलाएँ (15-29 वर्ष) शिक्षा, रोजगार और
               प्रशिक्षण (NEET - Not in Education, Employment & Training) दायरे

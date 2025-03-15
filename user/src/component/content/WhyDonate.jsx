@@ -116,7 +116,7 @@ const InfoSection = () => {
     <div ref={sectionRef} className="py-12 bg-gray-100 px-4 md:px-8">
       <h2 className="text-center text-primary text-xl md:text-3xl font-bold mb-8">
         {/* INFORMATION ABOUT */}
-        शॉर्टकट कुंजियाँ
+        संबंधित शॉर्टकट्स{' '}
       </h2>
       <div className="container mx-auto">
         <Swiper

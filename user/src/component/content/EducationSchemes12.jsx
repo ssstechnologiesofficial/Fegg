@@ -142,7 +142,7 @@ const EducationSchemes = () => {
         <table className="w-full border border-gray-300">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">योजनाऐं </th>
+              <th className="border border-gray-400 px-4 py-2">योजनाएँ </th>
               <th className="border border-gray-400 px-4 py-2">
                 हायर सेकेण्डरी पाठ्यक्रम 12
               </th>
