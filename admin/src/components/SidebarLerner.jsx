@@ -34,7 +34,7 @@ import {
 } from 'react-icons/fi'
 import { FaList, FaQuestionCircle } from 'react-icons/fa'
 
-const Sidebar = () => {
+const Sidebarlerner = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
 
@@ -62,7 +62,7 @@ const Sidebar = () => {
                 <img src={fagglogo} className="w-20 object-fill mx-auto py-2" />
               </div>
               <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r from-[#fe0000] z-20 w-[200px] right-4 text-white relative">
-                Admin Panel
+                Admin Panel Lerner
               </h1>
             </div>
           )}
@@ -82,13 +82,13 @@ const Sidebar = () => {
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
           </Link>
-          <Link
+          {/* <Link
             to="students"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaChalkboardTeacher className="mr-2" size={20} />
             {!isCollapsed && <span>Students</span>}
-          </Link>
+          </Link> */}
           <Link
             to="EBooks"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -125,20 +125,20 @@ const Sidebar = () => {
             {!isCollapsed && <span>News Letter Upload</span>}
           </Link>
 
-          <Link
+          {/* <Link
             to="SessionAdd"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaCalendarAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Update Session</span>}
-          </Link>
-          <Link
+          </Link> */}
+          {/* <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaPhotoVideo className="mr-2" size={20} />
             {!isCollapsed && <span>Slider Image</span>}
-          </Link>
+          </Link> */}
           {/* <Link
             to="testimonial"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -153,13 +153,13 @@ const Sidebar = () => {
             <FaShareAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Add URL</span>}
           </Link> */}
-          <Link
+          {/* <Link
             to="announcement"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FiVolume1 className="" size={28} />
             {!isCollapsed && <span>Announcement</span>}
-          </Link>
+          </Link> */}
           {/* Mock Test Dropdown */}
           {!isCollapsed && (
             <div>
@@ -237,13 +237,13 @@ const Sidebar = () => {
               )}
             </div>
           )}
-          <Link
+          {/* <Link
             to="EContentModel"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaRegFileArchive className="mr-2" size={20} />
             {!isCollapsed && <span>E-Book Modal Data</span>}
-          </Link>
+          </Link> */}
           <Link
             to="/"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -268,4 +268,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebarlerner

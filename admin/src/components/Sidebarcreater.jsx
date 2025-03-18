@@ -34,7 +34,7 @@ import {
 } from 'react-icons/fi'
 import { FaList, FaQuestionCircle } from 'react-icons/fa'
 
-const Sidebar = () => {
+const Sidebarcreater = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
 
@@ -82,7 +82,7 @@ const Sidebar = () => {
             <TbLayoutDashboardFilled className="mr-2" size={20} />
             {!isCollapsed && <span>Dashboard</span>}
           </Link>
-          <Link
+          {/* <Link
             to="students"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
@@ -123,15 +123,14 @@ const Sidebar = () => {
           >
             <FaFile className="mr-2" size={20} />
             {!isCollapsed && <span>News Letter Upload</span>}
-          </Link>
-
-          <Link
+          </Link> */}
+          {/* <Link
             to="SessionAdd"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaCalendarAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Update Session</span>}
-          </Link>
+          </Link> */}
           <Link
             to="hero-img"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -161,7 +160,7 @@ const Sidebar = () => {
             {!isCollapsed && <span>Announcement</span>}
           </Link>
           {/* Mock Test Dropdown */}
-          {!isCollapsed && (
+          {/* {!isCollapsed && (
             <div>
               <div
                 onClick={() => setIsMockDropdownOpen(!isMockDropdownOpen)}
@@ -211,39 +210,39 @@ const Sidebar = () => {
                   </Link>
 
                   */}
-                  <Link
-                    to="questions-manage"
-                    className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
-                  >
-                    <TbAdjustmentsQuestion />
-                    <span>Questions Management</span>
-                  </Link>
-                  <Link
-                    to="create-test"
-                    className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
-                  >
-                    <LuFileQuestion />
-                    <span>Create Test</span>
-                  </Link>
-
-                  <Link
-                    to="MockSidebarResult"
-                    className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
-                  >
-                    <FaList />
-                    <span>Test Result</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-          )}
+          {/* <Link
+            to="questions-manage"
+            className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <TbAdjustmentsQuestion />
+            <span>Questions Management</span>
+          </Link>
           <Link
+            to="create-test"
+            className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <LuFileQuestion />
+            <span>Create Test</span>
+          </Link>
+
+          <Link
+            to="MockSidebarResult"
+            className="flex items-center space-x-2 px-4 py-2 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
+          >
+            <FaList />
+            <span>Test Result</span>
+          </Link>
+          </div> */}{' '}
+          {/* )} */}
+          {/* </div> */}
+          {/* )}  */}
+          {/* <Link
             to="EContentModel"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaRegFileArchive className="mr-2" size={20} />
             {!isCollapsed && <span>E-Book Modal Data</span>}
-          </Link>
+          </Link> */}
           <Link
             to="/"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -268,4 +267,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebarcreater
