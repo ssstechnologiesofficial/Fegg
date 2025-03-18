@@ -34,6 +34,8 @@ import AddTestimonials from '../components/AddTestimonials'
 import UploadUrl from '../components/UploadUrl'
 import NewsLetterUpload from '../components/NewsLetterUpload'
 import SessionAdd from '../components/SessionAdd'
+import Sidebarlerner from '../components/SidebarLerner'
+import Sidebarcreater from '../components/Sidebarcreater'
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +57,126 @@ export const router = createBrowserRouter([
       {
         path: 'ResetPasswordPage/:token',
         element: <ResetPasswordPage />,
+      },
+      {
+        path: 'dashboard2',
+        element: <Sidebarlerner />,
+        children: [
+          {
+            path: 'dashboardCards',
+            element: <Dashboard />,
+          },
+          {
+            path: 'EBooks',
+            element: <EBooks />,
+          },
+          {
+            path: 'event',
+            element: <EventForm />,
+          },
+
+          // {
+          //   path: 'hero-img',
+          //   element: <HeroImage />,
+          // },
+          // {
+          //   path: 'announcement',
+          //   element: <AnnouncementUpload />,
+          // },
+          // {
+          //   path: 'students',
+          //   element: <StudentList />,
+          // },
+          {
+            path: 'OlineVideoUpload',
+            element: <OlineVideoUpload />,
+          },
+          // {
+          //   path: 'EContentModel',
+          //   element: <EContentModel />,
+          // },
+          {
+            path: 'create-test',
+            element: <CreatePracticeSet />,
+          },
+
+          {
+            path: 'create-subject',
+            element: <CreateSubjectForm />,
+          },
+          {
+            path: 'create-chapter',
+            element: <CreateChapterForm />,
+          },
+          {
+            path: 'create-question',
+            element: <QuestionBank />,
+          },
+          {
+            path: 'start/:mockTestId',
+            element: <MockTestStart />,
+          },
+          {
+            path: 'result/:resultId',
+            element: <Mockresult />,
+          },
+          {
+            path: 'MockSidebarResult',
+            element: <TestResultsTable />,
+          },
+          {
+            path: 'create-questions',
+            element: <CreateQuestion />,
+          },
+          {
+            path: 'questions-manage',
+            element: <QuestionTable />,
+          },
+          {
+            path: 'PreviousPaper',
+            element: <PreviousPaper />,
+          },
+          {
+            path: 'PracticeModaldata',
+            element: <PracticeModaldata />,
+          },
+          {
+            path: 'BluePrintupload',
+            element: <BluePrintupload />,
+          },
+          {
+            path: 'testimonial',
+            element: <AddTestimonials />,
+          },
+          {
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
+          },
+          {
+            path: 'SessionAdd',
+            element: <SessionAdd />,
+          },
+        ],
+      },
+
+      //==================================== creater
+      {
+        path: 'dashboard3',
+        element: <Sidebarcreater />,
+        children: [
+          {
+            path: 'dashboardCards',
+            element: <Dashboard />,
+          },
+          {
+            path: 'hero-img',
+            element: <HeroImage />,
+          },
+          {
+            path: 'announcement',
+            element: <AnnouncementUpload />,
+          },
+        ],
       },
       {
         path: 'dashboard',
