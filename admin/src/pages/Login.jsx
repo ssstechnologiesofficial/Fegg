@@ -202,14 +202,42 @@ const Login = () => {
     setShowPassword(!showPassword)
   }
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   setError('')
+
+  //   try {
+  //     const response = await axios.post(SummaryApi.login.url, data)
+  //     localStorage.setItem('token', response.data.token)
+  //     navigate('/dashboard/dashboardCards')
+  //   } catch (error) {
+  //     setError(error.response?.data?.message || 'Invalid email or password')
+  //   }
+  // }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
 
     try {
       const response = await axios.post(SummaryApi.login.url, data)
-      localStorage.setItem('token', response.data.token)
-      navigate('/dashboard/dashboardCards')
+      console.log('API Response:', response.data)
+
+      const { token, email } = response.data
+      console.log('Email from API:', email)
+
+      localStorage.setItem('token', token)
+      localStorage.setItem('userId', email)
+
+      if (email.toLowerCase() === 'techeg007@gmail.com') {
+        navigate('/dashboard/dashboardCards')
+      } else if (email.toLowerCase() === 'creator07@gmail.com') {
+        navigate('/dashboard2')
+      } else if (email.toLowerCase() === 'learner07@gmail.com') {
+        navigate('/dashboard3')
+      } else {
+        navigate('/dashboard/general')
+      }
     } catch (error) {
       setError(error.response?.data?.message || 'Invalid email or password')
     }

@@ -1,5 +1,5 @@
-// const backendDomain = 'https://feggbackend.onrender.com'
-const backendDomain = 'http://localhost:8006'
+const backendDomain = 'https://feggbackend.onrender.com'
+// const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   addEvent: {
@@ -293,6 +293,10 @@ const SummaryApi = {
   },
   login: {
     url: `${backendDomain}/api/login`,
+    method: 'post',
+  },
+  Registerlogin: {
+    url: `${backendDomain}/api/registerlogin`,
     method: 'post',
   },
   requestpasswordreset: {
