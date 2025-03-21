@@ -117,13 +117,13 @@ const Sidebarlerner = () => {
             <FaFileCode className="mr-2" size={20} />
             {!isCollapsed && <span>Upload Blue Print</span>}
           </Link>
-          <Link
+          {/* <Link
             to="NewsLetterUpload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaFile className="mr-2" size={20} />
             {!isCollapsed && <span>News Letter Upload</span>}
-          </Link>
+          </Link> */}
 
           {/* <Link
             to="SessionAdd"

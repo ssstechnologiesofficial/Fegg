@@ -148,10 +148,10 @@ export const router = createBrowserRouter([
             path: 'testimonial',
             element: <AddTestimonials />,
           },
-          {
-            path: 'NewsLetterUpload',
-            element: <NewsLetterUpload />,
-          },
+          // {
+          //   path: 'NewsLetterUpload',
+          //   element: <NewsLetterUpload />,
+          // },
           {
             path: 'SessionAdd',
             element: <SessionAdd />,

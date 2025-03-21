@@ -74,7 +74,7 @@ export default function ForgetPasswordRegistration() {
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md">
-      <h2 className="text-xl font-bold mb-4">Forget Password Registration</h2>
+      <h2 className="text-xl font-bold mb-4">Registration</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       {success && <p className="text-green-500 mb-4">{success}</p>}
       <form onSubmit={handleSubmit}>
