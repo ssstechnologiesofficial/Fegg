@@ -231,9 +231,9 @@ const Login = () => {
 
       if (email.toLowerCase() === 'techeg007@gmail.com') {
         navigate('/dashboard/dashboardCards')
-      } else if (email.toLowerCase() === 'communication07@gmail.com') {
+      } else if (email.toLowerCase() === 'academics07@gmail.com') {
         navigate('/dashboard2')
-      } else if (email.toLowerCase() === 'announcement07@gmail.com') {
+      } else if (email.toLowerCase() === 'communication07@gmail.com') {
         navigate('/dashboard3')
       } else {
         navigate('/dashboard/general')
