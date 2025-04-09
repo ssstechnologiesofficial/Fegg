@@ -6,6 +6,7 @@ const SummaryApi = {
     url: `${backendDomain}/api/events`,
     method: 'post',
   },
+
   getEvent: {
     url: `${backendDomain}/api/events`,
     method: 'get',
