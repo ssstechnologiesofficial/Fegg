@@ -1447,7 +1447,7 @@ const Register = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select Class</option>
+                <option value="">Select Scheme</option>
                 <option value="Open School (Parampragat)">
                   Open School (Parampragat)
                 </option>
