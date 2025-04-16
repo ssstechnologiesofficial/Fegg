@@ -220,19 +220,15 @@ const PreviousPaper = () => {
             </div>
             <div className="flex-1">
               <label>Subject:</label>
-              <select
+              <input
+                type="text"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
                 required
+                placeholder="Enter subject"
                 className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
-              >
-                {subjects[formData.className]?.map((subj) => (
-                  <option key={subj} value={subj}>
-                    {subj}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
             <div className="flex-1">
               <label className="font-semibold">Session:</label>
@@ -312,24 +308,18 @@ const PreviousPaper = () => {
               <option value="12">12</option>
             </select>
           </div>
-
           <div className="flex-1">
             <label className="font-semibold">Subject:</label>
-            <select
+            <input
+              type="text"
               name="subject"
               value={filters.subject}
               onChange={(e) =>
                 setFilters({ ...filters, subject: e.target.value })
               }
+              placeholder="Filter by subject"
               className="border p-2 w-full rounded"
-            >
-              <option value="">All</option>
-              {subjects[filters.className || '10']?.map((subj) => (
-                <option key={subj} value={subj}>
-                  {subj}
-                </option>
-              ))}
-            </select>
+            />
           </div>
 
           <div className="flex-1">

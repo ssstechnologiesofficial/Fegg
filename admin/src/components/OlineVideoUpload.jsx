@@ -17,34 +17,8 @@ const OlineVideoUpload = () => {
     subject: '',
   })
   const subjects = {
-    10: [
-      'हिंदी (201)',
-      'अंग्रेज़ी (202)',
-      'मराठी (204)',
-      'उर्दू (206)',
-      'संस्कृत (209)',
-      'गणित (211)',
-      'विज्ञान (212)',
-      'सामाजिक विज्ञान (213)',
-      'अर्थशास्त्र (214)',
-      'व्यवसाय अध्ययन (215)',
-      'गृह विज्ञान (216)',
-      'भारतीय संस्कृति (223)',
-      'उद्यमिता (249)',
-    ],
-    12: [
-      'हिंदी (301)',
-      'अंग्रेज़ी (302)',
-      'संस्कृत (309)',
-
-      'गणित (311)',
-      'गृह विज्ञान  (सिद्धांत एवं प्रयोगात्मक) (321)',
-      'अर्थशास्त्र (318)',
-
-      'भारतीय  (सिद्धांत एवं प्रयोगात्मक)(321)',
-      'इतिहास (315)',
-      'व्यवसाय अध्ययन (319)',
-    ],
+    10: [],
+    12: [],
   }
 
   useEffect(() => {
@@ -131,6 +105,10 @@ const OlineVideoUpload = () => {
   }
 
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this ebook?'
+    )
+    if (!confirmDelete) return
     try {
       await axios.delete(SummaryApi.Ovideodelete.url)
       setUploads(uploads.filter((upload) => upload._id !== id))
@@ -202,20 +180,16 @@ const OlineVideoUpload = () => {
               </select>
             </div>
             <div className="flex-1">
-              <label className="font-semibold">Subject:</label>
-              <select
+              <label>Subject:</label>
+              <input
+                type="text"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
                 required
+                placeholder="Enter subject"
                 className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fd645b]"
-              >
-                {subjects[formData.className]?.map((subj) => (
-                  <option key={subj} value={subj}>
-                    {subj}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           </div>
 
@@ -282,6 +256,10 @@ const OlineVideoUpload = () => {
           <option value="2023-2024">2023-2024</option>
           <option value="2024-2025">2024-2025</option>
           <option value="2025-2026">2025-2026</option>
+          <option value="2026-2027">2026-2027</option>
+          <option value="2027-2028">2027-2028</option>
+          <option value="2028-2029">2028-2029</option>
+          <option value="2029-2030">2029-2030</option>
         </select>
 
         <select
@@ -294,25 +272,14 @@ const OlineVideoUpload = () => {
           <option value="10">10</option>
           <option value="12">12</option>
         </select>
-        <select
+        <input
+          type="text"
           name="subject"
           value={filters.subject}
           onChange={handleFilterChange}
-          className="border p-2 rounded"
-        >
-          <option value="">All Subjects</option>
-          {[
-            ...new Set(
-              filters.className && subjects[filters.className]
-                ? subjects[filters.className]
-                : Object.values(subjects).flat()
-            ),
-          ].map((subj, index) => (
-            <option key={`${subj}-${index}`} value={subj}>
-              {subj}
-            </option>
-          ))}
-        </select>
+          placeholder="Filter by subject"
+          className="border p-2 rounded w-full"
+        />
       </div>
       <table className="w-full border mt-4">
         <thead>
