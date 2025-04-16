@@ -133,48 +133,62 @@ const HighSchoolSubjectsTable = () => {
   ]
 
   return (
-    <div className=" rounded-lg ">
+    <div className="rounded-lg">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         हाई स्कूल विषय विवरण
       </h3>
-      <table className="w-full border-collapse border border-gray-300 bg-white">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border border-gray-300 px-4 py-2">कोड</th>
-            <th className="border border-gray-300 px-4 py-2">विषय</th>
-            <th className="border border-gray-300 px-4 py-2">
-              प्रश्न पत्र संख्या
-            </th>
-            <th className="border border-gray-300 px-4 py-2">कुल अंक</th>
-            <th className="border border-gray-300 px-4 py-2">उत्तीर्ण अंक</th>
-            <th className="border border-gray-300 px-4 py-2">अवधि (घंटे)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {subjects.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                {item.code}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.subject}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.papers}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.totalMarks}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.passingMarks}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.duration}
-              </td>
+
+      {/* Responsive table wrapper */}
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border border-gray-300 bg-white text-sm sm:text-base">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                कोड
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                विषय
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                प्रश्न पत्र संख्या
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                कुल अंक
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                उत्तीर्ण अंक
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                अवधि (घंटे)
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {subjects.map((item, index) => (
+              <tr key={index} className="hover:bg-gray-100">
+                <td className="border border-gray-300 px-4 py-2 font-semibold whitespace-nowrap">
+                  {item.code}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.subject}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.papers}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.totalMarks}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.passingMarks}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.duration}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

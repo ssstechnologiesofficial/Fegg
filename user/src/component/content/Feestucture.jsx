@@ -47,11 +47,11 @@ const FeeStructureTable = () => {
   ]
 
   return (
-    <div className=" rounded-lg">
+    <div className="rounded-lg">
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         शुल्क संरचना तालिका (कक्षा 10वीं)
       </h3>
-      <p className="text-center mb-5">
+      <p className="text-center mb-5 px-4 text-sm sm:text-base">
         एम.पी. राज्य मुक्त विद्यालय द्वारा संचालित विभिन्न पाठ्यक्रमों की शुल्क
         संरचना तालिका में दर्शाई गई है। प्रवेश पंजीकरण हेतु आवेदन निर्दिष्ट
         कियोस्क के माध्यम से जमा किया जाना चाहिए। यदि शुल्क आंशिक रूप से या
@@ -63,46 +63,50 @@ const FeeStructureTable = () => {
         सभी जानकारी सही ढंग से भरी गई है, विवरण ध्यानपूर्वक पढ़ें और फॉर्म पर
         हस्ताक्षर करें।
       </p>
-      <table className="w-full border-collapse border border-gray-300 bg-white">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border border-gray-300 px-4 py-2">विषय</th>
-            <th className="border border-gray-300 px-4 py-2">
-              हाई स्कूल (सामान्य)
-            </th>
-            <th className="border border-gray-300 px-4 py-2">
-              बीपीएल/एससी/एसटी/महिला/40%+ विकलांग (हाई स्कूल)
-            </th>
-            <th className="border border-gray-300 px-4 py-2">
-              हायर सेकेंडरी (सामान्य)
-            </th>
-            <th className="border border-gray-300 px-4 py-2">
-              बीपीएल/एससी/एसटी/महिला/40%+ विकलांग (हायर सेकेंडरी)
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {feeData.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-100">
-              <td className="border border-gray-300 px-4 py-2 font-semibold">
-                {item.subject}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.highSchool}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.highSchoolBPL}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.higherSecondary}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.higherSecondaryBPL}
-              </td>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border border-gray-300 bg-white text-sm sm:text-base">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                विषय
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                हाई स्कूल (सामान्य)
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                बीपीएल/एससी/एसटी/महिला/40%+ विकलांग (हाई स्कूल)
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                हायर सेकेंडरी (सामान्य)
+              </th>
+              <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                बीपीएल/एससी/एसटी/महिला/40%+ विकलांग (हायर सेकेंडरी)
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {feeData.map((item, index) => (
+              <tr key={index} className="hover:bg-gray-100">
+                <td className="border border-gray-300 px-4 py-2 font-semibold whitespace-nowrap">
+                  {item.subject}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.highSchool}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.highSchoolBPL}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.higherSecondary}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 whitespace-nowrap">
+                  {item.higherSecondaryBPL}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
