@@ -1180,7 +1180,7 @@ const Register = () => {
               <input
                 type="text"
                 name="motherFirstName"
-                placeholder="Enter Father's First Name"
+                placeholder="Enter Mother First Name"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
@@ -1191,7 +1191,7 @@ const Register = () => {
               <input
                 type="text"
                 name="motherMiddleName"
-                placeholder="Enter Father's Middle Name"
+                placeholder="Enter Mother Middle Name"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
               />
@@ -1201,7 +1201,7 @@ const Register = () => {
               <input
                 type="text"
                 name="motherLastName"
-                placeholder="Enter Father's Last Name"
+                placeholder="Enter Mother Last Name"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
                 required
@@ -1351,7 +1351,7 @@ const Register = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select Category</option>
+                <option value="">Select Religion</option>
                 <option value="Hindu">Hindu</option>
                 <option value="Muslim">Muslim</option>
                 <option value="Buddhist">Buddhist</option>
