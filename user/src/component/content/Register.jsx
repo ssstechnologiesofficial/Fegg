@@ -1021,10 +1021,10 @@ const Register = () => {
     }
 
     // Age Validation (Must be 18+)
-    if (formData.age < 18) {
-      alert('You must be at least 18 years old to register.')
-      return
-    }
+    // if (formData.age < 18) {
+    //   alert('You must be at least 18 years old to register.')
+    //   return
+    // }
 
     // Ensure user is eligible based on status & last class studied
     if (formData.status === 'Fail' && formData.lastClassStudied === '5th') {
