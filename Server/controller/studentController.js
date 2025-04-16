@@ -165,11 +165,13 @@ const getStudentById = async (req, res) => {
 // Update student
 const updateStudent = async (req, res) => {
   try {
-    const updatedStudent = await studentRegister.findByIdAndUpdate(
-      req.params.id, // Find student by ID
-      { $set: req.body }, // Update with new data
-      { new: true, runValidators: true } // Return updated document & validate fields
-    )
+    const updatedStudent = await studentRegister
+      .findByIdAndUpdate(
+        req.params.id, // Find student by ID
+        { $set: req.body }, // Update with new data
+        { new: true, runValidators: true } // Return updated document & validate fields
+      )
+      .select('__v')
 
     if (!updatedStudent) {
       return res.status(404).json({ error: 'Student not found' })

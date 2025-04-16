@@ -41,6 +41,8 @@ const StudentList = () => {
   }
 
   const handleUpdate = async () => {
+    console.log(formData)
+
     try {
       await axios.put(
         SummaryApi.deleteRegister.url.replace(':id', selectedStudent._id),
@@ -120,7 +122,6 @@ const StudentList = () => {
       setCurrentPage((prev) => prev - 1)
     }
   }
-
   return (
     <div className="p-6 bg-white min-h-screen">
       <h2 className="text-2xl font-bold mb-4">Registered Student Details.</h2>
