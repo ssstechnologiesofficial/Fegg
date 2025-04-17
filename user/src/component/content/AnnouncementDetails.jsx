@@ -53,30 +53,31 @@ const AnnouncementDetails = () => {
 
         {/* Content Section */}
         <div className="p-6 flex flex-col sm:flex-row gap-6 items-center">
-          {/* Description */}
-          <div className="flex-1 text-gray-700 text-sm leading-relaxed">
-            <p className="mb-4 ">{announcement.description}</p>
-            {announcement.pdf && (
-              <a
-                href={`${baseUrl}/uploads/${announcement.pdf}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-white bg-primary w-full py-2 text-center text-sm rounded-md hover:bg-red-600 transition"
-              >
-                PDF देखें
-              </a>
-            )}
-          </div>
+  {/* Description */}
+  <div className="flex-1 text-gray-700 text-sm leading-relaxed sm:w-1/2">
+    <p className="mb-4">{announcement.description}</p>
+    {announcement.pdf && (
+      <a
+        href={`${baseUrl}/uploads/${announcement.pdf}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block text-white bg-primary w-full py-2 text-center text-sm rounded-md hover:bg-red-600 transition"
+      >
+        PDF देखें
+      </a>
+    )}
+  </div>
 
-          {/* Image */}
-          {announcement.image && (
-            <img
-              src={`${baseUrl}/uploads/${announcement.image}`}
-              alt="घोषणा"
-              className="w-96 h-96 object-cover rounded-lg shadow-md"
-            />
-          )}
-        </div>
+  {/* Image */}
+  {announcement.image && (
+    <img
+      src={`${baseUrl}/uploads/${announcement.image}`}
+      alt="घोषणा"
+      className="w-full sm:w-1/2 h-96 object-cover rounded-lg shadow-md"
+    />
+  )}
+</div>
+
       </div>
     </div>
   );

@@ -251,7 +251,7 @@ const NavLinks = () => {
           onMouseEnter={() => setIsStudentCornerOpen(true)}
           onMouseLeave={() => setIsStudentCornerOpen(false)}
         >
-          <NavLink to="/student-corner" className="nav-link py-2">
+          <NavLink to="" className="nav-link py-2">
             शिक्षार्थी कॉर्नर
           </NavLink>
           {isStudentCornerOpen &&
