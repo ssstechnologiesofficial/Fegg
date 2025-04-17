@@ -176,6 +176,10 @@ export const router = createBrowserRouter([
             path: 'announcement',
             element: <AnnouncementUpload />,
           },
+          {
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
+          },
         ],
       },
       {

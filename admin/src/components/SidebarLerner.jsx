@@ -62,7 +62,7 @@ const Sidebarlerner = () => {
                 <img src={fagglogo} className="w-20 object-fill mx-auto py-2" />
               </div>
               <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r from-[#fe0000] z-20 w-[200px] right-4 text-white relative">
-                Admin Panel Lerner
+              Academics Panel
               </h1>
             </div>
           )}
