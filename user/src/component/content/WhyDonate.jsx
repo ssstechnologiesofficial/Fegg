@@ -63,7 +63,7 @@ const InfoSection = () => {
     { label: 'पंजीकरण', color: 'bg-yellow-500', icon: <FaWpforms />, link: 'register' },
     { label: 'ई-बुक', color: 'bg-teal-500', icon: <FaClipboard />, link: 'e-content' },
     { label: 'प्रैक्टिस सेट', color: 'bg-orange-500', icon: <FaPencilAlt />, link: 'practice-set' },
-    { label: 'ऑनलाइन वीडियो', color: 'bg-purple-500', icon: <FaLaptop />, link: liveStreamUrl || '#' },
+    { label: 'लाइव स्ट्रीमिंग', color: 'bg-purple-500', icon: <FaLaptop />, link: liveStreamUrl || '#' },
     { label: 'प्रवेश पत्र', color: 'bg-green-500', icon: <FaAddressCard />, link: admitCardUrl || '#' },
     { label: 'अपना लर्नर आईडी खोजें', color: 'bg-blue-500', icon: <FaSearch />, link: 'FindLernerID' },
     { label: 'परिणाम', color: 'bg-red-500', icon: <FaGraduationCap />, link: resultUrl || '#' },
