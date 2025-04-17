@@ -91,7 +91,7 @@ const HeaderTop = () => {
           गैलरी
         </NavLink>
         <span className="text-white">|</span>
-        <NavLink to="/faq" className="text-white hover:text-gray-300 text-xs">
+        <NavLink to="/faq" className="text-white hover:text-gray-300 whitespace-nowrap">
           FAQ अक्सर पूछे जाने वाले प्रश्न
         </NavLink>
         <span className="text-white">|</span>
