@@ -105,7 +105,7 @@ const NewsLetterUpload = () => {
           <thead>
             <tr className="bg-red-500 text-white">
               <th className="py-2 px-4">Image</th>
-              <th className="py-2 px-4">Description</th>
+              <th className="py-2 px-4">Title </th>
               <th className="py-2 px-4">Actions</th>
             </tr>
           </thead>

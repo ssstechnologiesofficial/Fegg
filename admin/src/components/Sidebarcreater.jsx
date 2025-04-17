@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Outlet, Link } from "react-router-dom";
 import {
   TbAdjustmentsQuestion,
   TbLayoutDashboardFilled,
   TbPencilQuestion,
-} from 'react-icons/tb'
-import fagglogo from '../../public/eg-logo.png'
-import { FaFileCircleQuestion } from 'react-icons/fa6'
-import { LuFileQuestion } from 'react-icons/lu'
+} from "react-icons/tb";
+import fagglogo from "../../public/eg-logo.png";
+import { FaFileCircleQuestion } from "react-icons/fa6";
+import { LuFileQuestion } from "react-icons/lu";
 import {
   FaChalkboardTeacher,
   FaClipboardList,
@@ -19,8 +19,8 @@ import {
   FaShareAlt,
   FaPhotoVideo,
   FaRegFileArchive,
-} from 'react-icons/fa'
-import { FaBars } from 'react-icons/fa6'
+} from "react-icons/fa";
+import { FaBars } from "react-icons/fa6";
 import {
   FiChevronDown,
   FiChevronUp,
@@ -31,26 +31,26 @@ import {
   FiSave,
   FiVolume1,
   FiFile,
-} from 'react-icons/fi'
-import { FaList, FaQuestionCircle } from 'react-icons/fa'
+} from "react-icons/fi";
+import { FaList, FaQuestionCircle } from "react-icons/fa";
 
 const Sidebarcreater = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false)
-  const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMockDropdownOpen, setIsMockDropdownOpen] = useState(false);
 
   const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed)
+    setIsCollapsed(!isCollapsed);
     if (!isCollapsed) {
-      setIsMockDropdownOpen(false) // Close dropdown when collapsing
+      setIsMockDropdownOpen(false); // Close dropdown when collapsing
     }
-  }
+  };
 
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
       <aside
         className={`${
-          isCollapsed ? 'w-16' : 'w-60'
+          isCollapsed ? "w-16" : "w-60"
         } bg-white text-black fixed border-[#fe0000] border-r-2 h-full shadow-lg transition-all duration-300 overflow-y-auto overflow-x-hidden`}
       >
         {/* Sidebar content here */}
@@ -61,8 +61,8 @@ const Sidebarcreater = () => {
               <div className="flex items-center justify-center rounded-full p-5 shadow-md">
                 <img src={fagglogo} className="w-20 object-fill mx-auto py-2" />
               </div>
-              <h1 className="text-xl font-semibold mt-2 bg-gradient-to-r from-[#fe0000] z-20 w-[200px] right-4 text-white relative">
-                Admin Panel
+              <h1 className="text-xl font-semibold mt-2 bg-red-500 z-20 w-[200px] right-4 text-white relative">
+                Communication Panel
               </h1>
             </div>
           )}
@@ -116,14 +116,14 @@ const Sidebarcreater = () => {
           >
             <FaFileCode className="mr-2" size={20} />
             {!isCollapsed && <span>Upload Blue Print</span>}
-          </Link>
+          </Link>*/}
           <Link
             to="NewsLetterUpload"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaFile className="mr-2" size={20} />
             {!isCollapsed && <span>News Letter Upload</span>}
-          </Link> */}
+          </Link>
           {/* <Link
             to="SessionAdd"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
@@ -232,7 +232,7 @@ const Sidebarcreater = () => {
             <FaList />
             <span>Test Result</span>
           </Link>
-          </div> */}{' '}
+          </div> */}{" "}
           {/* )} */}
           {/* </div> */}
           {/* )}  */}
@@ -256,7 +256,7 @@ const Sidebarcreater = () => {
       {/* Main Content */}
       <div
         className={`flex-grow ${
-          isCollapsed ? 'ml-16' : 'ml-60'
+          isCollapsed ? "ml-16" : "ml-60"
         } h-[100vh] transition-all duration-300`}
       >
         <main className="p-3">
@@ -264,7 +264,7 @@ const Sidebarcreater = () => {
         </main>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebarcreater
+export default Sidebarcreater;
