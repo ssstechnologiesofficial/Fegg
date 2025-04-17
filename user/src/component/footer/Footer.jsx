@@ -78,7 +78,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-red-400 mb-4">लिंक</h3>
             <ul className="md:space-y-2 space-x-0">
               <li>
-                <Link to="/aboutus" className="hover:underline">
+                <Link to="/about" className="hover:underline">
                   हमारे बारे में
                 </Link>
               </li>

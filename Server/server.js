@@ -10,7 +10,7 @@ const path = require('path')
 //middleware
 server.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL], // Allow frontend & admin access
+    origin: [process.env.FRONTEND_URL, process.env.ADMIN_URL], 
   })
 )
 server.use(express.json())

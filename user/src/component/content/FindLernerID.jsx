@@ -57,7 +57,7 @@ const FindLernerID = () => {
   const handleSave = async () => {
     try {
       const response = await axios.put(
-        ` ${SummaryApi.updateStudentLERnerID.url}${studentData._id}`,
+        `${SummaryApi.updateStudentLERnerID.url}${studentData._id}`,
         editedData
       )
 
@@ -198,7 +198,7 @@ const FindLernerID = () => {
 
       {/* Display Student Details Here */}
       {showDetails && studentData && (
-        <div className="mt-6 w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
+        <div className="print-section mt-6 w-full max-w-3xl bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-center text-[#fd645b] mb-6">
             छात्र पंजीकरण विवरण{' '}
           </h2>
@@ -322,7 +322,7 @@ const FindLernerID = () => {
           </div>
 
           {/* Buttons */}
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-6 flex justify-center no-print gap-4">
             {isEditing ? (
               <button
                 onClick={handleSave}
