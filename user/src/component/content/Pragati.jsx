@@ -58,7 +58,7 @@ import React from 'react'
 import img from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Banner.png'
 import bgImage from '../../assets/Nav-bar(Sub-menu) Images/कार्यक्रम/Pragati/Pragati-2.jpg' // Ensure this is the correct path
 
-import bg2img from '../../assets/pra.png'
+import bg2img from '../../assets/pragatibg.png'
 
 const Pragati = () => {
   return (
@@ -95,7 +95,7 @@ const Pragati = () => {
 
           {/* Text Content */}
           <div className="sm:m-3 flex justify-center items-start flex-col sm:w-[600px] sm:p-3 p-5 mt-7 text-sm sm:text-base">
-            <p className="mb-5">
+            <p className="mb-5 text-justify">
               भारत में 9 करोड़ युवा महिलाएँ (15-29 वर्ष) शिक्षा, रोजगार और
               प्रशिक्षण (NEET - Not in Education, Employment & Training) दायरे
               से बाहर हैं।। इसका मुख्य कारण कम उम्र में विवाह, मातृत्व, पलायन,
