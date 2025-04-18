@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SummaryApi from '../../../common/SummaryApi'
 import fagglogo from '../../../../public/eg-logo.png'
-
+import { Link } from "react-router-dom";
 const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const Class12EnglishPapers = () => {
@@ -61,7 +61,7 @@ const Class12EnglishPapers = () => {
   }
 
   const handleModalSubmit = () => {
-    console.log(userInput, selectedClass, selectedSubject)
+    console.log(userInput, selectedClass, selectedSubject);
     if (userInput.trim()) {
       axios
         .post(SummaryApi.StoreUserDownload.url, {
@@ -69,25 +69,49 @@ const Class12EnglishPapers = () => {
           subject: selectedSubject,
           className: selectedClass,
         })
-        .then(() => {
+        .then((response) => {
+          // If backend sends an error in a successful response
+          if (response.data?.error) {
+            alert("त्रुटि: " + response.data.error);
+            return;
+          }
+  
           // Automatically trigger file download after successful submission
-          const link = document.createElement('a')
-          link.href = `${baseUrl}/${selectedFile}`
-          link.setAttribute('download', selectedFile.split('/').pop()) // Extract filename from URL
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-
-          setIsModalOpen(false)
-          setUserInput('')
+          const link = document.createElement("a");
+          link.href = `${baseUrl}/${selectedFile}`;
+          link.setAttribute("download", selectedFile.split("/").pop()); // Extract filename from URL
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+  
+          setIsModalOpen(false);
+          setUserInput("");
         })
         .catch((error) => {
-          console.error('Error storing user input:', error)
-        })
+          console.error("Error storing user input:", error);
+  
+          // Ensure error message from backend is properly displayed
+          if (error.response && error.response.data) {
+            let errorMessage = error.response.data.message || "कुछ गलत हो गया। कृपया पुनः प्रयास करें।";
+  
+            // Translating common error messages
+            if (errorMessage.includes("User not found")) {
+              errorMessage = "उपयोगकर्ता नहीं मिला। कृपया पहले पंजीकरण करें।";
+            } else if (errorMessage.includes("Invalid credentials")) {
+              errorMessage = "अमान्य विवरण। कृपया सही जानकारी दर्ज करें।";
+            }
+  
+            alert(errorMessage);
+          } else {
+            alert("कुछ गलत हो गया। कृपया पुनः प्रयास करें।");
+          }
+        });
     } else {
-      alert('Please enter your Student ID or Contact Number')
+      alert("कृपया अपना छात्र आईडी या संपर्क नंबर दर्ज करें।");
     }
-  }
+  };
+  
+  
 
   return (
     <div className="p-4">
@@ -99,29 +123,27 @@ const Class12EnglishPapers = () => {
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
           <h2 className="text-2xl font-bold text-[#fd645b] mb-4 border-b-2 border-[#fd645b] pb-2 text-center uppercase">
-            Subjects
+            विषय
           </h2>
           <div className="flex-1 mb-4">
-            <label className="font-semibold">Select Medium:</label>
+            <label className="font-semibold">भाषा चुनें:</label>
             <select
               name="language"
               className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
               value={selectedLanguage}
               onChange={handleLanguageChange}
             >
-              <option value="">Select Medium</option>
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
+              <option value="">भाषा चुनें</option>
+              <option value="अंग्रेज़ी">अंग्रेज़ी</option>
+              <option value="हिंदी">हिंदी</option>
             </select>
           </div>
           <ul className="space-y-3">
             {Object.keys(groupedSubjects).map((subjectName) => (
               <li
                 key={subjectName}
-                className={`cursor-pointer text-black font-semibold px-4 py-2 border-l-4 hover:border-[#fd645b] transition-all hover:bg-[#fd635b5d]  duration-200 ${
-                  activeSubject === groupedSubjects[subjectName]
-                    ? 'border-[#fd645b]'
-                    : 'border-transparent'
+                className={`cursor-pointer text-black font-semibold px-4 py-2 border-l-4 hover:border-[#fd645b] transition-all hover:bg-[#fd635b5d] duration-200 ${
+                  activeSubject === groupedSubjects[subjectName] ? 'border-[#fd645b]' : 'border-transparent'
                 }`}
                 onClick={() => handleSubjectClick(groupedSubjects[subjectName])}
               >
@@ -141,52 +163,25 @@ const Class12EnglishPapers = () => {
               <table className="w-full border-collapse rounded-md overflow-hidden">
                 <thead>
                   <tr className="bg-[#fd645b] text-white">
-                    <th className="p-3">Year</th>
-
-                    <th className="p-3">Paper </th>
-                    <th className="p-3">answer key</th>
+                    <th className="p-3">वर्ष</th>
+                    <th className="p-3">प्रश्नपत्र</th>
+                    <th className="p-3">उत्तर कुंजी</th>
                   </tr>
                 </thead>
                 <tbody>
                   {activeSubject.map((item, index) => (
                     <tr key={index} className="border-b hover:bg-gray-100">
+                      <td className="p-3 text-center">{item.year} ({item.session})</td>
                       <td className="p-3 text-center">
-                        {item.year}({item.session})
-                      </td>
-
-                      <td className="p-3 text-center">
-                        <button
-                          onClick={() =>
-                            handleDownloadClick(
-                              item.file,
-                              item.subject,
-                              item.className,
-                              item.isActive
-                            )
-                          }
-                          className={`text-blue-600 hover:underline ${
-                            !item.isActive
-                              ? 'cursor-not-allowed opacity-50'
-                              : ''
-                          }`}
+                        <button onClick={() => handleDownloadClick(item.file, item.subject, item.className, item.isActive)}
+                          className={`text-blue-600 hover:underline ${!item.isActive ? 'cursor-not-allowed opacity-50' : ''}`}
                           disabled={!item.isActive}
-                        >
-                          📄 Download Paper
-                        </button>
+                        >📄 डाउनलोड प्रश्नपत्र</button>
                       </td>
                       <td className="p-3 text-center">
-                        <button
-                          onClick={() =>
-                            handleDownloadClick(
-                              item.file,
-                              item.subject,
-                              item.className
-                            )
-                          }
+                        <button onClick={() => handleDownloadClick(item.file, item.subject, item.className)}
                           className="text-blue-600 hover:underline"
-                        >
-                          📄 Download answer key
-                        </button>
+                        >📄 डाउनलोड उत्तर कुंजी</button>
                       </td>
                     </tr>
                   ))}
@@ -209,7 +204,7 @@ const Class12EnglishPapers = () => {
                 className="sm:w-[13vw] sm:h-[13vw] w-[14vw] h-[14vw] max-w-24 max-h-24 object-fill bg-white rounded-full p-2 border-2 border-[#ff0000] shadow-md"
               />
               <h3 className="text-lg font-semibold mb-2 text-center">
-                Enter Contact Number or Student ID
+              अपना संपर्क नंबर या लर्नर आईडी दर्ज करें
               </h3>
             </div>
 
@@ -220,19 +215,21 @@ const Class12EnglishPapers = () => {
               onChange={(e) => setUserInput(e.target.value)}
               className="border p-2 w-full mb-4 border-[#ff0000] rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff0000] shadow-sm"
             />
-
+<p className="text-sm text-gray-600 text-center mb-4">
+      यदि आप पंजीकृत नहीं है तो <Link to="/register" className="text-[#ff0000] font-semibold hover:underline">यहाँ क्लिक करें</Link>
+    </p>
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2 bg-gray-500 text-white rounded shadow-md hover:bg-gray-600 transition-all"
               >
-                Cancel
+                  रद्द करें      
               </button>
               <button
                 onClick={handleModalSubmit}
                 className="px-4 py-2 bg-[#ff0000] text-white rounded shadow-md hover:bg-red-700 transition-all"
               >
-                Submit & Download
+                 जमा करें  & डाउनलोड
               </button>
             </div>
           </div>

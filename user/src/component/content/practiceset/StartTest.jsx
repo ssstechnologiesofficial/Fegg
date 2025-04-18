@@ -148,19 +148,19 @@ const StartTest = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h1 className="text-2xl font-bold text-center mb-6">Practice Test</h1>
+      <h1 className="text-2xl font-bold text-center mb-6">अभ्यास परीक्षण</h1>
 
       {showResult ? ( // Display result if test is submitted
         <div className="text-center p-6 bg-red-100 rounded-lg">
-          <h2 className="text-xl font-bold text-red-700">Test Completed!</h2>
-          <p className="text-lg mt-2">Score: {score}</p>
-          <p className="text-lg">Correct Answers: {correctAnswers}</p>
-          <p className="text-lg">Wrong Answers: {wrongAnswers}</p>
+          <h2 className="text-xl font-bold text-red-700">परीक्षण पूरा हुआ!</h2>
+          <p className="text-lg mt-2">अंक: {score}</p>
+          <p className="text-lg">सही उत्तर: {correctAnswers}</p>
+          <p className="text-lg">गलत उत्तर: {wrongAnswers}</p>
         </div>
       ) : (
         <>
           <div className="text-center text-lg font-semibold text-red-500">
-            Time Left: {formatTime(timeLeft)}
+          शेष समय: {formatTime(timeLeft)}
           </div>
 
           {questions.length === 0 ? (
@@ -214,26 +214,26 @@ const StartTest = () => {
             }`}
             disabled={submitted}
           >
-            {submitted ? 'Test Submitted' : 'Submit Test'}
+            {submitted ? 'Test Submitted' : 'टेस्ट जमा करें'}
           </button>
 
           {showModal && (
             <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
               <div className="bg-white p-6 rounded-lg shadow-lg w-96">
                 <h2 className="text-xl font-semibold text-center mb-4">
-                  Enter Details
+                विवरण दर्ज करें
                 </h2>
                 <div className="space-y-4">
                   <input
                     type="text"
-                    placeholder="Enter your name"
+                    placeholder="अपना नाम दर्ज करें"
                     className="w-full p-2 border rounded-lg"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                   <input
                     type="text"
-                    placeholder="Enter your Learner ID"
+                    placeholder="अपना संपर्क  लर्नर आईडी दर्ज करें"
                     className="w-full p-2 border rounded-lg"
                     value={learnerId}
                     onChange={(e) => setLearnerId(e.target.value)}
@@ -244,13 +244,13 @@ const StartTest = () => {
                     onClick={closeModal}
                     className="px-4 py-2 bg-gray-400 rounded-lg"
                   >
-                    Cancel
+                       रद्द करें  
                   </button>
                   <button
                     onClick={handleFinalSubmit}
                     className="px-4 py-2 bg-red-500 text-white rounded-lg"
                   >
-                    Submit
+                    जमा करें
                   </button>
                 </div>
               </div>

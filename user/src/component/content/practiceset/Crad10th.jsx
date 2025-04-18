@@ -20,7 +20,7 @@ const Crad10th = () => {
           setMockTests(filteredTests)
         }
       } catch (error) {
-        console.error('Error fetching mock tests:', error)
+        console.error('मॉक टेस्ट लाने में त्रुटि:', error)
       }
     }
 
@@ -29,9 +29,9 @@ const Crad10th = () => {
 
   return (
     <div>
-      <div className="container mx-auto p-4">
+      <div className="px-4 my-4 sm:px-10">
         <h2 className="text-xl font-bold mb-4">
-          Class 10th Practice Mock Tests
+          कक्षा 10वीं अभ्यास सेट
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {mockTests.map((test) => (
@@ -45,18 +45,18 @@ const Crad10th = () => {
                 alt="FAGG Logo"
               />
               <h3 className="text-lg font-semibold">
-                Subject: {test.subject?.name || 'Unknown Subject'}
+                विषय: {test.subject?.name || 'अज्ञात विषय'}
               </h3>
-              <p className="text-sm">Total Marks: {test.totalMarks}</p>
-              <p className="text-sm">Duration: {test.duration} mins</p>
+              <p className="text-sm">कुल अंक: {test.totalMarks}</p>
+              <p className="text-sm">समय अवधि: {test.duration} मिनट</p>
               <p className="text-sm">
-                Number of Questions: {test.numQuestions}
+                प्रश्नों की संख्या: {test.numQuestions}
               </p>
               <button
                 onClick={() => navigate(`/start-test/${test._id}`)}
                 className="mt-2 bg-[#fd645b] text-white px-4 py-2 rounded active:scale-95 transition-all"
               >
-                Start Test
+                टेस्ट शुरू करें
               </button>
             </div>
           ))}

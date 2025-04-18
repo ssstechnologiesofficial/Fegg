@@ -1,67 +1,67 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import SummaryApi from '../../../common/SummaryApi'
-import fagglogo from '../../../../public/eg-logo.png'
-
-const baseUrl = import.meta.env.VITE_BACKEND_URL
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SummaryApi from "../../../common/SummaryApi";
+import fagglogo from "../../../../public/eg-logo.png";
+import { Link } from "react-router-dom";
+const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Class10EnglishPapers = () => {
-  const [data, setData] = useState([])
-  const [activeIndex, setActiveIndex] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [selectedFile, setSelectedFile] = useState(null)
-  const [selectedSubject, setSelectedSubject] = useState('')
-  const [selectedClass, setSelectedClass] = useState('')
-  const [userInput, setUserInput] = useState('')
-  const [activeSubject, setActiveSubject] = useState(null)
-  const [selectedLanguage, setSelectedLanguage] = useState('')
+  const [data, setData] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedClass, setSelectedClass] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [activeSubject, setActiveSubject] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("");
   useEffect(() => {
-    setSelectedLanguage('Hindi')
+    setSelectedLanguage("Hindi");
 
     axios
       .get(`${SummaryApi.PreviousPaperget.url}?className=10`)
       .then((response) => {
-        setData(response.data)
+        setData(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching Papers:', error)
-      })
-  }, [])
+        console.error("Error fetching Papers:", error);
+      });
+  }, []);
 
   const handleSubjectClick = (subject) => {
-    setActiveSubject(subject)
-  }
+    setActiveSubject(subject);
+  };
 
   const handleLanguageChange = (event) => {
-    setSelectedLanguage(event.target.value)
-    setActiveSubject(null)
-  }
+    setSelectedLanguage(event.target.value);
+    setActiveSubject(null);
+  };
 
   const filteredData = data.filter(
     (item) => item.language === selectedLanguage && item.isActive
-  )
+  );
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
-      acc[item.subject] = []
+      acc[item.subject] = [];
     }
-    acc[item.subject].push(item)
-    return acc
-  }, {})
+    acc[item.subject].push(item);
+    return acc;
+  }, {});
 
   const handleDownloadClick = (fileUrl, subject, className, isActive) => {
     if (!isActive) {
-      alert('This file is currently deactivated.')
-      return
+      alert("This file is currently deactivated.");
+      return;
     }
-    setSelectedFile(fileUrl)
-    setSelectedSubject(subject)
-    setSelectedClass(className)
-    setIsModalOpen(true)
-  }
+    setSelectedFile(fileUrl);
+    setSelectedSubject(subject);
+    setSelectedClass(className);
+    setIsModalOpen(true);
+  };
 
   const handleModalSubmit = () => {
-    console.log(userInput, selectedClass, selectedSubject)
+    console.log(userInput, selectedClass, selectedSubject);
     if (userInput.trim()) {
       axios
         .post(SummaryApi.StoreUserDownload.url, {
@@ -71,23 +71,43 @@ const Class10EnglishPapers = () => {
         })
         .then(() => {
           // Automatically trigger file download after successful submission
-          const link = document.createElement('a')
-          link.href = `${baseUrl}/${selectedFile}`
-          link.setAttribute('download', selectedFile.split('/').pop()) // Extract filename from URL
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-
-          setIsModalOpen(false)
-          setUserInput('')
+          const link = document.createElement("a");
+          link.href = `${baseUrl}/${selectedFile}`;
+          link.setAttribute("download", selectedFile.split("/").pop()); // Extract filename from URL
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+  
+          setIsModalOpen(false);
+          setUserInput("");
         })
         .catch((error) => {
-          console.error('Error storing user input:', error)
-        })
+          console.error("Error storing user input:", error);
+  
+          if (error.response && error.response.data && error.response.data.message) {
+            let errorMessage = error.response.data.message;
+  
+            // Translating common error messages into Hindi
+            if (errorMessage.includes("User not found")) {
+              errorMessage = "उपयोगकर्ता नहीं मिला। कृपया पहले पंजीकरण करें।";
+            } else if (errorMessage.includes("Invalid credentials")) {
+              errorMessage = "अमान्य जानकारी। कृपया सही विवरण दर्ज करें।";
+            } else if (errorMessage.includes("Please register first")) {
+              errorMessage = "कृपया पहले पंजीकरण करें।";
+            } else {
+              errorMessage = "कुछ गलत हो गया। कृपया पुनः प्रयास करें।";
+            }
+  
+            alert(errorMessage);
+          } else {
+            alert("कुछ गलत हो गया। कृपया पुनः प्रयास करें।");
+          }
+        });
     } else {
-      alert('Please enter your Student ID or Contact Number')
+      alert("कृपया अपना छात्र आईडी या संपर्क नंबर दर्ज करें।");
     }
-  }
+  };
+  
 
   return (
     <div className="p-4">
@@ -99,19 +119,19 @@ const Class10EnglishPapers = () => {
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
           <h2 className="text-2xl font-bold text-[#fd645b] mb-4 border-b-2 border-[#fd645b] pb-2 text-center uppercase">
-            Subjects
+            विषय
           </h2>
           <div className="flex-1 mb-4">
-            <label className="font-semibold">Select Medium:</label>
+            <label className="font-semibold">भाषा चुनें:</label>
             <select
               name="language"
               className="border p-2 w-full rounded focus:ring-2 focus:ring-[#fe0000]"
               value={selectedLanguage}
               onChange={handleLanguageChange}
             >
-              <option value="">Select Medium</option>
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
+              <option value="">भाषा चुनें</option>
+              <option value="English">अंग्रेज़ी</option>
+              <option value="Hindi">हिंदी</option>
             </select>
           </div>
           <ul className="space-y-3">
@@ -120,8 +140,8 @@ const Class10EnglishPapers = () => {
                 key={subjectName}
                 className={`cursor-pointer text-black font-semibold px-4 py-2 border-l-4 hover:border-[#fd645b] transition-all hover:bg-[#fd635b5d]  duration-200 ${
                   activeSubject === groupedSubjects[subjectName]
-                    ? 'border-[#fd645b]'
-                    : 'border-transparent'
+                    ? "border-[#fd645b]"
+                    : "border-transparent"
                 }`}
                 onClick={() => handleSubjectClick(groupedSubjects[subjectName])}
               >
@@ -141,10 +161,9 @@ const Class10EnglishPapers = () => {
               <table className="w-full border-collapse rounded-md overflow-hidden">
                 <thead>
                   <tr className="bg-[#fd645b] text-white">
-                    <th className="p-3">Year</th>
-
-                    <th className="p-3">Paper </th>
-                    <th className="p-3">answer key</th>
+                  <th className="p-3">वर्ष</th>
+              <th className="p-3">प्रश्न पत्र</th>
+              <th className="p-3">उत्तर कुंजी</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -166,12 +185,12 @@ const Class10EnglishPapers = () => {
                           }
                           className={`text-blue-600 hover:underline ${
                             !item.isActive
-                              ? 'cursor-not-allowed opacity-50'
-                              : ''
+                              ? "cursor-not-allowed opacity-50"
+                              : ""
                           }`}
                           disabled={!item.isActive}
                         >
-                          📄 Download Paper
+                          📄 प्रश्न पत्र डाउनलोड करें
                         </button>
                       </td>
                       <td className="p-3 text-center">
@@ -185,7 +204,7 @@ const Class10EnglishPapers = () => {
                           }
                           className="text-blue-600 hover:underline"
                         >
-                          📄 Download answer key
+                          📄  उत्तर कुंजी डाउनलोड करें
                         </button>
                       </td>
                     </tr>
@@ -209,7 +228,7 @@ const Class10EnglishPapers = () => {
                 className="sm:w-[13vw] sm:h-[13vw] w-[14vw] h-[14vw] max-w-24 max-h-24 object-fill bg-white rounded-full p-2 border-2 border-[#ff0000] shadow-md"
               />
               <h3 className="text-lg font-semibold mb-2 text-center">
-                Enter Contact Number or Student ID
+              अपना संपर्क नंबर या लर्नर आईडी दर्ज करें
               </h3>
             </div>
 
@@ -220,26 +239,28 @@ const Class10EnglishPapers = () => {
               onChange={(e) => setUserInput(e.target.value)}
               className="border p-2 w-full mb-4 border-[#ff0000] rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff0000] shadow-sm"
             />
-
+<p className="text-sm text-gray-600 text-center mb-4">
+      यदि आप पंजीकृत नहीं है तो <Link to="/register" className="text-[#ff0000] font-semibold hover:underline">यहाँ क्लिक करें</Link>
+    </p>
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2 bg-gray-500 text-white rounded shadow-md hover:bg-gray-600 transition-all"
               >
-                Cancel
+                  रद्द करें    
               </button>
               <button
                 onClick={handleModalSubmit}
                 className="px-4 py-2 bg-[#ff0000] text-white rounded shadow-md hover:bg-red-700 transition-all"
               >
-                Submit & Download
+                 जमा करें & डाउनलोड
               </button>
             </div>
           </div>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Class10EnglishPapers
+export default Class10EnglishPapers;
