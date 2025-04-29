@@ -19,4 +19,5 @@ const UserDownloadSchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('UserDownload', UserDownloadSchema)
+const UserDownload = mongoose.model('UserDownload', UserDownloadSchema)
+module.exports = UserDownload
