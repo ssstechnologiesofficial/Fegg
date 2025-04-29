@@ -93,7 +93,7 @@ const Econtent12th = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">कक्षा 10वीं के लिए ई-पुस्तकें</h2>
+      <h2 className="text-2xl font-bold mb-4">कक्षा 12वीं के लिए ई-पुस्तकें</h2>
       <div className="flex flex-col sm:flex-row p-4 bg-gray-50 min-h-screen">
         {/* Sidebar */}
         <div className="sm:w-1/4 w-full bg-white shadow-md rounded-md p-4 border-l-4 border-[#fd645b]">
