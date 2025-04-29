@@ -1,67 +1,79 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import SummaryApi from "../../../common/SummaryApi";
-import fagglogo from "../../../../public/eg-logo.png";
-import { Link } from "react-router-dom";
-const baseUrl = import.meta.env.VITE_BACKEND_URL;
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import SummaryApi from '../../../common/SummaryApi'
+import fagglogo from '../../../../public/eg-logo.png'
+import { Link } from 'react-router-dom'
+const baseUrl = import.meta.env.VITE_BACKEND_URL
 
 const Class10EnglishPapers = () => {
-  const [data, setData] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedClass, setSelectedClass] = useState("");
-  const [userInput, setUserInput] = useState("");
-  const [activeSubject, setActiveSubject] = useState(null);
-  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [data, setData] = useState([])
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedSubject, setSelectedSubject] = useState('')
+  const [selectedClass, setSelectedClass] = useState('')
+  const [userInput, setUserInput] = useState('')
+  const [activeSubject, setActiveSubject] = useState(null)
+  const [selectedLanguage, setSelectedLanguage] = useState('')
   useEffect(() => {
-    setSelectedLanguage("Hindi");
+    setSelectedLanguage('Hindi')
 
     axios
       .get(`${SummaryApi.PreviousPaperget.url}?className=10`)
       .then((response) => {
-        setData(response.data);
+        setData(response.data)
       })
       .catch((error) => {
-        console.error("Error fetching Papers:", error);
-      });
-  }, []);
+        console.error('Error fetching Papers:', error)
+      })
+  }, [])
 
   const handleSubjectClick = (subject) => {
-    setActiveSubject(subject);
-  };
+    setActiveSubject(subject)
+  }
 
   const handleLanguageChange = (event) => {
-    setSelectedLanguage(event.target.value);
-    setActiveSubject(null);
-  };
+    setSelectedLanguage(event.target.value)
+    setActiveSubject(null)
+  }
 
   const filteredData = data.filter(
     (item) => item.language === selectedLanguage && item.isActive
-  );
+  )
 
   const groupedSubjects = filteredData.reduce((acc, item) => {
     if (!acc[item.subject]) {
-      acc[item.subject] = [];
+      acc[item.subject] = []
     }
-    acc[item.subject].push(item);
-    return acc;
-  }, {});
+    acc[item.subject].push(item)
+    return acc
+  }, {})
 
-  const handleDownloadClick = (fileUrl, subject, className, isActive) => {
-    if (!isActive) {
-      alert("This file is currently deactivated.");
-      return;
+  const handleDownloadClick = async (fileUrl, subject, className, id) => {
+    try {
+      // Fetch the latest data for the clicked paper
+      const response = await axios.get(
+        `${SummaryApi.PreviousPaperget.url}?className=10`
+      )
+      const updatedItem = response.data.find((paper) => paper._id === id)
+
+      if (!updatedItem || !updatedItem.isActive) {
+        alert('This file is currently deactivated.')
+        return
+      }
+
+      setSelectedFile(fileUrl)
+      setSelectedSubject(subject)
+      setSelectedClass(className)
+      setIsModalOpen(true)
+    } catch (err) {
+      console.error('Error checking paper status:', err)
+      alert('कुछ गलत हो गया। कृपया पुनः प्रयास करें।')
     }
-    setSelectedFile(fileUrl);
-    setSelectedSubject(subject);
-    setSelectedClass(className);
-    setIsModalOpen(true);
-  };
+  }
 
   const handleModalSubmit = () => {
-    console.log(userInput, selectedClass, selectedSubject);
+    console.log(userInput, selectedClass, selectedSubject)
     if (userInput.trim()) {
       axios
         .post(SummaryApi.StoreUserDownload.url, {
@@ -71,43 +83,46 @@ const Class10EnglishPapers = () => {
         })
         .then(() => {
           // Automatically trigger file download after successful submission
-          const link = document.createElement("a");
-          link.href = `${baseUrl}/${selectedFile}`;
-          link.setAttribute("download", selectedFile.split("/").pop()); // Extract filename from URL
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-  
-          setIsModalOpen(false);
-          setUserInput("");
+          const link = document.createElement('a')
+          link.href = `${baseUrl}/${selectedFile}`
+          link.setAttribute('download', selectedFile.split('/').pop()) // Extract filename from URL
+          document.body.appendChild(link)
+          link.click()
+          document.body.removeChild(link)
+
+          setIsModalOpen(false)
+          setUserInput('')
         })
         .catch((error) => {
-          console.error("Error storing user input:", error);
-  
-          if (error.response && error.response.data && error.response.data.message) {
-            let errorMessage = error.response.data.message;
-  
+          console.error('Error storing user input:', error)
+
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.message
+          ) {
+            let errorMessage = error.response.data.message
+
             // Translating common error messages into Hindi
-            if (errorMessage.includes("User not found")) {
-              errorMessage = "उपयोगकर्ता नहीं मिला। कृपया पहले पंजीकरण करें।";
-            } else if (errorMessage.includes("Invalid credentials")) {
-              errorMessage = "अमान्य जानकारी। कृपया सही विवरण दर्ज करें।";
-            } else if (errorMessage.includes("Please register first")) {
-              errorMessage = "कृपया पहले पंजीकरण करें।";
+            if (errorMessage.includes('User not found')) {
+              errorMessage = 'उपयोगकर्ता नहीं मिला। कृपया पहले पंजीकरण करें।'
+            } else if (errorMessage.includes('Invalid credentials')) {
+              errorMessage = 'अमान्य जानकारी। कृपया सही विवरण दर्ज करें।'
+            } else if (errorMessage.includes('Please register first')) {
+              errorMessage = 'कृपया पहले पंजीकरण करें।'
             } else {
-              errorMessage = "कुछ गलत हो गया। कृपया पुनः प्रयास करें।";
+              errorMessage = 'कुछ गलत हो गया। कृपया पुनः प्रयास करें।'
             }
-  
-            alert(errorMessage);
+
+            alert(errorMessage)
           } else {
-            alert("कुछ गलत हो गया। कृपया पुनः प्रयास करें।");
+            alert('कुछ गलत हो गया। कृपया पुनः प्रयास करें।')
           }
-        });
+        })
     } else {
-      alert("कृपया अपना छात्र आईडी या संपर्क नंबर दर्ज करें।");
+      alert('कृपया अपना छात्र आईडी या संपर्क नंबर दर्ज करें।')
     }
-  };
-  
+  }
 
   return (
     <div className="p-4">
@@ -140,8 +155,8 @@ const Class10EnglishPapers = () => {
                 key={subjectName}
                 className={`cursor-pointer text-black font-semibold px-4 py-2 border-l-4 hover:border-[#fd645b] transition-all hover:bg-[#fd635b5d]  duration-200 ${
                   activeSubject === groupedSubjects[subjectName]
-                    ? "border-[#fd645b]"
-                    : "border-transparent"
+                    ? 'border-[#fd645b]'
+                    : 'border-transparent'
                 }`}
                 onClick={() => handleSubjectClick(groupedSubjects[subjectName])}
               >
@@ -161,9 +176,9 @@ const Class10EnglishPapers = () => {
               <table className="w-full border-collapse rounded-md overflow-hidden">
                 <thead>
                   <tr className="bg-[#fd645b] text-white">
-                  <th className="p-3">वर्ष</th>
-              <th className="p-3">प्रश्न पत्र</th>
-              <th className="p-3">उत्तर कुंजी</th>
+                    <th className="p-3">वर्ष</th>
+                    <th className="p-3">प्रश्न पत्र</th>
+                    <th className="p-3">उत्तर कुंजी</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -185,8 +200,8 @@ const Class10EnglishPapers = () => {
                           }
                           className={`text-blue-600 hover:underline ${
                             !item.isActive
-                              ? "cursor-not-allowed opacity-50"
-                              : ""
+                              ? 'cursor-not-allowed opacity-50'
+                              : ''
                           }`}
                           disabled={!item.isActive}
                         >
@@ -199,12 +214,13 @@ const Class10EnglishPapers = () => {
                             handleDownloadClick(
                               item.file,
                               item.subject,
-                              item.className
+                              item.className,
+                              item._id // Pass id to re-check latest status
                             )
                           }
                           className="text-blue-600 hover:underline"
                         >
-                          📄  उत्तर कुंजी डाउनलोड करें
+                          📄 उत्तर कुंजी डाउनलोड करें
                         </button>
                       </td>
                     </tr>
@@ -228,7 +244,7 @@ const Class10EnglishPapers = () => {
                 className="sm:w-[13vw] sm:h-[13vw] w-[14vw] h-[14vw] max-w-24 max-h-24 object-fill bg-white rounded-full p-2 border-2 border-[#ff0000] shadow-md"
               />
               <h3 className="text-lg font-semibold mb-2 text-center">
-              अपना संपर्क नंबर या लर्नर आईडी दर्ज करें
+                अपना संपर्क नंबर या लर्नर आईडी दर्ज करें
               </h3>
             </div>
 
@@ -239,28 +255,34 @@ const Class10EnglishPapers = () => {
               onChange={(e) => setUserInput(e.target.value)}
               className="border p-2 w-full mb-4 border-[#ff0000] rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff0000] shadow-sm"
             />
-<p className="text-sm text-gray-600 text-center mb-4">
-      यदि आप पंजीकृत नहीं है तो <Link to="/register" className="text-[#ff0000] font-semibold hover:underline">यहाँ क्लिक करें</Link>
-    </p>
+            <p className="text-sm text-gray-600 text-center mb-4">
+              यदि आप पंजीकृत नहीं है तो{' '}
+              <Link
+                to="/register"
+                className="text-[#ff0000] font-semibold hover:underline"
+              >
+                यहाँ क्लिक करें
+              </Link>
+            </p>
             <div className="flex justify-end space-x-2">
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2 bg-gray-500 text-white rounded shadow-md hover:bg-gray-600 transition-all"
               >
-                  रद्द करें    
+                रद्द करें
               </button>
               <button
                 onClick={handleModalSubmit}
                 className="px-4 py-2 bg-[#ff0000] text-white rounded shadow-md hover:bg-red-700 transition-all"
               >
-                 जमा करें & डाउनलोड
+                जमा करें & डाउनलोड
               </button>
             </div>
           </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Class10EnglishPapers;
+export default Class10EnglishPapers
