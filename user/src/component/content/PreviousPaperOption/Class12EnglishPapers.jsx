@@ -146,8 +146,8 @@ const Class12EnglishPapers = () => {
               onChange={handleLanguageChange}
             >
               <option value="">भाषा चुनें</option>
-              <option value="अंग्रेज़ी">अंग्रेज़ी</option>
-              <option value="हिंदी">हिंदी</option>
+              <option value="English">अंग्रेज़ी</option>
+              <option value="Hindi">हिंदी</option>
             </select>
           </div>
           <ul className="space-y-3">
