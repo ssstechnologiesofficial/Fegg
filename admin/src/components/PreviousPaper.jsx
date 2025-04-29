@@ -446,7 +446,7 @@ const PreviousPaper = () => {
                       : 'bg-red-500 text-white'
                   }`}
                 >
-                  {upload.isActive ? 'Deactivate' : 'Activate'}
+                  {upload.isActive ? 'Activate' : 'Deactivate'}
                 </button>
               </td>
               <td>
