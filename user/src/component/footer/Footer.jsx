@@ -54,7 +54,7 @@ const Footer = () => {
       <div className=" px-4">
         {/* शीर्ष अनुभाग */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 footer-section">
-          {/* लोगो और विवरण fixed */}
+          {/* लोगो और विवरण fixedeee */}
           <div className="flex flex-col items-center md:items-start">
             <div className="bg-white w-16 h-16 rounded-full mb-4 flex justify-center items-center">
               <img
