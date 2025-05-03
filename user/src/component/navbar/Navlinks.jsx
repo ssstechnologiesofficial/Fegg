@@ -251,7 +251,7 @@ const NavLinks = () => {
           onMouseEnter={() => setIsStudentCornerOpen(true)}
           onMouseLeave={() => setIsStudentCornerOpen(false)}
         >
-          <NavLink to="/student-corner" className="nav-link py-2">
+          <NavLink to="" className="nav-link py-2">
             शिक्षार्थी कॉर्नर
           </NavLink>
           {isStudentCornerOpen &&
@@ -300,7 +300,7 @@ const NavLinks = () => {
           </NavLink>
         </li>
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
-          <a href="https://polite-cranachan-2169e8.netlify.app">
+          <a href="https://ubiquitous-squirrel-242cf1.netlify.app">
             विभागीय एक्सेस
           </a>
         </li>

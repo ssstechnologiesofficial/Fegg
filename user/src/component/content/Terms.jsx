@@ -2,48 +2,35 @@ import React from "react";
 
 const TermsAndConditions = () => {
   return (
-    <div className=" text-gray-900 p-6 sm:p-10 lg:p-16">
+    <div className="text-gray-900 p-6 sm:p-10 lg:p-16">
       <div className="max-w-4xl mx-auto bg-white p-6 sm:p-10 shadow-lg rounded-lg border-2 border-red-500">
-        <h1 className="text-3xl sm:text-4xl font-bold text-red-600 text-center mb-6">
-          नियम और शर्तें
+        <h1 className="text-3xl sm:text-4xl font-bold text-primary text-center mb-6">
+          Terms and Conditions
         </h1>
         <p className="mb-4">
-          इस साइट का उपयोग एजुकेट गर्ल्स द्वारा निम्नलिखित नियमों और शर्तों के अधीन प्रदान किया जाता है:
+          Use of this site is provided by Educate Girls subject to the following Terms and Conditions:
         </p>
         <ul className="list-decimal list-inside space-y-4 text-gray-700">
-          <li>
-            आपकी पहली बार साइट का उपयोग करने की तारीख से ये नियम और शर्तें लागू होती हैं।
-          </li>
-          <li>
-            एजुकेट गर्ल्स को कभी भी ऑनलाइन परिवर्तन पोस्ट करके इन शर्तों और नियमों को बदलने का अधिकार है।
-          </li>
-          <li>
-            आप इस साइट का उपयोग केवल कानूनी उद्देश्यों के लिए करने के लिए सहमत हैं।
-          </li>
-          <li>
-            यह साइट "जैसा है" के आधार पर प्रदान की जाती है, बिना किसी प्रतिनिधित्व या समर्थन के।
-          </li>
-          <li>
-            एजुकेट गर्ल्स यह गारंटी नहीं देता कि यह साइट त्रुटि मुक्त होगी।
-          </li>
-        </ul>
-        <h2 className="text-2xl font-semibold text-red-600 mt-6">कॉपीराइट प्रतिबंध</h2>
+          <li>Your use constitutes acceptance of these terms and conditions as of the date of your first use of the site.</li>
+          <li>Educate Girls reserves the right to change these terms and conditions at any time by posting changes online. Your continued use of this site after changes are posted constitutes your acceptance of this agreement as modified.</li>
+          <li>You agree to use this site only for lawful purposes, and in a manner which does not infringe the rights, or restrict, or inhibit the use and enjoyment of the site by any third party. </li>
+          <li>This site and the information, names, images, pictures, logos regarding or relating to Educate Girls are provided “as is” without any representation or endorsement made and without warranty of any kind whether expressed or implied. In no event will Educate Girls be liable for any damages including, without limitation, indirect or consequential damages, or any damages whatsoever arising from the use or in connection with such use or loss of use of the site, whether in contract or in negligence. </li>
+          <li>Educate Girls does not warrant that the functions contained in the material contained in this site will be uninterrupted or error free, that defects will be corrected, or that this site or the server that makes it available are free of viruses or bugs or represents the full functionality, accuracy and reliability of the materials. </li>
+          <li>COPYRIGHT RESTRICTION
         <ul className="list-disc list-inside space-y-2 text-gray-700">
-          <li>इस साइट की किसी भी सामग्री का व्यावसायिक उपयोग बिना अनुमति के प्रतिबंधित है।</li>
-          <li>दस्तावेज़ों की केवल व्यक्तिगत उपयोग के लिए प्रतिलिपि बनाई जा सकती है।</li>
-          <li>एजुकेट गर्ल्स बाहरी इंटरनेट साइटों की सामग्री के लिए जिम्मेदार नहीं है।</li>
+          <li> Commercial use or publication of all or any item displayed is strictly prohibited    without prior authorization from Educate Girls. Nothing contained herein shall be construed as conferring any license by Educate Girls to use any item displayed.
+          </li>
+          <li>Documents may be copied for personal use only on the condition that copyright and source indications are also copied, no modifications are made and the document is copied entirely. However, some documents and photos have been published on this site with the permission of the relevant copyright owners (who are not Educate Girls). All rights are reserved on these documents and permission to copy them must be requested from the copyright owners (the sources are indicated within these documents/photographs).</li>
+          <li>Educate Girls takes no responsibility for the content of external Internet sites. Other websites that we link to are owned and operated by third parties and Educate Girls has no control over them. The fact that we include links to other websites does not mean that Educate Girls approves of or endorses any other third party website or the content of that website. We accept no liability for any statements, information, products or services that are published on or are accessible through any websites owned or operated by third parties. Any communication or material that you transmit to, or post on, any public area of the site including any data, questions, comments, suggestions, or the like, is, and will be treated as, non-confidential and non-proprietary information.</li>
         </ul>
-        <h2 className="text-2xl font-semibold text-red-600 mt-6">रद्दीकरण और धनवापसी नीति</h2>
-        <ul className="list-disc list-inside space-y-2 text-gray-700">
-          <li>एक बार दान किया गया धन वापस नहीं किया जा सकता।</li>
-          <li>विशेष परिस्थितियों में समीक्षा की जा सकती है।</li>
-          <li>सभी दान आयकर अधिनियम की धारा 80G के तहत कर कटौती के लिए पात्र होंगे।</li>
+        <li>If there is any conflict between these terms and conditions and rules and/or specific terms of use appearing on this site relating to specific material then the latter shall prevail. If you have any concerns about our Privacy Policy or Copyright Restrictions, please contact us: info@educategirls.in or +91-22-26303555.</li> </li>
         </ul>
-        <h2 className="text-2xl font-semibold text-red-600 mt-6">संपर्क करें</h2>
+        
+       <br />
         <p className="text-gray-700">
-          यदि आपको हमारी गोपनीयता नीति या कॉपीराइट प्रतिबंधों के बारे में कोई चिंता है, तो कृपया हमसे संपर्क करें:
+        Foundation to Educate Girls Globally is a registered section 8-Company © Educate Girls 2014
         </p>
-        <p className="mt-2 font-semibold text-red-600">info@educategirls.in | +91-22-26303555</p>
+        
       </div>
     </div>
   );

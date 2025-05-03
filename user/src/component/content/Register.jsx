@@ -1,46 +1,46 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import SummaryApi from '../../common/SummaryApi'
-import fagglogo from '../../../public/eg-logo.png'
-import districtData from '../../data/Mpdistricts.json'
-import { FaAngleLeft } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import axios from "axios";
+import SummaryApi from "../../common/SummaryApi";
+import fagglogo from "../../../public/eg-logo.png";
+import districtData from "../../data/Mpdistricts.json";
+import { FaAngleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [declarationAccepted, setDeclarationAccepted] = useState(false)
-  const [showFullText, setShowFullText] = useState(false)
+  const [declarationAccepted, setDeclarationAccepted] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    fatherFirstName: '',
-    fatherMiddleName: '',
-    fatherLastName: '',
-    motherFirstName: '',
-    motherMiddleName: '',
-    motherLastName: '',
-    permanentAddress: '',
-    block: '',
-    village: '',
-    district: '',
-    tehsil: '',
-    pincode: '',
-    dob: '',
-    age: '',
-    gender: '',
-    religion: '',
-    category: '',
-    contactNo: '',
-    sssmid: '',
-    lastClassStudied: '',
-    applyFor: '',
-    appearing: '',
-    status: '',
-    mail: '',
-    scheme: '',
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    fatherFirstName: "",
+    fatherMiddleName: "",
+    fatherLastName: "",
+    motherFirstName: "",
+    motherMiddleName: "",
+    motherLastName: "",
+    permanentAddress: "",
+    block: "",
+    village: "",
+    district: "",
+    tehsil: "",
+    pincode: "",
+    dob: "",
+    age: "",
+    gender: "",
+    religion: "",
+    category: "",
+    contactNo: "",
+    sssmid: "",
+    lastClassStudied: "",
+    applyFor: "",
+    appearing: "",
+    status: "",
+    mail: "",
+    scheme: "",
     declarationAccepted: false,
-  })
+  });
 
   // Data for districts, tehsils, and blocks
   // const districtData = {
@@ -943,55 +943,55 @@ const Register = () => {
 
   // Handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prevData) => {
-      const newData = { ...prevData, [name]: value }
+      const newData = { ...prevData, [name]: value };
 
       // When district changes, reset tehsil and block
-      if (name === 'district') {
-        newData.tehsil = '' // Reset tehsil
-        newData.block = '' // Reset block
+      if (name === "district") {
+        newData.tehsil = ""; // Reset tehsil
+        newData.block = ""; // Reset block
       }
 
-      return newData
-    })
-  }
+      return newData;
+    });
+  };
 
   // Handle date of birth change and calculate age
   const handleDobChange = (e) => {
-    const dob = e.target.value
+    const dob = e.target.value;
     setFormData((prevData) => {
-      const newData = { ...prevData, dob }
+      const newData = { ...prevData, dob };
 
       // Calculate age based on DOB
-      const age = calculateAge(dob)
-      newData.age = age
+      const age = calculateAge(dob);
+      newData.age = age;
 
-      return newData
-    })
-  }
+      return newData;
+    });
+  };
 
   // Function to calculate age based on DOB
   const calculateAge = (dob) => {
-    const today = new Date()
-    const birthDate = new Date(dob)
-    let age = today.getFullYear() - birthDate.getFullYear()
-    const monthDifference = today.getMonth() - birthDate.getMonth()
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
 
     // Adjust age if the birthday hasn't occurred yet this year
     if (
       monthDifference < 0 ||
       (monthDifference === 0 && today.getDate() < birthDate.getDate())
     ) {
-      age--
+      age--;
     }
 
-    return age
-  }
+    return age;
+  };
 
   // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // // Required Field Check
     // for (const key in formData) {
@@ -1002,48 +1002,48 @@ const Register = () => {
     // }
 
     // Phone Number Validation
-    const phoneRegex = /^[6-9]\d{9}$/
+    const phoneRegex = /^[6-9]\d{9}$/;
     if (!phoneRegex.test(formData.contactNo)) {
-      alert('Please enter a valid 10-digit phone number.')
-      return
+      alert("Please enter a valid 10-digit phone number.");
+      return;
     }
 
     // SSSM ID Validation (9 Digits)
     if (!/^\d{9}$/.test(formData.sssmid)) {
-      alert('SSSM ID must be exactly 9 digits.')
-      return
+      alert("SSSM ID must be exactly 9 digits.");
+      return;
     }
 
     // Pincode Validation (6 Digits)
     if (!/^\d{6}$/.test(formData.pincode)) {
-      alert('Pincode must be exactly 6 digits.')
-      return
+      alert("Pincode must be exactly 6 digits.");
+      return;
     }
 
     // Age Validation (Must be 18+)
-    if (formData.age < 18) {
-      alert('You must be at least 18 years old to register.')
-      return
-    }
+    // if (formData.age < 18) {
+    //   alert('You must be at least 18 years old to register.')
+    //   return
+    // }
 
     // Ensure user is eligible based on status & last class studied
-    if (formData.status === 'Fail' && formData.lastClassStudied === '5th') {
-      alert('You are not eligible to register.')
-      return
+    if (formData.status === "Fail" && formData.lastClassStudied === "5th") {
+      alert("You are not eligible to register.");
+      return;
     }
     if (formData.declarationAccepted === false) {
-      alert('please check mark the declaration.')
-      return
+      alert("please check mark the declaration.");
+      return;
     }
     try {
-      const response = await axios.post(SummaryApi.Register.url, formData)
+      const response = await axios.post(SummaryApi.Register.url, formData);
       if (response.status === 200) {
-        alert('Registration successful!')
+        alert("Registration successful!");
       }
       if (response.status === 201) {
         // Success: Student registration successful
-        alert(response.data.message) // This will show "Student registered successfully"
-        console.log('Learner ID:', response.data.learnerId) // Optional: Log learner ID if needed
+        alert(response.data.message); // This will show "Student registered successfully"
+        console.log("Learner ID:", response.data.learnerId); // Optional: Log learner ID if needed
       }
     } catch (error) {
       // Check if the error is from axios and has a response from the server
@@ -1052,42 +1052,42 @@ const Register = () => {
         error.response.data &&
         error.response.data.message
       ) {
-        const errorMessage = error.response.data.message
+        const errorMessage = error.response.data.message;
 
         if (
-          errorMessage.includes('duplicate key error') ||
-          errorMessage.includes('Contact number')
+          errorMessage.includes("duplicate key error") ||
+          errorMessage.includes("Contact number")
         ) {
-          alert(errorMessage) // Display the duplicate contact number message
+          alert(errorMessage); // Display the duplicate contact number message
         } else {
-          alert('Registration failed. Please try again.')
+          alert("Registration failed. Please try again.");
         }
       } else {
-        console.error('There was an error during registration:', error)
-        alert('Registration failed. Please try again.')
+        console.error("There was an error during registration:", error);
+        alert("Registration failed. Please try again.");
       }
     }
-  }
+  };
 
-  const districtOptions = Object.keys(districtData)
+  const districtOptions = Object.keys(districtData);
 
   const tehsilOptions = formData.district
     ? districtData[formData.district]?.tehsils
-    : []
+    : [];
   const blockOptions = formData.district
     ? districtData[formData.district]?.blocks
-    : []
+    : [];
 
   const handleCheckboxChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       declarationAccepted: e.target.checked, // Update state correctly
-    }))
-  }
+    }));
+  };
 
   const handleToggle = () => {
-    setShowFullText(!showFullText)
-  }
+    setShowFullText(!showFullText);
+  };
   return (
     <div className=" min-h-screen flex sm:flex-row flex-col  items-start justify-center p-4 bg-cover bg-no-repeat">
       <Link
@@ -1447,15 +1447,15 @@ const Register = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select Class</option>
+                <option value="">Select Scheme</option>
                 <option value="Open School (Parampragat)">
                   Open School (Parampragat)
                 </option>
                 <option value="RJN (Rook Jana Nahi)">
                   RJN (Rook Jana Nahi)
                 </option>
-                <option value="ALC (Aa Laut Chale)">ALC (Aa Laut Chale)</option>{' '}
-                <option value="Super Section (SS)">Super Section (SS)</option>{' '}
+                <option value="ALC (Aa Laut Chale)">ALC (Aa Laut Chale)</option>{" "}
+                <option value="Super Section (SS)">Super Section (SS)</option>{" "}
                 <option value="Saksham Bhaiya Behna (SBB)">
                   Saksham Bhaiya Behna (SBB)
                 </option>
@@ -1503,17 +1503,17 @@ const Register = () => {
               </p>
             </div>
             <div className="flex justify-center">
-              <p className="text-sm text-center inline">
+              <p className="text-sm text-justify inline">
                 {showFullText
                   ? `मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत जानकारी सत्य, सटीक और पूर्ण है। यदि इसमें किसी प्रकार की कोई असत्य जानकारी पायी गयी तो मेरा पंजीकरण रद्द किया जा सकता है। मैं एजुकेट गर्ल्स को अधिकृत करता /करती हूँ कि वो प्रदान की गई जानकारी की प्रामाणिकता को सत्यापित कर सकते हैं। मैं पंजीकरण, शैक्षणिक और संचार उद्देश्यों के लिए अपनी व्यक्तिगत जानकारी के उपयोग के लिए सहमति देता/देती हूँ, और स्वीकार करता /करती हूँ कि मेरा डेटा एजुकेट गर्ल्स गोपनीयता नीति के अनुसार सुरक्षित रूप से संग्रहीत किया जाएगा। मैं एजुकेट गर्ल्स के सभी नियमों और विनियमों का पालन करने के लिए सहमत हूँ और समझता /समझती हूँ कि गैर-अनुपालन के परिणामस्वरूप अनुशासनात्मक कार्रवाई हो सकती है।`
                   : `मैं घोषणा करता /करती हूँ कि मेरे द्वारा प्रदान की गई व्यक्तिगत जानकारी सत्य, सटीक और पूर्ण है...`}
+                <button
+                  onClick={handleToggle}
+                  className="text-blue-500 cursor-pointer ml-1 inline"
+                >
+                  {showFullText ? "कम पढ़ें" : "और पढ़ें"}
+                </button>
               </p>
-              <button
-                onClick={handleToggle}
-                className="text-blue-500 cursor-pointer"
-              >
-                {showFullText ? 'कम पढ़ें' : 'और पढ़ें'}
-              </button>
             </div>
           </div>
           <div className="flex justify-center gap-4">
@@ -1533,7 +1533,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

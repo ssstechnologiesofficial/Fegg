@@ -51,7 +51,7 @@ const FeeStructureTable = () => {
       <h3 className="text-lg sm:text-2xl font-semibold text-white text-center my-5 border-[#fd645b] border-x-4 bg-[#fd645b] pt-1 py-1 w-full">
         शुल्क संरचना तालिका (कक्षा 10वीं)
       </h3>
-      <p className="text-center mb-5 px-4 text-sm sm:text-base">
+      <p className=" text-justify mb-5 px-4 text-sm sm:text-base">
         एम.पी. राज्य मुक्त विद्यालय द्वारा संचालित विभिन्न पाठ्यक्रमों की शुल्क
         संरचना तालिका में दर्शाई गई है। प्रवेश पंजीकरण हेतु आवेदन निर्दिष्ट
         कियोस्क के माध्यम से जमा किया जाना चाहिए। यदि शुल्क आंशिक रूप से या

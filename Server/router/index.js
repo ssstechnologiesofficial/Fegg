@@ -216,6 +216,7 @@ const {
   getResultAdmitcardurl,
   uploadResultAdmitUrls,
   updateResultAdmitUrls,
+  deleteResultAdmitUrl,
 } = require('../controller/resultAdmitcardController')
 
 // const {
@@ -403,6 +404,7 @@ router.put('/updateStudentLERnerID/:id', updateStudentLernerid)
 router.post('/upload-url', uploadResultAdmitUrls)
 router.put('/upload-url/:id', updateResultAdmitUrls)
 router.get('/upload-url', getResultAdmitcardurl)
+router.delete('/upload-url/:id', deleteResultAdmitUrl)
 
 //============================== news letter
 

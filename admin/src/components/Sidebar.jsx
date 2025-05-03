@@ -146,13 +146,13 @@ const Sidebar = () => {
             <FiAirplay className="mr-2" size={20} />
             {!isCollapsed && <span>Add Testimonials</span>}
           </Link> */}
-          {/* <Link
+          <Link
             to="resultAdmitcardUrl"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"
           >
             <FaShareAlt className="mr-2" size={20} />
             {!isCollapsed && <span>Add URL</span>}
-          </Link> */}
+          </Link>
           <Link
             to="announcement"
             className="flex items-center px-4 py-3 hover:text-white rounded-lg transition-colors duration-300 hover:bg-gradient-to-r hover:from-[#fe0000]"

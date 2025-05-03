@@ -51,7 +51,7 @@ const Footer = () => {
       ref={footerRef}
       className="bg-gray-900 text-white py-8 border-t-4 border-red-400 sm:px-8"
     >
-      <div className="container mx-auto px-4">
+      <div className=" px-4">
         {/* शीर्ष अनुभाग */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 footer-section">
           {/* लोगो और विवरण */}
@@ -78,7 +78,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-red-400 mb-4">लिंक</h3>
             <ul className="md:space-y-2 space-x-0">
               <li>
-                <Link to="/aboutus" className="hover:underline">
+                <Link to="/about" className="hover:underline">
                   हमारे बारे में
                 </Link>
               </li>
@@ -92,14 +92,15 @@ const Footer = () => {
                   एम.पी.एस.ओ.एस. के बारे में
                 </Link>
               </li>
-              <li>
-                <Link to="/student-corner" className="hover:underline">
-                  शिक्षार्थी कॉर्नर
-                </Link>
-              </li>
+             
               <li>
                 <Link to="/register" className="hover:underline">
                   छात्र पंजीकरण
+                </Link>
+              </li>
+              <li>
+                <Link to="/blueprint" className="hover:underline">
+                  ब्लू प्रिंट
                 </Link>
               </li>
 
@@ -127,7 +128,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h3 className="text-lg font-semibold text-red-400 mb-4">
-              भौगोलिक स्थान
+            गूगल मानचित्र
             </h3>
             <p className="text-red-400 hover:underline cursor-pointer mt-2">
               <iframe
@@ -186,14 +187,14 @@ const Footer = () => {
             <span className="text-primary">
               {" "}
               <Link to="/terms" className="hover:underline">
-                नियम और शर्तें
+              नियम और शर्तें
               </Link>
             </span>{" "}
             |{" "}
             <span className="text-primary">
               {" "}
               <Link to="/privacy-policy" className="hover:underline">
-                गोपनीयता नीति
+              गोपनीयता नीति
               </Link>
             </span>
           </p>

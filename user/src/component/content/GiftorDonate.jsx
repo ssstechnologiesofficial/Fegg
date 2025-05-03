@@ -72,21 +72,20 @@ const ImportantLinks = () => {
     { title: 'वर्चुअल क्लास सेंटर्स', path: '/', doc: Virtual },
     { title: 'वर्चुअल क्लास सेंटर्स (ट्राइबल डिवीजन)', path: '/onlinevideo', doc: Tribal },
     { title: 'EFA सेंटर लिस्ट', path: '/', doc: EFA },
-    { title: 'ब्लू प्रिंट', path: '#', onClick: downloadBlueprint },
-    { title: 'डाउनलोड करे महत्वपूर्ण आदेश, पत्र, निर्देश', path: '/', doc: terms },
+    // { title: 'ब्लू प्रिंट', path: '#', onClick: downloadBlueprint },
+    { title: "ब्लू प्रिंट", path: "/blueprint" }, 
+    { title: 'डाउनलोड करे महत्वपूर्ण आदेश, पत्र, निर्देश', path: 'https://mpsos.nic.in/Daily%20updates.htm',  },
   ]
 
   return (
     <div className="bg-gray-100 pt-8 pb-14" ref={containerRef}>
-      <div className="container px-4 sm:px-12">
+      <div className=" px-4 sm:px-12">
         <EventsAnnouncements />
         <div>
           <h2 className="text-lg sm:text-3xl font-bold mb-4 text-primary text-center mt-8">
             महत्वपूर्ण लिंक
           </h2>
-          <p className="text-gray-600 mb-6 text-center">
-            ओपन स्कूल क्विज़ लें और अपनी ओपन शिक्षा का परीक्षण करें।
-          </p>
+          
 
           <div className="space-y-3">
             {importantLinks.map((link, index) =>
@@ -116,7 +115,7 @@ const ImportantLinks = () => {
                   className="important-link flex items-center justify-between bg-white p-4 shadow-md border-l-8 border-red-400 transition hover:scale-105 hover:bg-gray-50"
                 >
                   <span className="font-medium text-gray-800">{link.title}</span>
-                  <span className="text-primary text-lg font-bold">→</span>
+                  <span className="text-primary text-lg font-bold">↓</span>
                 </Link>
               )
             )}

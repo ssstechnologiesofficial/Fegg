@@ -50,6 +50,7 @@ import Newsletter from '../component/content/Newsletter'
 import AnnouncementDetails from '../component/content/AnnouncementDetails'
 import ScrollToTop from '../component/linktop/ScrollLinkTop'
 import TermsAndConditions from '../component/content/Terms'
+import BlueprintsPage from '../component/content/BluePrint'
 // import AnnouncementDetails from '../component/content/EventAnnouncementDetails'
 
 export const router = createBrowserRouter([
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: 'gallery',
         element: <Gallery />,
+      },
+      {
+        path: 'blueprint',
+        element: <BlueprintsPage />,
       },
       {
         path: 'contactus',

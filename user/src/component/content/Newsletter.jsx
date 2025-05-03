@@ -54,17 +54,17 @@ const Newsletter = () => {
       </div>
 
       {file && (
-        <div className="popup-media fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-          <div className="relative bg-white p-5 rounded-lg shadow-lg">
+        <div className="popup-media ">
+          <div className=" ">
             <span
-              className="absolute top-2 right-2 text-2xl cursor-pointer"
+              className="cursor-pointer"
               onClick={() => setFile(null)}
             >
               &times;
             </span>
             <img
               src={`${baseUrl}/${file.image.replace(/\\/g, '/')}`}
-              className="w-full max-w-md object-cover rounded-md"
+             
             />
             {file.description && (
               <p className="text-gray-700 text-center mt-2">

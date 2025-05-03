@@ -1,127 +1,153 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import SummaryApi from '../common/SummaryAPI'
-import * as XLSX from 'xlsx'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SummaryApi from "../common/SummaryAPI";
+import * as XLSX from "xlsx";
 
 const StudentList = () => {
-  const [students, setStudents] = useState([])
-  const [filteredStudents, setFilteredStudents] = useState([])
-  const [selectedStudent, setSelectedStudent] = useState(null)
-  const [formData, setFormData] = useState({})
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [studentsPerPage, setStudentsPerPage] = useState(5)
+  const [students, setStudents] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [studentsPerPage, setStudentsPerPage] = useState(5);
+  const enumFields = {
+    gender: ["Male", "Female", "Other"],
+    religion: [
+      "Hindu",
+      "Muslim",
+      "Buddhist",
+      "Christian",
+      "Jewish",
+      "Parsi",
+      "Sikh",
+      "Jain",
+      "Others",
+    ],
+    category: ["General", "SC", "ST", "OBC", "EWS"],
+    lastClassStudied: ["5th", "6th", "7th", "8th", "9th", "10th"],
+    applyFor: ["New Student", "TOC", "SYC"],
+    appearing: ["10th", "12th"],
+    status: ["Pass", "Fail"],
+    scheme: [
+      "Open School (Parampragat)",
+      "RJN (Rook Jana Nahi)",
+      "ALC (Aa Laut Chale)",
+      "Super Section (SS)",
+      "Saksham Bhaiya Behna (SBB)",
+    ],
+  };
 
   useEffect(() => {
-    fetchStudents()
-  }, [])
+    fetchStudents();
+  }, []);
   useEffect(() => {
-    filterStudents()
-  }, [searchTerm, students])
+    filterStudents();
+  }, [searchTerm, students]);
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get(SummaryApi.Register.url)
-      setStudents(response.data)
-      setFilteredStudents(response.data)
+      const response = await axios.get(SummaryApi.Register.url);
+      setStudents(response.data);
+      setFilteredStudents(response.data);
     } catch (error) {
-      console.error('Error fetching students:', error)
+      console.error("Error fetching students:", error);
     }
-  }
+  };
 
   const handleEdit = (student) => {
-    setSelectedStudent(student)
-    setFormData(student)
-    setIsModalOpen(true)
-  }
+    setSelectedStudent(student);
+    setFormData(student);
+    setIsModalOpen(true);
+  };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleUpdate = async () => {
-    console.log(formData)
+    console.log(formData);
 
     try {
       await axios.put(
-        SummaryApi.deleteRegister.url.replace(':id', selectedStudent._id),
+        SummaryApi.deleteRegister.url.replace(":id", selectedStudent._id),
         formData
-      )
-      alert('Student updated successfully!')
-      setIsModalOpen(false)
-      fetchStudents()
+      );
+      alert("Student updated successfully!");
+      setIsModalOpen(false);
+      fetchStudents();
     } catch (error) {
-      console.error('Error updating student:', error)
+      console.error("Error updating student:", error);
     }
-  }
+  };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this student?')) {
+    if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        await axios.delete(SummaryApi.deleteRegister.url.replace(':id', id))
-        alert('Student deleted successfully!')
-        fetchStudents()
+        await axios.delete(SummaryApi.deleteRegister.url.replace(":id", id));
+        alert("Student deleted successfully!");
+        fetchStudents();
       } catch (error) {
-        console.error('Error deleting student:', error)
+        console.error("Error deleting student:", error);
       }
     }
-  }
+  };
 
   const filterStudents = () => {
     const filtered = students.filter((student) =>
       student.learnerId.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    setFilteredStudents(filtered)
-  }
+    );
+    setFilteredStudents(filtered);
+  };
 
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value)
-    setCurrentPage(1)
-  }
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
   const handleStudentsPerPageChange = (e) => {
     setStudentsPerPage(
-      e.target.value === 'all'
+      e.target.value === "all"
         ? filteredStudents.length
         : parseInt(e.target.value)
-    )
-    setCurrentPage(1)
-  }
+    );
+    setCurrentPage(1);
+  };
 
   const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(students)
-    const workbook = XLSX.utils.book_new()
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Students')
-    XLSX.writeFile(workbook, 'StudentList.xlsx')
-  }
+    const worksheet = XLSX.utils.json_to_sheet(students);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Students");
+    XLSX.writeFile(workbook, "StudentList.xlsx");
+  };
   const handleSearch = (e) => {
-    const searchValue = e.target.value
-    setSearchTerm(searchValue)
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue);
     const filtered = students.filter((student) =>
       student.learnerId.toLowerCase().includes(searchValue.toLowerCase())
-    )
-    setFilteredStudents(filtered)
-    setCurrentPage(1) // Reset pagination when searching
-  }
+    );
+    setFilteredStudents(filtered);
+    setCurrentPage(1); // Reset pagination when searching
+  };
 
-  const indexOfLastStudent = currentPage * studentsPerPage
-  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage
+  const indexOfLastStudent = currentPage * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
   const currentStudents = filteredStudents.slice(
     indexOfFirstStudent,
     indexOfLastStudent
-  )
+  );
 
   const nextPage = () => {
     if (indexOfLastStudent < filteredStudents.length) {
-      setCurrentPage((prev) => prev + 1)
+      setCurrentPage((prev) => prev + 1);
     }
-  }
+  };
 
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1)
+      setCurrentPage((prev) => prev - 1);
     }
-  }
+  };
   return (
     <div className="p-6 bg-white min-h-screen">
       <h2 className="text-2xl font-bold mb-4">Registered Student Details.</h2>
@@ -135,7 +161,7 @@ const StudentList = () => {
             value={searchTerm}
             onChange={handleSearch}
             className="mb-4 p-2 border rounded w-40"
-          />{' '}
+          />{" "}
         </div>
         {/* Select Students Per Page */}
         <div className="flex flex-col justify-center items-start">
@@ -143,7 +169,7 @@ const StudentList = () => {
           <select
             value={
               studentsPerPage === filteredStudents.length
-                ? 'all'
+                ? "all"
                 : studentsPerPage
             }
             onChange={handleStudentsPerPageChange}
@@ -202,7 +228,7 @@ const StudentList = () => {
                 {student.firstName} {student.middleName} {student.lastName}
               </td>
               <td className="border p-2">
-                {student.fatherFirstName} {student.fatherMiddleName}{' '}
+                {student.fatherFirstName} {student.fatherMiddleName}{" "}
                 {student.fatherLastName}
               </td>
               <td className="border p-2">{student.gender}</td>
@@ -268,19 +294,35 @@ const StudentList = () => {
             {/* Scrollable Form Fields */}
             <div className="h-[400px] overflow-y-auto">
               {Object.keys(formData)
-                .filter((field) => field !== '_id') // Exclude _id from inputs
+                .filter((field) => field !== "_id")
                 .map((field) => (
                   <div key={field} className="mb-2">
                     <label className="block font-semibold capitalize">
-                      {field.replace(/([A-Z])/g, ' $1').trim()}
+                      {field.replace(/([A-Z])/g, " $1").trim()}
                     </label>
-                    <input
-                      type={field === 'dob' ? 'date' : 'text'}
-                      name={field}
-                      value={formData[field] || ''}
-                      onChange={handleChange}
-                      className="border rounded p-2 w-full"
-                    />
+                    {enumFields[field] ? (
+                      <select
+                        name={field}
+                        value={formData[field] || ""}
+                        onChange={handleChange}
+                        className="border rounded p-2 w-full"
+                      >
+                        <option value="">Select {field}</option>
+                        {enumFields[field].map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        type={field === "dob" ? "date" : "text"}
+                        name={field}
+                        value={formData[field] || ""}
+                        onChange={handleChange}
+                        className="border rounded p-2 w-full"
+                      />
+                    )}
                   </div>
                 ))}
             </div>
@@ -304,7 +346,7 @@ const StudentList = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default StudentList
+export default StudentList;

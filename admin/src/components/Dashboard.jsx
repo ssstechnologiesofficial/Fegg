@@ -154,7 +154,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-lg p-6 border-2 border-red-500 shadow-lg bg-white">
+        <div className="rounded-lg p-5 border-2 border-red-500 shadow-lg bg-white">
           <div className="flex items-center space-x-4">
             <div className="p-4 rounded-full bg-gray-100">
               <FaCalendarAlt size={30} className="text-red-500" />

@@ -74,6 +74,7 @@ export const router = createBrowserRouter([
             path: 'event',
             element: <EventForm />,
           },
+          
 
           // {
           //   path: 'hero-img',
@@ -99,6 +100,7 @@ export const router = createBrowserRouter([
             path: 'create-test',
             element: <CreatePracticeSet />,
           },
+          
 
           {
             path: 'create-subject',
@@ -176,6 +178,10 @@ export const router = createBrowserRouter([
             path: 'announcement',
             element: <AnnouncementUpload />,
           },
+          {
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
+          },
         ],
       },
       {
@@ -189,6 +195,10 @@ export const router = createBrowserRouter([
           {
             path: 'EBooks',
             element: <EBooks />,
+          },
+          {
+            path: 'resultAdmitcardUrl',
+            element: <UploadUrl />,
           },
           {
             path: 'event',

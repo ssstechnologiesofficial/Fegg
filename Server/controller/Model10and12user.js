@@ -1,4 +1,6 @@
+const studentRegister = require('../model/studentRegister')
 const UserDownload = require('../model/UserModelDownload')
+
 
 // Store user download details
 exports.storeUserDownload = async (req, res) => {
@@ -12,6 +14,18 @@ exports.storeUserDownload = async (req, res) => {
       })
     }
 
+    // Check if user exists in the registered students collection
+    const existingStudent = await studentRegister.findOne({
+      $or: [{ contactNo: userInput }, { learnerId: userInput }],
+    })
+
+    if (!existingStudent) {
+      return res.status(400).json({
+        message: 'उपयोगकर्ता नहीं मिला। कृपया पहले पंजीकरण करें।',
+      })
+    }
+
+    // Proceed with storing the download record
     const newDownload = new UserDownload({ userInput, subject, className })
     await newDownload.save()
 
