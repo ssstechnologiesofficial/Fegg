@@ -195,7 +195,7 @@ const Class10EnglishPapers = () => {
                               item.file,
                               item.subject,
                               item.className,
-                              item.isActive
+                              item._id // <-- pass the correct id here
                             )
                           }
                           className={`text-blue-600 hover:underline ${

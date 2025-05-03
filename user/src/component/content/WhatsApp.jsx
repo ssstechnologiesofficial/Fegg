@@ -5,7 +5,7 @@ const WhatsApp = () => {
   return (
     <div className="fixed bottom-5 right-5 z-50">
       <a
-        href="https://wa.me/YOUR_PHONE_NUMBER"
+        href="https://wa.me/9754688055"
         target="_blank"
         rel="noopener noreferrer"
       >
