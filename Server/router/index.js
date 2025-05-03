@@ -230,6 +230,7 @@ const {
   uploadNewsLetter,
   getNewsLetterImages,
   deleteNewsLetterImage,
+  updateNewsLetter,
 } = require('../controller/NewsLettercontroller')
 
 // Contact us
@@ -411,6 +412,8 @@ router.delete('/upload-url/:id', deleteResultAdmitUrl)
 router.post('/NLuploads', upload.single('image'), uploadNewsLetter) // Upload an image
 router.get('/getNewsLetterImages', getNewsLetterImages) // Fetch all images
 router.delete('/NLuploadsdelete/:id', deleteNewsLetterImage)
+router.put('/NLuploadsdelete/:id', upload.single('image'), updateNewsLetter);
+
 
 // ================= Session
 router.post('/uploadsession', updateSession)
@@ -418,3 +421,5 @@ router.get('/getsession', getSessions)
 router.put('/uploadsession/:id', updateSession) // Update session
 router.delete('/uploadsession/:id', deleteSession) // Delete session
 module.exports = router
+
+
