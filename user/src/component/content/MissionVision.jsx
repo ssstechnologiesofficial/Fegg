@@ -9,7 +9,7 @@ const MissionVision = () => {
         मिशन और विजन
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* विजन  hero 2 image */}
+        {/* विजन   */}
         <div className="flex flex-col border rounded-md">
           <img src={hero} alt="विजन" className="rounded-md object-cover" />
           <h3 className="text-xl font-semibold text-gray-800 mt-4 ps-2">
