@@ -7,7 +7,7 @@ const uploadCarouselImage = async (req, res) => {
     }
 
     const { title, description } = req.body
-    const imagePath = req.file.path // Get uploaded file path
+    const imagePath = req.file.path // Get uploaded file pathhhhhhhh
 
     const newCarousel = new CarouselModel({
       image: imagePath,
