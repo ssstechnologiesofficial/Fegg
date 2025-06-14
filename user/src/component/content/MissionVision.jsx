@@ -4,7 +4,7 @@
 
 // const MissionVision = () => {
 //   return (
-//     <div className="p-10">
+//     <div className="p-10"> 
 //       <h3 className="sm:text-4xl text-2xl text-center font-semibold border-x-4 py-2 my-3 text-white border-[#fd645b] bg-[#fd645b]">
 //         मिशन और विजन
 //       </h3>
@@ -25,7 +25,7 @@
 //           </button>
 //         </div>
 
-//         {/* मिशन */}
+//         {/* मिशन jjjjjjjjjjjjj*/}
 //         <div className="flex flex-col border rounded-md">
 //           <img src={hero2} alt="मिशन" className="rounded-md object-cover" />
 //           <h3 className="text-xl font-semibold text-gray-800 mt-4 ps-2">
