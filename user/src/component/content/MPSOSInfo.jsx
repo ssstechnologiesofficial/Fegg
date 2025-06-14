@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import mpsoLogo from '../../../src/assets/mpsoslogo.png' 
+import mpsoLogo from '../../../src/assets/MPSOSLogo.png' 
 // logo
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
