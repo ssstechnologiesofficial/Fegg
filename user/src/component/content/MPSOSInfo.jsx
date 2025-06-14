@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import mpsoLogo from '../../../src/assets/mpsoslogo.png'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-
+// img 
 const MPSOSInfo = () => {
   const footerRef = useRef(null)
 
