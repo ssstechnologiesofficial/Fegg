@@ -1,6 +1,6 @@
 // import React from 'react'
 // import hero from '../../assets/pp1.webp'
-// import hero2 from '../../assets/pp2.webp'
+// import hero2 from '../../assets/PP2.webp'
 
 // const MissionVision = () => {
 //   return (
