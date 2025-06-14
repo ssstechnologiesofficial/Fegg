@@ -34,7 +34,7 @@ import Class12EnglishPapers from '../component/content/PreviousPaperOption/Class
 import Class12HindiPapers from '../component/content/PreviousPaperOption/Class12HindiPapers'
 import Pragati from '../component/content/Pragati'
 import EGteam from '../component/content/EGteam'
-import MissionVision from '../component/content/MissionVision'
+// import MissionVision from '../component/content/MissionVision'
 import PracticeSet from '../component/content/practiceset/PracticeSet'
 import Crad10th from '../component/content/practiceset/Crad10th'
 import Crad12th from '../component/content/practiceset/Card12th'
@@ -208,10 +208,10 @@ export const router = createBrowserRouter([
         path: 'EGteam',
         element: <EGteam />,
       },
-      {
-        path: 'MissionVision',
-        element: <MissionVision />,
-      },
+      // {
+      //   path: 'MissionVision',
+      //   element: <MissionVision />,
+      // },
       {
         path: 'faq',
         element: <FAQComponent />,
