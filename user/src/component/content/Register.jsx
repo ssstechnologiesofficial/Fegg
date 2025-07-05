@@ -340,7 +340,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              तहसील<span className="text-red-500">*</span>
+              तहसील
               <select
                 name="tehsil"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -355,7 +355,7 @@ const Register = () => {
               </select>
             </label>
             <label className="block">
-              ब्लॉक <span className="text-red-500">*</span>
+              ब्लॉक
               <select
                 name="block"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
@@ -379,7 +379,7 @@ const Register = () => {
               />
             </label>
             <label className="block">
-              पिन कोड <span className="text-red-500">*</span>
+              पिन कोड
               <input
                 type="number"
                 name="pincode"
