@@ -80,14 +80,14 @@ const validateStudentRegistration = [
   body('permanentAddress')
     .notEmpty()
     .withMessage('Permanent address is required'),
-  body('block').notEmpty().withMessage('Block is required'),
+  // body('block').notEmpty().withMessage('Block is required'),
   body('district').notEmpty().withMessage('District is required'),
-  body('tehsil').notEmpty().withMessage('Tehsil is required'),
-  body('pincode')
-    .isNumeric()
-    .withMessage('Pincode must be a number')
-    .isLength({ min: 6, max: 6 })
-    .withMessage('Pincode must be 6 digits'),
+  // body('tehsil').notEmpty().withMessage('Tehsil is required'),
+  // body('pincode')
+  //   .isNumeric()
+  //   .withMessage('Pincode must be a number')
+  //   .isLength({ min: 6, max: 6 })
+  // .withMessage('Pincode must be 6 digits'),
   body('dob').isISO8601().withMessage('Date of birth must be a valid date'),
   body('age').isNumeric().withMessage('Age must be a number'),
   body('gender')

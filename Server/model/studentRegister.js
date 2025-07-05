@@ -44,7 +44,6 @@ const studentSchema = new mongoose.Schema(
     },
     block: {
       type: String,
-      required: true,
     },
     village: {
       type: String,
@@ -59,11 +58,9 @@ const studentSchema = new mongoose.Schema(
     },
     tehsil: {
       type: String,
-      required: true,
     },
     pincode: {
       type: Number,
-      required: true,
     },
     dob: {
       type: Date,

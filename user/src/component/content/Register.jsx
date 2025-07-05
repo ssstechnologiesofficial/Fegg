@@ -1,997 +1,98 @@
-import React, { useState } from "react";
-import axios from "axios";
-import SummaryApi from "../../common/SummaryApi";
-import fagglogo from "../../../public/eg-logo.png";
-import districtData from "../../data/Mpdistricts.json";
-import { FaAngleLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react'
+import axios from 'axios'
+import SummaryApi from '../../common/SummaryApi'
+import fagglogo from '../../../public/eg-logo.png'
+import districtData from '../../data/Mpdistricts.json'
+import { FaAngleLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
-  const [declarationAccepted, setDeclarationAccepted] = useState(false);
-  const [showFullText, setShowFullText] = useState(false);
+  const [declarationAccepted, setDeclarationAccepted] = useState(false)
+  const [showFullText, setShowFullText] = useState(false)
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    fatherFirstName: "",
-    fatherMiddleName: "",
-    fatherLastName: "",
-    motherFirstName: "",
-    motherMiddleName: "",
-    motherLastName: "",
-    permanentAddress: "",
-    block: "",
-    village: "",
-    district: "",
-    tehsil: "",
-    pincode: "",
-    dob: "",
-    age: "",
-    gender: "",
-    religion: "",
-    category: "",
-    contactNo: "",
-    sssmid: "",
-    lastClassStudied: "",
-    applyFor: "",
-    appearing: "",
-    status: "",
-    mail: "",
-    scheme: "",
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    fatherFirstName: '',
+    fatherMiddleName: '',
+    fatherLastName: '',
+    motherFirstName: '',
+    motherMiddleName: '',
+    motherLastName: '',
+    permanentAddress: '',
+    block: '',
+    village: '',
+    district: '',
+    tehsil: '',
+    pincode: '',
+    dob: '',
+    age: '',
+    gender: '',
+    religion: '',
+    category: '',
+    contactNo: '',
+    sssmid: '',
+    lastClassStudied: '',
+    applyFor: '',
+    appearing: '',
+    status: '',
+    mail: '',
+    scheme: '',
     declarationAccepted: false,
-  });
-
-  // Data for districts, tehsils, and blocks
-  // const districtData = {
-  //   AgarMalwa: {
-  //     tehsils: ['Agar', 'Badod', 'Nalkheda', 'Soyatkala', 'Susner'],
-  //     blocks: ['Agar', 'Barod', 'Nalkheda', 'Susner'],
-  //   },
-  //   Alirajpur: {
-  //     tehsils: [
-  //       'Alirajpur',
-  //       'Chandra Shekhar Azad Nagar',
-  //       'Jobat',
-  //       'Katthiwara',
-  //       'Sondawa',
-  //     ],
-  //     blocks: [
-  //       'Alirajpur',
-  //       'Bhabra',
-  //       'Jobat',
-  //       'Katthiwada',
-  //       'Sondwa',
-  //       'Udaigarh',
-  //     ],
-  //   },
-  //   Anuppur: {
-  //     tehsils: ['Anuppur', 'Jaithari', 'Kotma', 'Pushparajgarh'],
-  //     blocks: ['Anuppur', 'Jaithari', 'Kotma', 'Pushprajgarh'],
-  //   },
-  //   Ashoknagar: {
-  //     tehsils: [
-  //       'Ashoknagar',
-  //       'Bahadurpur',
-  //       'Chanderi',
-  //       'Isagarh',
-  //       'Mungaoli',
-  //       'Nai Sarai',
-  //       'Piprai',
-  //       'Shadhora',
-  //     ],
-  //     blocks: ['Ashoknagar', 'Chanderi', 'Isagarh', 'Mungaoli'],
-  //   },
-  //   Balaghat: {
-  //     tehsils: [
-  //       'Baihar',
-  //       'Balaghat',
-  //       'Birsa',
-  //       'Katangi',
-  //       'Khairlanji',
-  //       'Kirnapur',
-  //       'Lalbarra',
-  //       'Lamta',
-  //       'Lanji',
-  //       'Paraswada',
-  //       'Tirodi',
-  //       'Waraseoni',
-  //     ],
-  //     blocks: [
-  //       'Baihar',
-  //       'Balaghat',
-  //       'Birsa',
-  //       'Katangi',
-  //       'Khairlanji',
-  //       'Kirnapur',
-  //       'Lalbarra',
-  //       'Lanji',
-  //       'Paraswada',
-  //       'Waraseoni',
-  //     ],
-  //   },
-  //   Barwani: {
-  //     tehsils: [
-  //       'Anjad',
-  //       'Barwani',
-  //       'Niwali',
-  //       'Pansemal',
-  //       'Pati',
-  //       'Rajpur',
-  //       'Sendhwa',
-  //       'Thikri',
-  //       'Varla',
-  //     ],
-  //     blocks: [
-  //       'Barwani',
-  //       'Newali',
-  //       'Pansemal',
-  //       'Pati',
-  //       'Rajpur',
-  //       'Sendhawa',
-  //       'Thikri',
-  //     ],
-  //   },
-  //   Betul: {
-  //     tehsils: [
-  //       'Amla',
-  //       'Athner',
-  //       'Betul',
-  //       'Betul Nagar',
-  //       'Bhainsdehi',
-  //       'Bhimpur',
-  //       'Chicholi',
-  //       'Ghoda Dongri',
-  //       'Multai',
-  //       'Prabhatpttan',
-  //       'Shahpur',
-  //     ],
-  //     blocks: [
-  //       'Amla',
-  //       'Athner',
-  //       'Betul',
-  //       'Bhainsdehi',
-  //       'Bhimpur',
-  //       'Chicholi',
-  //       'Ghoradongri',
-  //       'Multai',
-  //       'Prabhat Pattan',
-  //       'Shahpur',
-  //     ],
-  //   },
-  //   Bhind: {
-  //     tehsils: [
-  //       'Ater',
-  //       'Bhind',
-  //       'Bhind Nagar',
-  //       'Gohad',
-  //       'Gormi',
-  //       'Lahar',
-  //       'Mau',
-  //       'Mehgaon',
-  //       'Mihona',
-  //       'Ron',
-  //     ],
-  //     blocks: ['Ater', 'Bhind', 'Gohad', 'Lahar', 'Mehgaon', 'Raon'],
-  //   },
-  //   Bhopal: {
-  //     tehsils: ['Berasia', 'Huzur', 'Kolar'],
-  //     blocks: ['Berasia', 'Phanda'],
-  //   },
-  //   Burhanpur: {
-  //     tehsils: [
-  //       'Burhanpur',
-  //       'Burhanpur Nagar',
-  //       'Dhulcot',
-  //       'Khaknar',
-  //       'Nepanagar',
-  //     ],
-  //     blocks: ['Burhanpur', 'Khaknar'],
-  //   },
-  //   Chhatarpur: {
-  //     tehsils: [
-  //       'Bada Malhera',
-  //       'Bijawar',
-  //       'Buxwaha',
-  //       'Chandla',
-  //       'Chhatarpur',
-  //       'Chhatarpur Nagar',
-  //       'Gaurihar',
-  //       'Ghuwara',
-  //       'Lavkush Nagar',
-  //       'Maharajpur',
-  //       'Nowgong',
-  //       'Rajnagar',
-  //       'Satai',
-  //     ],
-  //     blocks: [
-  //       'Bada Malehara',
-  //       'Barigarh',
-  //       'Bijawar',
-  //       'Buxwaha',
-  //       'Chhatarpur',
-  //       'Lavkush Nagar',
-  //       'Nowgong',
-  //       'Rajnagar',
-  //     ],
-  //   },
-  //   Chhindwara: {
-  //     tehsils: [
-  //       'Amarwara',
-  //       'Bichhua',
-  //       'Chand',
-  //       'Chaurai',
-  //       'Chhindwara',
-  //       'Chhindwara Nagar',
-  //       'Harrai',
-  //       'Jamai (Junnardeo)',
-  //       'Mohkhed',
-  //       'Parasia',
-  //       'Tamia',
-  //       'Umreth',
-  //     ],
-  //     blocks: [
-  //       'Amarwara',
-  //       'Bichhua',
-  //       'Chaurai',
-  //       'Chhindwara',
-  //       'Harrai',
-  //       'Jamai',
-  //       'Mohkhed',
-  //       'Parasia',
-  //       'Tamia',
-  //     ],
-  //   },
-  //   Damoh: {
-  //     tehsils: [
-  //       'Batiyagarh',
-  //       'Damoh',
-  //       'Damyanti Nagar',
-  //       'Hatta',
-  //       'Jabera',
-  //       'Patera',
-  //       'Patharia',
-  //       'Tendukheda',
-  //     ],
-  //     blocks: [
-  //       'Batiyagarh',
-  //       'Damoh',
-  //       'Hatta',
-  //       'Jabera',
-  //       'Patera',
-  //       'Pathariya',
-  //       'Tendukheda',
-  //     ],
-  //   },
-  //   Datia: {
-  //     tehsils: [
-  //       'Baroni',
-  //       'Bhander',
-  //       'Datia',
-  //       'Datia Nagar',
-  //       'Indergarh',
-  //       'Seondha',
-  //     ],
-  //     blocks: ['Bhander', 'Datia', 'Seondha'],
-  //   },
-  //   Dewas: {
-  //     tehsils: [
-  //       'Bagli',
-  //       'Dewas',
-  //       'Dewas Nagar',
-  //       'Hatpiplya',
-  //       'Kannod',
-  //       'Khategaon',
-  //       'Satwas',
-  //       'Sonkatch',
-  //       'Tonk Khurd',
-  //       'Udaynagar',
-  //     ],
-  //     blocks: [
-  //       'Bagli',
-  //       'Dewas',
-  //       'Kannod',
-  //       'Khategaon',
-  //       'Sonkatch',
-  //       'Tonk Khurd',
-  //     ],
-  //   },
-  //   Dhar: {
-  //     tehsils: [
-  //       'Badnawar',
-  //       'Dahi',
-  //       'Dhar',
-  //       'Dharampuri',
-  //       'Gandhwani',
-  //       'Kukshi',
-  //       'Manawar',
-  //       'Pithampur',
-  //       'Sardarpur',
-  //     ],
-  //     blocks: [
-  //       'Badnawar',
-  //       'Bagh',
-  //       'Dahi',
-  //       'Dhar',
-  //       'Dharampuri',
-  //       'Gandhwani',
-  //       'Kukshi',
-  //       'Manawar',
-  //       'Nalchha',
-  //       'Nisarpur',
-  //       'Sardarpur',
-  //       'Tirla',
-  //       'Umarban',
-  //     ],
-  //   },
-  //   Dindori: {
-  //     tehsils: ['Bajag', 'Dindori', 'Shahpura'],
-  //     blocks: [
-  //       'Amarpur',
-  //       'Bajag',
-  //       'Dindori',
-  //       'Karanjiya',
-  //       'Mehandwani',
-  //       'Samnapur',
-  //       'Shahpura',
-  //     ],
-  //   },
-  //   Guna: {
-  //     tehsils: [
-  //       'Aron',
-  //       'Bamori',
-  //       'Chachaura',
-  //       'Guna',
-  //       'Guna Nagar',
-  //       'Kumbhraj',
-  //       'Maksoodangarh',
-  //       'Raghogarh',
-  //     ],
-  //     blocks: ['Aron', 'Bamori', 'Chanchoda', 'Guna', 'Raghogarh'],
-  //   },
-  //   Gwalior: {
-  //     tehsils: [
-  //       'Bhitarwar',
-  //       'Chinour',
-  //       'City Center',
-  //       'Dabra',
-  //       'Ghatigaon',
-  //       'Gird',
-  //       'Gwalior Gramin',
-  //       'Morar',
-  //       'Pichhor',
-  //       'Tansen',
-  //     ],
-  //     blocks: ['Bhitarwar', 'Dabra', 'Ghatigaon', 'Morar'],
-  //   },
-  //   Harda: {
-  //     tehsils: [
-  //       'Handiya',
-  //       'Harda',
-  //       'Khirkiya',
-  //       'Rehatgaon',
-  //       'Sirali',
-  //       'Timarni',
-  //     ],
-  //     blocks: ['Harda', 'Khirkiya', 'Timarni'],
-  //   },
-  //   Indore: {
-  //     tehsils: [
-  //       'Bicholi Hapsi',
-  //       'Depalpur',
-  //       'Dr. Ambedkar Nagar (Mhow)',
-  //       'Hatod',
-  //       'Indore',
-  //       'Kanadia',
-  //       'Khudel',
-  //       'Malharganj',
-  //       'Rau',
-  //       'Sanwer',
-  //     ],
-  //     blocks: ['Depalpur', 'Indore', 'Mhow', 'Sanwer'],
-  //   },
-  //   Jabalpur: {
-  //     tehsils: [
-  //       'Adhartal',
-  //       'Gorakhpur',
-  //       'Jabalpur',
-  //       'Kundam',
-  //       'Majholi',
-  //       'Panagar',
-  //       'Patan',
-  //       'Ranjhi',
-  //       'Shahpura',
-  //       'Sihora',
-  //     ],
-  //     blocks: [
-  //       'Jabalpur',
-  //       'Kundam',
-  //       'Majhouli',
-  //       'Panagar',
-  //       'Patan',
-  //       'Shahpura',
-  //       'Sihora',
-  //     ],
-  //   },
-  //   Jhabua: {
-  //     tehsils: [
-  //       'Jhabua',
-  //       'Meghnagar',
-  //       'Petlawad',
-  //       'Rama',
-  //       'Ranapur',
-  //       'Thandla',
-  //     ],
-  //     blocks: ['Jhabua', 'Meghnagar', 'Petlawad', 'Rama', 'Ranapur', 'Thandla'],
-  //   },
-  //   Katni: {
-  //     tehsils: [
-  //       'Badwara',
-  //       'Bahoriband',
-  //       'Barhi',
-  //       'Dhimarkheda',
-  //       'Katni Nagar',
-  //       'Murwara Or Katni',
-  //       'Rithi',
-  //       'Sleemnabad',
-  //       'Vijayraghavgarh',
-  //     ],
-  //     blocks: [
-  //       'Badwara',
-  //       'Bahoriband',
-  //       'Dheemerkheda',
-  //       'Katni',
-  //       'Rithi',
-  //       'Vijayraghavgarh',
-  //     ],
-  //   },
-  //   Khandwa: {
-  //     tehsils: [
-  //       'Chhaigaon Makhan',
-  //       'Harsud',
-  //       'Khalwa',
-  //       'Khandwa',
-  //       'Khandwa Nagar',
-  //       'Killod',
-  //       'Mundi',
-  //       'Pandhana',
-  //       'Punasa',
-  //     ],
-  //     blocks: [
-  //       'Baladi',
-  //       'Chhaigaon Makhan',
-  //       'Harsud',
-  //       'Khalwa',
-  //       'Khandwa',
-  //       'Pandhana',
-  //       'Punasa',
-  //     ],
-  //   },
-  //   Khargone: {
-  //     tehsils: [
-  //       'Barwaha',
-  //       'Bhagwanpura',
-  //       'Bhikangaon',
-  //       'Gogaon',
-  //       'Jhiranya',
-  //       'Kasrawad',
-  //       'Khargone',
-  //       'Khargone Nagar',
-  //       'Maheshwar',
-  //       'Sanawad',
-  //       'Segaon',
-  //     ],
-  //     blocks: [
-  //       'Barwah',
-  //       'Bhagvanpura',
-  //       'Bhikangaon',
-  //       'Gogawan',
-  //       'Kasrawad',
-  //       'Khargone',
-  //       'Maheshwar',
-  //       'Segaon',
-  //       'Ziranya',
-  //     ],
-  //   },
-  //   Mauganj: {
-  //     tehsils: ['Hanumana', 'Mauganj', 'Naigarhi'],
-  //     blocks: ['Hanumana', 'Mauganj', 'Naigarhi'],
-  //   },
-  //   Maihar: {
-  //     tehsils: ['Amarpatan', 'Maihar', 'Ramnagar'],
-  //     blocks: ['Amarpatan', 'Maihar', 'Ramnagar'],
-  //   },
-  //   Mandla: {
-  //     tehsils: [
-  //       'Bichhiya',
-  //       'Ghughari',
-  //       'Mandla',
-  //       'Nainpur',
-  //       'Narayanganj',
-  //       'Niwas',
-  //     ],
-  //     blocks: [
-  //       'Bichhiya',
-  //       'Bijadandi',
-  //       'Ghughri',
-  //       'Mandla',
-  //       'Mawai',
-  //       'Mohgaon',
-  //       'Nainpur',
-  //       'Narayanganj',
-  //       'Niwas',
-  //     ],
-  //   },
-  //   Mandsaur: {
-  //     tehsils: [
-  //       'Bhanpura',
-  //       'Daloda',
-  //       'Garoth',
-  //       'Malhargarh',
-  //       'Mandsaur',
-  //       'Mandsaur Nagar',
-  //       'Shamgarh',
-  //       'Sitamau',
-  //       'Suwasara',
-  //     ],
-  //     blocks: ['Bhanpura', 'Garoth', 'Malhargarh', 'Mandsaur', 'Sitamau'],
-  //   },
-  //   Morena: {
-  //     tehsils: [
-  //       'Ambah',
-  //       'Bamor',
-  //       'Joura',
-  //       'Kailaras',
-  //       'Morena',
-  //       'Morena Nagar',
-  //       'Porsa',
-  //       'Sabalgarh',
-  //     ],
-  //     blocks: [
-  //       'Ambah',
-  //       'Joura',
-  //       'Kailaras',
-  //       'Morena',
-  //       'Pahadgarh',
-  //       'Porsa',
-  //       'Sabalgarh',
-  //     ],
-  //   },
-  //   Narmadapuram: {
-  //     tehsils: [
-  //       'Bankhedi',
-  //       'Dolariya',
-  //       'Hoshangabad',
-  //       'Hoshangabad Nagar',
-  //       'Itarsi',
-  //       'Makhan Nagar',
-  //       'Pipariya',
-  //       'Seoni Malwa',
-  //       'Sohagpur',
-  //     ],
-  //     blocks: [
-  //       'Bankhedi',
-  //       'Kesla',
-  //       'Makhan Nagar',
-  //       'Narmadapuram',
-  //       'Pipariya',
-  //       'Seoni Malwa',
-  //       'Sohagpur',
-  //     ],
-  //   },
-  //   Narsimhapur: {
-  //     tehsils: [
-  //       'Bankhedi',
-  //       'Kesla',
-  //       'Makhan Nagar',
-  //       'Narmadapuram',
-  //       'Pipariya',
-  //       'Seoni Malwa',
-  //       'Sohagpur',
-  //       'Babai Chichali',
-  //       'Chawarpatha',
-  //       'Gotegaon',
-  //       'Kareli',
-  //       'Narsimhapur',
-  //       'Sainkheda',
-  //     ],
-  //     blocks: [],
-  //   },
-  //   Neemuch: {
-  //     tehsils: [
-  //       'Jawad',
-  //       'Jiran',
-  //       'Manasa',
-  //       'Neemuch',
-  //       'Neemuch Nagar',
-  //       'Rampura',
-  //       'Singoli',
-  //     ],
-  //     blocks: ['Jawad', 'Manasa', 'Neemuch'],
-  //   },
-  //   Niwari: {
-  //     tehsils: ['Niwari', 'Orchha', 'Prithvipur'],
-  //     blocks: ['Niwari', 'Prithvipur'],
-  //   },
-  //   Pandhurna: {
-  //     tehsils: ['Pandhurna', 'Sausar'],
-  //     blocks: ['Pandhurna', 'Sausar'],
-  //   },
-  //   Panna: {
-  //     tehsils: [
-  //       'Ajaygarh',
-  //       'Amanganj',
-  //       'Devendranagar',
-  //       'Gunnor',
-  //       'Panna',
-  //       'Pawai',
-  //       'Raipura',
-  //       'Shahnagar',
-  //       'Simariya',
-  //     ],
-  //     blocks: ['Ajaigarh', 'Gunour', 'Panna', 'Pawai', 'Shahnagar'],
-  //   },
-  //   Raisen: {
-  //     tehsils: [
-  //       'Badi',
-  //       'Baraily',
-  //       'Begamganj',
-  //       'Deori',
-  //       'Gairatganj',
-  //       'Goharganj',
-  //       'Raisen',
-  //       'Silwani',
-  //       'Sultanpur',
-  //       'Udaipura',
-  //     ],
-  //     blocks: [
-  //       'Badi',
-  //       'Begamganj',
-  //       'Gairatganj',
-  //       'Obaidallaganj',
-  //       'Sanchi',
-  //       'Silwani',
-  //       'Udaipura',
-  //     ],
-  //   },
-  //   Rajgarh: {
-  //     tehsils: [
-  //       'Biaora',
-  //       'Jeerapur',
-  //       'Khilchipur',
-  //       'Khujner',
-  //       'Narsinghgarh',
-  //       'Pachore',
-  //       'Rajgarh',
-  //       'Sarangpur',
-  //       'Suthaliya',
-  //     ],
-  //     blocks: [
-  //       'Biaora',
-  //       'Khilchipur',
-  //       'Narsinghgarh',
-  //       'Rajgarh',
-  //       'Sarangpur',
-  //       'Zirapur',
-  //     ],
-  //   },
-  //   Ratlam: {
-  //     tehsils: [
-  //       'Alot',
-  //       'Bajna',
-  //       'Jaora',
-  //       'Piploda',
-  //       'Raoti',
-  //       'Ratlam',
-  //       'Ratlam Nagar',
-  //       'Sailana',
-  //       'Tal',
-  //     ],
-  //     blocks: ['Alot', 'Bajna', 'Jaora', 'Piploda', 'Ratlam', 'Sailana'],
-  //   },
-  //   Rewa: {
-  //     tehsils: [
-  //       'Gurh',
-  //       'Huzur',
-  //       'Huzur Nagar',
-  //       'Jawa',
-  //       'Mangawan',
-  //       'Raipur Karchuliyan',
-  //       'Semaria',
-  //       'Sirmour',
-  //       'Teonthar',
-  //       'Gangev',
-  //     ],
-  //     blocks: ['Jawa', 'Raipur Karchuliyan', 'Rewa', 'Sirmour', 'Teonthar'],
-  //   },
-  //   Sagar: {
-  //     tehsils: [
-  //       'Banda',
-  //       'Bandari',
-  //       'Bina',
-  //       'Deori',
-  //       'Garhakota',
-  //       'Jaisinagar',
-  //       'Kesli',
-  //       'Khurai',
-  //       'Malthon',
-  //       'Rahatgarh',
-  //       'Rehli',
-  //       'Sagar',
-  //       'Sagar Nagar',
-  //       'Shahgarh',
-  //     ],
-  //     blocks: [
-  //       'Banda',
-  //       'Bina',
-  //       'Deori',
-  //       'Jaisinagar',
-  //       'Kesli',
-  //       'Khurai',
-  //       'Malthone',
-  //       'Rahatgarh',
-  //       'Rehli',
-  //       'Sagar',
-  //       'Shahgarh',
-  //     ],
-  //   },
-  //   Satna: {
-  //     tehsils: [
-  //       'Birsinghpur',
-  //       'Kotar',
-  //       'Kothi',
-  //       'Majhgawan',
-  //       'Nagod',
-  //       'Raghurajnagar (Nagriya)',
-  //       'Rampur Baghelan',
-  //       'Unchehara',
-  //     ],
-  //     blocks: ['Majhgawan', 'Nagod', 'Rampur Baghelan', 'Sohawal', 'Unchahara'],
-  //   },
-  //   Sehore: {
-  //     tehsils: [
-  //       'Ashta',
-  //       'Bhairunda',
-  //       'Budni',
-  //       'Doraha',
-  //       'Ichhawar',
-  //       'Jawar',
-  //       'Rehti',
-  //       'Sehore',
-  //       'Sehore Nagar',
-  //       'Shyampur',
-  //     ],
-  //     blocks: ['Ashta', 'Budni', 'Ichhawar', 'Nasrullaganj', 'Sehore'],
-  //   },
-  //   Seoni: {
-  //     tehsils: [
-  //       'Barghat',
-  //       'Chhapara',
-  //       'Dhanora',
-  //       'Ghansaur',
-  //       'Keolari',
-  //       'Kurai',
-  //       'Lakhnadon',
-  //       'Seoni',
-  //       'Seoni Nagar',
-  //     ],
-  //     blocks: [
-  //       'Barghat',
-  //       'Chhapara',
-  //       'Dhanaura',
-  //       'Kahnapas(Ghansaur)',
-  //       'Keolari',
-  //       'Kurai',
-  //       'Lakhnadon',
-  //       'Seoni',
-  //     ],
-  //   },
-  //   Shahdol: {
-  //     tehsils: [
-  //       'Beohari',
-  //       'Burhar',
-  //       'Gohparu',
-  //       'Jaisinghnagar',
-  //       'Jaitpur',
-  //       'Sohagpur',
-  //     ],
-  //     blocks: ['Beohari', 'Burhar', 'Gohparu', 'Jaisinghnagar', 'Sohagpur'],
-  //   },
-  //   Shajapur: {
-  //     tehsils: [
-  //       'Avantipur Barodia',
-  //       'Gulana',
-  //       'Kalapipal',
-  //       'Moman Badodiya',
-  //       'Polaykala',
-  //       'Shajapur',
-  //       'Shujalpur',
-  //     ],
-  //     blocks: ['Kalapipal', 'Moman Badodia', 'Shajapur', 'Shujalpur'],
-  //   },
-  //   Sheopur: {
-  //     tehsils: ['Badoda', 'Beerpur', 'Karahal', 'Sheopur', 'Vijaypur'],
-  //     blocks: ['Karahal', 'Sheopur', 'Vijaypur'],
-  //   },
-  //   Shivpuri: {
-  //     tehsils: [
-  //       'Badarwas',
-  //       'Bairad',
-  //       'Karera',
-  //       'Khaniyadhana',
-  //       'Kolaras',
-  //       'Narwar',
-  //       'Pichhore',
-  //       'Pohri',
-  //       'Rannod',
-  //       'Shivpuri',
-  //       'Shivpuri Nagar',
-  //     ],
-  //     blocks: [
-  //       'Badarwas',
-  //       'Karera',
-  //       'Khaniadhana',
-  //       'Kolaras',
-  //       'Narwar',
-  //       'Pichhore',
-  //       'Pohri',
-  //       'Shivpuri',
-  //     ],
-  //   },
-  //   Sidhi: {
-  //     tehsils: [
-  //       'Bahari',
-  //       'Churhat',
-  //       'Gopadbanas',
-  //       'Kusmi',
-  //       'Madwas',
-  //       'Majhauli',
-  //       'Rampur Naikin',
-  //       'Sihawal',
-  //     ],
-  //     blocks: ['Kusmi', 'Majhauli', 'Rampur Naikin', 'Sidhi', 'Sihawal'],
-  //   },
-  //   Singrauli: {
-  //     tehsils: [
-  //       'Bargawan',
-  //       'Chitrangi',
-  //       'Deosar',
-  //       'Dudhamania',
-  //       'Mada',
-  //       'Sarai',
-  //       'Singrauli',
-  //       'Singrauli Nagar',
-  //     ],
-  //     blocks: ['Baidhan', 'Chitrangi', 'Devsar'],
-  //   },
-  //   Tikamgarh: {
-  //     tehsils: [
-  //       'Badagaon (Dhasan)',
-  //       'Baldeogarh',
-  //       'Dighora',
-  //       'Jatara',
-  //       'Khargapur',
-  //       'Lidhora',
-  //       'Mohangarh',
-  //       'Palera',
-  //       'Tikamgarh',
-  //     ],
-  //     blocks: ['Baldeogarh', 'Jatara', 'Palera', 'Tikamgarh'],
-  //   },
-  //   Ujjain: {
-  //     tehsils: [
-  //       'Badnagar',
-  //       'Ghatiya',
-  //       'Jharda',
-  //       'Khacharod',
-  //       'Kothi Mahal',
-  //       'Mahidpur',
-  //       'Makdon',
-  //       'Nagda',
-  //       'Tarana',
-  //       'Ujjain',
-  //       'Ujjain Nagar',
-  //       'Unhel',
-  //     ],
-  //     blocks: [
-  //       'Badnagar',
-  //       'Ghatiya',
-  //       'Khacharod',
-  //       'Mahidpur',
-  //       'Tarana',
-  //       'Ujjain',
-  //     ],
-  //   },
-  //   Umaria: {
-  //     tehsils: [
-  //       'Bandhavgarh',
-  //       'Bilaspur',
-  //       'Chandia',
-  //       'Karkeli',
-  //       'Manpur',
-  //       'Nowrozabad',
-  //       'Pali',
-  //     ],
-  //     blocks: ['Karkeli', 'Manpur', 'Pali'],
-  //   },
-  //   Vidisha: {
-  //     tehsils: [
-  //       'Basoda',
-  //       'Gulabganj',
-  //       'Gyaraspur',
-  //       'Kurwai',
-  //       'Lateri',
-  //       'Nateran',
-  //       'Pathari',
-  //       'Shamshabad',
-  //       'Sironj',
-  //       'Tyonda',
-  //       'Vidisha',
-  //       'Vidisha Nagar',
-  //     ],
-  //     blocks: [
-  //       'Basoda',
-  //       'Gyaraspur',
-  //       'Kurwai',
-  //       'Lateri',
-  //       'Nateran',
-  //       'Sironj',
-  //       'Vidisha',
-  //     ],
-  //   },
-  // }
+  })
 
   // Handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData((prevData) => {
-      const newData = { ...prevData, [name]: value };
+      const newData = { ...prevData, [name]: value }
 
       // When district changes, reset tehsil and block
-      if (name === "district") {
-        newData.tehsil = ""; // Reset tehsil
-        newData.block = ""; // Reset block
+      if (name === 'district') {
+        newData.tehsil = '' // Reset tehsil
+        newData.block = '' // Reset block
       }
 
-      return newData;
-    });
-  };
+      return newData
+    })
+  }
 
   // Handle date of birth change and calculate age
   const handleDobChange = (e) => {
-    const dob = e.target.value;
+    const dob = e.target.value
     setFormData((prevData) => {
-      const newData = { ...prevData, dob };
+      const newData = { ...prevData, dob }
 
       // Calculate age based on DOB
-      const age = calculateAge(dob);
-      newData.age = age;
+      const age = calculateAge(dob)
+      newData.age = age
 
-      return newData;
-    });
-  };
+      return newData
+    })
+  }
 
   // Function to calculate age based on DOB
   const calculateAge = (dob) => {
-    const today = new Date();
-    const birthDate = new Date(dob);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDifference = today.getMonth() - birthDate.getMonth();
+    const today = new Date()
+    const birthDate = new Date(dob)
+    let age = today.getFullYear() - birthDate.getFullYear()
+    const monthDifference = today.getMonth() - birthDate.getMonth()
 
     // Adjust age if the birthday hasn't occurred yet this year
     if (
       monthDifference < 0 ||
       (monthDifference === 0 && today.getDate() < birthDate.getDate())
     ) {
-      age--;
+      age--
     }
 
-    return age;
-  };
+    return age
+  }
 
   // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     // // Required Field Check
     // for (const key in formData) {
@@ -1002,23 +103,23 @@ const Register = () => {
     // }
 
     // Phone Number Validation
-    const phoneRegex = /^[6-9]\d{9}$/;
+    const phoneRegex = /^[6-9]\d{9}$/
     if (!phoneRegex.test(formData.contactNo)) {
-      alert("Please enter a valid 10-digit phone number.");
-      return;
+      alert('Please enter a valid 10-digit phone number.')
+      return
     }
 
     // SSSM ID Validation (9 Digits)
     if (!/^\d{9}$/.test(formData.sssmid)) {
-      alert("SSSM ID must be exactly 9 digits.");
-      return;
+      alert('SSSM ID must be exactly 9 digits.')
+      return
     }
 
     // Pincode Validation (6 Digits)
-    if (!/^\d{6}$/.test(formData.pincode)) {
-      alert("Pincode must be exactly 6 digits.");
-      return;
-    }
+    // if (!/^\d{6}$/.test(formData.pincode)) {
+    //   alert('Pincode must be exactly 6 digits.')
+    //   return
+    // }
 
     // Age Validation (Must be 18+)
     // if (formData.age < 18) {
@@ -1027,23 +128,23 @@ const Register = () => {
     // }
 
     // Ensure user is eligible based on status & last class studied
-    if (formData.status === "Fail" && formData.lastClassStudied === "5th") {
-      alert("You are not eligible to register.");
-      return;
+    if (formData.status === 'Fail' && formData.lastClassStudied === '5th') {
+      alert('You are not eligible to register.')
+      return
     }
     if (formData.declarationAccepted === false) {
-      alert("please check mark the declaration.");
-      return;
+      alert('please check mark the declaration.')
+      return
     }
     try {
-      const response = await axios.post(SummaryApi.Register.url, formData);
+      const response = await axios.post(SummaryApi.Register.url, formData)
       if (response.status === 200) {
-        alert("Registration successful!");
+        alert('Registration successful!')
       }
       if (response.status === 201) {
         // Success: Student registration successful
-        alert(response.data.message); // This will show "Student registered successfully"
-        console.log("Learner ID:", response.data.learnerId); // Optional: Log learner ID if needed
+        alert(response.data.message) // This will show "Student registered successfully"
+        console.log('Learner ID:', response.data.learnerId) // Optional: Log learner ID if needed
       }
     } catch (error) {
       // Check if the error is from axios and has a response from the server
@@ -1052,42 +153,42 @@ const Register = () => {
         error.response.data &&
         error.response.data.message
       ) {
-        const errorMessage = error.response.data.message;
+        const errorMessage = error.response.data.message
 
         if (
-          errorMessage.includes("duplicate key error") ||
-          errorMessage.includes("Contact number")
+          errorMessage.includes('duplicate key error') ||
+          errorMessage.includes('Contact number')
         ) {
-          alert(errorMessage); // Display the duplicate contact number message
+          alert(errorMessage) // Display the duplicate contact number message
         } else {
-          alert("Registration failed. Please try again.");
+          alert('Registration failed. Please try again.')
         }
       } else {
-        console.error("There was an error during registration:", error);
-        alert("Registration failed. Please try again.");
+        console.error('There was an error during registration:', error)
+        alert('Registration failed. Please try again.')
       }
     }
-  };
+  }
 
-  const districtOptions = Object.keys(districtData);
+  const districtOptions = Object.keys(districtData)
 
   const tehsilOptions = formData.district
     ? districtData[formData.district]?.tehsils
-    : [];
+    : []
   const blockOptions = formData.district
     ? districtData[formData.district]?.blocks
-    : [];
+    : []
 
   const handleCheckboxChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
       declarationAccepted: e.target.checked, // Update state correctly
-    }));
-  };
+    }))
+  }
 
   const handleToggle = () => {
-    setShowFullText(!showFullText);
-  };
+    setShowFullText(!showFullText)
+  }
   return (
     <div className=" min-h-screen flex sm:flex-row flex-col  items-start justify-center p-4 bg-cover bg-no-repeat">
       <Link
@@ -1244,7 +345,6 @@ const Register = () => {
                 name="tehsil"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
-                required
               >
                 <option value="">Select Tehsil</option>
                 {tehsilOptions.map((tehsil) => (
@@ -1260,7 +360,6 @@ const Register = () => {
                 name="block"
                 className="w-full border text-black border-[#fd645b] rounded p-2 focus:outline-none  focus:ring-2 focus:ring-[#fd645b]"
                 onChange={handleChange}
-                required
               >
                 <option value="">Select Block</option>
                 {blockOptions.map((block) => (
@@ -1289,7 +388,6 @@ const Register = () => {
                 onChange={handleChange}
                 pattern="\d{6}"
                 title="Enter a valid 6-digit pincode"
-                required
               />
             </label>
 
@@ -1454,8 +552,8 @@ const Register = () => {
                 <option value="RJN (Rook Jana Nahi)">
                   RJN (Rook Jana Nahi)
                 </option>
-                <option value="ALC (Aa Laut Chale)">ALC (Aa Laut Chale)</option>{" "}
-                <option value="Super Section (SS)">Super Section (SS)</option>{" "}
+                <option value="ALC (Aa Laut Chale)">ALC (Aa Laut Chale)</option>{' '}
+                <option value="Super Section (SS)">Super Section (SS)</option>{' '}
                 <option value="Saksham Bhaiya Behna (SBB)">
                   Saksham Bhaiya Behna (SBB)
                 </option>
@@ -1511,7 +609,7 @@ const Register = () => {
                   onClick={handleToggle}
                   className="text-blue-500 cursor-pointer ml-1 inline"
                 >
-                  {showFullText ? "कम पढ़ें" : "और पढ़ें"}
+                  {showFullText ? 'कम पढ़ें' : 'और पढ़ें'}
                 </button>
               </p>
             </div>
@@ -1533,7 +631,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
