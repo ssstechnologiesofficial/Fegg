@@ -1,5 +1,7 @@
 const express = require('express')
-const multer = require('multer')
+const multer = require('multer');
+const { v2: cloudinary } = require('cloudinary');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const {
   submitJobApplication,
   getJobApplications,
@@ -49,36 +51,62 @@ const {
 } = require('../controller/Model10and12user')
 
 // ========================Configure Multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
-  filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname),
-})
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => cb(null, 'uploads/'),
+//   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname),
+// })
 
+// const upload = multer({
+//   storage,
+//   limits: { fileSize: 1024 * 1024 * 10 }, // 10MB limit
+//   fileFilter: (req, file, cb) => {
+//     const allowedTypes = [
+//       'image/jpeg',
+//       'image/png',
+//       'image/webp', // Added WebP support
+//       'video/mp4',
+//       'application/pdf',
+//       'application/msword',
+//       'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+//     ]
+//     if (allowedTypes.includes(file.mimetype)) {
+//       cb(null, true)
+//     } else {
+//       cb(
+//         new Error(
+//           'Only .jpeg, .png, .webp, .mp4, .pdf, .doc, and .docx files are allowed!'
+//         ),
+//         false
+//       )
+//     }
+//   },
+// })
+
+
+
+// 🔧 Cloudinary configuration
+cloudinary.config({
+  cloud_name: 'dgrim0d7i',
+  api_key: '247847714898566',    
+  api_secret: 'ittrJLYGZKx3yNYIz6v4yL6bq9Y',
+});
+
+// 📂 Multer Storage using Cloudinary
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'uploads', // Cloud folder name
+    allowed_formats: ['jpg', 'png', 'webp', 'mp4', 'pdf', 'doc', 'docx'],
+    transformation: [{ width: 500, height: 500, crop: 'limit' }], // optional
+  },
+});
+
+// 📥 Upload Middleware
 const upload = multer({
   storage,
-  limits: { fileSize: 1024 * 1024 * 10 }, // 10MB limit
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = [
-      'image/jpeg',
-      'image/png',
-      'image/webp', // Added WebP support
-      'video/mp4',
-      'application/pdf',
-      'application/msword',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    ]
-    if (allowedTypes.includes(file.mimetype)) {
-      cb(null, true)
-    } else {
-      cb(
-        new Error(
-          'Only .jpeg, .png, .webp, .mp4, .pdf, .doc, and .docx files are allowed!'
-        ),
-        false
-      )
-    }
-  },
-})
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+});
+
 
 // POST route for submitting job applications
 router.post('/applications', upload.single('resumeFile'), submitJobApplication)

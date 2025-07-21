@@ -78,7 +78,7 @@ const Hero = () => {
           {carouselImages.map((image, index) => (
             <SwiperSlide key={index}>
               <img
-                src={`${baseUrl}/${image.image}`}
+                src={image.image}
                 alt={`Slide ${index + 1}`}
                 className="w-full h-[560px] object-cover"
               />

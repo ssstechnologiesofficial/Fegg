@@ -114,7 +114,7 @@ const HeroImage = () => {
                 <tr key={img._id} className="text-center">
                   <td className="border p-2">
                     <img
-                      src={`${baseUrl}/${img.image}`}
+                      src={img.image}
                       alt={img.title}
                       className="w-16 h-16 object-cover mx-auto"
                     />

@@ -209,7 +209,7 @@ const AnnouncementUpload = () => {
                   <td className="border p-2">
                     {ann.image && (
                       <img
-                        src={`${baseUrl}/uploads/${ann.image}`}
+                        src={ann.image}
                         alt="announcement"
                         width="50"
                       />
