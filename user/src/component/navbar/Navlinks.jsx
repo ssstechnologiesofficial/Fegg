@@ -300,7 +300,7 @@ const NavLinks = () => {
           </NavLink>
         </li>
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
-          <a href="https://ubiquitous-squirrel-242cf1.netlify.app">
+          <a href="https://educategirlspragtimp.ngo/admin">
             विभागीय एक्सेस
           </a>
         </li>
