@@ -51,6 +51,36 @@ import AnnouncementDetails from '../component/content/AnnouncementDetails'
 import ScrollToTop from '../component/linktop/ScrollLinkTop'
 import TermsAndConditions from '../component/content/Terms'
 import BlueprintsPage from '../component/content/BluePrint'
+import Login from '../../../admin/src/pages/Login'
+import Sidebarlerner from '../../../admin/src/components/SidebarLerner'
+import Dashboard from '../../../admin/src/components/Dashboard'
+import ResetPasswordPage from '../../../admin/src/components/ReserPasswordPage'
+import ForgotPassword from '../../../admin/src/pages/ForgotPassword'
+import EBooks from '../../../admin/src/components/EBooks'
+import EventForm from '../../../admin/src/components/EventForm'
+import OlineVideoUpload from '../../../admin/src/components/OlineVideoUpload'
+import CreatePracticeSet from '../../../admin/src/components/practice/CreatePracticeSet'
+import CreateSubjectForm from '../../../admin/src/components/practice/CreateSubject'
+import CreateChapterForm from '../../../admin/src/components/practice/CreateChapter'
+import QuestionBank from '../../../admin/src/components/practice/QuestionBank'
+import MockTestStart from '../../../admin/src/components/mock/MocktestStart'
+import Mockresult from '../../../admin/src/components/mock/Mockresult'
+import TestResultsTable from '../../../admin/src/components/practice/TestResultTable'
+import CreateQuestion from '../../../admin/src/components/mock/CreateQuestions'
+import QuestionTable from '../../../admin/src/components/practice/QuestionTable'
+import PreviousPaper from '../../../admin/src/components/PreviousPaper'
+import PracticeModaldata from '../../../admin/src/components/practice/PracticeModaldata'
+import BluePrintupload from '../../../admin/src/components/BluePrintupload'
+import AddTestimonials from '../../../admin/src/components/AddTestimonials'
+import SessionAdd from '../../../admin/src/components/SessionAdd'
+import Sidebarcreater from '../../../admin/src/components/Sidebarcreater'
+import HeroImage from '../../../admin/src/components/HeroImage'
+import AnnouncementUpload from '../../../admin/src/components/Announcement'
+import NewsLetterUpload from '../../../admin/src/components/NewsLetterUpload'
+import Sidebar from '../../../admin/src/components/Sidebar'
+import UploadUrl from '../../../admin/src/components/UploadUrl'
+import StudentList from '../../../admin/src/components/StudentList'
+import EContentModel from '../../../admin/src/components/EContentModel'
 // import AnnouncementDetails from '../component/content/EventAnnouncementDetails'
 
 export const router = createBrowserRouter([
@@ -238,4 +268,242 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'/admin',
+    children: [
+      {
+        path: '',
+        element: <Login />,
+      },
+      {
+        path: 'forgotpassword',
+        element: <ForgotPassword />,
+      },
+      // {
+      //   path: 'Registration',
+      //   element: <Registration />,
+      // },
+      {
+        path: 'ResetPasswordPage/:token',
+        element: <ResetPasswordPage />,
+      },
+      {
+        path: 'dashboard2',
+        element: <Sidebarlerner />,
+        children: [
+          {
+            path: 'dashboardCards',
+            element: <Dashboard />,
+          },
+          {
+            path: 'EBooks',
+            element: <EBooks />,
+          },
+          {
+            path: 'event',
+            element: <EventForm />,
+          },
+          
+
+      
+          
+          {
+            path: 'OlineVideoUpload',
+            element: <OlineVideoUpload />,
+          },
+         
+          {
+            path: 'create-test',
+            element: <CreatePracticeSet />,
+          },
+          
+
+          {
+            path: 'create-subject',
+            element: <CreateSubjectForm />,
+          },
+          {
+            path: 'create-chapter',
+            element: <CreateChapterForm />,
+          },
+          {
+            path: 'create-question',
+            element: <QuestionBank />,
+          },
+          {
+            path: 'start/:mockTestId',
+            element: <MockTestStart />,
+          },
+          {
+            path: 'result/:resultId',
+            element: <Mockresult />,
+          },
+          {
+            path: 'MockSidebarResult',
+            element: <TestResultsTable />,
+          },
+          {
+            path: 'create-questions',
+            element: <CreateQuestion />,
+          },
+          {
+            path: 'questions-manage',
+            element: <QuestionTable />,
+          },
+          {
+            path: 'PreviousPaper',
+            element: <PreviousPaper />,
+          },
+          {
+            path: 'PracticeModaldata',
+            element: <PracticeModaldata />,
+          },
+          {
+            path: 'BluePrintupload',
+            element: <BluePrintupload />,
+          },
+          {
+            path: 'testimonial',
+            element: <AddTestimonials />,
+          },
+          
+          {
+            path: 'SessionAdd',
+            element: <SessionAdd />,
+          },
+        ],
+      },
+
+      //==================================== creater
+      {
+        path: 'dashboard3',
+        element: <Sidebarcreater />,
+        children: [
+          {
+            path: 'dashboardCards',
+            element: <Dashboard />,
+          },
+          {
+            path: 'hero-img',
+            element: <HeroImage />,
+          },
+          {
+            path: 'announcement',
+            element: <AnnouncementUpload />,
+          },
+          {
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
+          },
+        ],
+      },
+      {
+        path: 'dashboard',
+        element: <Sidebar />,
+        children: [
+          {
+            path: 'dashboardCards',
+            element: <Dashboard />,
+          },
+          {
+            path: 'EBooks',
+            element: <EBooks />,
+          },
+          {
+            path: 'resultAdmitcardUrl',
+            element: <UploadUrl />,
+          },
+          {
+            path: 'event',
+            element: <EventForm />,
+          },
+
+          {
+            path: 'hero-img',
+            element: <HeroImage />,
+          },
+          {
+            path: 'announcement',
+            element: <AnnouncementUpload />,
+          },
+          {
+            path: 'students',
+            element: <StudentList />,
+          },
+          {
+            path: 'OlineVideoUpload',
+            element: <OlineVideoUpload />,
+          },
+          {
+            path: 'EContentModel',
+            element: <EContentModel />,
+          },
+          {
+            path: 'create-test',
+            element: <CreatePracticeSet />,
+          },
+
+          {
+            path: 'create-subject',
+            element: <CreateSubjectForm />,
+          },
+          {
+            path: 'create-chapter',
+            element: <CreateChapterForm />,
+          },
+          {
+            path: 'create-question',
+            element: <QuestionBank />,
+          },
+          {
+            path: 'start/:mockTestId',
+            element: <MockTestStart />,
+          },
+          {
+            path: 'result/:resultId',
+            element: <Mockresult />,
+          },
+          {
+            path: 'MockSidebarResult',
+            element: <TestResultsTable />,
+          },
+          {
+            path: 'create-questions',
+            element: <CreateQuestion />,
+          },
+          {
+            path: 'questions-manage',
+            element: <QuestionTable />,
+          },
+          {
+            path: 'PreviousPaper',
+            element: <PreviousPaper />,
+          },
+          {
+            path: 'PracticeModaldata',
+            element: <PracticeModaldata />,
+          },
+          {
+            path: 'BluePrintupload',
+            element: <BluePrintupload />,
+          },
+          {
+            path: 'testimonial',
+            element: <AddTestimonials />,
+          },
+          {
+            path: 'NewsLetterUpload',
+            element: <NewsLetterUpload />,
+          },
+          {
+            path: 'SessionAdd',
+            element: <SessionAdd />,
+          },
+        ],
+      },
+    ],
+  },
+ 
+  
+ 
 ])

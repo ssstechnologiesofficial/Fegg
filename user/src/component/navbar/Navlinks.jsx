@@ -300,9 +300,9 @@ const NavLinks = () => {
           </NavLink>
         </li>
         <li className="rounded-full py-2 px-3 border transition-all hover:border-[#fd645b] hover:text-[#fd645b] text-white hover:bg-white bg-[#fd645b]">
-          <a href="https://educategirlspragtimp.ngo/admin">
+          <NavLink   to="/admin">
             विभागीय एक्सेस
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>
