@@ -1,5 +1,5 @@
-// const backendDomain = 'https://feggbackend.onrender.com'
-const backendDomain = 'http://localhost:8006'
+const backendDomain = 'https://educategirlspragtimp.ngo'
+// const backendDomain = 'http://localhost:8006'
 
 const SummaryApi = {
   addEvent: {
